@@ -1,4 +1,5 @@
-{"left": [
+{
+    "left": [
     {"label": "inicio", "href": "/"},
     {"label": "planea_tu_viaje", "href": "/planea_tu_viaje", "content":[
         {"label": "como_llegar", "href": "/planea_tu_viaje/como_llegar"},
@@ -7,4 +8,5 @@
         {"label": "donde_alojarse", "href": "/planea_tu_viaje/donde_alojarse"}
     ]},
     {"label": "actividades", "href": "/actividades"}
-]}
+    ]
+}
