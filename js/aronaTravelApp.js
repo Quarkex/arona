@@ -41,7 +41,11 @@
 
 var app = angular.module("aronaTravelApp", ["ngRoute","ngResource","mm.foundation"]);
 
-app.value('page', {'title': "Arona.travel", "dictionary":{}});
+app.value('page', {
+    'title': "Arona.travel",
+    'available_languages': ['de', 'en', 'es', 'fi', 'fr', 'it', 'nl', 'ru', 'sv'],
+    "dictionary":{}
+});
 
 app.config(function($routeProvider) {
     $routeProvider
