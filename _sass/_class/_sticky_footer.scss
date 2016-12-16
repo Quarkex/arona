@@ -1,0 +1,23 @@
+
+.content-wrapper {
+    margin: 0;
+    min-height: calc( 100vh - #{$footer_height} );
+    min-width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
+    >.off-canvas-wrapper:only-child {
+        >.off-canvas-wrapper-inner:only-child {
+            >.off-canvas-content {
+                min-height: calc( 100vh - #{$footer_height} );
+            }
+        }
+    }
+}
+
+.footer-wrapper {
+    margin: 0;
+    height: $footer_height;
+    min-width: 100vw;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}

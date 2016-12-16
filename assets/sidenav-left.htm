@@ -1,0 +1,12 @@
+<div class="off-canvas position-left">
+    <ul class="mobile-ofc vertical menu">
+        <li ng-repeat="link in nav.left">
+            <a href="#/{{lang()}}{{link.href}}">{{ translate("pagina.titulo_", link.label) }}</a>
+            <ul class="submenu menu vertical" ng-if="link.content != undefined">
+                <li ng-repeat="sublink in link.content">
+                    <a href="#/{{lang()}}{{sublink.href}}">{{ translate("pagina.titulo_", sublink.label) }}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

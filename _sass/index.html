@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="{{ lang() }}" ng-init="title='Arona.travel';" ng-app="aronaTravelApp" ng-controller="aronaTravelCtrl">
+    <head>
+        <meta charset="utf-8">
+        <script src="/js/angularjs/angular.min.js"></script>
+        <script src="/js/angularjs/angular-route.js"></script>
+        <script src="/js/angularjs/angular-resource.js"></script>
+        <script src="/js/angular-foundation.min.js"></script>
+        <script src="/js/aronaTravelApp.js"></script>
+        <link rel="stylesheet" href="/css/style.min.css">
+        <title>{{ title }}</title>
+    </head>
+    <body class="ng-cloak">
+
+        <div class="content-wrapper">
+            <div class="off-canvas-wrapper">
+                <div class="off-canvas-wrapper-inner">
+                    <div ng-include="'assets/sidenav-left.htm'"></div>
+
+                    <div class="off-canvas-content">
+                        <div ng-include="'assets/titlebar.htm'"></div>
+                        <div ng-include="'assets/header.htm'"></div>
+                        <div ng-include="'assets/breadcrumbs.htm'"></div>
+                        <div ng-view></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-wrapper">
+            <div ng-include="'assets/footer.htm'"></div>
+        </div>
+
+        <script src="/js/app.js"></script>
+
+    </body>
+</html>

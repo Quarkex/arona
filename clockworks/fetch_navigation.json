@@ -1,0 +1,10 @@
+{"left": [
+    {"label": "inicio", "href": "/"},
+    {"label": "planea_tu_viaje", "href": "/planea_tu_viaje", "content":[
+        {"label": "como_llegar", "href": "/planea_tu_viaje/como_llegar"},
+        {"label": "como_moverse", "href": "/planea_tu_viaje/como_moverse"},
+        {"label": "destino_accesible", "href": "/planea_tu_viaje/destino_accesible"},
+        {"label": "donde_alojarse", "href": "/planea_tu_viaje/donde_alojarse"}
+    ]},
+    {"label": "actividades", "href": "/actividades"}
+]}
