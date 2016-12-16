@@ -1,12 +1,55 @@
 {
     "left": [
-    {"label": "inicio", "href": "/"},
-    {"label": "planea_tu_viaje", "href": "/planea_tu_viaje", "content":[
-        {"label": "como_llegar", "href": "/planea_tu_viaje/como_llegar"},
-        {"label": "como_moverse", "href": "/planea_tu_viaje/como_moverse"},
-        {"label": "destino_accesible", "href": "/planea_tu_viaje/destino_accesible"},
-        {"label": "donde_alojarse", "href": "/planea_tu_viaje/donde_alojarse"}
-    ]},
-    {"label": "actividades", "href": "/actividades"}
+        {"label": "inicio", "href": "/"},
+        {"label": "planea_tu_viaje", "href": "/planea_tu_viaje",
+            "content":[
+                {"label": "como_llegar", "href": "/planea_tu_viaje/como_llegar"},
+                {"label": "como_moverse", "href": "/planea_tu_viaje/como_moverse"},
+                {"label": "destino_accesible", "href": "/planea_tu_viaje/destino_accesible"},
+                {"label": "donde_alojarse", "href": "/planea_tu_viaje/donde_alojarse"}
+            ]
+        },
+        {"label": "actividades", "href": "/actividades"}
+    ],
+    "bottom": [
+        {"label": "destino_arona", "href": "/destino_arona",
+            "content":[
+                {"label": "datos_generales", "href": "/destino_arona/datos_generales"},
+                {"label": "un_poco_de_historia", "href": "/destino_arona/un_poco_de_historia"},
+                {"label": "patrimonio_cultural", "href": "/destino_arona/patrimonio_cultural"},
+                {"label": "lugares_de_interes", "href": "/destino_arona/lugares_de_interes"},
+                {"label": "tour_virtual_360", "href": "/destino_arona/tour_virtual_360"},
+                {"label": "arona_casco", "href": "/destino_arona/arona_casco"}
+            ]
+        },
+        {"label": "planea_tu_viaje", "href": "/planea_tu_viaje",
+            "content":[
+                {"label": "como_llegar", "href": "/planea_tu_viaje/como_llegar"},
+                {"label": "como_moverse", "href": "/planea_tu_viaje/como_moverse"},
+                {"label": "donde_alojarse", "href": "/planea_tu_viaje/donde_alojarse"},
+                {"label": "destino_accesible", "href": "/planea_tu_viaje/destino_accesible"},
+                {"label": "folletos_y_mapas", "href": "/planea_tu_viaje/folletos_y_mapas"},
+                {"label": "oficinas_de_información", "href": "/planea_tu_viaje/oficinas_de_información"}
+            ]
+        },
+        {"label": "vive_tu_estancia", "href": "/vive_tu_estancia",
+            "content":[
+                {"label": "actividades_recomendadas", "href": "/vive_tu_estancia/actividades_recomendadas"},
+                {"label": "sol_y_playa", "href": "/vive_tu_estancia/sol_y_playa"},
+                {"label": "gastronomia", "href": "/vive_tu_estancia/gastronomia"},
+                {"label": "cultura", "href": "/vive_tu_estancia/cultura"},
+                {"label": "ocio_nocturno", "href": "/vive_tu_estancia/ocio_nocturno"},
+                {"label": "naturaleza_y_paisajes", "href": "/vive_tu_estancia/naturaleza_y_paisajes"},
+                {"label": "congresos_y_negocios", "href": "/vive_tu_estancia/congresos_y_negocios"}
+            ]
+        },
+        {"label": "area_profesional", "href": "/area_profesional",
+            "content":[
+                {"label": "noticias_del_sector", "href": "/area_profesional/noticias_del_sector"},
+                {"label": "descargas", "href": "/area_profesional/descargas"},
+                {"label": "enlaces_de_interes", "href": "/area_profesional/enlaces_de_interes"},
+                {"label": "buzon_de_sugerencias", "href": "/area_profesional/buzon_de_sugerencias"}
+            ]
+        }
     ]
 }
