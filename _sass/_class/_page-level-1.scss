@@ -2,12 +2,6 @@
     background-color: $main_color_contrast;
     color: black;
 
-    > .row, > * > .row {
-        max-width: none;
-        padding-top: 2em;
-        padding-bottom: 2em;
-    }
-
     h2 {
         color: $main_color;
     }
