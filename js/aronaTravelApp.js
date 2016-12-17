@@ -28,6 +28,10 @@
  *
  *   Returns the current angular path location as a string
  *
+ * - {{ level() }}
+ *
+ *   Returns the current angular path level of nesting as an integer
+ *
  * - {{ nav }}
  *
  *   Returns an object with arrays of navigation links. They can also have more content.
@@ -97,6 +101,7 @@ app.controller("aronaTravelCtrl", function($scope, $location, $routeParams, $res
     });
 
     $scope.path = function (){ return $location.path(); };
+    $scope.level = function (){ return $location.path().substring(1).split('/').length; };
     $scope.breadcrumbs = function() {
         var output = [];
         var path = $location.path().substr(1).split('/');
