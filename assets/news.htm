@@ -1,35 +1,11 @@
-<a href="#/{{ lang() }}/activities/2013-02-27-47233">
+<a ng-repeat="article in page.panels['home'].elements" href="#/{{ lang() }}/activities/{{ article.id }}">
     <div class="medium-4 columns">
         <div class="row columns">
-            <div class="row columns"> <img src="/img/activities/2013/02/27/47233.png">
+            <div class="row columns"> <img src="/img/db/{{ article.image }}.png">
             </div>
             <div class="row columns">
-                <div class="small-12 columns">27 February 2013</div>
-                <div class="small-12 columns">Canarias Folk Fest Arona 2012</div>
-            </div>
-        </div>
-    </div>
-</a>
-<a href="#/{{ lang() }}/activities/2013-02-27-47233">
-    <div class="medium-4 columns">
-        <div class="row columns">
-            <div class="row columns"> <img src="/img/activities/2013/02/27/47233.png">
-            </div>
-            <div class="row columns">
-                <div class="small-12 columns">27 February 2013</div>
-                <div class="small-12 columns">Canarias Folk Fest Arona 2012</div>
-            </div>
-        </div>
-    </div>
-</a>
-<a href="#/{{ lang() }}/activities/2013-02-27-47233">
-    <div class="medium-4 columns">
-        <div class="row columns">
-            <div class="row columns"> <img src="/img/activities/2013/02/27/47233.png">
-            </div>
-            <div class="row columns">
-                <div class="small-12 columns">27 February 2013</div>
-                <div class="small-12 columns">Canarias Folk Fest Arona 2012</div>
+                <div class="small-12 columns">{{ article.date }}</div>
+                <div class="small-12 columns">{{ article.title }}</div>
             </div>
         </div>
     </div>
