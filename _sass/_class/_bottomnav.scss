@@ -1,0 +1,30 @@
+.bottomnav {
+    padding-top: 2em !important;
+    padding-bottom: 2em !important;
+    margin-bottom: 1em;
+    background-color: #eeeeee;
+    text-align: left;
+    ul {
+        margin-left: 0 !important;
+    }
+    li {
+        list-style-type: none;
+        text-align: left;
+        font-size: 16px;
+        line-height: 36px;
+        a {
+            color: grey;
+        }
+        &:first-child{
+            font-size: 22px;
+            line-height: 24px;
+            text-transform: initial !important;
+            font-weight: bold !important;
+            color: $main_color;
+            margin-bottom: 0.5em;
+            a {
+                color: $main_color;
+            }
+        }
+    }
+}
