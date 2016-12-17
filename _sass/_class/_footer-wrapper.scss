@@ -1,0 +1,24 @@
+.footer-wrapper {
+    background-color: #015aa9;
+    color: $main_color_contrast;
+    border-top: 2px solid $edges_color;
+    text-align: center;
+    white-space: nowrap;
+
+    a {
+        color: $main_color_contrast;
+    }
+    > div {
+        font-size: 100%;
+    }
+    .row {
+        max-width: none;
+        &:nth-child(1){
+            padding-top: 1em;
+        }
+        &:nth-child(2){
+            background-color: $main_color;
+            height: 4em;
+        }
+    }
+}
