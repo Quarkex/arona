@@ -22,11 +22,11 @@
                 <div class="off-canvas-wrapper-inner">
                     <div ng-include="'assets/sidenav-left.htm'"></div>
 
-                    <div class="off-canvas-content">
+                    <div class="off-canvas-content {{'page-level-' + level() }}">
                         <div ng-include="'assets/titlebar.htm'"></div>
                         <div ng-if=" path() != ( '/' + lang() )" ng-include="'assets/breadcrumbs.htm'"></div>
                         <div ng-include="'assets/header.htm'"></div>
-                        <div class="{{'page-level-' + level() }}" ng-view></div>
+                        <div ng-view></div>
                         <div ng-include="'assets/bottomnav.htm'"></div>
 
                     </div>
