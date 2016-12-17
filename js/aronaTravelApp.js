@@ -93,10 +93,30 @@ app.controller("aronaTravelCtrl", function($scope, $location, $routeParams, $res
 
     $scope.lang = function (){ return $routeParams.language; };
 
-    $resource(function(){
-        if ( $scope.lang() == undefined ) return '/locales/en.json';
-        else return '/locales/' + $scope.lang() + '.json';
-    }(), {lang:$scope.lang()}).get(function(data){
+    var Lang = $resource(
+
+            // Url targeting the resource
+            '/locales/:lang.json',
+
+            // Default values for url parameters. These can be overridden in actions methods.
+            // If a parameter value is a function, it will be called every time a param value
+            // needs to be obtained for a request (unless the param was overridden).
+            // The function will be passed the current data value as an argument.
+            //
+            //  Given a template /path/:verb and parameter {verb:'greet', salutation:'Hello'}
+            //  results in URL /path/greet?salutation=Hello.
+            //
+            //  If the parameter value is prefixed with @, then the value for that parameter
+            //  will be extracted from the corresponding property on the data object (provided
+            // when calling a "non-GET" action method). For example, if the defaultParam object is
+            // {someParam: '@someProp'} then the value of someParam will be data.someProp. Note
+            // that the parameter will be ignored, when calling a "GET" action method (i.e. an
+            // action method that does not accept a request body)
+            {
+                lang: $scope.lang() == undefined? 'en' : $scope.lang()
+            }
+    );
+    Lang.get(function(data){
         for (var k in data){
             if (data.hasOwnProperty(k)) {
                 page.dictionary[k] = data[k];
