@@ -118,10 +118,10 @@ app.controller("aronaTravelCtrl", function($scope, $location, $routeParams, $res
         $scope.nav = data;
     });
 
-    $scope.translate = function(stringA, stringB = null) {
+    $scope.translate = function(stringA, stringB ) {
         // this is to respect the less surprise directive. Prefixes should precede the target string
-        var string = stringB == null ? stringA : stringB;
-        var prefix = stringB == null ? null : stringA;
+        var string = stringB == undefined ? stringA : stringB;
+        var prefix = stringB == undefined ? null : stringA;
 
         if ( page.dictionary.hasOwnProperty( prefix == null? string : prefix + string ) ){
             string = page.dictionary[prefix == null ? string : prefix + string];
