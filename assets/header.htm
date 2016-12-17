@@ -1,4 +1,4 @@
-<header ng-if=" path() == ( '/' + lang() )" class="row column text-center index-header" style="background-image: url(/img/backgrounds/home.png);">
+<header ng-if="level() == 1" class="row column text-center index-header" style="background-image: url(/img/backgrounds/home.png);">
     <a class="site-title" href="#/{{ lang() }}/">
         <h6>{{ translate('general.titulo') }}</h6>
     </a> <a href="#">
@@ -29,13 +29,13 @@
         </a>
     </div>
 </header>
-<header ng-if=" ( path() != ( '/' + lang() ) && ( path().substring(1).split('/').length == 2 ) )" class="row columns section-header text-center" style="background-image: url(/img/headers/pagina.{{ path().substring(1).split('/')[1] }}.png)">
+<header ng-if="level() == 2" class="row columns section-header text-center" style="background-image: url(/img/headers/pagina.{{ path().substring(1).split('/')[1] }}.png)">
     <div class="small-10 small-offset-1 columns">
         <h1>{{ translate('pagina.titulo_', path().substring(1).split('/')[1] ) }}</h1>
         <h1>{{ translate('pagina.subtitulo_', path().substring(1).split('/')[1] ) }}</h1>
     </div>
 </header>
-<header ng-if=" ( path() != ( '/' + lang() ) && ( path().substring(1).split('/').length > 2 ) )" class="row columns section-header" style="background-image: url(/img/headers/pagina.{{ path().substring(1).split('/')[1] }}.png)">
+<header ng-if="level() > 2" class="row columns section-header" style="background-image: url(/img/headers/pagina.{{ path().substring(1).split('/')[1] }}.png)">
     <div class="small-10 small-offset-1 columns">
         <h1>{{ translate('pagina.titulo_', path().substring(1).split('/')[1] ) }}</h1>
     </div>
