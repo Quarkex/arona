@@ -1,0 +1,15 @@
+.panel {
+    h1, h2, h3 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+    }
+    h1 {
+        text-transform: uppercase;
+    }
+    h2, h3 {
+        display: inline-block;
+    }
+    h2 {
+        font-size: 2em;
+    }
+}

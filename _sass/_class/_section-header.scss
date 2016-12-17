@@ -1,4 +1,18 @@
 .index-header {
+    padding-top: 5rem !important;
+    min-height: 35rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    > div {
+        &:first-of-type {
+            padding-top: 5em;
+        }
+        &:last-child {
+            padding-top: 5em;
+            padding-bottom: 8em;
+        }
+    }
     a{
         color: $main_color_contrast;
     }

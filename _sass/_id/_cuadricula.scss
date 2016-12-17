@@ -1,0 +1,13 @@
+#cuadricula {
+    > .columns {
+        .row {
+            h1, a > h1 {
+                color: black;
+            }
+        }
+        &:last-of-type{
+            padding-top: 1.5em;
+        }
+    }
+}
+
