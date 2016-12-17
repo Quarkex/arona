@@ -1,6 +1,12 @@
 <div class="title-bar">
     <div class="title-bar-left">
-        <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
-        <span class="title-bar-title">{{ page.title }}</span>
+        <div class="small-12 columns">
+            <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+            <span class="title-bar-title">{{ page.title }}</span>
+        </div>
+    </div>
+    <div class="title-bar-right">
+        <div class="small-3 columns"><a href="#/planea_tu_viaje/destino_accesible"><div class="icon-wrapper"><i class="material-icons">accessible</i></div></a></div>
+        <div class="small-9 columns" ng-include="'assets/language_selector.htm'"></div>
     </div>
 </div>

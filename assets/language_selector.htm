@@ -1,0 +1,10 @@
+<ul class="dropdown menu language-selector" dropdown-menu>
+    <li>
+        <a tabindex="0">{{ lang() | uppercase }}</a>
+        <ul class="menu vertical" style="right:0; left: auto;">
+            <li ng-if="lang() != language" ng-repeat="language in page.available_languages">
+                <a href="#{{ path().replace( lang(), language ) }}">{{ language | uppercase }}</a>
+            </li>
+        </ul>
+    </li>
+</ul>

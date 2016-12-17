@@ -1,0 +1,12 @@
+.title-bar {
+    > .title-bar-left {
+        > div:first-child {
+            padding: 0.5em;
+        }
+    }
+    > .title-bar-right {
+        .icon-wrapper {
+            padding: 0.5em;
+        }
+    }
+}
