@@ -29,7 +29,7 @@
                 {"label": "donde_alojarse", "href": "/planea_tu_viaje/donde_alojarse"},
                 {"label": "destino_accesible", "href": "/planea_tu_viaje/destino_accesible"},
                 {"label": "folletos_y_mapas", "href": "/planea_tu_viaje/folletos_y_mapas"},
-                {"label": "oficinas_de_información", "href": "/planea_tu_viaje/oficinas_de_información"}
+                {"label": "oficinas_de_informacion", "href": "/planea_tu_viaje/oficinas_de_informacion"}
             ]
         },
         {"label": "vive_tu_estancia", "href": "/vive_tu_estancia",
