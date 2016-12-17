@@ -1,10 +1,14 @@
 <div class="row bottomnav">
-    <div class="medium-3 columns" ng-repeat="link in nav.bottom">
-        <ul>
-            <li><a href="#/{{lang()}}{{link.href}}">{{ translate("pagina.titulo_", link.label) }}</a></li>
-            <li ng-repeat="sublink in link.content">
-                <a href="#/{{lang()}}{{sublink.href}}">{{ translate("pagina.titulo_", sublink.label) }}</a>
-            </li>
-        </ul>
+    <div class="small-10 small-offset-1 columns">
+        <div class="row">
+            <div class="medium-3 columns" ng-repeat="link in nav.bottom">
+                <ul>
+                    <li><a href="#/{{lang()}}{{link.href}}">{{ translate("pagina.titulo_", link.label) }}</a></li>
+                    <li ng-repeat="sublink in link.content">
+                        <a href="#/{{lang()}}{{sublink.href}}">{{ translate("pagina.titulo_", sublink.label) }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
