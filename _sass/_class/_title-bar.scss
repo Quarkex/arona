@@ -1,12 +1,19 @@
 .title-bar {
+    padding: 0;
+    background-color: $main_color;
+    color: $main_color_contrast;
+    a {
+        background-color: $main_color;
+        color: $main_color_contrast;
+    }
     > .title-bar-left {
         > div:first-child {
-            padding: 0.5em;
+            padding: 0.7em;
         }
     }
     > .title-bar-right {
         .icon-wrapper {
-            padding: 0.5em;
+            padding: 0.7em;
         }
     }
 }
