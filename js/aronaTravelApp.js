@@ -52,8 +52,10 @@ var app = angular.module("aronaTravelApp", ["ngRoute","ngResource","mm.foundatio
 app.value('page', {
     'title': "Arona.travel",
     'available_languages': ['de', 'en', 'es', 'fi', 'fr', 'it', 'nl', 'ru', 'sv'],
-    "dictionary":{}
+    'dictionary':{},
+    'panels':{}
 });
+
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -158,5 +160,27 @@ app.controller("aronaTravelCtrl", function($scope, $location, $routeParams, $res
         }
         return string;
     };
+
+    page.panels["home"] = {
+        'url': '/clockworks/fetch_news.json',
+        'offset': 0,
+        'limit': 3,
+        'filters': {'lang': $scope.lang()},
+        'values': ['title', 'date', 'id', 'image'],
+        'elements': {}
+    };
+    var News = $resource(
+            page.panels["home"].url,
+            {
+                lang: $scope.lang() == undefined? 'en' : $scope.lang(),
+                offset: page.panels["home"].offset,
+                limit: page.panels["home"].limit,
+                filters: page.panels["home"].filters,
+                values: page.panels["home"].values
+            }
+    );
+    News.get(function(data){
+        page.panels["home"].elements = data.news;
+    });
 
 });
