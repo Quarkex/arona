@@ -212,7 +212,7 @@
 "pagina.titulo_enlaces_de_interes"      : "Links of interest",
 "pagina.titulo_buzon_de_sugerencias"    : "Suggestions mailbox",
 
-"date.schema"                           : "%b %-d, %a %Y",
+"date.schema"                           : "dd MMMM yyyy",
 "date.monday"                           : "Monday",
 "date.mon"                              : "Mon",
 "date.tuesday"                          : "Thuesday",

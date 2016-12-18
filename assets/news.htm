@@ -4,7 +4,7 @@
             <div class="row columns"> <img src="/img/db/{{ article.image }}.png">
             </div>
             <div class="row columns">
-                <div class="small-12 columns">{{ article.date }}</div>
+                <div class="small-12 columns">{{ article.date | date : translate('date.schema') }}</div>
                 <div class="small-12 columns">{{ article.title }}</div>
             </div>
         </div>

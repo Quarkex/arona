@@ -217,7 +217,7 @@
 "pagina.titulo_enlaces_de_interes"      : "Enlaces de interés",
 "pagina.titulo_buzon_de_sugerencias"    : "Buzón de sugerencias",
 
-"date.schema"                           : "%a %-d %b %Y",
+"date.schema"                           : "dd MMMM yyyy",
 "date.monday"                           : "Lunes",
 "date.mon"                              : "Lun",
 "date.tuesday"                          : "Martes",
