@@ -18,7 +18,7 @@
                 {"label": "un_poco_de_historia", "href": "/destino_arona/un_poco_de_historia"},
                 {"label": "patrimonio_cultural", "href": "/destino_arona/patrimonio_cultural"},
                 {"label": "lugares_de_interes", "href": "/destino_arona/lugares_de_interes"},
-                {"label": "tour_virtual_360", "href": "/destino_arona/tour_virtual_360"},
+                {"label": "tour_virtual_360", "href": "/galeria/tour_virtual_360"},
                 {"label": "arona_casco", "href": "/destino_arona/arona_casco"}
             ]
         },
