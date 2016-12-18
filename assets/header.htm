@@ -12,7 +12,7 @@
     </a>
     <div class="row collapse">
         <div class="medium-3 medium-offset-3 columns">
-            <div class="small-12 columns"> <a class="button opaque full-width" href="#/{{ lang() }}/disfruta_de_arona"> <span>{{ translate('pagina.titulo_disfruta_de_arona') }}</span> </a>
+            <div class="small-12 columns"> <a class="button opaque full-width" href="#/{{ lang() }}/vive_tu_estancia"> <span>{{ translate('pagina.titulo_disfruta_de_arona') }}</span> </a>
             </div>
         </div>
         <div class="medium-3 columns">
@@ -29,9 +29,9 @@
         </a>
     </div>
 </header>
-<header ng-if="level() > 1" class="row section-header" ng-class="{ 'text-center': level() == 2 }" style="background-image: url(/img/headers/pagina.{{ sections()[1] }}.png)">
+<header ng-if="level() > 1" class="row section-header" style="background-image: url(/img/headers/pagina.{{ sections()[1] }}.png)">
     <div class="small-10 small-offset-1 columns">
         <h1>{{ translate('pagina.titulo_', sections()[1] ) }}</h1>
-        <h2 ng-if=" translate('pagina.subtitulo_', sections()[1] ) != '' ">{{ translate('pagina.subtitulo_', sections()[1] ) }}</h2>
+        <h2 ng-if="( translate('pagina.subtitulo_', sections()[1] ) != '' ) && ( level() == 2 )">{{ translate('pagina.subtitulo_', sections()[1] ) }}</h2>
     </div>
 </header>
