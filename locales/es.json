@@ -178,6 +178,7 @@
 "pagina.titulo_donde_alojarse"          : "Donde alojarse",
 "pagina.titulo_como_moverse"            : "Cómo moverse",
 "pagina.titulo_destino_accesible"       : "Destino accesible",
+"pagina.subtitulo_destino_accesible"    : "",
 "pagina.titulo_folletos_y_mapas"        : "Folletos y mapas",
 "pagina.titulo_oficinas_de_informacion" : "Oficinas de Información",
 "pagina.titulo_disfruta_de_arona"       : "Disfruta de Arona",
@@ -212,6 +213,7 @@
 "pagina.titulo_congresos_y_negocios"    : "Congresos y negocios",
 
 "pagina.titulo_area_profesional"        : "Área profesional",
+"pagina.subtitulo_area_profesional"     : "",
 "pagina.titulo_noticias_del_sector"     : "Noticias del sector",
 "pagina.titulo_descargas"               : "Descargas",
 "pagina.titulo_enlaces_de_interes"      : "Enlaces de interés",

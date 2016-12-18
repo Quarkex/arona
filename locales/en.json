@@ -173,6 +173,7 @@
 "pagina.titulo_donde_alojarse"          : "Where to stay",
 "pagina.titulo_como_moverse"            : "How to move",
 "pagina.titulo_destino_accesible"       : "Accessible destination",
+"pagina.subtitulo_destino_accesible"    : "",
 "pagina.titulo_folletos_y_mapas"        : "Maps and Panflets",
 "pagina.titulo_oficinas_de_informacion" : "Information Offices",
 "pagina.titulo_disfruta_de_arona"       : "Enjoy Arona",
@@ -207,6 +208,7 @@
 "pagina.titulo_congresos_y_negocios"    : "Congresses and business",
 
 "pagina.titulo_area_profesional"        : "Professional area",
+"pagina.subtitulo_area_profesional"     : "",
 "pagina.titulo_noticias_del_sector"     : "News of the sector",
 "pagina.titulo_descargas"               : "Downloads",
 "pagina.titulo_enlaces_de_interes"      : "Links of interest",
