@@ -58,31 +58,39 @@ app.value('page', {
 
 
 app.config(function($routeProvider) {
+    var isValidLang = function($location, page){
+        var current_lang = $location.path().split('/')[1];
+        if( ! page.available_languages.includes(current_lang) ) $location.path('/en');
+    };
+
     $routeProvider
     .when("/:language", {
         templateUrl : "assets/panels/main.htm",
+        resolve:{ "check":isValidLang },
         controller: "aronaTravelCtrl"
     })
     .when("/:language/404", {
         templateUrl : "assets/404.htm",
+        resolve:{ "check":isValidLang },
         controller: "aronaTravelCtrl"
     })
     .when("/:language/eventos/:event", {
-        templateUrl : function(urlattr){
-            return '/assets/panels/eventos.htm';
-        },
+        templateUrl : '/assets/panels/eventos.htm',
+        resolve:{ "check":isValidLang },
         controller: "aronaTravelCtrl"
     })
     .when("/:language/:panel*", {
         templateUrl : function(urlattr){
             return '/assets/panels/' + urlattr.panel + '.htm';
         },
+        resolve:{ "check":isValidLang },
         controller: "aronaTravelCtrl"
     })
-    .when("/", {
+    .when("", {
         redirectTo: "/en"
     })
     .otherwise({
+        resolve:{ "check":isValidLang },
         redirectTo: function(urlattr){
             return '/' + urlattr.language + '/404';
         }
