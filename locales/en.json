@@ -167,6 +167,8 @@
 
 "pagina.titulo_inicio"                  : "Home",
 "pagina.titulo_galeria"                 : "Gallery",
+"pagina.titulo_albumes"                 : "Albums",
+"pagina.titulo_videos"                  : "Videos",
 "pagina.titulo_planea_tu_viaje"         : "Plan your trip",
 "pagina.subtitulo_planea_tu_viaje"      : "Guide to find hotel, move, eat and enjoy in Arona",
 "pagina.titulo_hoteles"                 : "Hotels",
