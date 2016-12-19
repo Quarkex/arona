@@ -21,7 +21,7 @@
         }},
         "donde_alojarse": {"href": "/planea_tu_viaje/donde_alojarse", "content": {
             "hoteles": {"href": "/planea_tu_viaje/donde_alojarse/hoteles"},
-            "aparthoteles": {"href": "/planea_tu_viaje/donde_alojarse/aparthoteles"},
+            "apartahoteles": {"href": "/planea_tu_viaje/donde_alojarse/apartahoteles"},
             "apartamentos": {"href": "/planea_tu_viaje/donde_alojarse/apartamentos"},
             "alojamiento_rural": {"href": "/planea_tu_viaje/donde_alojarse/alojamiento_rural"},
             "pensiones": {"href": "/planea_tu_viaje/donde_alojarse/pensiones"}
