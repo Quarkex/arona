@@ -1,86 +1,56 @@
 {
-    "left": [
-        {"label": "inicio", "href": "/"},
-        {"label": "planea_tu_viaje", "href": "/planea_tu_viaje",
-            "content":[
-                {"label": "como_llegar", "href": "/planea_tu_viaje/como_llegar"},
-                {"label": "como_moverse", "href": "/planea_tu_viaje/como_moverse"},
-                {"label": "destino_accesible", "href": "/planea_tu_viaje/destino_accesible"},
-                {"label": "donde_alojarse", "href": "/planea_tu_viaje/donde_alojarse"}
-            ]
-        },
-        {"label": "actividades", "href": "/actividades"}
-    ],
-    "bottom": [
-        {"label": "destino_arona", "href": "/destino_arona",
-            "content":[
-                {"label": "datos_generales", "href": "/destino_arona/datos_generales"},
-                {"label": "un_poco_de_historia", "href": "/destino_arona/un_poco_de_historia"},
-                {"label": "patrimonio_cultural", "href": "/destino_arona/patrimonio_cultural"},
-                {"label": "lugares_de_interes", "href": "/destino_arona/lugares_de_interes"},
-                {"label": "tour_virtual_360", "href": "/galeria/tour_virtual_360"},
-                {"label": "arona_casco", "href": "/destino_arona/arona_casco"}
-            ]
-        },
-        {"label": "planea_tu_viaje", "href": "/planea_tu_viaje",
-            "content":[
-                {"label": "como_llegar", "href": "/planea_tu_viaje/como_llegar",
-                    "content": [
-                        {"label": "por_mar_y_aire", "href": "/planea_tu_viaje/por_mar_y_aire"},
-                        {"label": "buscador_de_vuelos", "href": "/planea_tu_viaje/buscador_de_vuelos"},
-                        {"label": "agencias_de_viaje", "href": "/planea_tu_viaje/agencias_de_viaje"},
-                        {"label": "touroperadores", "href": "/planea_tu_viaje/touroperadores"}
-                    ]
-                },
-                {"label": "como_moverse", "href": "/planea_tu_viaje/como_moverse",
-                    "content": [
-                        {"label": "transporte_publico", "href": "/planea_tu_viaje/como_moverse/transporte_publico"},
-                        {"label": "alquiler_de_vehiculos", "href": "/planea_tu_viaje/como_moverse/alquiler_de_vehiculos"},
-                        {"label": "informacion_portuaria", "href": "/planea_tu_viaje/como_moverse/informacion_portuaria"}
-                    ]
-                },
-                {"label": "donde_alojarse", "href": "/planea_tu_viaje/donde_alojarse",
-                    "content": [
-                        {"label": "hoteles", "href": "/planea_tu_viaje/donde_alojarse/hoteles"},
-                        {"label": "aparthoteles", "href": "/planea_tu_viaje/donde_alojarse/aparthoteles"},
-                        {"label": "apartamentos", "href": "/planea_tu_viaje/donde_alojarse/apartamentos"},
-                        {"label": "alojamiento_rural", "href": "/planea_tu_viaje/donde_alojarse/alojamiento_rural"},
-                        {"label": "pensiones", "href": "/planea_tu_viaje/donde_alojarse/pensiones"}
-                    ]
-                },
-                {"label": "destino_accesible", "href": "/planea_tu_viaje/destino_accesible",
-                    "content": [
-                        {"label": "playa_de_las_vistas", "href": "/planea_tu_viaje/destino_accesible/playa_de_las_vistas"},
-                        {"label": "donde_alojarse", "href": "/planea_tu_viaje/destino_accesible/donde_alojarse"},
-                        {"label": "restaurantes", "href": "/planea_tu_viaje/destino_accesible/restaurantes"},
-                        {"label": "compras", "href": "/planea_tu_viaje/destino_accesible/compras"},
-                        {"label": "agencias_de_viaje", "href": "/planea_tu_viaje/destino_accesible/agencias_de_viaje"},
-                        {"label": "guia_de_accesibilidad", "href": "/planea_tu_viaje/destino_accesible/guia_de_accesibilidad"},
-                        {"label": "videos", "href": "/planea_tu_viaje/destino_accesible/videos"}
-                    ]
-                },
-                {"label": "folletos_y_mapas", "href": "/planea_tu_viaje/folletos_y_mapas"},
-                {"label": "oficinas_de_informacion", "href": "/planea_tu_viaje/oficinas_de_informacion"}
-            ]
-        },
-        {"label": "vive_tu_estancia", "href": "/vive_tu_estancia",
-            "content":[
-                {"label": "actividades_recomendadas", "href": "/vive_tu_estancia/actividades_recomendadas"},
-                {"label": "sol_y_playa", "href": "/vive_tu_estancia/sol_y_playa"},
-                {"label": "gastronomia", "href": "/vive_tu_estancia/gastronomia"},
-                {"label": "cultura", "href": "/vive_tu_estancia/cultura"},
-                {"label": "ocio_nocturno", "href": "/vive_tu_estancia/ocio_nocturno"},
-                {"label": "naturaleza_y_paisajes", "href": "/vive_tu_estancia/naturaleza_y_paisajes"},
-                {"label": "congresos_y_negocios", "href": "/vive_tu_estancia/congresos_y_negocios"}
-            ]
-        },
-        {"label": "area_profesional", "href": "/area_profesional",
-            "content":[
-                {"label": "noticias_del_sector", "href": "/area_profesional/noticias_del_sector"},
-                {"label": "descargas", "href": "/area_profesional/descargas"},
-                {"label": "enlaces_de_interes", "href": "/area_profesional/enlaces_de_interes"},
-                {"label": "buzon_de_sugerencias", "href": "/area_profesional/buzon_de_sugerencias"}
-            ]
-        }
-    ]
+    "destino_arona": {"href": "/destino_arona", "content":{
+        "datos_generales": {"href": "/destino_arona/datos_generales"},
+        "un_poco_de_historia": {"href": "/destino_arona/un_poco_de_historia"},
+        "patrimonio_cultural": {"href": "/destino_arona/patrimonio_cultural"},
+        "lugares_de_interes": {"href": "/destino_arona/lugares_de_interes"},
+        "tour_virtual_360": {"href": "/galeria/tour_virtual_360"},
+        "arona_casco": {"href": "/destino_arona/arona_casco"}
+    }},
+    "planea_tu_viaje": {"href": "/planea_tu_viaje", "content":{
+        "como_llegar": {"href": "/planea_tu_viaje/como_llegar", "content": {
+            "por_mar_y_aire": {"href": "/planea_tu_viaje/por_mar_y_aire"},
+            "buscador_de_vuelos": {"href": "/planea_tu_viaje/buscador_de_vuelos"},
+            "agencias_de_viaje": {"href": "/planea_tu_viaje/agencias_de_viaje"},
+            "touroperadores": {"href": "/planea_tu_viaje/touroperadores"}
+        }},
+        "como_moverse": {"href": "/planea_tu_viaje/como_moverse", "content": {
+            "transporte_publico": {"href": "/planea_tu_viaje/como_moverse/transporte_publico"},
+            "alquiler_de_vehiculos": {"href": "/planea_tu_viaje/como_moverse/alquiler_de_vehiculos"},
+            "informacion_portuaria": {"href": "/planea_tu_viaje/como_moverse/informacion_portuaria"}
+        }},
+        "donde_alojarse": {"href": "/planea_tu_viaje/donde_alojarse", "content": {
+            "hoteles": {"href": "/planea_tu_viaje/donde_alojarse/hoteles"},
+            "aparthoteles": {"href": "/planea_tu_viaje/donde_alojarse/aparthoteles"},
+            "apartamentos": {"href": "/planea_tu_viaje/donde_alojarse/apartamentos"},
+            "alojamiento_rural": {"href": "/planea_tu_viaje/donde_alojarse/alojamiento_rural"},
+            "pensiones": {"href": "/planea_tu_viaje/donde_alojarse/pensiones"}
+        }},
+        "destino_accesible": {"href": "/planea_tu_viaje/destino_accesible", "content": {
+            "playa_de_las_vistas": {"href": "/planea_tu_viaje/destino_accesible/playa_de_las_vistas"},
+            "donde_alojarse": {"href": "/planea_tu_viaje/destino_accesible/donde_alojarse"},
+            "restaurantes": {"href": "/planea_tu_viaje/destino_accesible/restaurantes"},
+            "compras": {"href": "/planea_tu_viaje/destino_accesible/compras"},
+            "agencias_de_viaje": {"href": "/planea_tu_viaje/destino_accesible/agencias_de_viaje"},
+            "guia_de_accesibilidad": {"href": "/planea_tu_viaje/destino_accesible/guia_de_accesibilidad"},
+            "videos": {"href": "/planea_tu_viaje/destino_accesible/videos"}
+        }},
+        "folletos_y_mapas": {"href": "/planea_tu_viaje/folletos_y_mapas"},
+        "oficinas_de_informacion": {"href": "/planea_tu_viaje/oficinas_de_informacion"}
+    }},
+    "vive_tu_estancia": {"href": "/vive_tu_estancia", "content":{
+        "actividades_recomendadas": {"href": "/vive_tu_estancia/actividades_recomendadas"},
+        "sol_y_playa": {"href": "/vive_tu_estancia/sol_y_playa"},
+        "gastronomia": {"href": "/vive_tu_estancia/gastronomia"},
+        "cultura": {"href": "/vive_tu_estancia/cultura"},
+        "ocio_nocturno": {"href": "/vive_tu_estancia/ocio_nocturno"},
+        "naturaleza_y_paisajes": {"href": "/vive_tu_estancia/naturaleza_y_paisajes"},
+        "congresos_y_negocios": {"href": "/vive_tu_estancia/congresos_y_negocios"}
+    }},
+    "area_profesional": {"href": "/area_profesional", "content":{
+        "noticias_del_sector": {"href": "/area_profesional/noticias_del_sector"},
+        "descargas": {"href": "/area_profesional/descargas"},
+        "enlaces_de_interes": {"href": "/area_profesional/enlaces_de_interes"},
+        "buzon_de_sugerencias": {"href": "/area_profesional/buzon_de_sugerencias"}
+    }}
 }

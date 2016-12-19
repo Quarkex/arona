@@ -32,14 +32,25 @@
  *
  *   Returns the current angular path location as an array
  *
+ * - {{ current_section([String section]) }}
+ *
+ *   Returns the current section, or a boolean if a string is provided, true if matching
+ *   the current section.
+ *
  * - {{ level() }}
  *
  *   Returns the current angular path level of nesting as an integer
  *
  * - {{ nav }}
  *
- *   Returns an object with arrays of navigation links. They can also have more content.
- *   E.G: {{ nav.left }} => [{"label":"AngularJS", "href":"http://angularjs.org", "content":[...]}]
+ *   Returns a hash object with keys of navigation links. They can also have more content.
+ *   E.G: {{ nav }} => {"AngularJS": {"href":"http://angularjs.org", "content":[...]}}
+ *
+ * - {{ sublinks( [String link] ) }}
+ *
+ *   Returns a hash with the last "content" value of the "link" var (current path by default),
+ *   as seen in the nav object. Generally the child nodes, or the sibling nodes if the current
+ *   node has no "content" value.
  *
  * - {{ breadcrumbs }}
  *
@@ -137,6 +148,11 @@ app.controller("aronaTravelCtrl", function($scope, $location, $routeParams, $res
     $scope.path = function (){ return $location.path(); };
     $scope.level = function (){ return $location.path().substring(1).split('/').length; };
     $scope.sections = function (){ return $location.path().substring(1).split('/'); };
+    $scope.current_section = function (section){
+        var sections = $scope.sections();
+        if (section == undefined) return sections[sections.length - 1];
+        else return ( section == sections[sections.length - 1] );
+    };
     $scope.breadcrumbs = function() {
         var output = [];
         var path = $location.path().substr(1).split('/');
@@ -157,6 +173,18 @@ app.controller("aronaTravelCtrl", function($scope, $location, $routeParams, $res
     $resource('/clockworks/fetch_navigation.json', {lang:$scope.lang()}).get(function(data){
         $scope.nav = data;
     });
+    $scope.sublinks = function(link){
+        var sections = link == undefined ? $scope.sections() : '/' + $scope.lang() + link.substring(1).split('/');
+        var sublinks = $scope.nav;
+        for ( var i = 1; i < (sections.length + 1); i++){
+            if ( sublinks.hasOwnProperty(sections[i]) ){
+                if ( sublinks[sections[i]].hasOwnProperty('content') ){
+                    sublinks = sublinks[sections[i]].content;
+                } else break;
+            } else break;
+        }
+        return sublinks;
+    };
 
     $scope.translate = function(stringA, stringB ) {
         // this is to respect the less surprise directive. Prefixes should precede the target string
