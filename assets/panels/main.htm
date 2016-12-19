@@ -29,19 +29,9 @@
             <h2>{{ translate('pagina.subtitulo_planea_tu_viaje') }}</h2>
         </div>
     </div>
-    <div class="medium-4 columns">
-        <div id="como_llegar" class="index-page-box">
-            <a class="button translucid" href="#/{{ lang() }}/planea_tu_viaje/como_llegar">{{ translate('pagina.titulo_como_llegar') }}</a>
-        </div>
-    </div>
-    <div class="medium-4 columns">
-        <div id="donde_alojarse" class="index-page-box">
-            <a class="button translucid" href="#/{{ lang() }}/planea_tu_viaje/donde_alojarse">{{ translate('pagina.titulo_donde_alojarse') }}</a>
-        </div>
-    </div>
-    <div class="medium-4 columns">
-        <div id="como_moverse" class="index-page-box">
-            <a class="button translucid" href="#/{{ lang() }}/planea_tu_viaje/como_moverse">{{ translate('pagina.titulo_como_moverse') }}</a>
+    <div class="medium-4 columns" ng-repeat="id in ['como_llegar', 'donde_alojarse', 'como_moverse']">
+        <div id="{{ id }}" class="index-page-box">
+            <a class="button translucid" href="#/{{ lang() }}/planea_tu_viaje/{{ id }}">{{ translate('pagina.titulo_', id) }}</a>
         </div>
     </div>
     <div class="small-12 columns">
