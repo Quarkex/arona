@@ -32,7 +32,7 @@ for i in $(find . -type f | grep -v -e "/_" -e ".sass-cache" -e '.git' -e '.giti
     if [[ ! ${item%/*} == ${i##*/} ]]; then
         mkdir -p _site/${item%/*};
     fi
-    mime="$(mimetype -bi $item)";
+    mime="$(file --mime-type -b $item)";
     case $mime in
         "application/javascript")
             if [[ ${item##*.min.} == "js" ]]; then
