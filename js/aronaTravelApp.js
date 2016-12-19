@@ -85,8 +85,13 @@ app.config(function($routeProvider) {
         resolve:{ "check":isValidLang },
         controller: "aronaTravelCtrl"
     })
+    .when("/:language/actividades/:activity", {
+        templateUrl : '/assets/panels/actividades/view.htm',
+        resolve:{ "check":isValidLang },
+        controller: "aronaTravelCtrl"
+    })
     .when("/:language/eventos/:event", {
-        templateUrl : '/assets/panels/eventos.htm',
+        templateUrl : '/assets/panels/eventos/view.htm',
         resolve:{ "check":isValidLang },
         controller: "aronaTravelCtrl"
     })
