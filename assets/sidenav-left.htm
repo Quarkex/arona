@@ -2,7 +2,7 @@
     <ul class="mobile-ofc vertical menu">
         <li ng-repeat="(label, link) in nav">
             <a href="#/{{lang()}}{{link.href}}">{{ translate("pagina.titulo_", label) }}</a>
-            <ul class="submenu menu vertical" ng-if="link.content != undefined">
+            <ul class="submenu menu vertical nested" ng-if="link.content != undefined">
                 <li ng-repeat="(sublabel, sublink) in link.content">
                     <a href="#/{{lang()}}{{sublink.href}}">{{ translate("pagina.titulo_", sublabel) }}</a>
                 </li>
