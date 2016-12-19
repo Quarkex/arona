@@ -1,0 +1,11 @@
+.social-buttons {
+    a {
+        color: $main_color_contrast;
+    }
+    a:nth-child(1) .icon{ background-color: blue; }
+    a:nth-child(2) .icon{ background-color: skyblue; }
+    a:nth-child(3) .icon{ background-color: green; }
+    a:nth-child(4) .icon{ background-color: grey; }
+    a:nth-child(5) .icon{ background-color: cadetblue; }
+    a:nth-child(6) .icon{ background-color: orangered; }
+}

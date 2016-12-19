@@ -52,5 +52,10 @@
         "descargas": {"href": "/area_profesional/descargas"},
         "enlaces_de_interes": {"href": "/area_profesional/enlaces_de_interes"},
         "buzon_de_sugerencias": {"href": "/area_profesional/buzon_de_sugerencias"}
+    }},
+    "galeria": {"href": "/galeria", "content":{
+        "tour_virtual_360": {"href": "/galeria/tour_virtual_360"},
+        "albumes": {"href": "/galeria/albumes"},
+        "videos": {"href": "/galeria/videos"}
     }}
 }
