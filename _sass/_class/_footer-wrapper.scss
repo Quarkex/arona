@@ -10,11 +10,14 @@
     }
     > div {
         font-size: 100%;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
     }
     .row {
         max-width: none;
         &:nth-child(1){
             padding-top: 1em;
+            padding-bottom: 1em;
         }
         &:nth-child(2){
             background-color: $main_color;
