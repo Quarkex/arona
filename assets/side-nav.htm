@@ -1,0 +1,7 @@
+<div class="side-nav-wrapper">
+    <ul class="vertical menu side-nav">
+        <li ng-repeat="(label, link) in sublinks()" class="{{ current_section(label) ? 'is-active' : 'is-inactive' }}">
+            <a href="#/{{ lang() }}{{ link.href }}" aria-controls="panel-{{ label }}">{{ translate('pagina.titulo_', label) }}</a>
+        </li>
+    </ul>
+</div>

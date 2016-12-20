@@ -57,5 +57,13 @@
         "tour_virtual_360": {"href": "/galeria/tour_virtual_360"},
         "albumes": {"href": "/galeria/albumes"},
         "videos": {"href": "/galeria/videos"}
+    }},
+    "webcams": {"href": "/webcams", "content":{
+        "playa_de_las_vistas":    {"href": "/webcams/playa_de_las_vistas"},
+        "playa_de_las_galletas":  {"href": "/webcams/playa_de_las_galletas"},
+        "puerto_de_las_galletas": {"href": "/webcams/puerto_de_las_galletas"},
+        "plaza_de_arona":         {"href": "/webcams/plaza_de_arona"},
+        "los_cristianos":         {"href": "/webcams/plaza_de_arona"},
+        "otras_webcams":          {"href": "/webcams/otras_webcams"}
     }}
 }
