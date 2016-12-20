@@ -2,8 +2,15 @@
     padding: 0;
     background-color: $main_color;
     color: $main_color_contrast;
+    width: 100%;
+    *:not(.submenu) {
+        background-color: transparent;
+    }
+    *.submenu{
+        background-color: $main_color-transparent;
+        color: $main_color_contrast;
+    }
     a {
-        background-color: $main_color;
         color: $main_color_contrast;
     }
     > .title-bar-left {
@@ -18,3 +25,13 @@
         }
     }
 }
+/*
+ * Enable this after fixing JS infinite recursion problems
+ */
+
+/*
+.title-bar:not(.sub-level) {
+    background-color: $main_color-transparent;
+    position: fixed;
+}
+*/
