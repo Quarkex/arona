@@ -213,6 +213,17 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
         return string;
     };
 
+    $rootScope.string_interpolate = function() {
+        var args = Array.from(arguments);
+        var string = args[0];
+
+        for (var i = 0; i < args.length; i++){
+            if ( args[i] != undefined) string = string.replace('{'+(i - 1)+'}', args[i]);
+        }
+
+        return string;
+    };
+
     page.panels["home"] = {
         'url': '/clockworks/fetch_news.json',
         'offset': 0,
