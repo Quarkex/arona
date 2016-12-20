@@ -1,4 +1,8 @@
 #apparona {
+    overflow: visible !important;
+    img[src="img/apparona.png"] {
+        margin-top: -6em;
+    }
     h1 {
         font-size: 180%;
         color: #d2251a;
