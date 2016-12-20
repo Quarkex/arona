@@ -80,6 +80,12 @@ app.config(function($routeProvider) {
         resolve:{ "check":isValidLang },
         controller: "aronaTravelCtrl"
     })
+    .when("/:language/galeria", {
+        redirectTo: "/:language/galeria/tour_virtual_360"
+    })
+    .when("/:language/planea_tu_viaje/donde_alojarse", {
+        redirectTo: "/:language/planea_tu_viaje/donde_alojarse/hoteles"
+    })
     .when("/:language/404", {
         templateUrl : "assets/404.htm",
         resolve:{ "check":isValidLang },
