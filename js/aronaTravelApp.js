@@ -127,6 +127,8 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
 
     $rootScope.params = $routeParams;
 
+    $rootScope.location = $location;
+
 
     var Lang = $resource(
 
