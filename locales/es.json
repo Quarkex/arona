@@ -54,6 +54,7 @@
 "general.visitaPortal"                  : "Visita el portal del ayuntamiento",
 "general.volver"                        : "Volver",
 "general.web"                           : "Web:",
+"general.mas_informacion"               : "Más información",
 
 
 
@@ -95,10 +96,6 @@
 "factividad.horaPrograma"               : "Hora",
 "factividad.evento"                     : "Evento",
 
-
- 
-
-
 "fdocumento.autor"                      : "Autor:",
 "fdocumento.entradaVigencia"            : "Entrada en vigencia:",
 "fdocumento.masInformacion"             : "Más información:",
@@ -106,7 +103,6 @@
 "fdocumento.normativaAnterior"          : "Normativa anterior:",
 "fdocumento.normativaPosterior"         : "Normativa posterior:",
 "fdocumento.versionDocumento"           : "Versión del documento:",
-
 
 "flocalizativo.accesibilidad"           : "Accesibilidad ",
 "flocalizativo.cierre"                  : "Cierre:",
@@ -123,9 +119,7 @@
 "flocalizativo.verMapa"                 : "Ver mapa",
 "flocalizativo.localizarGoogleMaps"     : "Localizar en Google Maps",
 
-
 "recursos.nueva_ventana"                : "Este enlace se abrirá en una ventana nueva",
-
 
 "webcams.activarVista24h"               : "Modo 24h",
 "webcams.activarVistaEnVivo"            : "Imagen en vivo",
@@ -136,7 +130,6 @@
 "webcams.ubicacion"                     : "Ubicación",
 "webcams.noScript"                      : "Javascript no disponible. No se puede hacer el refresco de la imagen de forma automática. Por favor refresque manualmente el contenido de la página con los controles de su navegador.",
 
-
 "enviaramigo.enviar"                    : "Enviar",
 "enviaramigo.enviarAmigo"               : "Enviar a un amigo",
 "enviaramigo.correoDestinatario"        : "Correo del destinatario",
@@ -144,11 +137,9 @@
 "enviaramigo.tuCorreo"                  : "Tu correo",
 "enviaramigo.comentarios"               : "Comentarios",
 
-
 "rss.titulo"                            : "Patronato Municipal de Turismo del Ayuntamiento de Arona",
 "rss.descripcion"                       : "Noticias",
 "rss.suscribete"                        : "Suscribete al canal RSS",
-
 
 "buzonSugerencias.buzonSugerencias"     : "Buzón de Sugerencias",
 "buzonSugerencias.nombreApellidos"      : "Nombre y Apellidos",
@@ -158,7 +149,6 @@
 "buzonSugerencias.sugerencias"          : "Sugerencias",
 "buzonSugerencias.enviar"               : "Enviar",
 "general.titulo"                        : "Destino: Arona",
-
 
 "pie.ayuntamiento"                      : "Ayuntamiento de Arona: arona.org",
 "pie.avisolegal"                        : "Aviso Legal",
@@ -191,7 +181,16 @@
 "pagina.titulo_disfruta_de_arona"       : "Disfruta de Arona",
 "pagina.titulo_el_tiempo"               : "El tiempo",
 "pagina.subtitulo_camaras_en_vivo"      : "Disfruta de la imagen en vivo de Arona",
+
 "pagina.titulo_webcams"                 : "Webcams",
+"pagina.subtitulo_webcams"              : "",
+"pagina.titulo_playa_de_las_vistas"     : "Playa de las Vistas",
+"pagina.titulo_playa_de_las_galletas"   : "Playa de las Galletas",
+"pagina.titulo_puerto_de_las_galletas"  : "Puerto de las Galletas",
+"pagina.titulo_plaza_de_arona"          : "Plaza de Arona",
+"pagina.titulo_los_cristianos"          : "Los Cristianos",
+"pagina.titulo_otras_webcams"           : "Otras webcams",
+
 "pagina.titulo_playas_de_arona"         : "Playas de Arona",
 "pagina.subtitulo_conjunto_historico"   : "Conjunto Histórico de Arona Casco",
 "pagina.boton_conjunto_historico"       : "Descúbrelo",
@@ -225,6 +224,16 @@
 "pagina.titulo_descargas"               : "Descargas",
 "pagina.titulo_enlaces_de_interes"      : "Enlaces de interés",
 "pagina.titulo_buzon_de_sugerencias"    : "Buzón de sugerencias",
+
+"general.paginado_de_contenidos"        : "Página {0} de {1} ({3} contenidos)",
+"general.ultima_modificacion"           : "Última modificación: {0}",
+"general.atras"                         : "Atrás",
+"general.numero_de_contenidos"          : "Estas viendo {0} {1} de {2}",
+
+"webcams.ubicacion"                     : "Ubicación",
+"webcams.modo_24_h"                     : "Modo 24 H",
+"webcams.imagen_en_vivo"                : "Imagen en vivo",
+"webcams.50"                            : "50",
 
 "date.schema"                           : "dd MMMM yyyy",
 "date.monday"                           : "Lunes",
