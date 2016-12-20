@@ -3,7 +3,7 @@
 <form data-form="hotel_browser" method="GET">
     <div class="row">
         <div class="small-6 columns">
-            <h2>{{ translate('general.', 'numero_de_contenidos') }}</h2>
+            <h2>{{ string_interpolate( translate('general.', 'numero_de_contenidos'), '1', current_section(), '4') }}</h2>
         </div>
         <div class="small-6 columns right">
         </div>
@@ -149,7 +149,11 @@
             </ul>
         </div>
         <div class="small-6 columns text-right right">
-            <p class="panel page-counter">{{ translate('general.', 'paginado_de_contenidos') }}</p>
+            <p class="panel page-counter">{{ 
+            string_interpolate( translate('general.', 'paginado_de_contenidos'),
+            page.panel[current_section()].page,
+            page.panel[current_section()].current_page,
+            page.panel[current_section()].total_elements ) }}</p>
         </div>
     </div>
     <div class="row">
@@ -163,7 +167,7 @@
             </div>
         </div>
         <div class="small-6 columns text-right right">
-            <p class="panel last-modified">{{ translate('general.', 'ultima_modificacion') }}</p>
+            <p class="panel last-modified">{{ string_interpolate(translate('general.', 'ultima_modificacion'), page.panel[current_section()].last_modified) }}</p>
         </div>
     </div>
 </form>
