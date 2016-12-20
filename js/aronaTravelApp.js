@@ -119,11 +119,14 @@ app.config(function($routeProvider) {
     });
 });
 
-app.controller("aronaTravelCtrl", function($scope, $location, $routeParams, $resource, page) {
+app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, $resource, page) {
 
-    $scope.page = page;
+    $rootScope.page = page;
 
-    $scope.lang = function (){ return $routeParams.language; };
+    $rootScope.lang = function (){ return $routeParams.language; };
+
+    $rootScope.params = $routeParams;
+
 
     var Lang = $resource(
 
@@ -145,7 +148,7 @@ app.controller("aronaTravelCtrl", function($scope, $location, $routeParams, $res
             // that the parameter will be ignored, when calling a "GET" action method (i.e. an
             // action method that does not accept a request body)
             {
-                lang: $scope.lang() == undefined? 'en' : $scope.lang()
+                lang: $rootScope.lang() == undefined? 'en' : $rootScope.lang()
             }
     );
     Lang.get(function(data){
@@ -156,15 +159,15 @@ app.controller("aronaTravelCtrl", function($scope, $location, $routeParams, $res
         }
     });
 
-    $scope.path = function (){ return $location.path(); };
-    $scope.level = function (){ return $location.path().substring(1).split('/').length; };
-    $scope.sections = function (){ return $location.path().substring(1).split('/'); };
-    $scope.current_section = function (section){
-        var sections = $scope.sections();
+    $rootScope.path = function (){ return $location.path(); };
+    $rootScope.level = function (){ return $location.path().substring(1).split('/').length; };
+    $rootScope.sections = function (){ return $location.path().substring(1).split('/'); };
+    $rootScope.current_section = function (section){
+        var sections = $rootScope.sections();
         if (section == undefined) return sections[sections.length - 1];
         else return ( section == sections[sections.length - 1] );
     };
-    $scope.breadcrumbs = function() {
+    $rootScope.breadcrumbs = function() {
         var output = [];
         var path = $location.path().substr(1).split('/');
         var path_length = path.length;
@@ -180,13 +183,13 @@ app.controller("aronaTravelCtrl", function($scope, $location, $routeParams, $res
         return output;
     };
 
-    $scope.nav = {};
-    $resource('/clockworks/fetch_navigation.json', {lang:$scope.lang()}).get(function(data){
-        $scope.nav = data;
+    $rootScope.nav = {};
+    $resource('/clockworks/fetch_navigation.json', {lang:$rootScope.lang()}).get(function(data){
+        $rootScope.nav = data;
     });
-    $scope.sublinks = function(link){
-        var sections = link == undefined ? $scope.sections() : '/' + $scope.lang() + link.substring(1).split('/');
-        var sublinks = $scope.nav;
+    $rootScope.sublinks = function(link){
+        var sections = link == undefined ? $rootScope.sections() : '/' + $rootScope.lang() + link.substring(1).split('/');
+        var sublinks = $rootScope.nav;
         for ( var i = 1; i < (sections.length + 1); i++){
             if ( sublinks.hasOwnProperty(sections[i]) ){
                 if ( sublinks[sections[i]].hasOwnProperty('content') ){
@@ -197,7 +200,7 @@ app.controller("aronaTravelCtrl", function($scope, $location, $routeParams, $res
         return sublinks;
     };
 
-    $scope.translate = function(stringA, stringB ) {
+    $rootScope.translate = function(stringA, stringB ) {
         // this is to respect the less surprise directive. Prefixes should precede the target string
         var string = stringB == undefined ? stringA : stringB;
         var prefix = stringB == undefined ? null : stringA;
@@ -212,14 +215,14 @@ app.controller("aronaTravelCtrl", function($scope, $location, $routeParams, $res
         'url': '/clockworks/fetch_news.json',
         'offset': 0,
         'limit': 3,
-        'filters': {'lang': $scope.lang()},
+        'filters': {'lang': $rootScope.lang()},
         'values': ['title', 'date', 'id', 'image'],
         'elements': {}
     };
     var News = $resource(
             page.panels["home"].url,
             {
-                lang: $scope.lang() == undefined? 'en' : $scope.lang(),
+                lang: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
                 offset: page.panels["home"].offset,
                 limit: page.panels["home"].limit,
                 filters: page.panels["home"].filters,
