@@ -164,18 +164,34 @@
 "pagina.titulo_galeria"                 : "Galería",
 "pagina.titulo_albumes"                 : "Albumes",
 "pagina.titulo_videos"                  : "Vídeos",
+
 "pagina.titulo_planea_tu_viaje"         : "Planea tu viaje",
 "pagina.subtitulo_planea_tu_viaje"      : "Guía para alojarte, moverte, comer y disfrutar de Arona",
+
+"pagina.titulo_como_llegar"             : "Como llegar",
+"pagina.titulo_por_mar_y_aire"          : "Por mar y aire",
+"pagina.titulo_buscador_de_vuelos"      : "Buscador de vuelos",
+"pagina.titulo_agencias_de_viaje"       : "Agencias de viaje",
+"pagina.titulo_touroperadores"          : "Touroperadores",
+
+"pagina.titulo_como_moverse"            : "Cómo moverse",
+"pagina.titulo_transporte_publico"      : "Transporte público",
+"pagina.titulo_alquiler_de_vehiculos"   : "Alquiler de vehículos",
+"pagina.titulo_informacion_portuaria"   : "Información portuaria",
+
+"pagina.titulo_donde_alojarse"          : "Donde alojarse",
 "pagina.titulo_hoteles"                 : "Hoteles",
 "pagina.titulo_apartahoteles"           : "Apartahoteles",
 "pagina.titulo_apartamentos"            : "Apartamentos",
 "pagina.titulo_alojamiento_rural"       : "Alojamiento rural",
 "pagina.titulo_pensiones"               : "Pensiones",
-"pagina.titulo_como_llegar"             : "Como llegar",
-"pagina.titulo_donde_alojarse"          : "Donde alojarse",
-"pagina.titulo_como_moverse"            : "Cómo moverse",
+
 "pagina.titulo_destino_accesible"       : "Destino accesible",
 "pagina.subtitulo_destino_accesible"    : "",
+"pagina.titulo_restaurantes"            : "Restaurantes",
+"pagina.titulo_compras"                 : "Compras",
+"pagina.titulo_guia_de_accesibilidad"   : "Guía de accesibilidad",
+
 "pagina.titulo_folletos_y_mapas"        : "Folletos y mapas",
 "pagina.titulo_oficinas_de_informacion" : "Oficinas de Información",
 "pagina.titulo_disfruta_de_arona"       : "Disfruta de Arona",
