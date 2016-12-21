@@ -232,6 +232,55 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
         'values': ['title', 'date', 'id', 'image'],
         'elements': {}
     };
+
+    page.panels["hoteles"] = {
+        'set_page': function(p){
+            var pages = Math.ceil(page.panels['hoteles'].elements.length / page.panels['hoteles'].limit);
+            if (p >= 1 && p <= pages){
+                page.panels['hoteles'].current_page = p;
+            }
+        },
+        'previous_page': function(){
+            if (page.panels['hoteles'].current_page > 1){
+                page.panels['hoteles'].current_page = page.panels['hoteles'].current_page - 1;
+            }
+        },
+        'next_page': function(){
+            var pages = Math.ceil(page.panels['hoteles'].elements.length / page.panels['hoteles'].limit);
+            if (page.panels['hoteles'].current_page < pages){
+                page.panels['hoteles'].current_page = page.panels['hoteles'].current_page + 1;
+            }
+        },
+        'offset': function(){
+            return page.panels['hoteles'].limit * (page.panels['hoteles'].current_page - 1);
+        },
+        'limit': 4,
+        'current_page': 1,
+        'pages': function(){
+            var output = [];
+            var pages = Math.ceil(page.panels['hoteles'].elements.length / page.panels['hoteles'].limit);
+            for (var i = 0; i < pages; i++){
+                var item = {'number': (i + 1), 'href': (i + 1)};
+                if ( item.number == page.panels['hoteles'].current_page ) item.current = true;
+                output.push(item);
+            }
+            return output;
+        },
+        'page': function(){
+            var output = [];
+            var array= page.panels['hoteles'].elements;
+            var offset = page.panels['hoteles'].limit * (page.panels['hoteles'].current_page - 1);
+            var limit = page.panels['hoteles'].limit;
+            for (var i = offset - 1; i <= limit; i++ ){
+                if ( array[i] != undefined && output.length < limit) output.push(array[i]);
+            }
+            return output;
+        },
+        'filters': {},
+        'values': ['img', 'name', 'address', 'email', 'website', 'map', 'contact'],
+        'elements': []
+    };
+
     var News = $resource(
             page.panels["home"].url,
             {
@@ -244,6 +293,20 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
     );
     News.get(function(data){
         page.panels["home"].elements = data.news;
+    });
+
+    var Hotels = $resource(
+            '/clockworks/fetch_territorials.json',
+            {
+                lang: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
+                offset: page.panels["hoteles"].offset,
+                limit: page.panels["hoteles"].limit,
+                filters: page.panels["hoteles"].filters,
+                values: page.panels["hoteles"].values
+            }
+    );
+    Hotels.get(function(data){
+        page.panels["hoteles"].elements = data.hotels;
     });
 
 });
