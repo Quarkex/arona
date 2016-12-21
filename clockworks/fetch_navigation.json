@@ -27,13 +27,13 @@
             "pensiones": {"href": "/planea_tu_viaje/donde_alojarse/pensiones"}
         }},
         "destino_accesible": {"href": "/planea_tu_viaje/destino_accesible", "content": {
-            "playa_de_las_vistas": {"href": "/planea_tu_viaje/destino_accesible/playa_de_las_vistas"},
-            "donde_alojarse": {"href": "/planea_tu_viaje/destino_accesible/donde_alojarse"},
+            "playa_de_las_vistas": {"href": "/webcams/playa_de_las_vistas"},
+            "donde_alojarse": {"href": "/planea_tu_viaje/donde_alojarse"},
             "restaurantes": {"href": "/planea_tu_viaje/destino_accesible/restaurantes"},
             "compras": {"href": "/planea_tu_viaje/destino_accesible/compras"},
             "agencias_de_viaje": {"href": "/planea_tu_viaje/destino_accesible/agencias_de_viaje"},
             "guia_de_accesibilidad": {"href": "/planea_tu_viaje/destino_accesible/guia_de_accesibilidad"},
-            "videos": {"href": "/planea_tu_viaje/destino_accesible/videos"}
+            "videos": {"href": "/galeria/videos"}
         }},
         "folletos_y_mapas": {"href": "/planea_tu_viaje/folletos_y_mapas"},
         "oficinas_de_informacion": {"href": "/planea_tu_viaje/oficinas_de_informacion"}
