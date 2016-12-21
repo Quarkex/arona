@@ -1,4 +1,4 @@
-{"news": [
+[
     {
         "id": "1234",
         "title": "test title A",
@@ -20,4 +20,4 @@
         "image": "1236",
         "summary": "Lorem Ipsum Dolor Sit Aemet"
     }
-]}
+]

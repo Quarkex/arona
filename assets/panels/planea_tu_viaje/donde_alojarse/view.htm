@@ -1,0 +1,80 @@
+<div class="row collapse expanded territorial-view">
+    <div class="row territorial-header" style="background-image: url('/img/db/{{ page.panels['territorial'].image }}.png');">
+        <h1>{{  page.panels['territorial'].name }}</h1>
+        <h2>{{  page.panels['territorial'].location }}</h2>
+    </div>
+    <div class="row">
+        <div class="medium-10 medium-offset-1 columns">
+            <div class="medium-8 columns">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7039.194130837207!2d-16.68572397601307!3d28.097831130527013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc6a998127164749%3A0xc3ca859b8d368407!2sArona%2C+Santa+Cruz+de+Tenerife!5e0!3m2!1sen!2ses!4v1482289882189" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+            <div class="medium-4 columns territorial-contact">
+                <div class="row collapse">
+                    <p>{{  page.panels['territorial'].address }}</p>
+                </div>
+                <div class="row collapse">
+                    <p>{{  page.panels['territorial'].phone }}</p>
+                </div>
+                <div class="row collapse">
+                    <p>{{  page.panels['territorial'].fax }}</p>
+                </div>
+                <div class="row collapse">
+                    <a href="mailto:{{  page.panels['territorial'].email }}" class="button">{{ translate("general.", 'email') }}</a>
+                    <a href="{{  page.panels['territorial'].website }}" class="button">{{ translate("general.", 'website') }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="medium-10 medium-offset-1 columns">
+            <div class="medium-4 medium-offset-8 columns">
+                <div ng-include="'assets/social-buttons.htm'"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="medium-10 medium-offset-1 columns">
+            <h1 class="territorial-services-title">{{ translate('general.', 'servicios_del_establecimiento') }}</h1>
+        </div>
+    </div>
+    <div class="row collapse">
+        <div class="medium-10 medium-offset-1 columns">
+            <div class="row medium-up-3">
+                <div class="column">
+                    <h3>Categoría</h3>
+                    <ul><li>{{  page.panels['territorial'].metadata.category }}</li></ul>
+                </div>
+                <div class="column">
+                    <h3>Instalaciones</h3>
+                    <ul>
+                        <li ng-repeat="item in page.panels['territorial'].metadata.facilities">{{ item }}</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Servicios</h3>
+                    <ul>
+                        <li ng-repeat="item in page.panels['territorial'].metadata.services">{{ item }}</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Accesibilidad</h3>
+                    <ul>
+                        <li ng-repeat="item in page.panels['territorial'].metadata.accesibility">{{ item }}</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Instalaciones Deportivas</h3>
+                    <ul>
+                        <li ng-repeat="item in page.panels['territorial'].metadata.sports">{{ item }}</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Servicios en habitación</h3>
+                    <ul>
+                        <li ng-repeat="item in page.panels['territorial'].metadata.room_services">{{ item }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

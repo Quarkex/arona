@@ -91,6 +91,11 @@ app.config(function($routeProvider) {
         resolve:{ "check":isValidLang },
         controller: "aronaTravelCtrl"
     })
+    .when("/:language/planea_tu_viaje/donde_alojarse/:type/:territorial", {
+        templateUrl : '/assets/panels/planea_tu_viaje/donde_alojarse/view.htm',
+        resolve:{ "check":isValidLang },
+        controller: "aronaTravelCtrl"
+    })
     .when("/:language/actividades/:activity", {
         templateUrl : '/assets/panels/actividades/view.htm',
         resolve:{ "check":isValidLang },
@@ -289,10 +294,13 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
                 limit: page.panels["home"].limit,
                 filters: page.panels["home"].filters,
                 values: page.panels["home"].values
+            },
+            {
+                "get": { "isArray": true }
             }
     );
     News.get(function(data){
-        page.panels["home"].elements = data.news;
+        page.panels["home"].elements = data;
     });
 
     var Hotels = $resource(
@@ -303,10 +311,29 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
                 limit: page.panels["hoteles"].limit,
                 filters: page.panels["hoteles"].filters,
                 values: page.panels["hoteles"].values
-            }
+            },
+            {
+                "get": { "isArray": true }
+            } 
     );
     Hotels.get(function(data){
-        page.panels["hoteles"].elements = data.hotels;
+        page.panels["hoteles"].elements = data;
+    });
+
+    var Territorial = $resource(
+            '/clockworks/fetch_territorials.1.json',
+            {
+                lang: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
+                limit: '1',
+                filters: {"id": $routeParams.territorial},
+                values: ["map","id","name","location","phone","fax","website","address","email","metadata"]
+            },
+            {
+                "get": { "isArray": true }
+            }
+    );
+    Territorial.get(function(data){
+        page.panels["territorial"] = data[0];
     });
 
 });

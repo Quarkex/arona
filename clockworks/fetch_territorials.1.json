@@ -1,0 +1,24 @@
+[
+    {
+        "id": "1",
+        "map": "1",
+        "location": "Playa de Los Cristianos",
+        "image": "5746",
+        "name": "Arona Gran Hotel",
+        "address": "Avenida Juan Carlos I, 38 38650 Los Cristianos Arona - Tenerife",
+        "email": "",
+        "phone": "(+34) 922 750 678",
+        "fax": "922 750 243",
+        "website": "25880",
+        "map": "",
+        "contact" : "",
+        "metadata": {
+            "category": "five stars",
+            "facilities": ["testA", "testB"],
+            "services":   ["testC", "testD"],
+            "accesibility": ["testE", "testF"],
+            "sports":         ["testG", "testH"],
+            "room_services":    ["testI", "testJ"]
+        }
+    }
+]
