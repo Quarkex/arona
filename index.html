@@ -6,38 +6,26 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://use.fontawesome.com/5d9ccb4393.js"></script>
 
-
         <script src="/js/angularjs/angular.min.js"></script>
         <script src="/js/angularjs/angular-route.js"></script>
         <script src="/js/angularjs/angular-resource.js"></script>
         <script src="/js/angular-foundation.min.js"></script>
-        <script src="/js/aronaTravelApp.js"></script>
+        <script src="/js/aronaOrgApp.js"></script>
         <link rel="stylesheet" href="/style.min.css">
         <title>{{ page.title }}</title>
     </head>
     <body class="ng-cloak">
 
-        <div class="content-wrapper">
-            <div class="off-canvas-wrapper">
-                <div class="off-canvas-wrapper-inner">
-                    <div ng-include="'assets/sidenav-left.htm'"></div>
-
-                    <div class="off-canvas-content {{'page-level-' + level() }} panel">
-                        <div ng-include="'assets/titlebar.htm'"></div>
-                        <div ng-if=" path() != ( '/' + lang() )" ng-include="'assets/breadcrumbs.htm'"></div>
-                        <div ng-include="'assets/header.htm'"></div>
-                        <div ng-view autoscroll="true"></div>
-                        <div ng-include="'assets/bottomnav.htm'"></div>
-                        <div ng-include="'assets/bottom-extra.htm'"></div>
-                    </div>
-                </div>
-            </div>
+        <div class="content-wrapper {{'page-level-' + level() }}">
+            <div class="row expanded" id="toolbar" ng-include="'assets/toolbar.htm'"></div>
+            <div class="row expanded" id="topnav" ng-include="'assets/topnav.htm'"></div>
+            <div class="row expanded" id="breadcumbns" ng-if=" path() != ( '/' + lang() )" ng-include="'assets/breadcrumbs.htm'"></div>
+            <div class="row expanded" id="header" ng-include="'assets/header.htm'"></div>
+            <div class="row expanded panel" id="panel" ng-view autoscroll="true"></div>
+            <div class="row expanded" id="bottom-extra" ng-include="'assets/bottom-extra.htm'"></div>
         </div>
-        <div class="footer-wrapper" ng-include="'assets/footer.htm'"></div>
+        <div class="footer-wrapper row expanded" ng-include="'assets/footer.htm'"></div>
 
         <script src="/js/app.js"></script>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-578ead5993cea26e"></script>
-
     </body>
 </html>

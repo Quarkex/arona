@@ -1,0 +1,23 @@
+#bottom-extra {
+    padding-top: 5em;
+    padding-bottom: 2.5em;
+    background-color: $main_color;
+    color: $main_color_contrast;
+    a {
+        color: $main_color_contrast;
+    }
+    > .columns {
+        > .columns:nth-child(1) {
+            text-align: center;
+        }
+        > .columns:nth-child(2) {
+            .columns {
+                > .row {
+                    padding: 1em 0;
+                    border-bottom: 3px solid #2196f3;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}

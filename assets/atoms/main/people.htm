@@ -1,0 +1,7 @@
+<div class="row"><h1>{{ translate('pagina.titulo_', 'para_la_gente') }}</h1></div>
+<div class="row">
+    <div class="medium-6 columns"><p>{{ translate('pagina.subtitulo_', 'para_la_gente') }}</p></div>
+    <div class="medium-3 columns{{ $last ? ' end' : '' }}" ng-repeat="link in ['empleo', 'interculturalidad', 'discapacidad', 'familia e infancia', 'estudiantes', 'jóvenes' ]">
+        <div class="row"><a href="#/{{ lang() }}/para_la_gente/{{ link }}">{{ link }}</a></div>
+    </div>
+</div>

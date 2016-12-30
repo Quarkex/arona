@@ -1,6 +1,5 @@
 .index-header {
-    padding-top: 5rem !important;
-    min-height: 35rem;
+    min-height: 430px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -9,11 +8,7 @@
     }
     > div {
         &:first-of-type {
-            padding-top: 5em;
-        }
-        &:last-child {
-            padding-top: 5em;
-            padding-bottom: 8em;
+            padding-top: 2em;
         }
     }
     a{

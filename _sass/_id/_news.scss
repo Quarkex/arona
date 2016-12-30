@@ -1,0 +1,38 @@
+#news {
+    .arona-video {
+        background-color: $main_color;
+        color: $main_color_contrast;
+        height: 166px;
+        h2 {
+            font-size: 18px;
+            color: #f7ab00;
+        }
+        .columns:nth-child(2) {
+            padding: 2em 1em;
+        }
+        img {
+            height: 166px;
+            width: auto;
+        }
+    }
+    .main-article {
+        margin-bottom: 2em;
+        img {
+            width: 100%;
+            height: auto;
+        }
+        figure {
+            margin: 0;
+            width: 100%;
+            height: auto;
+        }
+        time {
+            color: $main_color;
+        }
+        h2 {
+            font-size: 20px;
+            line-height: 1.2;
+            color: #000000;
+        }
+    }
+}

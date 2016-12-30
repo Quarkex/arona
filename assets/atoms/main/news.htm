@@ -1,0 +1,44 @@
+<div class="row">
+    <h1>{{ translate('pagina.titulo_', 'noticias_y_actualidad') }}</h1>
+</div>
+<div class="row">
+    <div class="medium-6 columns">
+        <div class="row">
+            <article class="main-article">
+                <a href="#/{{ lang() }}" class="">
+                    <figure><img src="img/db/999.png" alt="article"></figure>
+                    <time>01/04/2016 | 13:20</time>
+                    <h2>El Presupuesto del Ayuntamiento de Arona entrará en vigor la próxima semana</h2>
+                </a>
+            </article>
+            <div class="row collapse arona-video">
+                <div class="medium-7 columns">
+                    <img src="img/placeholders/video.png" alt="video">
+                </div>
+                <div class="medium-5 columns">
+                    <h2>Arona TV</h2>
+                    <p>Vídeos y la actualidad municipal en Youtube</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="medium-6 columns">
+        <div class="small-12 columns">
+            <ul class="video-list">
+                <li ng-repeat="x in nav" ng-if="$index < 5">
+                    <div class="row">
+                        <a href="#">
+                            <div class="small-2 columns">
+                                <img src="/img/videos/01.png">
+                            </div>
+                            <div class="small-10 columns">
+                                <time>01/04/2016 | 13:20</time>
+                                <h2>Arona, nuevo destino turístico (Spot promocional 2016)</h2>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

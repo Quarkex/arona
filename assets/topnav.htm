@@ -1,0 +1,15 @@
+<div class="medium-2 medium-offset-1 columns">
+    <a href="#/{{ lang() }}/"><img src="img/logo.svg" alt="Logo"></a>
+</div>
+<div ng-if="$index < 4" class="medium-2 columns{{ $index == 3 ? ' end' : '' }}" ng-repeat="(label, link) in nav">
+    <ul class="dropdown menu" dropdown-menu>
+        <li>
+            <a tabindex="0" hfer="#/{{lang()}}{{link.href}}">{{ translate("pagina.titulo_", label) }}</a>
+            <ul class="menu">
+                <li ng-repeat="(sublabel, sublink) in link.content">
+                    <a href="#/{{lang()}}{{sublink.href}}">{{ translate("pagina.titulo_", sublabel) }}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

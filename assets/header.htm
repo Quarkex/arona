@@ -1,37 +1,27 @@
-<header ng-if="level() == 1" class="row text-center index-header" style="background-image: url(/img/backgrounds/home.png);">
-    <a class="site-title" href="#/{{ lang() }}/">
-        <h6>{{ translate('general.titulo') }}</h6>
-    </a> <a href="#">
-        <h1>Playa de las Americas</h1>
-    </a> <br>
-    <a href="#">
-        <h1>Costa del Silencio</h1>
-    </a> <br>
-    <a href="#">
-        <h1>Playa de los Cristianos</h1>
-    </a>
-    <div class="row collapse">
-        <div class="medium-3 medium-offset-3 columns">
-            <div class="small-12 columns"> <a class="button opaque full-width" href="#/{{ lang() }}/vive_tu_estancia"> <span>{{ translate('pagina.titulo_disfruta_de_arona') }}</span> </a>
-            </div>
-        </div>
-        <div class="medium-3 columns">
-            <div class="small-12 columns"> <a class="button opaque full-width" href="#/{{ lang() }}/galeria/tour_virtual_360"> <span>{{ translate('pagina.titulo_tour_virtual_360') }}</span> </a>
-            </div>
-        </div>
-        <div class="small-1 columns end text-left">
-            <div class="small-12 columns"> <a class="button" href="#/{{ lang() }}/galeria"> <i class="material-icons" style="font-size: 100%;padding: 0;">camera_alt</i> </a>
-            </div>
+<header ng-if="level() == 1" class="medium-12 columns index-header" style="background-image: url(/img/backgrounds/home.png);">
+    <div class="row">
+        <div class="small-10 small-offset-1 columns">
+            <a class="site-title" href="#/{{ lang() }}/">
+                <div class="row"><h1>{{ translate('general.titulo') }}</h1></div>
+            </a>
         </div>
     </div>
-    <div class="row columns text-center"> <a href="#/{{ lang() }}/">
-            <img src="img/logo.svg">
-        </a>
+    <div class="row">
+        <div class="small-10 small-offset-1 columns">
+            <h2>{{ translate('general.subtitulo') }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-10 small-offset-1 columns">
+            <p>{{ translate('general.', 'texto_bienvenida') }}</p>
+        </div>
     </div>
 </header>
-<header ng-if="level() > 1" class="row section-header" style="background-image: url(/img/headers/pagina.{{ sections()[1] }}.png)">
-    <div class="small-10 small-offset-1 columns">
-        <h1>{{ translate('pagina.titulo_', sections()[1] ) }}</h1>
-        <h2 ng-if="( translate('pagina.subtitulo_', sections()[1] ) != '' ) && ( level() == 2 )">{{ translate('pagina.subtitulo_', sections()[1] ) }}</h2>
+<header ng-if="level() > 1" class="medium-12 columns section-header" style="background-image: url(/img/headers/pagina.{{ sections()[1] }}.png)">
+    <div class="row">
+        <div class="small-10 small-offset-1 columns">
+            <h1>{{ translate('pagina.titulo_', sections()[1] ) }}</h1>
+            <h2 ng-if="( translate('pagina.subtitulo_', sections()[1] ) != '' ) && ( level() == 2 )">{{ translate('pagina.subtitulo_', sections()[1] ) }}</h2>
+        </div>
     </div>
 </header>
