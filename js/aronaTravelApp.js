@@ -191,7 +191,7 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
     };
 
     $rootScope.nav = {};
-    $resource('/clockworks/fetch_navigation.json', {lang:$rootScope.lang()}).get(function(data){
+    $resource('/api/fetch_navigation.json', {lang:$rootScope.lang()}).get(function(data){
         $rootScope.nav = data;
     });
     $rootScope.sublinks = function(link){
@@ -230,7 +230,7 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
     };
 
     page.panels["home"] = {
-        'url': '/clockworks/fetch_news.json',
+        'url': '/api/fetch_news.json',
         'offset': 0,
         'limit': 3,
         'filters': {'lang': $rootScope.lang()},
@@ -304,7 +304,7 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
     });
 
     var Hotels = $resource(
-            '/clockworks/fetch_territorials.json',
+            '/api/fetch_territorials.json',
             {
                 lang: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
                 offset: page.panels["hoteles"].offset,
@@ -321,7 +321,7 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
     });
 
     var Territorial = $resource(
-            '/clockworks/fetch_territorials.1.json',
+            '/api/fetch_territorials.1.json',
             {
                 lang: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
                 limit: '1',
