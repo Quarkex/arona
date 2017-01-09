@@ -1,4 +1,11 @@
-[
+#!/usr/bin/ruby
+
+require 'cgi'
+require 'json'
+
+cgi = CGI.new
+
+doc = [
     {
         "id": "1234",
         "title": "test title A",
@@ -21,3 +28,4 @@
         "summary": "Lorem Ipsum Dolor Sit Aemet"
     }
 ]
+cgi.out("application/json; charset=utf-8"){ doc.to_json }

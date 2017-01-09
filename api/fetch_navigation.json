@@ -1,4 +1,11 @@
-{
+#!/usr/bin/ruby
+
+require 'cgi'
+require 'json'
+
+cgi = CGI.new
+
+doc = {
     "destino_arona": {"href": "/destino_arona", "content":{
         "datos_generales": {"href": "/destino_arona/datos_generales"},
         "un_poco_de_historia": {"href": "/destino_arona/un_poco_de_historia"},
@@ -67,3 +74,4 @@
         "otras_webcams":          {"href": "/webcams/otras_webcams"}
     }}
 }
+cgi.out("application/json; charset=utf-8"){ doc.to_json }

@@ -1,4 +1,11 @@
-[
+#!/usr/bin/ruby
+
+require 'cgi'
+require 'json'
+
+cgi = CGI.new
+
+doc = [
     {
         "id": "1",
         "map": "1",
@@ -11,7 +18,7 @@
         "fax": "922 750 243",
         "website": "25880",
         "map": "",
-        "contact" : "",
+        "contact": "",
         "metadata": {
             "category": "five stars",
             "facilities": ["testA", "testB"],
@@ -22,3 +29,4 @@
         }
     }
 ]
+cgi.out("application/json; charset=utf-8"){ doc.to_json }
