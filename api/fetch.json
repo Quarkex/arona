@@ -1,0 +1,85 @@
+#!/usr/bin/ruby
+################################################################################
+#                                                                              #
+#  CGI fetcher script                                                          #
+#                                                                              #
+#  Expects a JSON body by POST method, and the following parameters:           #
+#                                                                              #
+#  - collection (required)                                                     #
+#    The mongo collection in which to perform the query                        #
+#                                                                              #
+#  - language                                                                  #
+#    Defaults to 'en'. Filters results by the chosen language                  #
+#                                                                              #
+#  - values                                                                    #
+#    Defaults to *all*. The requested data from the chosen elements. If the    #
+#    elements doesn't have that property, it will be null in the anwser        #
+#                                                                              #
+#  - offset                                                                    #
+#    Defaults to 0. Used for pagination, skips that ammount of elements        #
+#                                                                              #
+#  - limit                                                                     #
+#    Defaults to 4. The ammount of elements to send back. 0 means all elements #
+#                                                                              #
+#  The script anwsers with an array of objects containing the requested        #
+#  values, or nil if the requested collection doesn't exist.                   #
+#                                                                              #
+#  If something goes wrong, the output array will contain an object with an    #
+#  error value containing the error message.                                   #
+#                                                                              #
+################################################################################
+
+require 'cgi'
+require 'json'
+require 'mongo'
+
+Mongo::Logger.logger.level = ::Logger::FATAL
+
+client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'arona')
+db = client.database
+
+cgi = CGI.new
+output = []
+begin
+
+    # CGI tries to parse the request body as form parameters so a
+    # blob of JSON awkwardly ends up as the one and only parameter key.
+    parameters = JSON.parse(cgi.params.keys.first)
+    if parameters.has_key?("collection") then
+        collection = client[parameters['collection']]
+
+        if parameters.has_key? 'filters'  then filters = parameters['filters']  else filters = {}   end
+        if parameters.has_key? 'language' then lang    = parameters['language'] else lang    = "en" end
+        if parameters.has_key? 'values'   then values  = parameters['values']   else values  = []   end
+        if parameters.has_key? 'offset'   then offset  = parameters['offset']   else offset  = 0    end
+        if parameters.has_key? 'limit'    then limit   = parameters['limit']    else limit   = 4    end
+
+        filters["IDIOMA"] = lang
+
+        doc = collection.find( filters )
+        doc = doc.skip(offset) if not offset == 0
+        doc = doc.limit(limit) if not limit == 0
+
+        doc.each do | document |
+            if values == [] then
+                output.push(document)
+            else
+                item = {}
+                values.each do | value |
+                    if document.has_key? value then
+                        item[value] = document[value]
+                    else
+                        item[value] = nil
+                    end
+                end
+                output.push(item)
+            end
+        end
+
+    else
+        output = [ nil ]
+    end
+rescue Exception => e
+    output.push({"error": e.message })
+end
+cgi.out("documentType=application/json; charset=utf-8"){ output.to_json }

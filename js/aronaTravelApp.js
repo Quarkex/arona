@@ -138,7 +138,7 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
     var Lang = $resource(
 
             // Url targeting the resource
-            '/locales/:lang.json',
+            '/locales/:language.json',
 
             // Default values for url parameters. These can be overridden in actions methods.
             // If a parameter value is a function, it will be called every time a param value
@@ -155,7 +155,7 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
             // that the parameter will be ignored, when calling a "GET" action method (i.e. an
             // action method that does not accept a request body)
             {
-                lang: $rootScope.lang() == undefined? 'en' : $rootScope.lang()
+                language: $rootScope.lang() == undefined? 'en' : $rootScope.lang()
             }
     );
     Lang.get(function(data){
@@ -191,7 +191,7 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
     };
 
     $rootScope.nav = {};
-    $resource('/api/fetch_navigation.json', {lang:$rootScope.lang()}).get(function(data){
+    $resource('/api/fetch_navigation.json', {language:$rootScope.lang()}).get(function(data){
         $rootScope.nav = data;
     });
     $rootScope.sublinks = function(link){
@@ -230,11 +230,11 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
     };
 
     page.panels["home"] = {
-        'url': '/api/fetch_news.json',
+        'url': '/api/fetch.json',
         'offset': 0,
         'limit': 3,
-        'filters': {'lang': $rootScope.lang()},
-        'values': ['title', 'date', 'id', 'image'],
+        'filters': {},
+        'values': ['TITULO', 'F_INICIO_PUB', 'CODCONTENIDO', 'IMAGEN'],
         'elements': {}
     };
 
@@ -287,30 +287,42 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
     };
 
     var News = $resource(
+            // parameterized URL template with parameters prefixed by : as in /user/:username
             page.panels["home"].url,
+            // default values for url parameters
+            {},
+            // hash with declaration of custom actions
             {
-                lang: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
-                offset: page.panels["home"].offset,
-                limit: page.panels["home"].limit,
-                filters: page.panels["home"].filters,
-                values: page.panels["home"].values
+                "get": {
+                    "method": "POST",
+                    "isArray": true
+                }
             },
-            {
-                "get": { "isArray": true }
-            }
+            // hash with custom settings
+            {}
     );
-    News.get(function(data){
+    News.get(
+        {
+            /* Angular is not sending CGI parameters! */
+            language: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
+            offset: page.panels["home"].offset,
+            limit: page.panels["home"].limit,
+            filters: page.panels["home"].filters,
+            values: page.panels["home"].values,
+            collection: "noticias"
+        }, function(data){
         page.panels["home"].elements = data;
     });
 
     var Hotels = $resource(
             '/api/fetch_territorials.json',
             {
-                lang: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
+                language: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
                 offset: page.panels["hoteles"].offset,
                 limit: page.panels["hoteles"].limit,
                 filters: page.panels["hoteles"].filters,
-                values: page.panels["hoteles"].values
+                values: page.panels["hoteles"].values,
+                collection: "territoriales"
             },
             {
                 "get": { "isArray": true }
@@ -323,10 +335,11 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
     var Territorial = $resource(
             '/api/fetch_territorials.1.json',
             {
-                lang: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
+                language: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
                 limit: '1',
                 filters: {"id": $routeParams.territorial},
-                values: ["map","id","name","location","phone","fax","website","address","email","metadata"]
+                values: ["map","id","name","location","phone","fax","website","address","email","metadata"],
+                collection: "territoriales"
             },
             {
                 "get": { "isArray": true }
