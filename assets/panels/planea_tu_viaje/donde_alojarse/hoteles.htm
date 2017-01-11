@@ -43,10 +43,14 @@
             <div class="card">
                 <div class="row">
                     <div class="small-4 columns">
-                        <img alt="{{ card.name }}" src="/img/db/{{ card.IMAGEN }}.png">
+                        <a href="#/{{ lang() }}/planea_tu_viaje/donde_alojarse/hoteles/{{ card.CODCONTENIDO }}">
+                            <img alt="{{ card.name }}" src="/img/db/{{ card.IMAGEN }}.png">
+                        </a>
                     </div>
                     <div class="small-8 columns">
-                        <h1>{{ card.TITULO }}</h1>
+                        <a style="text-align: left;" href="#/{{ lang() }}/planea_tu_viaje/donde_alojarse/hoteles/{{ card.CODCONTENIDO }}">
+                            <h1>{{ card.TITULO }}</h1>
+                        </a>
                         <p>{{ card.DIRECCION }}</p>
                     </div>
                 </div>

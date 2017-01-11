@@ -278,7 +278,6 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
             var limit = page.panels['hoteles'].limit;
             for (var i = offset; (i - offset) <= limit; i++ ){
                 if ( array[i] != undefined && output.length < limit){
-                    console.log(array[i]);
                     output.push(array[i]);
                 }
             }
@@ -344,10 +343,10 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
     );
     Territorial.get({
         language: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
-        limit: '1',
+        limit: 1,
         filters: {"CODCONTENIDO": $routeParams.territorial},
         /*CODCONTENIDO│CODIDIOMA│CODSUBTIPOCONT│SUBTIPO│CODCATEGORIA│CATEGORIA│IMAGEN│WEB_PROPIA│DOCUMENTO│CODZONA│ZONA│F_INICIO_PUB│F_FIN_PUB│F_REVISION│F_BAJA│NOVEDAD│F_INICIO_NOV│F_FIN_NOV│CODPROPIETARIO│NOMBRE│TITULO│DESCRIPCION_COMUN│DATOS_INTERES│PALABRAS_CLAVE│CODLOCALIDAD│DESCRIPCION│TIPO_VIA│NOMBRE_VIA│NUMERO│BLOQUE│PORTAL│ESCALERA│PLANTA│PUERTA│LOCAL│CODIGO_POSTAL│TELEFONO│FAX│EMAIL│NOMBRE_SOCIAL│VACACIONES│CIERRE│HORARIO│ACCESOS│SERV_PRINCIPALES│PUBLICADO│REF_VPORTAL*/
-        values: ["MAPA","CODCONTENIDO","TITULO","ZONA","TELEFONO","FAX","WEB_PROPIA","NOMBRE_VIA","EMAIL","SERV_PRINCIPALES"],
+        values: ["MAPA","CODCONTENIDO","TITULO","ZONA","TELEFONO","FAX","WEB_PROPIA","NOMBRE_VIA","EMAIL","SERV_PRINCIPALES", "IMAGEN"],
         collection: "territoriales"
     }, function(data){
         page.panels["territorial"] = data[0];
