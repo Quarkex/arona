@@ -48,11 +48,12 @@ begin
     if parameters.has_key?("collection") then
         collection = client[parameters['collection']]
 
-        if parameters.has_key? 'filters'  then filters = parameters['filters']  else filters = {}   end
-        if parameters.has_key? 'language' then lang    = parameters['language'] else lang    = "en" end
-        if parameters.has_key? 'values'   then values  = parameters['values']   else values  = []   end
-        if parameters.has_key? 'offset'   then offset  = parameters['offset']   else offset  = 0    end
-        if parameters.has_key? 'limit'    then limit   = parameters['limit']    else limit   = 4    end
+        if parameters.has_key? 'filters'  then filters = parameters['filters']  else filters = {}    end
+        if parameters.has_key? 'language' then lang    = parameters['language'] else lang    = "en"  end
+        if parameters.has_key? 'values'   then values  = parameters['values']   else values  = []    end
+        if parameters.has_key? 'offset'   then offset  = parameters['offset']   else offset  = 0     end
+        if parameters.has_key? 'limit'    then limit   = parameters['limit']    else limit   = 4     end
+        if parameters.has_key? 'stats'    then stats   = parameters['stats']    else stats   = false end
 
         filters["IDIOMA"] = lang
 
@@ -74,6 +75,13 @@ begin
                 end
                 output.push(item)
             end
+        end
+
+        if stats then
+            stats = {}
+            stats.size = output.size
+            stats.last_modified = nil
+            output = [ stats ]
         end
 
     else
