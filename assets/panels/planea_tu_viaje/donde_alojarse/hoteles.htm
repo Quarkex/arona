@@ -43,23 +43,23 @@
             <div class="card">
                 <div class="row">
                     <div class="small-4 columns">
-                        <img alt="{{ card.name }}" src="/img/db/{{ card.img }}.png">
+                        <img alt="{{ card.name }}" src="/img/db/{{ card.IMAGEN }}.png">
                     </div>
                     <div class="small-8 columns">
-                        <h1>{{ card.name }}</h1>
-                        <p>{{ card.address }}</p>
+                        <h1>{{ card.TITULO }}</h1>
+                        <p>{{ card.DIRECCION }}</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="small-4 small-offset-4 columns">
-                        <a href="mailto:{{ card.email }}">EMAIL</a>
-                        <a href="{{ card.website }}">WEBSITE</a>
+                        <a href="mailto:{{ card.EMAIL }}">EMAIL</a>
+                        <a href="{{ card.WEB_PROPIA }}">WEBSITE</a>
                     </div>
                     <div class="small-4 columns text-right">
-                        <a href="{{ card.map }}">
+                        <a href="{{ card.MAPA }}">
                             <i class="material-icons">location_on</i>
                         </a>
-                        <a href="mailto:{{ card.contact }}">
+                        <a href="mailto:{{ card.CONTACTO }}">
                             <i class="material-icons">contact_mail</i>
                         </a>
                     </div>

@@ -277,12 +277,15 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
             var offset = page.panels['hoteles'].limit * (page.panels['hoteles'].current_page - 1);
             var limit = page.panels['hoteles'].limit;
             for (var i = offset - 1; i <= limit; i++ ){
-                if ( array[i] != undefined && output.length < limit) output.push(array[i]);
+                if ( array[i] != undefined && output.length < limit){
+                    console.log(array[i]);
+                    output.push(array[i]);
+                }
             }
             return output;
         },
-        'filters': {},
-        'values': ['img', 'name', 'address', 'email', 'website', 'map', 'contact'],
+        'filters': {"SUBTIPO": "Hoteles"},
+        'values': ["ACCESOS", "BLOQUE", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODIGO_POSTAL", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "ESCALERA", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "LOCAL", "TITULO", "NOMBRE_SOCIAL", "NOMBRE_VIA", "NOVEDAD", "NUMERO", "PALABRAS_CLAVE", "PLANTA", "PORTAL", "PUBLICADO", "PUERTA", "SERV_PRINCIPALES", "SUBTIPO", "TELEFONO", "TIPO_VIA", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA"],
         'elements': []
     };
 
@@ -315,37 +318,38 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
     });
 
     var Hotels = $resource(
-            '/api/fetch_territorials.json',
+            '/api/fetch.json',
+            {},
             {
-                language: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
-                offset: page.panels["hoteles"].offset,
-                limit: page.panels["hoteles"].limit,
-                filters: page.panels["hoteles"].filters,
-                values: page.panels["hoteles"].values,
-                collection: "territoriales"
-            },
-            {
-                "get": { "isArray": true }
+                "get": { "method": "POST","isArray": true }
             } 
     );
-    Hotels.get(function(data){
+    Hotels.get( {
+        language: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
+        offset: page.panels["hoteles"].offset,
+        limit: 0,
+        filters: page.panels["hoteles"].filters,
+        values: page.panels["hoteles"].values,
+        collection: "territoriales"
+    }, function(data){
         page.panels["hoteles"].elements = data;
     });
 
     var Territorial = $resource(
-            '/api/fetch_territorials.1.json',
+            '/api/fetch.json',
+            {},
             {
-                language: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
-                limit: '1',
-                filters: {"id": $routeParams.territorial},
-                values: ["map","id","name","location","phone","fax","website","address","email","metadata"],
-                collection: "territoriales"
-            },
-            {
-                "get": { "isArray": true }
+                "get": { "method": "POST", "isArray": true }
             }
     );
-    Territorial.get(function(data){
+    Territorial.get({
+        language: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
+        limit: '1',
+        filters: {"CODCONTENIDO": $routeParams.territorial},
+        /*CODCONTENIDO│CODIDIOMA│CODSUBTIPOCONT│SUBTIPO│CODCATEGORIA│CATEGORIA│IMAGEN│WEB_PROPIA│DOCUMENTO│CODZONA│ZONA│F_INICIO_PUB│F_FIN_PUB│F_REVISION│F_BAJA│NOVEDAD│F_INICIO_NOV│F_FIN_NOV│CODPROPIETARIO│NOMBRE│TITULO│DESCRIPCION_COMUN│DATOS_INTERES│PALABRAS_CLAVE│CODLOCALIDAD│DESCRIPCION│TIPO_VIA│NOMBRE_VIA│NUMERO│BLOQUE│PORTAL│ESCALERA│PLANTA│PUERTA│LOCAL│CODIGO_POSTAL│TELEFONO│FAX│EMAIL│NOMBRE_SOCIAL│VACACIONES│CIERRE│HORARIO│ACCESOS│SERV_PRINCIPALES│PUBLICADO│REF_VPORTAL*/
+        values: ["MAPA","CODCONTENIDO","TITULO","ZONA","TELEFONO","FAX","WEB_PROPIA","NOMBRE_VIA","EMAIL","SERV_PRINCIPALES"],
+        collection: "territoriales"
+    }, function(data){
         page.panels["territorial"] = data[0];
     });
 
