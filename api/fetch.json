@@ -47,6 +47,7 @@ begin
     parameters = JSON.parse(cgi.params.keys.first)
     if parameters.has_key?("collection") then
         collection = client[parameters['collection']]
+        resources = client['recursos']
 
         if parameters.has_key? 'filters'  then filters = parameters['filters']  else filters = {}    end
         if parameters.has_key? 'language' then lang    = parameters['language'] else lang    = "en"  end
@@ -67,10 +68,66 @@ begin
             else
                 item = {}
                 values.each do | value |
-                    if document.has_key? value then
-                        item[value] = document[value]
+                    item[value] = nil
+                    case value
+
+                    when "MAPA"
+                        address = ""
+                        chunks = [ "TIPO_VIA", "NOMBRE_VIA", "NUMERO", "BLOQUE", "PORTAL", "ESCALERA", "PLANTA", "PUERTA", "LOCAL", "CODIGO_POSTAL", "ZONA" ]
+
+                        chunks.each do | chunk |
+                            if document.has_key? chunk and document[chunk] != nil then
+                                address = address + ",+" if not address == "" unless chunk == "CODIGO_POSTAL" or chunk == "NOMBRE_VIA"
+                                address = address + "+"  if chunk == "NOMBRE_VIA" or chunk == "CODIGO_POSTAL" unless address == ""
+                                address = address + document[chunk].gsub(' ', '+')
+                                #address = CGI::escape address
+                            end
+                        end
+
+                        item[value] = "https://www.google.es/maps/place/" + address if address != ""
+
+                    when "MAPA_IFRAME"
+                        address = ""
+                        chunks = [ "TIPO_VIA", "NOMBRE_VIA", "NUMERO", "BLOQUE", "PORTAL", "ESCALERA", "PLANTA", "PUERTA", "LOCAL", "CODIGO_POSTAL", "ZONA" ]
+
+                        chunks.each do | chunk |
+                            if document.has_key? chunk and document[chunk] != nil then
+                                address = address + ",+" if not address == "" unless chunk == "CODIGO_POSTAL" or chunk == "NOMBRE_VIA"
+                                address = address + "+"  if chunk == "NOMBRE_VIA" or chunk == "CODIGO_POSTAL" unless address == ""
+                                address = address + document[chunk].gsub(' ', '+')
+                                #address = CGI::escape address
+                            end
+                        end
+
+                        api_key = "AIzaSyCZgh8qgEhKEsZNchyy3bBjIXoZxWHPlH0"
+                        map = "https://www.google.com/maps/embed/v1/place?key=" + api_key + "&q=" + address
+
+                        item[value] = '<iframe width="600" height="450" frameborder="0" style="border:0" src="' + map + '" allowfullscreen></iframe>' if address != ""
+
+                    when "DIRECCION"
+                        address = ""
+                        chunks = [ "TIPO_VIA", "NOMBRE_VIA", "NUMERO", "BLOQUE", "PORTAL", "ESCALERA", "PLANTA", "PUERTA", "LOCAL", "CODIGO_POSTAL", "ZONA" ]
+
+                        chunks.each do | chunk |
+                            if document.has_key? chunk and document[chunk] != nil then
+                                address = address + ", " if not address == "" unless chunk == "CODIGO_POSTAL" or chunk == "NOMBRE_VIA"
+                                address = address + " "  if chunk == "NOMBRE_VIA" unless address == ""
+                                address = address + ". " if chunk == "CODIGO_POSTAL" unless address == ""
+                                address = address + document[chunk]
+                            end
+                        end
+
+                        item[value] = address if address != ""
+
+                    when "IMAGEN"
+                        if document.has_key? value then
+                            resource = resources.find({ "CODRECURSO": document[value] }).sort("RECURSO" => -1).first
+                            item[value] = resource["RECURSO"]
+                        end
+
                     else
-                        item[value] = nil
+                        item[value] = document[value] if document.has_key? value
+
                     end
                 end
                 output.push(item)
