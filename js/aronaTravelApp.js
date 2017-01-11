@@ -284,7 +284,7 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
             return output;
         },
         'filters': {"SUBTIPO": "Hoteles"},
-        'values': ["ACCESOS", "BLOQUE", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODIGO_POSTAL", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "ESCALERA", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "LOCAL", "TITULO", "NOMBRE_SOCIAL", "NOMBRE_VIA", "NOVEDAD", "NUMERO", "PALABRAS_CLAVE", "PLANTA", "PORTAL", "PUBLICADO", "PUERTA", "SERV_PRINCIPALES", "SUBTIPO", "TELEFONO", "TIPO_VIA", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA"],
+        'values': ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         'elements': []
     };
 
@@ -305,7 +305,6 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
     );
     News.get(
         {
-            /* Angular is not sending CGI parameters! */
             language: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
             offset: page.panels["home"].offset,
             limit: page.panels["home"].limit,
@@ -346,10 +345,16 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
         limit: 1,
         filters: {"CODCONTENIDO": $routeParams.territorial},
         /*CODCONTENIDO│CODIDIOMA│CODSUBTIPOCONT│SUBTIPO│CODCATEGORIA│CATEGORIA│IMAGEN│WEB_PROPIA│DOCUMENTO│CODZONA│ZONA│F_INICIO_PUB│F_FIN_PUB│F_REVISION│F_BAJA│NOVEDAD│F_INICIO_NOV│F_FIN_NOV│CODPROPIETARIO│NOMBRE│TITULO│DESCRIPCION_COMUN│DATOS_INTERES│PALABRAS_CLAVE│CODLOCALIDAD│DESCRIPCION│TIPO_VIA│NOMBRE_VIA│NUMERO│BLOQUE│PORTAL│ESCALERA│PLANTA│PUERTA│LOCAL│CODIGO_POSTAL│TELEFONO│FAX│EMAIL│NOMBRE_SOCIAL│VACACIONES│CIERRE│HORARIO│ACCESOS│SERV_PRINCIPALES│PUBLICADO│REF_VPORTAL*/
-        values: ["MAPA","CODCONTENIDO","TITULO","ZONA","TELEFONO","FAX","WEB_PROPIA","NOMBRE_VIA","EMAIL","SERV_PRINCIPALES", "IMAGEN"],
+        values: ["MAPA_IFRAME", "MAPA","CODCONTENIDO","TITULO","ZONA","TELEFONO","FAX","WEB_PROPIA","DIRECCION","EMAIL","SERV_PRINCIPALES", "IMAGEN"],
         collection: "territoriales"
     }, function(data){
+        console.log(data[0]["MAPA_IFRAME"]);
         page.panels["territorial"] = data[0];
     });
 
 });
+app.filter("trust", ['$sce', function($sce) {
+      return function(htmlCode){
+              return $sce.trustAsHtml(htmlCode);
+                }
+}]);

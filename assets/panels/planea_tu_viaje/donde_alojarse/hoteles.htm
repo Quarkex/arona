@@ -44,7 +44,7 @@
                 <div class="row">
                     <div class="small-4 columns">
                         <a href="#/{{ lang() }}/planea_tu_viaje/donde_alojarse/hoteles/{{ card.CODCONTENIDO }}">
-                            <img alt="{{ card.name }}" src="/img/db/{{ card.IMAGEN }}.png">
+                            <img alt="{{ card.name }}" src="http://www.arona.travel/portal/imagecache/ficha/{{ card.IMAGEN }}">
                         </a>
                     </div>
                     <div class="small-8 columns">
@@ -60,7 +60,7 @@
                         <a href="{{ card.WEB_PROPIA }}">WEBSITE</a>
                     </div>
                     <div class="small-4 columns text-right">
-                        <a href="{{ card.MAPA }}">
+                        <a href="{{ card.MAPA }}" target='_blank'>
                             <i class="material-icons">location_on</i>
                         </a>
                         <a href="mailto:{{ card.CONTACTO }}">
