@@ -276,7 +276,7 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
             var array= page.panels['hoteles'].elements;
             var offset = page.panels['hoteles'].limit * (page.panels['hoteles'].current_page - 1);
             var limit = page.panels['hoteles'].limit;
-            for (var i = offset - 1; i <= limit; i++ ){
+            for (var i = offset; (i - offset) <= limit; i++ ){
                 if ( array[i] != undefined && output.length < limit){
                     console.log(array[i]);
                     output.push(array[i]);
