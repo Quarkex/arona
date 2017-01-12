@@ -62,16 +62,32 @@ var app = angular.module("aronaTravelApp", ["ngRoute","ngResource","mm.foundatio
 
 app.value('page', {
     'title': "Arona.travel",
-    'available_languages': ['de', 'en', 'es', 'fi', 'fr', 'it', 'nl', 'ru', 'sv'],
     'dictionary':{},
     'panels':{}
 });
 
+app.service('language', ["$location", "$window", function($location, $window){
+
+    this.current = $location.path().split('/')[1];
+
+
+    this.available_languages = ['de', 'en', 'es', 'fi', 'fr', 'it', 'nl', 'ru', 'sv'];
+
+    this.isValid = function(l){
+        return this.available_languages.includes(l) ? true : false ;
+    };
+
+    this.window_lang = $window.navigator.language;
+
+    this.default = this.isValid(this.window_lang.split('-')[0]) ? this.window_lang.split('-')[0] : 'en';
+
+}]);
+
 
 app.config(function($routeProvider) {
-    var isValidLang = function($location, page){
+    var isValidLang = function($location, language){
         var current_lang = $location.path().split('/')[1];
-        if( ! page.available_languages.includes(current_lang) ) $location.path('/en');
+        if ( ! language.isValid(current_lang) ) $location.path('/' + language.default );
     };
 
     $routeProvider
@@ -114,7 +130,7 @@ app.config(function($routeProvider) {
         controller: "aronaTravelCtrl"
     })
     .when("", {
-        redirectTo: "/en"
+        redirectTo: function(language){ return "/" + language.default; }
     })
     .otherwise({
         resolve:{ "check":isValidLang },
