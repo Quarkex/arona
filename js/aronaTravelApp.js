@@ -68,7 +68,7 @@ app.value('page', {
 
 app.service('language', ["$location", "$window", function($location, $window){
 
-    this.current = $location.path().split('/')[1];
+    this.current = function() { return $location.path().split('/')[1]; }
 
 
     this.available_languages = ['de', 'en', 'es', 'fi', 'fr', 'it', 'nl', 'ru', 'sv'];
@@ -140,11 +140,11 @@ app.config(function($routeProvider) {
     });
 });
 
-app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, $resource, page) {
+app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, $resource, page, language) {
 
     $rootScope.page = page;
 
-    $rootScope.lang = function (){ return $routeParams.language; };
+    $rootScope.lang = function (){ return language.current(); };
 
     $rootScope.params = $routeParams;
 
