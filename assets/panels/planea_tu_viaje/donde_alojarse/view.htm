@@ -12,11 +12,11 @@
                 <div class="row collapse">
                     <p>{{  page.panels['territorial'].DIRECCION }}</p>
                 </div>
-                <div class="row collapse">
-                    <p>{{  page.panels['territorial'].TELEFONO }}</p>
+                <div ng-if="page.panels['territorial'].TELEFONO != null" class="row collapse">
+                    <p>{{ translate("general.", 'telefono') }}: {{  page.panels['territorial'].TELEFONO }}</p>
                 </div>
-                <div class="row collapse">
-                    <p>{{  page.panels['territorial'].FAX }}</p>
+                <div ng-if="page.panels['territorial'].FAX != null" class="row collapse">
+                    <p>{{ translate("general.", 'fax') }}: {{  page.panels['territorial'].FAX }}</p>
                 </div>
                 <div class="row collapse">
                     <a href="mailto:{{  page.panels['territorial'].EMAIL }}" class="button">{{ translate("general.", 'email') }}</a>
