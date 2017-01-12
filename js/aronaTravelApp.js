@@ -364,7 +364,6 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
         values: ["MAPA_IFRAME", "MAPA","CODCONTENIDO","TITULO","ZONA","TELEFONO","FAX","WEB_PROPIA","DIRECCION","EMAIL","SERV_PRINCIPALES", "IMAGEN"],
         collection: "territoriales"
     }, function(data){
-        console.log(data[0]["MAPA_IFRAME"]);
         page.panels["territorial"] = data[0];
     });
 
