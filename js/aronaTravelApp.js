@@ -265,6 +265,8 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
 
     $rootScope.lang = function (){ return language.current(); };
 
+    $rootScope.available_languages = function (){ return language.available_languages; };
+
     $rootScope.params = $routeParams;
 
     $rootScope.location = $location;
