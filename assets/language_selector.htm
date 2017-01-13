@@ -2,8 +2,8 @@
     <li>
         <a tabindex="0"><i class="material-icons">language</i>{{ lang() | uppercase }}</a>
         <ul class="menu vertical" style="right:0; left: auto;">
-            <li ng-if="lang() != language" ng-repeat="language in page.available_languages">
-                <a href="#{{ path().replace( lang(), language ) }}">{{ language | uppercase }}</a>
+            <li ng-if="lang() != language" ng-repeat="l in available_languages()">
+                <a href="#{{ path().replace( lang(), l ) }}">{{ l | uppercase }}</a>
             </li>
         </ul>
     </li>
