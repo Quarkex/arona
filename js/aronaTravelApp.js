@@ -395,7 +395,7 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
             limit: page.panels["home"].limit,
             filters: page.panels["home"].filters,
             values: page.panels["home"].values,
-            collection: "noticias"
+            collection: "actividades"
         }, function(data){
         page.panels["home"].elements = data;
     });
