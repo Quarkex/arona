@@ -83,6 +83,64 @@ app.service('language', ["$location", "$window", function($location, $window){
 
 }]);
 
+function Fetcher(language, $resource){
+
+    var self = this;
+
+    this.variables = {
+        'elements': [],
+        'stats': {
+            'size': 0
+        },
+        // parameterized URL template with parameters prefixed by : as in /user/:username
+        'url': 'api/fetch.json',
+        // default values for url parameters
+        'parameters': {},
+        // hash with declaration of custom actions
+        'actions': {
+            "get": {
+                "method": "POST",
+                "isArray": true
+            }
+        },
+        // hash with custom settings
+        'settings': {}
+    };
+
+    // hash as seen by the final cgi
+    this.post_object = {
+        language: language.current(),
+        offset: 0,
+        limit: 0,
+        filters: {},
+        values: [],
+        collection: null
+    };
+
+    /* TODO */
+    /* This object should be updated to fetch the total ammount of elements without filter AND the filtered ammount of elements */
+    this.statistics_object = function(){
+        var output = {
+            language: language.current(),
+            offset: 0,
+            limit: 0,
+            values: [],
+            stats: true
+        }
+        output["filters"] = this.post_object.filters;
+        output["collection"] = this.post_object.collection;
+        return output;
+    };
+
+    this.resource = $resource( this.variables.url, this.variables.parameters, this.variables.actions, this.variables.settings );
+    this.statistics = $resource( this.variables.url, this.variables.parameters, this.variables.actions, this.variables.settings );
+
+    this.get = function(){
+        this.resource.get( this.post_object, function(data){ self.variables.elements = data; });
+        this.statistics.get( this.statistics_object(), function(data){ self.variables.stats = data[0]; });
+    };
+
+}
 
 app.config(function($routeProvider) {
     var isValidLang = function($location, language){
@@ -140,7 +198,68 @@ app.config(function($routeProvider) {
     });
 });
 
-app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, $resource, page, language) {
+app.service('hotels', ["language", "$resource", Fetcher]);
+app.controller("hotelsCtrl", function($rootScope, $scope, hotels) {
+
+    var values = hotels.post_object;
+    values.collection = "territoriales";
+    $scope.values = values;
+
+    var variables = hotels.variables;
+    $scope.variables = hotels.variables;
+
+    values.offset = 0;
+    $scope.offset = function(){ return values.offset; };
+
+    values.limit = 4;
+    $scope.limit = function(){ return values.limit; };
+
+    $scope.elements = function() { return variables.elements; };
+
+    values.filters["SUBTIPO"] = "Hoteles";
+    $scope.filters = function() { return values.filters; };
+
+    values.values = ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"];
+
+    $scope.stats = function(){ return variables.stats; };
+
+    $scope.current_page = function() { return Math.ceil(values.offset / values.limit) + 1; };
+
+    $scope.pages = function(){
+        var output = [];
+        var pages = Math.ceil(variables.stats.size / values.limit);
+        for (var i = 0; i < pages; i++){
+            var item = {'number': (i + 1), 'href': (i + 1)};
+            if ( item.number == $scope.current_page() ) item.current = true;
+            output.push(item);
+        }
+        return output;
+    };
+
+    $scope.page = function(){ return variables.elements; };
+
+    $scope.set_page = function(p){
+        var target = ( (p - 1) * values.limit );
+        var max = ( Math.ceil(variables.stats.size / values.limit) * values.limit );
+        if (target >= 0 && target <= max) values.offset = target;
+        hotels.get();
+    };
+
+    $scope.previous_page = function(){
+        if ( ( values.offset - values.limit ) >= 0 ) values.offset = values.offset - values.limit;
+        hotels.get();
+    };
+
+    $scope.next_page = function(){
+        var max = ( Math.ceil(variables.stats.size / values.limit) * values.limit );
+        if ( ( values.offset + values.limit ) <= max ) values.offset = values.offset + values.limit;
+        hotels.get();
+    };
+
+    hotels.get();
+});
+
+app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, $resource, page, language ) {
 
     $rootScope.page = page;
 
@@ -254,56 +373,6 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
         'elements': {}
     };
 
-    page.panels["hoteles"] = {
-        'set_page': function(p){
-            var pages = Math.ceil(page.panels['hoteles'].elements.length / page.panels['hoteles'].limit);
-            if (p >= 1 && p <= pages){
-                page.panels['hoteles'].current_page = p;
-            }
-        },
-        'previous_page': function(){
-            if (page.panels['hoteles'].current_page > 1){
-                page.panels['hoteles'].current_page = page.panels['hoteles'].current_page - 1;
-            }
-        },
-        'next_page': function(){
-            var pages = Math.ceil(page.panels['hoteles'].elements.length / page.panels['hoteles'].limit);
-            if (page.panels['hoteles'].current_page < pages){
-                page.panels['hoteles'].current_page = page.panels['hoteles'].current_page + 1;
-            }
-        },
-        'offset': function(){
-            return page.panels['hoteles'].limit * (page.panels['hoteles'].current_page - 1);
-        },
-        'limit': 4,
-        'current_page': 1,
-        'pages': function(){
-            var output = [];
-            var pages = Math.ceil(page.panels['hoteles'].elements.length / page.panels['hoteles'].limit);
-            for (var i = 0; i < pages; i++){
-                var item = {'number': (i + 1), 'href': (i + 1)};
-                if ( item.number == page.panels['hoteles'].current_page ) item.current = true;
-                output.push(item);
-            }
-            return output;
-        },
-        'page': function(){
-            var output = [];
-            var array= page.panels['hoteles'].elements;
-            var offset = page.panels['hoteles'].limit * (page.panels['hoteles'].current_page - 1);
-            var limit = page.panels['hoteles'].limit;
-            for (var i = offset; (i - offset) <= limit; i++ ){
-                if ( array[i] != undefined && output.length < limit){
-                    output.push(array[i]);
-                }
-            }
-            return output;
-        },
-        'filters': {"SUBTIPO": "Hoteles"},
-        'values': ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
-        'elements': []
-    };
-
     var News = $resource(
             // parameterized URL template with parameters prefixed by : as in /user/:username
             page.panels["home"].url,
@@ -329,24 +398,6 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
             collection: "noticias"
         }, function(data){
         page.panels["home"].elements = data;
-    });
-
-    var Hotels = $resource(
-            '/api/fetch.json',
-            {},
-            {
-                "get": { "method": "POST","isArray": true }
-            } 
-    );
-    Hotels.get( {
-        language: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
-        offset: page.panels["hoteles"].offset,
-        limit: 0,
-        filters: page.panels["hoteles"].filters,
-        values: page.panels["hoteles"].values,
-        collection: "territoriales"
-    }, function(data){
-        page.panels["hoteles"].elements = data;
     });
 
     var Territorial = $resource(

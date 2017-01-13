@@ -136,8 +136,8 @@ begin
 
         if stats then
             stats = {}
-            stats.size = output.size
-            stats.last_modified = nil
+            stats["size"] = output.size
+            stats["last_modified"] = nil
             output = [ stats ]
         end
 
@@ -145,6 +145,6 @@ begin
         output = [ nil ]
     end
 rescue Exception => e
-    output.push({"error": e.message })
+    output.push({"error": e.message, "parameters": parameters })
 end
 cgi.out("documentType=application/json; charset=utf-8"){ output.to_json }
