@@ -418,9 +418,20 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
         page.panels["territorial"] = data[0];
     });
 
+    $rootScope.randomInt = function(i){
+        return Math.floor(Math.random() * i) + 1;
+    };
+
 });
 app.filter("trust", ['$sce', function($sce) {
       return function(htmlCode){
               return $sce.trustAsHtml(htmlCode);
                 }
+}]);
+app.filter("pad", [function() {
+    return function(n, width, z){
+        z = z || '0';
+        n = n + '';
+        return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+    };
 }]);
