@@ -2,7 +2,7 @@
 <form data-form="hotel_browser" method="GET" ng-controller="hotelsCtrl">
     <div class="row">
         <div class="small-6 columns">
-            <h2>{{ string_interpolate( translate('general.', 'numero_de_contenidos'), elements().length, current_section(), stats().size) }}</h2>
+            <h2>{{ string_interpolate( translate('general.', 'numero_de_contenidos'), stats().size, current_section(), stats().largest_size) }}</h2>
         </div>
         <div class="small-6 columns right"></div>
     </div>
