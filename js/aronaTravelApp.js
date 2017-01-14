@@ -90,7 +90,8 @@ function Fetcher(language, $resource){
     this.variables = {
         'elements': [],
         'stats': {
-            'size': 0
+            'size': 0,
+            'largest_size': 0
         },
         // parameterized URL template with parameters prefixed by : as in /user/:username
         'url': 'api/fetch.json',
@@ -114,30 +115,28 @@ function Fetcher(language, $resource){
         limit: 0,
         filters: {},
         values: [],
-        collection: null
-    };
-
-    /* TODO */
-    /* This object should be updated to fetch the total ammount of elements without filter AND the filtered ammount of elements */
-    this.statistics_object = function(){
-        var output = {
-            language: language.current(),
-            offset: 0,
-            limit: 0,
-            values: [],
-            stats: true
-        }
-        output["filters"] = this.post_object.filters;
-        output["collection"] = this.post_object.collection;
-        return output;
+        collection: null,
+        stats: true
     };
 
     this.resource = $resource( this.variables.url, this.variables.parameters, this.variables.actions, this.variables.settings );
-    this.statistics = $resource( this.variables.url, this.variables.parameters, this.variables.actions, this.variables.settings );
 
     this.get = function(){
-        this.resource.get( this.post_object, function(data){ self.variables.elements = data; });
-        this.statistics.get( this.statistics_object(), function(data){ self.variables.stats = data[0]; });
+        this.resource.get( this.post_object, function(data){
+            if (self.post_object.collection != null) {
+                if (data[0] == null){
+                    console.log("Got a null array. Probably no such collection: " + self.post_object.collection);
+                } else {
+                    if (true == self.post_object.stats){
+                        var stats = data.pop();
+                        if (self.variables.stats.largest_size < stats.size) self.variables.stats.largest_size = stats.size;
+                        self.variables.stats.size = stats.size;
+                        self.variables.stats.last_modified = stats.last_modified;
+                    }
+                    self.variables.elements = data;
+                }
+            }
+        });
     };
 
 }

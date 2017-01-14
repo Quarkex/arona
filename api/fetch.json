@@ -40,6 +40,7 @@ db = client.database
 
 cgi = CGI.new
 output = []
+sts = { size: 0, last_modified: nil }
 begin
 
     # CGI tries to parse the request body as form parameters so a
@@ -59,6 +60,8 @@ begin
         filters["IDIOMA"] = lang
 
         doc = collection.find( filters )
+        sts["size"] = doc.count()
+
         doc = doc.skip(offset) if not offset == 0
         doc = doc.limit(limit) if not limit == 0
 
@@ -134,17 +137,11 @@ begin
             end
         end
 
-        if stats then
-            stats = {}
-            stats["size"] = output.size
-            stats["last_modified"] = nil
-            output = [ stats ]
-        end
-
     else
         output = [ nil ]
     end
 rescue Exception => e
     output.push({"error": e.message, "parameters": parameters })
 end
+output.push( sts ) if stats
 cgi.out("documentType=application/json; charset=utf-8"){ output.to_json }
