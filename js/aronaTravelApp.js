@@ -245,13 +245,15 @@ app.controller("hotelsCtrl", function($rootScope, $scope, hotels) {
     };
 
     $scope.previous_page = function(){
-        if ( ( values.offset - values.limit ) >= 0 ) values.offset = values.offset - values.limit;
+        var target =  values.offset - values.limit;
+        if ( target >= 0 ) values.offset = target;
         hotels.get();
     };
 
     $scope.next_page = function(){
-        var max = ( Math.ceil(variables.stats.size / values.limit) * values.limit );
-        if ( ( values.offset + values.limit ) <= max ) values.offset = values.offset + values.limit;
+        var max = ( ( Math.ceil(variables.stats.size / values.limit ) - 1 ) * values.limit );
+        var target = values.offset + values.limit;
+        if ( target <= max ) values.offset = target;
         hotels.get();
     };
 
