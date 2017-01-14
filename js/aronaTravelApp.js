@@ -83,9 +83,10 @@ app.service('language', ["$location", "$window", function($location, $window){
 
 }]);
 
-function Fetcher(language, $resource){
+function ResourcePaginator(language, $resource){
 
     var self = this;
+    var scope_interface = [];
 
     this.variables = {
         'elements': [],
@@ -109,7 +110,7 @@ function Fetcher(language, $resource){
     };
 
     // hash as seen by the final cgi
-    this.post_object = {
+    this.values = {
         language: language.current(),
         offset: 0,
         limit: 0,
@@ -119,25 +120,144 @@ function Fetcher(language, $resource){
         stats: true
     };
 
-    this.resource = $resource( this.variables.url, this.variables.parameters, this.variables.actions, this.variables.settings );
+    this.resource = $resource( self.variables.url, self.variables.parameters, self.variables.actions, self.variables.settings );
 
-    this.get = function(){
-        this.resource.get( this.post_object, function(data){
-            if (self.post_object.collection != null) {
+    function get(){
+        self.resource.get( self.values, function(data){
+            if (self.values.collection != null) {
                 if (data[0] == null){
-                    console.log("Got a null array. Probably no such collection: " + self.post_object.collection);
+                    console.warn("Got a null array. Probably no such collection: " + self.values.collection);
                 } else {
-                    if (true == self.post_object.stats){
+                    if (true == self.values.stats){
                         var stats = data.pop();
-                        if (self.variables.stats.largest_size < stats.size) self.variables.stats.largest_size = stats.size;
-                        self.variables.stats.size = stats.size;
-                        self.variables.stats.last_modified = stats.last_modified;
+                        self.size(stats.size);
+                        self.last_modified(stats.last_modified);
                     }
-                    self.variables.elements = data;
+                    while ( data[data.length - 1].hasOwnProperty("error")){
+                        var error_object = data.pop();
+                        console.warn("API responded with the following error: " + error_object.error);
+                        console.warn("Offending parameters:");
+                        console.warn(error_object.parameters);
+                    }
+                    self.elements(data);
                 }
             }
         });
+    }
+
+    this.elements = function(e){
+        if (e != undefined){
+            self.variables.elements = e;
+        }
+        return self.variables.elements;
     };
+    scope_interface.push("elements");
+
+    this.size = function(s){
+        if (s != undefined){
+            if (s >= 0){
+                self.variables.stats.size = s;
+                if (s > self.variables.stats.largest_size) self.largest_size(s);
+            }
+        }
+        return self.variables.stats.size;
+    };
+    scope_interface.push("size");
+
+    this.largest_size = function(s){
+        if (s != undefined){
+            if (s >= 0) self.variables.stats.largest_size = s;
+        }
+        return self.variables.stats.largest_size;
+    };
+    scope_interface.push("largest_size");
+
+    this.last_modified = function(d){
+        if (d != undefined){
+            self.variables.last_modified = d;
+        }
+        return self.variables.stats.last_modified;
+    };
+    scope_interface.push("last_modified");
+
+    this.pages = function(){
+        var output = [];
+        var pages = Math.ceil(self.size() / self.page_size());
+        for (var i = 0; i < pages; i++){
+            var item = {'number': (i + 1), 'href': (i + 1)};
+            if ( item.number == self.page() ) item.current = true;
+            output.push(item);
+        }
+        return output;
+    };
+    scope_interface.push("pages");
+
+    this.page = function(p){
+        if (p != undefined){
+            var target = ( (p - 1) * self.page_size() );
+            var max = ( Math.ceil(self.size() / self.page_size()) * self.page_size() );
+            if (target >= 0 && target <= max) self.set_values({offset: target});
+        }
+        return Math.ceil(self.values.offset / self.page_size()) + 1;
+    };
+    scope_interface.push("page");
+
+    this.page_size = function(p){
+        if (p != undefined){
+            if (p > 0){
+                self.set_values({limit: p});
+            }
+        }
+        return self.values.limit;
+    };
+    scope_interface.push("page_size");
+
+    this.previous_page = function(){
+        var target =  self.values.offset - self.page_size();
+        if ( target >= 0 ) self.set_values({offset: target});
+    };
+    scope_interface.push("previous_page");
+
+    this.next_page = function(){
+        var max = ( ( Math.ceil(self.size() / self.page_size() ) - 1 ) * self.page_size() );
+        var target = self.values.offset + self.page_size();
+        if ( target <= max ) self.set_values({offset: target});
+    };
+    scope_interface.push("next_page");
+
+    this.set_values = function( new_values ){
+        var values_changed = false;
+        for (var k in new_values){
+            if (new_values.hasOwnProperty(k)) {
+                if (self.values[k] != new_values[k]){
+                    values_changed = true;
+                    // if it's a non-null object...
+                    if (self.values[k] !== null && typeof self.values[k] === 'object'){
+                        var values = new_values[k];
+                        // ...for every value in it...
+                        for ( var value in values) if (values.hasOwnProperty(value)) {
+                            // if it's not null, update it
+                            if (values[value] != null) self.values[k][value] = values[value];
+                            // else, remove it
+                            else delete self.values[k][value];
+                        }
+
+                    } else {
+                        // if it's not an object, replace it
+                        self.values[k] = new_values[k];
+                    }
+                }
+            }
+        }
+        if (values_changed) get();
+    };
+    scope_interface.push("set_values");
+
+    this.expose_interface = function(scope){
+        for ( var i = 0; i < scope_interface.length; i++ ){
+            scope[scope_interface[i]] = self[scope_interface[i]];
+        }
+    }
 
 }
 
@@ -197,67 +317,18 @@ app.config(function($routeProvider) {
     });
 });
 
-app.service('hotels', ["language", "$resource", Fetcher]);
+app.service('hotels', ["language", "$resource", ResourcePaginator]);
 app.controller("hotelsCtrl", function($rootScope, $scope, hotels) {
 
-    var values = hotels.post_object;
-    values.collection = "territoriales";
-    $scope.values = values;
+    hotels.expose_interface($scope);
 
-    var variables = hotels.variables;
-    $scope.variables = hotels.variables;
-
-    values.offset = 0;
-    $scope.offset = function(){ return values.offset; };
-
-    values.limit = 4;
-    $scope.limit = function(){ return values.limit; };
-
-    $scope.elements = function() { return variables.elements; };
-
-    values.filters["SUBTIPO"] = "Hoteles";
-    $scope.filters = function() { return values.filters; };
-
-    values.values = ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"];
-
-    $scope.stats = function(){ return variables.stats; };
-
-    $scope.current_page = function() { return Math.ceil(values.offset / values.limit) + 1; };
-
-    $scope.pages = function(){
-        var output = [];
-        var pages = Math.ceil(variables.stats.size / values.limit);
-        for (var i = 0; i < pages; i++){
-            var item = {'number': (i + 1), 'href': (i + 1)};
-            if ( item.number == $scope.current_page() ) item.current = true;
-            output.push(item);
-        }
-        return output;
-    };
-
-    $scope.page = function(){ return variables.elements; };
-
-    $scope.set_page = function(p){
-        var target = ( (p - 1) * values.limit );
-        var max = ( Math.ceil(variables.stats.size / values.limit) * values.limit );
-        if (target >= 0 && target <= max) values.offset = target;
-        hotels.get();
-    };
-
-    $scope.previous_page = function(){
-        var target =  values.offset - values.limit;
-        if ( target >= 0 ) values.offset = target;
-        hotels.get();
-    };
-
-    $scope.next_page = function(){
-        var max = ( ( Math.ceil(variables.stats.size / values.limit ) - 1 ) * values.limit );
-        var target = values.offset + values.limit;
-        if ( target <= max ) values.offset = target;
-        hotels.get();
-    };
-
-    hotels.get();
+    hotels.set_values({
+        "collection": "territoriales",
+        "filters": {"SUBTIPO": "Hoteles"},
+        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+        "offset": 0,
+        "limit": 4
+    });
 });
 
 app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, $resource, page, language ) {
