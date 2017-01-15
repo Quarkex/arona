@@ -253,6 +253,21 @@ function ResourcePaginator(language, $resource){
     };
     scope_interface.push("filters");
 
+    this.toggle_filter = function(f, v){
+        if (f === undefined) return null;
+        if (v !== undefined){
+            var o = {};
+            o[f] = (angular.equals(self.values.filters[f], v)) ? null : v;
+            self.set_values({"filters": o});
+        }
+        if (self.values.filters[f] === undefined){
+            return null;
+        } else {
+            return self.values.filters[f];
+        }
+    };
+    scope_interface.push("toggle_filter");
+
     this.set_values = function( new_values ){
         var values_changed = false;
         for (var k in new_values){
