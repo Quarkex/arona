@@ -274,7 +274,6 @@ function ResourcePaginator(language, $resource){
         }
         if (values_changed) get();
     };
-    scope_interface.push("set_values");
 
     this.expose_interface = function(scope){
         for ( var i = 0; i < scope_interface.length; i++ ){
