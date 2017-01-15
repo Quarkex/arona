@@ -133,11 +133,16 @@ function ResourcePaginator(language, $resource){
                         self.size(stats.size);
                         self.last_modified(stats.last_modified);
                     }
-                    while ( data[data.length - 1].hasOwnProperty("error")){
-                        var error_object = data.pop();
-                        console.warn("API responded with the following error: " + error_object.error);
-                        console.warn("Offending parameters:");
-                        console.warn(error_object.parameters);
+                    if (data.length > 0){
+                        var last_item = data[data.length - 1];
+                        while ( last_item.hasOwnProperty("error")){
+                            var error_object = data.pop();
+                            console.warn("API responded with the following error: " + error_object.error);
+                            console.warn("Offending parameters:");
+                            console.warn(error_object.parameters);
+                            if (data.length > 0) last_item = data[data.length - 1];
+                            else last_item = {};
+                        }
                     }
                     self.elements(data);
                 }
