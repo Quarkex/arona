@@ -233,7 +233,7 @@ function ResourcePaginator(language, $resource){
     this.filter = function(f, v){
         if (f === undefined) return null;
         if (v !== undefined){
-            if (self.values.filters[f] != v){
+            if (!angular.equals(self.values.filters[f], v)){
                 var o = {};
                 o[f] = v;
                 self.set_values({"filters": o});
@@ -272,7 +272,7 @@ function ResourcePaginator(language, $resource){
         var values_changed = false;
         for (var k in new_values){
             if (new_values.hasOwnProperty(k)) {
-                if (self.values[k] != new_values[k]){
+                if (!angular.equals(self.values[k], new_values[k])){
                     values_changed = true;
                     // if it's a non-null object...
                     if (self.values[k] !== null && typeof self.values[k] === 'object'){
