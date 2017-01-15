@@ -225,6 +225,29 @@ function ResourcePaginator(language, $resource){
     };
     scope_interface.push("next_page");
 
+    this.filter = function(f, v){
+        if (f === undefined) return null;
+        if (v !== undefined){
+            if (self.values.filters[f] != v){
+                var o = {};
+                o[f] = v;
+                self.set_values({"filters": o});
+            }
+        }
+        if (self.values.filters[f] === undefined){
+            return null;
+        } else {
+            return self.values.filters[f];
+        }
+    };
+    scope_interface.push("filter");
+
+    this.filters = function(o){
+        if (o !== undefined) self.set_values({ "filters": o });
+        return self.values.filters;
+    };
+    scope_interface.push("filters");
+
     this.set_values = function( new_values ){
         var values_changed = false;
         for (var k in new_values){
