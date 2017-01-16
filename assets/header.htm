@@ -1,33 +1,35 @@
 <!-- <header ng-if="level() == 1" class="row text-center index-header" style="background-image: linear-gradient(to bottom, #0004, #fff0), url(/img/backgrounds/home/{{ randomInt(3) | pad: 2  }}.jpg);"> -->
 <header ng-if="level() == 1" class="row text-center index-header" style="background-image: url(/img/backgrounds/home/{{ randomInt(3) | pad: 2  }}.jpg);">
-    <a class="site-title" href="#/{{ lang() }}/">
-        <h6>{{ translate('general.titulo') }}</h6>
-    </a> <a href="#">
-        <h1>Playa de las Americas</h1>
-    </a> <br>
-    <a href="#">
-        <h1>Costa del Silencio</h1>
-    </a> <br>
-    <a href="#">
-        <h1>Playa de los Cristianos</h1>
-    </a>
-    <div class="row collapse">
-        <div class="medium-3 medium-offset-3 columns">
-            <div class="small-12 columns"> <a class="button opaque full-width" href="#/{{ lang() }}/vive_tu_estancia"> <span>{{ translate('pagina.titulo_disfruta_de_arona') }}</span> </a>
-            </div>
-        </div>
-        <div class="medium-3 columns">
-            <div class="small-12 columns"> <a class="button opaque full-width" href="#/{{ lang() }}/galeria/tour_virtual_360"> <span>{{ translate('pagina.titulo_tour_virtual_360') }}</span> </a>
-            </div>
-        </div>
-        <div class="small-1 columns end text-left">
-            <div class="small-12 columns"> <a class="button" href="#/{{ lang() }}/galeria"> <i class="material-icons" style="font-size: 100%;padding: 0;">camera_alt</i> </a>
-            </div>
-        </div>
-    </div>
-    <div class="row columns text-center"> <a href="#/{{ lang() }}/">
-            <img src="img/logo.svg">
+    <div class="inner-wrapper">
+        <a class="site-title" href="#/{{ lang() }}/">
+            <h6>{{ translate('general.titulo') }}</h6>
+        </a> <a href="#">
+            <h1>Playa de las Americas</h1>
+        </a> <br>
+        <a href="#">
+            <h1>Costa del Silencio</h1>
+        </a> <br>
+        <a href="#">
+            <h1>Playa de los Cristianos</h1>
         </a>
+        <div class="row collapse">
+            <div class="medium-3 medium-offset-3 columns">
+                <div class="small-12 columns"> <a class="button opaque full-width" href="#/{{ lang() }}/vive_tu_estancia"> <span>{{ translate('pagina.titulo_disfruta_de_arona') }}</span> </a>
+                </div>
+            </div>
+            <div class="medium-3 columns">
+                <div class="small-12 columns"> <a class="button opaque full-width" href="#/{{ lang() }}/galeria/tour_virtual_360"> <span>{{ translate('pagina.titulo_tour_virtual_360') }}</span> </a>
+                </div>
+            </div>
+            <div class="small-1 columns end text-left">
+                <div class="small-12 columns"> <a class="button" href="#/{{ lang() }}/galeria"> <i class="material-icons" style="font-size: 100%;padding: 0;">camera_alt</i> </a>
+                </div>
+            </div>
+        </div>
+        <div class="row columns text-center"> <a href="#/{{ lang() }}/">
+                <img src="img/logo.svg">
+            </a>
+        </div>
     </div>
 </header>
 <header ng-if="level() > 1" class="row section-header" style="background-image: url(/img/headers/pagina.{{ sections()[1] }}.png)">

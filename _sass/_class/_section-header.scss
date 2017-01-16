@@ -1,24 +1,30 @@
 .index-header {
-    padding-top: 5rem !important;
-    min-height: 35rem;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    padding-top: 0 !important;
+    &, & > .inner-wrapper {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 35rem;
+    }
     h1, h2 {
         color: white;
         text-shadow: 1px 1px 1px black;
     }
-    > div {
-        &:first-of-type {
-            padding-top: 5em;
+    .inner-wrapper{
+        padding-top: 5rem !important;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.0));
+        > div {
+            &:first-of-type {
+                padding-top: 5em;
+            }
+            &:last-child {
+                padding-top: 5em;
+                padding-bottom: 8em;
+            }
         }
-        &:last-child {
-            padding-top: 5em;
-            padding-bottom: 8em;
+        a{
+            color: $main_color_contrast;
         }
-    }
-    a{
-        color: $main_color_contrast;
     }
 }
 .section-header {
