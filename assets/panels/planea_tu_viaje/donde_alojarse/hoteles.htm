@@ -1,5 +1,5 @@
 <div ng-include="'assets/tab-bar.htm'"></div>
-<form data-form="hotel_browser" method="GET" ng-controller="hotelsCtrl">
+<div ng-controller="hotelsCtrl">
     <div class="row">
         <div class="small-6 columns">
             <h2>{{ string_interpolate( translate('general.', 'numero_de_contenidos'), size(), current_section(), largest_size()) }}</h2>
@@ -30,10 +30,9 @@
     </div>
     <div class="row">
         <div class="small-12 columns">
-            <div class="button-group centered toggle" data-toggle="buttons-radio">
-                <a ng-repeat="(value, label) in { '2-estrellas': '2 estrellas', '3-estrellas': '3 estrellas', '4-estrellas': '4 estrellas', '5-estrellas': '5 estrellas' }">
-                    <input id="toggler-hoteles-estrellas-group{{ $index + 1 }}" name="hoteles-estrellas" data-toggle="button" value="{{ value }}" type="radio">
-                    <label class="button" for="toggler-hoteles-estrellas-group{{ $index + 1 }}">{{ label }}</label>
+            <div class="button-group centered toggle">
+                <a class="button" ng-click="toggle_filter('INDICADORES.categoria.contents.label', value)" ng-repeat="(value, label) in { '2_estrellas': '2 estrellas', '3_estrellas': '3 estrellas', '4_estrellas': '4 estrellas', '5_estrellas': '5 estrellas' }">
+                    {{ label }}
                 </a>
             </div>
         </div>
@@ -109,4 +108,4 @@
             <p class="panel last-modified">{{ string_interpolate(translate('general.', 'ultima_modificacion'), last_modified()) }}</p>
         </div>
     </div>
-</form>
+</div>

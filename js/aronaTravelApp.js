@@ -138,6 +138,8 @@ function ResourcePaginator(language, $resource){
                         while ( last_item.hasOwnProperty("error")){
                             var error_object = data.pop();
                             console.warn("API responded with the following error: " + error_object.error);
+                            console.warn("Backtrace:");
+                            console.warn(error_object.backtrace);
                             console.warn("Offending parameters:");
                             console.warn(error_object.parameters);
                             if (data.length > 0) last_item = data[data.length - 1];
@@ -236,7 +238,7 @@ function ResourcePaginator(language, $resource){
             if (!angular.equals(self.values.filters[f], v)){
                 var o = {};
                 o[f] = v;
-                self.set_values({"filters": o});
+                self.set_values({"offset": 0, "filters": o});
             }
         }
         if (self.values.filters[f] === undefined){
@@ -248,7 +250,9 @@ function ResourcePaginator(language, $resource){
     scope_interface.push("filter");
 
     this.filters = function(o){
-        if (o !== undefined) self.set_values({ "filters": o });
+        if (o !== undefined){
+            self.set_values({ "offset": 0, "filters": o });
+        }
         return self.values.filters;
     };
     scope_interface.push("filters");
@@ -258,7 +262,7 @@ function ResourcePaginator(language, $resource){
         if (v !== undefined){
             var o = {};
             o[f] = (angular.equals(self.values.filters[f], v)) ? null : v;
-            self.set_values({"filters": o});
+            self.set_values({"offset": 0, "filters": o});
         }
         if (self.values.filters[f] === undefined){
             return null;
@@ -329,7 +333,7 @@ app.config(function($routeProvider) {
     .when("/:language/planea_tu_viaje/donde_alojarse/:type/:territorial", {
         templateUrl : '/assets/panels/planea_tu_viaje/donde_alojarse/view.htm',
         resolve:{ "check":isValidLang },
-        controller: "aronaTravelCtrl"
+        controller: "territorialCtrl"
     })
     .when("/:language/actividades/:activity", {
         templateUrl : '/assets/panels/actividades/view.htm',
@@ -366,10 +370,26 @@ app.controller("hotelsCtrl", function($rootScope, $scope, hotels) {
 
     hotels.set_values({
         "collection": "territoriales",
-        "filters": {"SUBTIPO": "Hoteles"},
-        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+        "filters": {"SUBTIPO_PRINCIPAL": "Hoteles"},
+        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
         "limit": 4
+    });
+});
+
+app.service('territorial', ["language", "$resource", ResourcePaginator]);
+app.controller("territorialCtrl", function($scope, $routeParams, territorial) {
+
+    territorial.expose_interface($scope);
+
+    $scope.element = function(){return territorial.elements()[0]};
+
+    territorial.set_values({
+        "collection": "territoriales",
+        "filters": {"CODCONTENIDO": parseInt($routeParams.territorial)},
+        "values": ["MAPA_IFRAME", "MAPA","CODCONTENIDO","TITULO","ZONA","TELEFONO","FAX","WEB_PROPIA","DIRECCION","EMAIL","INDICADORES", "IMAGEN"],
+        "offset": 0,
+        "limit": 1
     });
 });
 
@@ -514,24 +534,6 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
             collection: "actividades"
         }, function(data){
         page.panels["home"].elements = data;
-    });
-
-    var Territorial = $resource(
-            '/api/fetch.json',
-            {},
-            {
-                "get": { "method": "POST", "isArray": true }
-            }
-    );
-    Territorial.get({
-        language: $rootScope.lang() == undefined? 'en' : $rootScope.lang(),
-        limit: 1,
-        filters: {"CODCONTENIDO": $routeParams.territorial},
-        /*CODCONTENIDO│CODIDIOMA│CODSUBTIPOCONT│SUBTIPO│CODCATEGORIA│CATEGORIA│IMAGEN│WEB_PROPIA│DOCUMENTO│CODZONA│ZONA│F_INICIO_PUB│F_FIN_PUB│F_REVISION│F_BAJA│NOVEDAD│F_INICIO_NOV│F_FIN_NOV│CODPROPIETARIO│NOMBRE│TITULO│DESCRIPCION_COMUN│DATOS_INTERES│PALABRAS_CLAVE│CODLOCALIDAD│DESCRIPCION│TIPO_VIA│NOMBRE_VIA│NUMERO│BLOQUE│PORTAL│ESCALERA│PLANTA│PUERTA│LOCAL│CODIGO_POSTAL│TELEFONO│FAX│EMAIL│NOMBRE_SOCIAL│VACACIONES│CIERRE│HORARIO│ACCESOS│SERV_PRINCIPALES│PUBLICADO│REF_VPORTAL*/
-        values: ["MAPA_IFRAME", "MAPA","CODCONTENIDO","TITULO","ZONA","TELEFONO","FAX","WEB_PROPIA","DIRECCION","EMAIL","SERV_PRINCIPALES", "IMAGEN"],
-        collection: "territoriales"
-    }, function(data){
-        page.panels["territorial"] = data[0];
     });
 
     $rootScope.randomInt = function(i){

@@ -1,29 +1,28 @@
-<div class="row collapse expanded territorial-view">
-    <!-- <div class="row territorial-header" style="background-image: linear-gradient(to bottom, #000C, #fff0), url('http://www.arona.travel/portal/imagecache/ampliado/{{ page.panels['territorial'].IMAGEN }}');"> -->
-    <div class="row territorial-header" style="background-image: url('http://www.arona.travel/portal/imagecache/ampliado/{{ page.panels['territorial'].IMAGEN }}');">
+<div class="row collapse expanded territorial-view" ng-controller="territorialCtrl">
+    <div class="row territorial-header" style="background-image: url('http://www.arona.travel/portal/imagecache/ampliado/{{ element().IMAGEN }}');">
         <div class="inner-wrapper">
-            <h1>{{  page.panels['territorial'].TITULO }}</h1>
-            <h2>{{  page.panels['territorial'].ZONA }}</h2>
+            <h1>{{  element().TITULO }}</h1>
+            <h2>{{  element().ZONA }}</h2>
         </div>
     </div>
     <div class="row">
         <div class="medium-10 medium-offset-1 columns">
             <div class="medium-8 columns territorial-map">
-                <div class="flex-video"  ng-bind-html="page.panels['territorial'].MAPA_IFRAME | trust"></div>
+                <div class="flex-video"  ng-bind-html="element().MAPA_IFRAME | trust"></div>
             </div>
             <div class="medium-4 columns territorial-contact">
                 <div class="row collapse">
-                    <p>{{  page.panels['territorial'].DIRECCION }}</p>
+                    <p>{{  element().DIRECCION }}</p>
                 </div>
-                <div ng-if="page.panels['territorial'].TELEFONO != null" class="row collapse">
-                    <p>{{ translate("general.", 'telefono') }}: {{  page.panels['territorial'].TELEFONO }}</p>
+                <div ng-if="element().TELEFONO != null" class="row collapse">
+                    <p>{{ translate("general.", 'telefono') }}: {{  element().TELEFONO }}</p>
                 </div>
-                <div ng-if="page.panels['territorial'].FAX != null" class="row collapse">
-                    <p>{{ translate("general.", 'fax') }}: {{  page.panels['territorial'].FAX }}</p>
+                <div ng-if="element().FAX != null" class="row collapse">
+                    <p>{{ translate("general.", 'fax') }}: {{  element().FAX }}</p>
                 </div>
                 <div class="row collapse">
-                    <a href="mailto:{{  page.panels['territorial'].EMAIL }}" class="button">{{ translate("general.", 'email') }}</a>
-                    <a href="{{  page.panels['territorial'].WEB_PROPIA }}" class="button">{{ translate("general.", 'website') }}</a>
+                    <a href="mailto:{{  element().EMAIL }}" class="button">{{ translate("general.", 'email') }}</a>
+                    <a href="{{  element().WEB_PROPIA }}" class="button">{{ translate("general.", 'website') }}</a>
                 </div>
             </div>
         </div>
@@ -45,36 +44,36 @@
             <div class="row medium-up-3">
                 <div class="column">
                     <h3>Categoría</h3>
-                    <ul><li>{{  page.panels['territorial'].SERV_PRINCIPALES.category }}</li></ul>
+                    <ul><li>{{  element().INDICADORES.category }}</li></ul>
                 </div>
                 <div class="column">
                     <h3>Instalaciones</h3>
                     <ul>
-                        <li ng-repeat="item in page.panels['territorial'].SERV_PRINCIPALES.facilities">{{ item }}</li>
+                        <li ng-repeat="item in element().INDICADORES.facilities">{{ item }}</li>
                     </ul>
                 </div>
                 <div class="column">
                     <h3>Servicios</h3>
                     <ul>
-                        <li ng-repeat="item in page.panels['territorial'].SERV_PRINCIPALES.services">{{ item }}</li>
+                        <li ng-repeat="item in element().INDICADORES.services">{{ item }}</li>
                     </ul>
                 </div>
                 <div class="column">
                     <h3>Accesibilidad</h3>
                     <ul>
-                        <li ng-repeat="item in page.panels['territorial'].SERV_PRINCIPALES.accesibility">{{ item }}</li>
+                        <li ng-repeat="item in element().INDICADORES.accesibility">{{ item }}</li>
                     </ul>
                 </div>
                 <div class="column">
                     <h3>Instalaciones Deportivas</h3>
                     <ul>
-                        <li ng-repeat="item in page.panels['territorial'].SERV_PRINCIPALES.sports">{{ item }}</li>
+                        <li ng-repeat="item in element().INDICADORES.sports">{{ item }}</li>
                     </ul>
                 </div>
                 <div class="column">
                     <h3>Servicios en habitación</h3>
                     <ul>
-                        <li ng-repeat="item in page.panels['territorial'].SERV_PRINCIPALES.room_services">{{ item }}</li>
+                        <li ng-repeat="item in element().INDICADORES.room_services">{{ item }}</li>
                     </ul>
                 </div>
             </div>
