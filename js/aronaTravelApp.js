@@ -393,6 +393,20 @@ app.controller("territorialCtrl", function($scope, $routeParams, territorial) {
     });
 });
 
+app.service('panflets', ["language", "$resource", ResourcePaginator]);
+app.controller("panfletsCtrl", function($rootScope, $scope, panflets) {
+
+    panflets.expose_interface($scope);
+
+    panflets.set_values({
+        "collection": "documentales",
+        "filters": {"SUBTIPO": "Folletos / Trípticos"},
+        "values": ["CODCONTENIDO", "DESCRIPCION_COMUN", "DOCUMENTO", "IMAGEN", "PALABRAS_CLAVE", "TITULO"],
+        "offset": 0,
+        "limit": 8
+    });
+});
+
 app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, $resource, page, language ) {
 
     $rootScope.page = page;
