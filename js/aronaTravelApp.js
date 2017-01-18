@@ -58,30 +58,120 @@
  *   E.G: {{ breadcrumbs }} => [{"label":"home", "href":"#/"},{"label":"angular", "href":"#/angular"}]
  */
 
-var app = angular.module("aronaTravelApp", ["ngRoute","ngResource","mm.foundation"]);
+var app = angular.module("aronaTravelApp", ["ngRoute","ngResource","mm.foundation", "tmh.dynamicLocale"]);
 
 app.value('page', {
     'title': "Arona.travel",
-    'dictionary':{},
     'panels':{}
 });
 
-app.service('language', ["$location", "$window", function($location, $window){
+function Languaje($location, $window, $resource, tmhDynamicLocale){
 
-    this.current = function() { return $location.path().split('/')[1]; }
+    var self = this;
+    var scope_interface = [];
 
-
-    this.available_languages = ['de', 'en', 'es', 'fi', 'fr', 'it', 'nl', 'ru', 'sv'];
-
-    this.isValid = function(l){
-        return this.available_languages.includes(l) ? true : false ;
+    this.variables = {
+        'dictionary': {},
+        'available_languages': ['de', 'en', 'es', 'fi', 'fr', 'it', 'nl', 'ru', 'sv'],
+        // parameterized URL template with parameters prefixed by : as in /user/:username
+        'url': '/locales/:language.json',
+        // default values for url parameters
+        'parameters': {},
+        // hash with declaration of custom actions
+        'actions': {
+            "get": {
+                "method": "POST"
+            }
+        },
+        // hash with custom settings
+        'settings': {}
     };
 
-    this.window_lang = $window.navigator.language;
+    this.dictionary = function(o){
+        if (o !== undefined){
+            for (var k in o){
+                if (o.hasOwnProperty(k)) {
+                    self.variables.dictionary[k] = o[k];
+                }
+            }
+        }
+        return self.variables.dictionary;
+    };
+    scope_interface.push("dictionary");
 
-    this.default = this.isValid(this.window_lang.split('-')[0]) ? this.window_lang.split('-')[0] : 'en';
+    this.current = function(l) {
+        if (l !== undefined){
+            var current_location = $location.path().split('/');
+            if (! self.isValid(l)) l = self.default();
+            if (current_location[1] != l){
+                tmhDynamicLocale.set(l);
+                current_location[1] = l;
+                current_location = current_location.join('/');
+                $location.path( current_location );
+                self.get();
+            }
+        }
+        return $location.path().split('/')[1];
+    }
+    scope_interface.push("current");
+    self.variables.parameters["language"] = self.current;
 
-}]);
+    this.available_languages = function(a){
+        if (a !== undefined) if (Array.isArray(a)) self.variables.available_languages = a;
+        return self.variables.available_languages;
+    };
+    scope_interface.push("available_languages");
+
+    this.isValid = function(l){
+        return this.available_languages().includes(l) ? true : false ;
+    };
+
+    this.window_lang = function(){
+        return $window.navigator.language;
+    };
+
+    this.default = function(){
+        return this.isValid(self.window_lang().split('-')[0]) ? self.window_lang().split('-')[0] : 'en';
+    };
+    scope_interface.push("default");
+
+    this.translate = function(stringA, stringB ) {
+        // this is to respect the less surprise directive. Prefixes should precede the target string
+        var string = stringB == undefined ? stringA : stringB;
+        var prefix = stringB == undefined ? null : stringA;
+
+        if ( self.dictionary().hasOwnProperty( prefix == null? string : prefix + string ) ){
+            string = self.dictionary()[prefix == null ? string : prefix + string];
+        }
+        return string;
+    };
+    scope_interface.push("translate");
+
+    // hash as seen by the final cgi
+    this.values = {
+        language: self.current
+    };
+    this.resource = $resource( self.variables.url, self.variables.parameters, self.variables.actions, self.variables.settings );
+
+    this.get = function(){
+        self.resource.get( self.values, function(data){
+            if (data != null){
+                for (var k in data){
+                    if (data.hasOwnProperty(k)) {
+                        self.variables.dictionary[k] = data[k];
+                    }
+                }
+            }
+        });
+    };
+
+    this.expose_interface = function(scope){
+        for ( var i = 0; i < scope_interface.length; i++ ){
+            scope[scope_interface[i]] = self[scope_interface[i]];
+        }
+    }
+}
+app.service('language', ["$location", "$window", "$resource", "tmhDynamicLocale", Languaje]);
 
 function ResourcePaginator(language, $resource){
 
@@ -351,8 +441,7 @@ function ResourcePaginator(language, $resource){
 
 app.config(function($routeProvider) {
     var isValidLang = function($location, language){
-        var current_lang = $location.path().split('/')[1];
-        if ( ! language.isValid(current_lang) ) $location.path('/' + language.default );
+        language.current($location.path().split('/')[1]);
     };
 
     $routeProvider
@@ -483,45 +572,12 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
 
     $rootScope.page = page;
 
-    $rootScope.lang = function (){ return language.current(); };
-
-    $rootScope.available_languages = function (){ return language.available_languages; };
+    language.expose_interface($rootScope);
+    $rootScope.lang = language.current;
 
     $rootScope.params = $routeParams;
 
     $rootScope.location = $location;
-
-
-    var Lang = $resource(
-
-            // Url targeting the resource
-            '/locales/:language.json',
-
-            // Default values for url parameters. These can be overridden in actions methods.
-            // If a parameter value is a function, it will be called every time a param value
-            // needs to be obtained for a request (unless the param was overridden).
-            // The function will be passed the current data value as an argument.
-            //
-            //  Given a template /path/:verb and parameter {verb:'greet', salutation:'Hello'}
-            //  results in URL /path/greet?salutation=Hello.
-            //
-            //  If the parameter value is prefixed with @, then the value for that parameter
-            //  will be extracted from the corresponding property on the data object (provided
-            // when calling a "non-GET" action method). For example, if the defaultParam object is
-            // {someParam: '@someProp'} then the value of someParam will be data.someProp. Note
-            // that the parameter will be ignored, when calling a "GET" action method (i.e. an
-            // action method that does not accept a request body)
-            {
-                language: $rootScope.lang() == undefined? 'en' : $rootScope.lang()
-            }
-    );
-    Lang.get(function(data){
-        for (var k in data){
-            if (data.hasOwnProperty(k)) {
-                page.dictionary[k] = data[k];
-            }
-        }
-    });
 
     $rootScope.path = function (){ return $location.path(); };
     $rootScope.level = function (){ return $location.path().substring(1).split('/').length; };
@@ -564,16 +620,8 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
         return sublinks;
     };
 
-    $rootScope.translate = function(stringA, stringB ) {
-        // this is to respect the less surprise directive. Prefixes should precede the target string
-        var string = stringB == undefined ? stringA : stringB;
-        var prefix = stringB == undefined ? null : stringA;
-
-        if ( page.dictionary.hasOwnProperty( prefix == null? string : prefix + string ) ){
-            string = page.dictionary[prefix == null ? string : prefix + string];
-        }
-        return string;
-    };
+    language.get();
+    $rootScope.translate = language.translate;
 
     $rootScope.string_interpolate = function() {
         var args = Array.from(arguments);
