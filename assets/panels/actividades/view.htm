@@ -10,13 +10,13 @@
             <div class="medium-9 columns">
                 <p class="post-meta">
                 <time datetime="{{ element().F_INICIO_PUB }}">{{ element().F_INICIO_PUB | date: 'EEE dd, MMM yyyy'}}</time>
-                <span> - </span>
-                <time datetime="{{ element().F_FIN_PUB }}">{{ element().F_FIN_PUB | date: 'EEE dd, MMM yyyy'}}</time>
+                <span ng-if="element().F_FIN_PUB != null"> - </span>
+                <time ng-if="element().F_FIN_PUB != null" datetime="{{ element().F_FIN_PUB }}">{{ element().F_FIN_PUB | date: 'EEE dd, MMM yyyy'}}</time>
                 </p>
                 <p class="post-meta" style="font-weight: bold;">
                 <time datetime="{{ element().F_INICIO_PUB }}">{{ element().F_INICIO_PUB | date: 'hh:mm'}} h</time>
-                <span> - </span>
-                <time datetime="{{ element().F_FIN_PUB }}">{{ element().F_FIN_PUB | date: 'hh:mm'}} h</time>
+                <span ng-if="element().F_FIN_PUB != null"> - </span>
+                <time ng-if="element().F_FIN_PUB != null" datetime="{{ element().F_FIN_PUB }}">{{ element().F_FIN_PUB | date: 'hh:mm'}} h</time>
                 </p>
             </div>
         </div>
