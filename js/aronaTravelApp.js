@@ -199,6 +199,48 @@ function ResourcePaginator(language, $resource){
     };
     scope_interface.push("pages");
 
+    this.paginator_pages = function(p){
+        if (p == undefined) p = 6;
+        var output = [];
+        var pages = self.pages();
+        var current_page = self.page();
+        var last_page = pages.length;
+        for (var i=0; i < pages.length; i++){
+            var page = i + 1;
+
+            var lower_limit = Math.floor( p / 2 );
+            var upper_limit = last_page - Math.floor( p / 2 );
+
+            var is_first_page = (page == 1);
+            var is_second_page = (page == 2);
+            var is_last_page = (page == last_page);
+            var is_second_to_last_page = (page == last_page - 1);
+
+            if ( is_second_page && current_page > lower_limit ) p--;
+            if ( is_second_to_last_page && current_page < upper_limit ) p--;
+
+            var lower_offset = current_page - lower_limit;
+            var upper_offset = current_page + lower_limit;
+            if (lower_offset < 0) upper_offset += Math.abs(lower_offset);
+            // TODO: modify offset for end pages too
+
+            switch (true){
+                case (is_first_page || is_last_page):
+                    output.push(pages[i]);
+                    break;
+                case ( (is_second_page && current_page > lower_limit ) || ( is_second_to_last_page && current_page < upper_limit ) ):
+                    output.push({"number": "...", "disabled": true});
+                    break;
+                case ((page <= lower_offset) || (page >= upper_offset)):
+                    break;
+                default:
+                    output.push(pages[i]);
+            }
+        }
+        return output;
+    };
+    scope_interface.push("paginator_pages");
+
     this.page = function(p){
         if (p != undefined){
             var target = ( (p - 1) * self.page_size() );
@@ -404,6 +446,20 @@ app.controller("panfletsCtrl", function($rootScope, $scope, panflets) {
         "values": ["CODCONTENIDO", "DESCRIPCION_COMUN", "DOCUMENTO", "IMAGEN", "PALABRAS_CLAVE", "TITULO"],
         "offset": 0,
         "limit": 8
+    });
+});
+
+app.service('activities', ["language", "$resource", ResourcePaginator]);
+app.controller("activitiesCtrl", function($rootScope, $scope, activities) {
+
+    activities.expose_interface($scope);
+
+    activities.set_values({
+        "collection": "actividades",
+        "filters": {},
+        "values": ['TITULO', 'F_INICIO_PUB', 'CODCONTENIDO', 'IMAGEN'],
+        "offset": 0,
+        "limit": 6
     });
 });
 
