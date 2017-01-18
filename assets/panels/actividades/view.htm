@@ -22,6 +22,6 @@
         </div>
     </header>
     <div class="row columns" ig-if="element()['DESCRIPCION_COMUN'] != null">
-        <div class="small-10 small-offset-1 columns end post-content" ng-bind-html="{{ element()['DESCRIPCION_COMUN'] }}"></div>
+        <div class="small-10 small-offset-1 columns end post-content" ng-bind-html="element()['DESCRIPCION_COMUN'] | trust"></div>
     </div>
 </article>
