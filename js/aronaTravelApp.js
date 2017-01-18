@@ -380,7 +380,7 @@ app.config(function($routeProvider) {
     .when("/:language/actividades/:activity", {
         templateUrl : '/assets/panels/actividades/view.htm',
         resolve:{ "check":isValidLang },
-        controller: "aronaTravelCtrl"
+        controller: "activityCtrl"
     })
     .when("/:language/eventos/:event", {
         templateUrl : '/assets/panels/eventos/view.htm',
@@ -460,6 +460,22 @@ app.controller("activitiesCtrl", function($rootScope, $scope, activities) {
         "values": ['TITULO', 'F_INICIO_PUB', 'CODCONTENIDO', 'IMAGEN'],
         "offset": 0,
         "limit": 6
+    });
+});
+
+app.service('activity', ["language", "$resource", ResourcePaginator]);
+app.controller("activityCtrl", function($routeParams, $scope, activity) {
+
+    activity.expose_interface($scope);
+
+    $scope.element = function(){return activity.elements()[0]};
+
+    activity.set_values({
+        "collection": "actividades",
+        "filters": {"CODCONTENIDO": parseInt($routeParams.activity)},
+        "values": ['TITULO', 'F_INICIO_PUB', 'F_FIN_PUB', 'IMAGEN', 'DESCRIPCION_COMUN'],
+        "offset": 0,
+        "limit": 1
     });
 });
 

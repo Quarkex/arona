@@ -1,38 +1,27 @@
-<article class="row columns">
+<article class="row columns" ng-controller="activityCtrl">
     <header class="row columns">
         <div class="small-10 small-offset-1 columns post-title">
-            <h2>Canarias Folk Fest Arona 2012</h2>
+            <h2>{{  element().TITULO }}</h2>
         </div>
         <div class="small-10 small-offset-1 columns end post-header">
             <div class="medium-3 columns">
-                <img src="/img/db/47233.png">
+                <img src="http://www.arona.travel/portal/imagecache/ampliado/{{ element().IMAGEN }}">
             </div>
             <div class="medium-9 columns">
                 <p class="post-meta">
-                <time datetime="2012-10-25T20:30:00+00:00">Oct 25, Thu 2012</time>
+                <time datetime="{{ element().F_INICIO_PUB }}">{{ element().F_INICIO_PUB | date: 'EEE dd, MMM yyyy'}}</time>
                 <span> - </span>
-                <time datetime="2013-03-22T00:00:00+00:00">Mar 22, Fri 2013</time>
+                <time datetime="{{ element().F_FIN_PUB }}">{{ element().F_FIN_PUB | date: 'EEE dd, MMM yyyy'}}</time>
                 </p>
                 <p class="post-meta" style="font-weight: bold;">
-                <time datetime="2012-10-25T20:30:00+00:00">20:30 h</time>
+                <time datetime="{{ element().F_INICIO_PUB }}">{{ element().F_INICIO_PUB | date: 'hh:mm'}} h</time>
                 <span> - </span>
-                <time datetime="2013-03-22T00:00:00+00:00">00:00 h</time>
+                <time datetime="{{ element().F_FIN_PUB }}">{{ element().F_FIN_PUB | date: 'hh:mm'}} h</time>
                 </p>
             </div>
         </div>
     </header>
-    <div class="row columns">
-        <div class="small-10 small-offset-1 columns end post-content">
-            <p>These new series of folk performances starting October, 25<sup>th</sup> will continue up to March, 22<sup>nd</sup>, 2013.&nbsp;</p>
-            <h2>Weekly Schedule:</h2>
-            <div>
-                <ul>
-                    <li>Thursday, 20:30 h - Folk group performance by Playa de Los Cristianos promenade (next to La Pescadora square).</li>
-                    <li>Friday, 20:30 h - Folk group will perfom in Playa de Las Américas, at the City Center square.</li>
-                </ul>
-            </div>
-            <p>During the festival you will find a wide range of local typical products sampling which you also may buy if you wish so.</p>
-            <p>Don't miss a great chance to get closer to our deep-rooted traditions.</p>
-        </div>
+    <div class="row columns" ig-if="element()['DESCRIPCION_COMUN'] != null">
+        <div class="small-10 small-offset-1 columns end post-content" ng-bind-html="{{ element()['DESCRIPCION_COMUN'] }}"></div>
     </div>
 </article>
