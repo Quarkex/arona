@@ -130,6 +130,9 @@ begin
                             item[value] = resource == nil ? nil : resource["RECURSO"]
                         end
 
+                    when "F_FIN_PUB"
+                        item[value] = document[value] if document[value] != "9999-99-99T99:99:99Z"
+
                     else
                         item[value] = document[value] if document.has_key? value
 
