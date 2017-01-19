@@ -104,7 +104,6 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
             var current_location = $location.path().split('/');
             if (! self.isValid(l)) l = self.default();
             if (current_location[1] != l){
-                tmhDynamicLocale.set(l);
                 current_location[1] = l;
                 current_location = current_location.join('/');
                 $location.path( current_location );
@@ -131,7 +130,9 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
     };
 
     this.default = function(){
-        return this.isValid(self.window_lang().split('-')[0]) ? self.window_lang().split('-')[0] : 'en';
+        var output = this.isValid(self.window_lang().split('-')[0]) ? self.window_lang().split('-')[0] : 'en';
+        tmhDynamicLocaleProvider.defaultLocale(output);
+        return output;
     };
     scope_interface.push("default");
 
@@ -161,6 +162,7 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
                         self.variables.dictionary[k] = data[k];
                     }
                 }
+                tmhDynamicLocale.set(self.current());
             }
         });
     };
@@ -439,10 +441,12 @@ function ResourcePaginator(language, $resource){
 
 }
 
-app.config(function($routeProvider) {
+app.config(function($routeProvider, tmhDynamicLocaleProvider) {
     var isValidLang = function($location, language){
         language.current($location.path().split('/')[1]);
     };
+
+    tmhDynamicLocaleProvider.localeLocationPattern('/js/angularjs/i18n/angular-locale_{{locale}}.js');
 
     $routeProvider
     .when("/:language", {
