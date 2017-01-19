@@ -99,10 +99,10 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
     };
     scope_interface.push("dictionary");
 
-    this.current = function(l) {
+    this.current_language = function(l) {
         if (l !== undefined){
             var current_location = $location.path().split('/');
-            if (! self.isValid(l)) l = self.default();
+            if (! self.isValid(l)) l = self.default_language();
             if (current_location[1] != l){
                 current_location[1] = l;
                 current_location = current_location.join('/');
@@ -112,8 +112,8 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
         }
         return $location.path().split('/')[1];
     }
-    scope_interface.push("current");
-    self.variables.parameters["language"] = self.current;
+    scope_interface.push("current_language");
+    self.variables.parameters["language"] = self.current_language;
 
     this.available_languages = function(a){
         if (a !== undefined) if (Array.isArray(a)) self.variables.available_languages = a;
@@ -129,12 +129,12 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
         return $window.navigator.language;
     };
 
-    this.default = function(){
+    this.default_language = function(){
         var output = this.isValid(self.window_lang().split('-')[0]) ? self.window_lang().split('-')[0] : 'en';
         tmhDynamicLocaleProvider.defaultLocale(output);
         return output;
     };
-    scope_interface.push("default");
+    scope_interface.push("default_language");
 
     this.translate = function(stringA, stringB ) {
         // this is to respect the less surprise directive. Prefixes should precede the target string
@@ -150,7 +150,7 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
 
     // hash as seen by the final cgi
     this.values = {
-        language: self.current
+        language: self.current_language
     };
     this.resource = $resource( self.variables.url, self.variables.parameters, self.variables.actions, self.variables.settings );
 
@@ -162,7 +162,7 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
                         self.variables.dictionary[k] = data[k];
                     }
                 }
-                tmhDynamicLocale.set(self.current());
+                tmhDynamicLocale.set(self.current_language());
             }
         });
     };
@@ -203,7 +203,7 @@ function ResourcePaginator(language, $resource){
 
     // hash as seen by the final cgi
     this.values = {
-        language: language.current(),
+        language: language.current_language(),
         offset: 0,
         limit: 0,
         filters: {},
@@ -443,7 +443,7 @@ function ResourcePaginator(language, $resource){
 
 app.config(function($routeProvider, tmhDynamicLocaleProvider) {
     var isValidLang = function($location, language){
-        language.current($location.path().split('/')[1]);
+        language.current_language($location.path().split('/')[1]);
     };
 
     tmhDynamicLocaleProvider.localeLocationPattern('/js/angularjs/i18n/angular-locale_{{locale}}.js');
@@ -488,7 +488,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider) {
         controller: "aronaTravelCtrl"
     })
     .when("", {
-        redirectTo: function(language){ return "/" + language.default; }
+        redirectTo: function(language){ return "/" + language.default_language; }
     })
     .otherwise({
         resolve:{ "check":isValidLang },
@@ -577,7 +577,7 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
     $rootScope.page = page;
 
     language.expose_interface($rootScope);
-    $rootScope.lang = language.current;
+    $rootScope.lang = language.current_language;
 
     $rootScope.params = $routeParams;
 
