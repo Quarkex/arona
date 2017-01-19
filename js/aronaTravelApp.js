@@ -131,7 +131,6 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
 
     this.default_language = function(){
         var output = this.isValid(self.window_lang().split('-')[0]) ? self.window_lang().split('-')[0] : 'en';
-        tmhDynamicLocaleProvider.defaultLocale(output);
         return output;
     };
     scope_interface.push("default_language");
@@ -488,12 +487,14 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider) {
         controller: "aronaTravelCtrl"
     })
     .when("", {
+        // FIXME: this is not triggering when it should
         redirectTo: function(language){ return "/" + language.default_language; }
     })
     .otherwise({
+        // TODO: this should redirect to a 404 page
         resolve:{ "check":isValidLang },
         redirectTo: function(urlattr){
-            return '/' + urlattr.language + '/404';
+            return '/' + urlattr.language + '/';
         }
     });
 });
