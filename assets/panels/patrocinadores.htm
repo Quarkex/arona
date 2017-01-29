@@ -1,5 +1,5 @@
 <div class="small-12 colums">
-    <div class="page" ng-controller="patreonsCtrl">
+    <div class="page patreons" ng-controller="patreonsCtrl">
         <div class="small-12 columns"><h1 class="page-title">Patrocinadores</h1></div>
         <div class="small-12 columns" ng-if="type != 'undefined'" ng-repeat="(type, patreons) in elements() | groupBy: 'type'">
             <div class="column row">

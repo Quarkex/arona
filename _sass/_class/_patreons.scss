@@ -1,4 +1,12 @@
 .patreons {
+    &.page{
+        .row.small-up-1{
+            background-color: white;
+            -moz-box-shadow: 0 0 5px 2px white;
+            -webkit-box-shadow: 0 5px 2px white;
+            box-shadow: 0 0 5px 2px white;
+        }
+    }
     > div {
         > div {
             padding: 1em;
