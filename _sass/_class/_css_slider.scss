@@ -1,0 +1,42 @@
+
+/*keyframe animations*/
+.sliding-banner {
+    white-space: nowrap;
+    text-align: left;
+    overflow-x: hidden;
+    > * {
+        display: inline-block;
+        float: none !important;
+    }
+    > *:first-child {
+        -webkit-animation: bannermove $speed linear infinite;
+        -moz-animation:    bannermove $speed linear infinite;
+        -ms-animation:     bannermove $speed linear infinite;
+        -o-animation:      bannermove $speed linear infinite;
+        animation:         bannermove $speed linear infinite;
+    }
+}
+@keyframes bannermove {
+    0% { margin-left: $start_offset; }
+    100% { margin-left: $end_offset; }
+}
+
+@-moz-keyframes bannermove {
+    0% { margin-left: $start_offset; }
+    100% { margin-left: $end_offset; }
+}
+
+@-webkit-keyframes bannermove {
+    0% { margin-left: $start_offset; }
+    100% { margin-left: $end_offset; }
+}
+
+@-ms-keyframes bannermove {
+    0% { margin-left: $start_offset; }
+    100% { margin-left: $end_offset; }
+}
+
+@-o-keyframes bannermove {
+    0% { margin-left: $start_offset; }
+    100% { margin-left: $end_offset; }
+}

@@ -35,7 +35,7 @@ require 'mongo'
 
 Mongo::Logger.logger.level = ::Logger::FATAL
 
-client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'arona')
+client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'cbcanarias')
 db = client.database
 
 cgi = CGI.new
@@ -57,7 +57,7 @@ begin
         if parameters.has_key? 'limit'    then limit   = parameters['limit']    else limit   = 4     end
         if parameters.has_key? 'stats'    then stats   = parameters['stats']    else stats   = false end
 
-        filters["IDIOMA"] = lang
+        filters["IDIOMA"] = lang if lang != ''
 
         doc = collection.find( filters )
         sts["size"] = doc.count()
@@ -75,6 +75,17 @@ begin
                     item[value] = nil
                     case value
 
+                    when "figure"
+                        figure = ""
+                        if document.has_key? "video" then
+                            figure = document["video"]
+                            figure = '<iframe src="' + figure + '" allowfullscreen="" width="300" height="230" frameborder="0"></iframe>'
+                            else
+                            figure = '<div style="width: 100%;" id="featured-2-image"><img src="img/default_horizontal.png" style="width: 100%;"></div>'
+                        end
+                        figure = '<div class="flex-video">' + figure + '</div>'
+
+                        item[value] = figure
                     when "MAPA"
                         address = ""
                         chunks = [ "TIPO_VIA", "NOMBRE_VIA", "NUMERO", "BLOQUE", "PORTAL", "ESCALERA", "PLANTA", "PUERTA", "LOCAL", "CODIGO_POSTAL", "ZONA" ]

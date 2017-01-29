@@ -1,0 +1,11 @@
+<h2>Destacados</h2>
+<div ng-controller="featuredCtrl">
+    <slick adaptiveHeight="true" infinite="true" dots="false" arrows="false" data="elements()" init-onload="true" autoplay="true">
+        <div class="orbit-slider" ng-repeat="item in elements()">
+            <div ng-bind-html="item.figure | trust"></div>
+            <figcaption class="orbit-caption">
+                <span>{{ item.title }}<br><a href="#/{{ lang() }}/noticias/{{ item.id }}">Leer más…</a></span>
+            </figcaption>
+        </div>
+    </slick>
+</div>

@@ -1,0 +1,8 @@
+<div class="small-12 colums" ng-repeat="article in elements()" ng-controller="articleCtrl">
+    <div class="post small-12 columns text-justify">
+        <div class="small-12 columns"><h1 class="post-title" ng-bind="article.title"></h1></div>
+        <span class="post-date" ng-bind="article.date | date : translate('date.schema')"></span>
+        <div class="post-content" ng-bind-html="article.content | trust"></div>
+    </div>
+</div>
+

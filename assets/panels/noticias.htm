@@ -1,0 +1,39 @@
+<div class="small-12 colums" ng-controller="articlesCtrl">
+    <div class="paginator row">
+        <div class="small-12 columns">
+            <div class="row" ng-repeat="article in elements()">
+                <article>
+                    <div class="medium-4 columns">
+                        <figure ng-bind-html="article.figure | trust"></figure>
+                    </div>
+                    <div class="medium-8 columns">
+                        <header>
+                            <h4><a href="#/{{ lang() }}/noticias/{{ article.id }}">{{ article.title }}</a></h4>
+                        </header>
+                        <small><date>{{ article.date | date : translate('date.schema') }}</date></small>
+                        <span class="article-content" ng-bind-html="article.excerpt | trust"></span>
+                        <footer>
+                            <a href="#/{{ lang() }}/noticias/{{ article.id }}">Leer más</a><br>
+                        </footer>
+                    </div>
+                </article>
+            </div>
+            <div class="row">
+                <div class="small-12 columns">
+                    <ul class="pagination" role="navigation" aria-label="Pagination">
+                        <li class="pagination-previous" ng-click="previous_page();">
+                            <a aria-label="Previous page"></a>
+                        </li>
+                        <li ng-repeat="p in paginator_pages(8)" class="{{ p.current ? 'current': '' }}" >
+                            <a ng-if="! p.current" ng-click="page(p.number);">{{ p.number }}</a>
+                            <span ng-if="p.current"><span class="show-for-sr">You're on page</span> {{ p.number }}</span>
+                        </li>
+                        <li class="pagination-next" ng-click="next_page();">
+                            <a aria-label="Next page"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

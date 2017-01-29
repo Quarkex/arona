@@ -1,0 +1,30 @@
+.menu-wrapper {
+    > div{
+        &:first-child {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+    .title-bar{
+        background-color: $content_background_color;
+        color: $main_color;
+        .menu-icon{
+            &:after {
+                background-color: $main_color;
+                box-shadow: 0 7px 0 $main_color, 0 14px 0 $main_color;
+            }
+            &:hover{
+                &:after {
+                    background-color: $main_color_contrast;
+                    box-shadow: 0 7px 0 $main_color_contrast, 0 14px 0 $main_color_contrast;
+                }
+            }
+        }
+    }
+    .main-menu {
+        background-color: $content_background_color;
+        ul {
+            background-color: transparent;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 <div class="off-canvas position-left">
-    <ul class="mobile-ofc vertical menu">
-        <li ng-repeat="(label, link) in nav">
+    <ul class="mobile-ofc vertical menu" ng-controller="navigationCtrl">
+        <li ng-if="label != '_id'" ng-repeat="(label, link) in elements()[0]">
             <a href="#/{{lang()}}{{link.href}}">{{ translate("pagina.titulo_", label) }}</a>
             <ul class="submenu menu vertical nested" ng-if="link.content != undefined">
                 <li ng-repeat="(sublabel, sublink) in link.content">

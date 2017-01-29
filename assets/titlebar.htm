@@ -1,12 +1,30 @@
-<div class="title-bar" ng-class="{'sub-level': level() > 1 }">
+<div class="title-bar row" ng-class="{'sub-level': level() > 1 }" ng-controller="navigationCtrl">
     <div class="title-bar-left">
-        <div class="small-12 columns">
+        <div class="small-12 columns hide-for-large">
             <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
             <span class="title-bar-title">{{ translate('general.', 'menu') }}</span>
         </div>
+        <ul class="menu show-for-large">
+            <li ng-if="link.position != 'right' && label != '_id'" ng-repeat="(label, link) in elements()[0]">
+                <a href="#/{{lang()}}{{link.href}}">{{ translate("pagina.titulo_", label) }}</a>
+                <ul class="submenu menu vertical nested" ng-if="link.content != undefined">
+                    <li ng-repeat="(sublabel, sublink) in link.content">
+                        <a href="#/{{lang()}}{{sublink.href}}">{{ translate("pagina.titulo_", sublabel) }}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
     <div class="title-bar-right">
-        <div class="small-3 columns"><a href="#/{{ lang() }}/planea_tu_viaje/destino_accesible"><div class="icon-wrapper"><i class="material-icons">accessible</i></div></a></div>
-        <div class="small-9 columns" ng-include="'assets/language_selector.htm'"></div>
+        <ul class="menu show-for-large">
+            <li ng-if="link.position == 'right' && label != '_id'" ng-repeat="(label, link) in elements()[0]">
+                <a href="#/{{lang()}}{{link.href}}">{{ translate("pagina.titulo_", label) }}</a>
+                <ul class="submenu menu vertical nested" ng-if="link.content != undefined">
+                    <li ng-repeat="(sublabel, sublink) in link.content">
+                        <a href="#/{{lang()}}{{sublink.href}}">{{ translate("pagina.titulo_", sublabel) }}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
 </div>

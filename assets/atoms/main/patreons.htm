@@ -1,0 +1,6 @@
+<div class="large-12 columns">
+    <h2>Patrocinadores</h2>
+    <div class="sliding-banner" ng-controller="patreonsScrollCtrl">
+        <img ng-repeat="patreon in elements()" src="/img/patreons/{{ patreon.name | slugify }}.png" alt="{{ patreon.name }}" ng-class="{'first': patreon == elements()[0]}">
+    </div>
+</div>

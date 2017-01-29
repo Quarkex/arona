@@ -1,22 +1,14 @@
 .panel {
-    > .row, > * > .row {
-        max-width: none;
-        &:not(.section-header){
-            padding-top: 2em;
-            padding-bottom: 2em;
-        }
-    }
-    h1, h2, h3 {
-        font-family: 'Roboto', sans-serif;
-        font-weight: 300;
-    }
-    h1 {
-        text-transform: uppercase;
-    }
-    h2, h3 {
-        display: inline-block;
-    }
-    h2 {
-        font-size: 2em;
+    background-color: $body_background_color;
+    background-image: $body_background_image;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    padding-top: 2em;
+    padding-bottom: 2em;
+
+    > *:not(:nth-child(1)) {
+        background-color: $content_background_color;
     }
 }

@@ -1,11 +1,11 @@
-<a ng-repeat="article in page.panels['home'].elements" href="#/{{ lang() }}/actividades/{{ article.CODCONTENIDO }}">
+<a ng-repeat="article in elements()" href="#/{{ lang() }}/actividades/{{ article.id }}" ng-controller="newsCtrl">
     <div class="medium-4 columns">
         <div class="row columns">
-            <div class="row columns"> <img src="http://www.arona.travel/portal/imagecache/ficha/{{ article.IMAGEN }}">
+            <div class="row columns"> <img src="http://www.arona.travel/portal/imagecache/ficha/{{ article.image }}">
             </div>
             <div class="row columns">
-                <div class="small-12 columns">{{ article.F_INICIO_PUB | date : translate('date.schema') }}</div>
-                <div class="small-12 columns">{{ article.TITULO }}</div>
+                <div class="small-12 columns">{{ article.date | date : translate('date.schema') }}</div>
+                <div class="small-12 columns">{{ article.title }}</div>
             </div>
         </div>
     </div>
