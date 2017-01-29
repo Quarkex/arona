@@ -238,7 +238,6 @@ function ResourcePaginator(language, $resource){
                         }
                     }
                     self.elements(data);
-                    console.log(data);
                 }
             }
         });
