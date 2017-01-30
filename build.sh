@@ -26,23 +26,23 @@ done
 sass --load-path _sass _sass/index.scss --style compressed > style.min.css;
 
 # grabs all files wich don't start with an underscore or in our blacklist
-for i in $(find . -type f | grep -v -e "/_" -e ".sass-cache" -e '.git' -e '.gitignore'); do
-    if [[ ${i##./} == ${0##./} ]]; then continue; fi
+find . -type f ! -path "*/_*" ! -name ".git" ! -name ".gitignore" ! -name ".sass-cache" | while IFS=: read i; do
+    if [[ "${i##./}" == "${0##./}" ]]; then continue; fi
     item="${i##./}";
-    if [[ ! ${item%/*} == ${i##*/} ]]; then
-        mkdir -p _site/${item%/*};
+    if [[ ! "${item%/*}" == "${i##*/}" ]]; then
+        mkdir -p _site/"${item%/*}";
     fi
-    mime="$(file --mime-type -b $item)";
-    case $mime in
+    mime="$(file --mime-type -b "$item")";
+    case "$mime" in
         "application/javascript")
-            if [[ ${item##*.min.} == "js" ]]; then
+            if [[ "${item##*.min.}" == "js" ]]; then
                 cp "$item" _site/"$item"
             else
                 uglifyjs "$item" -o _site/"$item" -c
             fi
             ;;
         "text/css")
-            if [[ ${item##*.min.} == "css" ]]; then
+            if [[ "${item##*.min.}" == "css" ]]; then
                 cp "$item" _site/"$item"
             else
                 sass "$item" --style compressed > _site/"${item%.css}.min.css"
