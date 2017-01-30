@@ -533,13 +533,13 @@ app.controller("articlesCtrl", function($rootScope, $scope, articles) {
 });
 
 app.service('article', ["language", "$resource", ResourcePaginator]);
-app.controller("articleCtrl", function($rootScope, $scope, article) {
+app.controller("articleCtrl", function($rootScope, $scope, $routeParams, article) {
 
     article.expose_interface($scope);
 
     article.set_values({
         "collection": "articles",
-        "filters": {},
+        "filters": {'id': parseInt($routeParams.article)},
         "values": ['id', 'title', 'date', 'content'],
         "offset": 0,
         "limit": 1

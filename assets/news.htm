@@ -1,4 +1,4 @@
-<a ng-repeat="article in elements()" href="#/{{ lang() }}/actividades/{{ article.id }}" ng-controller="newsCtrl">
+<a ng-repeat="article in elements() | limitTo: 4" href="#/{{ lang() }}/actividades/{{ article.id }}" ng-controller="newsCtrl">
     <div class="medium-4 columns">
         <div class="row columns">
             <div class="row columns"> <img src="http://www.arona.travel/portal/imagecache/ficha/{{ article.image }}">

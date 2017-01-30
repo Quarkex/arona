@@ -62,7 +62,7 @@ begin
         doc = collection.find( filters )
         sts["size"] = doc.count()
 
-        doc = doc.sort({"F_INICIO_PUB": -1})
+        doc = doc.sort({"date": -1})
         doc = doc.skip(offset) if not offset == 0
         doc = doc.limit(limit) if not limit == 0
 
@@ -81,7 +81,11 @@ begin
                             figure = document["video"]
                             figure = '<iframe src="' + figure + '" allowfullscreen="" width="300" height="230" frameborder="0"></iframe>'
                             else
-                            figure = '<div style="width: 100%;" id="featured-2-image"><img src="img/default_horizontal.png" style="width: 100%;"></div>'
+                            if document.has_key? "image" then
+                                figure = '<div style="width: 100%;"><img src="' + document['image'] + '" style="width: 100%;"></div>'
+                            else
+                                figure = '<div style="width: 100%;"><img src="img/default_horizontal.png" style="width: 100%;"></div>'
+                            end
                         end
                         figure = '<div class="flex-video">' + figure + '</div>'
 
@@ -141,7 +145,7 @@ begin
                             item[value] = resource == nil ? nil : resource["RECURSO"]
                         end
 
-                    when  "F_INICIO_PUB", "F_FIN_PUB", "F_INICIO", "F_FIN"
+                    when  "date", "F_INICIO_PUB", "F_FIN_PUB", "F_INICIO", "F_FIN"
                         item[value] = document[value] if document[value] != "9999-99-99T99:99:99Z"
 
                     else
