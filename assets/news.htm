@@ -1,9 +1,9 @@
 <a ng-repeat="article in page.panels['home'].elements" href="#/{{ lang() }}/actividades/{{ article.CODCONTENIDO }}">
-    <div class="medium-4 columns">
-        <div class="row columns">
-            <div class="row columns"> <img src="http://www.arona.travel/portal/imagecache/ficha/{{ article.IMAGEN }}">
+    <div class="medium-6 large-4 columns">
+        <div class="row columns collapse" style="margin-bottom: 2em;">
+            <div class="large-12 small-6 columns"><img src="http://www.arona.travel/portal/imagecache/ficha/{{ article.IMAGEN }}">
             </div>
-            <div class="row columns">
+            <div class="large-12 small-6 columns">
                 <div class="small-12 columns">{{ article.F_INICIO_PUB | date : translate('date.schema') }}</div>
                 <div class="small-12 columns">{{ article.TITULO }}</div>
             </div>

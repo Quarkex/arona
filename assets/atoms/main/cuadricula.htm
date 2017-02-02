@@ -8,25 +8,25 @@
             <h2>{{ translate('pagina.subtitulo_planea_tu_viaje') }}</h2>
         </div>
     </div>
-    <div class="medium-4 columns" ng-repeat="id in ['como_llegar', 'donde_alojarse', 'como_moverse']">
+    <div class="large-4 medium-6 columns" ng-repeat="id in ['como_llegar', 'donde_alojarse', 'como_moverse']">
         <div id="{{ id }}" class="index-page-box">
             <a class="button translucid" href="#/{{ lang() }}/planea_tu_viaje/{{ id }}">{{ translate('pagina.titulo_', id) }}</a>
         </div>
     </div>
-    <div class="small-12 columns">
+    <div class="small-12 medium-6 large-12 columns">
         <div id="destino_accesible" class="index-page-box">
             <a class="button translucid" href="#/{{ lang() }}/planea_tu_viaje/destino_accesible">{{ translate('pagina.titulo_destino_accesible') }}</a>
         </div>
     </div>
     <div class="small-12 columns">
-        <div class="large-4 large-offset-2 columns"> <a class="button transparent-black full-width" href="#/{{ lang() }}/planea_tu_viaje/folletos_y_mapas">
+        <div class="medium-6 large-4 large-offset-2 columns"> <a class="button transparent-black full-width" href="#/{{ lang() }}/planea_tu_viaje/folletos_y_mapas">
                 <div class="small-1 small-offset-1 columns"> <i class="material-icons">maps</i>
                 </div>
                 <div class="small-9 columns end"> <span>{{ translate('pagina.titulo_folletos_y_mapas') }}</span>
                 </div>
             </a>
         </div>
-        <div class="large-4 columns end"> <a class="button transparent-black full-width" href="#/{{ lang() }}/planea_tu_viaje/oficinas_de_informacion">
+        <div class="medium-6 large-4 columns end"> <a class="button transparent-black full-width" href="#/{{ lang() }}/planea_tu_viaje/oficinas_de_informacion">
                 <div class="small-1 small-offset-1 columns"> <i class="material-icons">information</i>
                 </div>
                 <div class="small-9 columns end"> <span>{{ translate('pagina.titulo_oficinas_de_informacion') }}</span>

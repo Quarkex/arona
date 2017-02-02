@@ -1,5 +1,5 @@
 <div class="tabs-wrapper">
-    <div class="medium-10 medium-offset-1 columns">
+    <div class="row columns">
         <ul class="tabs">
             <li ng-repeat="(label, link) in sublinks()" class="tabs-title {{ current_section(label) ? 'is-active' : 'is-inactive' }}">
                 <a href="#/{{ lang() }}{{ link.href }}" aria-controls="panel-{{ label }}">{{ translate('pagina.titulo_', label) }}</a>
