@@ -1,5 +1,5 @@
 <!-- <header ng-if="level() == 1" class="row text-center index-header" style="background-image: linear-gradient(to bottom, #0004, #fff0), url(/img/backgrounds/home/{{ randomInt(3) | pad: 2  }}.jpg);"> -->
-<header ng-if="level() == 1" class="row text-center index-header" style="background-image: url(/img/backgrounds/home/{{ randomInt(3) | pad: 2  }}.jpg);">
+<header ng-if="level() == 1" class="text-center index-header" style="background-image: url(/img/backgrounds/home/{{ randomInt(3) | pad: 2  }}.jpg);">
     <div class="inner-wrapper">
         <a class="site-title" href="#/{{ lang() }}/">
             <h6>{{ translate('general.titulo') }}</h6>
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="small-1 columns end text-left">
-                <div class="small-12 columns"> <a class="button" href="#/{{ lang() }}/galeria"> <i class="material-icons" style="font-size: 100%;padding: 0;">camera_alt</i> </a>
+                <div class="small-12 columns" style="margin-left: -1.5em;"> <a class="button" href="#/{{ lang() }}/galeria"> <i class="material-icons" style="font-size: 100%;padding: 0;">camera_alt</i> </a>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
         </div>
     </div>
 </header>
-<header ng-if="level() > 1" class="row section-header" style="background-image: url(/img/headers/pagina.{{ sections()[1] }}.png)">
+<header ng-if="level() > 1" class="section-header" style="background-image: url(/img/headers/pagina.{{ sections()[1] }}.png)">
     <div class="small-10 small-offset-1 columns">
         <h1>{{ translate('pagina.titulo_', sections()[1] ) }}</h1>
         <h2 ng-if="( translate('pagina.subtitulo_', sections()[1] ) != '' ) && ( level() == 2 )">{{ translate('pagina.subtitulo_', sections()[1] ) }}</h2>

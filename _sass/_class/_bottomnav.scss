@@ -1,8 +1,11 @@
-.bottomnav {
+div[ng-include="'assets/bottomnav.htm'"]{
     padding-top: 2em !important;
     padding-bottom: 2em !important;
+    margin-top: 2em;
     margin-bottom: 1em;
     background-color: #eeeeee;
+}
+.bottomnav {
     text-align: left;
     ul {
         margin-left: 0 !important;

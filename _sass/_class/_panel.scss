@@ -1,11 +1,4 @@
 .panel {
-    > .row, > * > .row {
-        max-width: none;
-        &:not(.section-header){
-            padding-top: 2em;
-            padding-bottom: 2em;
-        }
-    }
     h1, h2, h3 {
         font-family: 'Roboto', sans-serif;
         font-weight: 300;
