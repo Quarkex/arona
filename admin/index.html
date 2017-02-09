@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="{{ lang() }}" ng-init="title='Administración';" ng-app="adminApp" ng-controller="adminCtrl">
+    <head>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://use.fontawesome.com/5d9ccb4393.js"></script>
+        <script src="/js/jquery.js"></script>
+        <script src="/js/angularjs/angular.js"></script>
+        <script src="/js/angularjs/angular-route.js"></script>
+        <script src="/js/angularjs/angular-resource.js"></script>
+        <script src="/js/angular-foundation.min.js"></script>
+        <script src="/js/angular-slick.js"></script>
+        <script src="/js/angular-slugify.js"></script>
+        <script src="/js/pmkr-filters.js"></script>
+        <script src="/js/tmhDynamicLocale.js"></script>
+        <script src="/js/ckeditor/ckeditor.js"></script>
+        <script src="/js/angular-ckeditor.js"></script>
+        <script src="/js/adminApp.js"></script>
+        <link rel="stylesheet" href="/style.min.css">
+        <title>Administración</title>
+    </head>
+    <body class="ng-cloak">
+        <div class="{{'page-level-' + level() }} panel" style="min-height: 100vh;">
+            <div class="row columns" ng-view autoscroll="true"></div>
+        </div>
+        <script src="/js/admin.js"></script>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+<div class="small-12 colums">
+    <div class="page" ng-controller="matchesCtrl">
+        <div class="small-12 columns"><h1 class="page-title">Calendario</h1></div>
+        <div class="small-12 columns calendar">
+            <tabset>
+            <tab ng-if="type != 'undefined'" ng-repeat="(type, matches) in elements() | groupBy: 'type'" active="$first">
+            <tab-heading>
+                <img alt="{{ type }}" src="/img/logos/leagues/{{ type | slugify }}.png" />
+            </tab-heading>
+            <table>
+                <tbody>
+                    <tr>
+                        <th class="show-for-medium">Jornada</th>
+                        <th>Fecha</th>
+                        <th colspan="2">Local</th>
+                        <th class="show-for-large"></th>
+                        <th colspan="2">Visitante</th>
+                    </tr>
+                    <tr ng-repeat="match in matches">
+                        <td class="show-for-medium"><span class="show-for-large">Jornada </span>{{ match.day_number }}</td>
+                        <td>
+                            <span class="hide-for-medium hide-for-sr">Jornada {{ match.day_number }}<br></span>
+                            {{ match.date | date : translate('date.schema') }}
+                            <br>
+                            <strong>{{ match.hour }}</strong>
+                        </td>
+                        <td>{{ match.local_team }}</td>
+                        <td><img alt="{{ match.local_team }}" src="/img/logos/teams/{{ match.local_team | slugify }}.png"></td>
+                        <td class="show-for-large">VS.</td>
+                        <td><img alt="{{ match_visitor_team }}" src="/img/logos/teams/{{ match.visitor_team | slugify }}.png"></td>
+                        <td>{{ match.visitor_team }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            </tab>
+            </tabset>
+        </div>
+    </div>
+</div>

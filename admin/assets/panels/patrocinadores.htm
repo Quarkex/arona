@@ -1,0 +1,15 @@
+<div class="small-12 colums">
+    <div class="page patreons" ng-controller="patreonsCtrl">
+        <div class="small-12 columns"><h1 class="page-title">Patrocinadores</h1></div>
+        <div class="small-12 columns" ng-if="type != 'undefined'" ng-repeat="(type, patreons) in elements() | groupBy: 'type'">
+            <div class="column row">
+                <h2>{{ type }}</h2>
+            </div>
+            <div class="row small-up-1 medium-up-2 large-up-4">
+                <div class="column centered" ng-repeat="patreon in patreons">
+                    <a href="{{ patreon.link }}"><img alt="{{ patreon.name }}" src="/img/patreons/{{ patreon.name | slugify }}.png"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

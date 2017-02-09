@@ -1,0 +1,37 @@
+<div class="small-12 colums">
+    <div class="page" ng-controller="teamCtrl">
+        <div class="small-12 columns"><h1 class="page-title">Equipo</h1></div>
+        <div class="small-12 columns team">
+            <tabset>
+            <tab ng-if="type != 'undefined'" heading="{{ type }}" ng-repeat="(type, members) in elements() | groupBy: 'type'" active="$first">
+                <div class="row large-up-4">
+                    <div class="column centered" ng-repeat="member in members">
+                        <figure class="fader-caption">
+                            <img alt="{{ member.name }}" src="/img/team/{{ member.name | slugify }}.png">
+                            <figcaption>
+                            <h6>{{ member.name }}</h6>
+                            <p>
+                            <span ng-if="member.number != undefined">Nº: {{member.number}}</span>
+                            <span ng-if="member.number != undefined && member.origin != undefined">, </span>
+                            <span ng-if="member.origin != undefined">{{member.origin}}</span>
+                            <span ng-if="member.origin != undefined && member.birthdate != undefined">, </span>
+                            <span ng-if="member.birthdate != undefined">{{member.birthdate}}</span>
+                            </p>
+                            <p>
+                            <span ng-if="member.position != undefined">{{member.position}}</span>
+                            <span ng-if="member.position != undefined && member.height != undefined">, </span>
+                            <span ng-if="member.height != undefined">{{member.height}}</span>
+                            </p>
+                            <p>
+                            <span ng-if="member.seasons != undefined">Temporadas: {{member.seasons}}</span>
+                            </p>
+                            <a ng-if="member.link != undefined" href="{{ member.link }}"><span class="button label">+Info</span></a>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </tab>
+            </tabset>
+        </div>
+    </div>
+</div>
