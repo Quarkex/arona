@@ -4,6 +4,7 @@ require "cgi"
 require 'json'
 require 'date'
 require 'mongo'
+require 'digest'
 
 begin
     Mongo::Logger.logger.level = ::Logger::FATAL
@@ -59,7 +60,8 @@ begin
 
     if cgi.params.has_key? 'article_image' then
         cgi.params["article_image"].each do |file|
-            url = '/img/articles/' + file.original_filename
+            sha1 = Digest::SHA1.file file
+            url = '/img/articles/' + sha1.to_s + File.extname(file.original_filename)
             fileName = '..' + url
 
             File.open( fileName,"w"){|sf| sf.puts file.read }

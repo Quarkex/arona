@@ -2,6 +2,7 @@
 
 require "cgi"
 require 'json'
+require 'digest'
 
 cgi = CGI.new("html4")
 begin
@@ -56,7 +57,12 @@ begin
     if cgi.params.has_key? 'upload' then
         cgi.params["upload"].each do |file|
 
-            url = base_dir + file.original_filename
+            $filename = file.original_filename
+            if type == 'article_image' then
+                sha1 = Digest::SHA1.file file
+                $filename = sha1.to_s + File.extname(file.original_filename)
+            end
+            url = base_dir + $filename
             fileName = '..' + url
 
             begin
