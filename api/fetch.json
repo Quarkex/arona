@@ -48,6 +48,7 @@ begin
     parameters = JSON.parse(cgi.params.keys.first)
     if parameters.has_key?("collection") then
         collection = client[parameters['collection']]
+        collection.indexes.create_one( { :date => -1 }, unique: false )
         resources = client['recursos']
 
         if parameters.has_key? 'filters'  then filters = parameters['filters']  else filters = {}    end
