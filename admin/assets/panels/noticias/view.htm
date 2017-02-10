@@ -1,8 +1,59 @@
 <div class="small-12 colums" ng-repeat="article in elements()" ng-controller="articleCtrl">
     <div class="post small-12 columns text-justify">
-        <div class="small-12 columns"><h1 class="post-title" ng-bind="article.title"></h1></div>
-        <span class="post-date" ng-bind="article.date | date : translate('date.schema')"></span>
-        <div class="article-content" ng-model="article.content" ckeditor="options" ready="onReady()" contenteditable="true"></div>
+        <form method="POST" enctype="multipart/form-data" action="/api/publish_article.rb">
+            <input type="hidden" name="id" value="{{ article.id }}">
+            <div class="row">
+                <div class="medium-1 columns"><p>Título:</p></div>
+                <div class="medium-7 columns"><h1 class="post-title"><input name="title" type="text" placeholder="Título" value="{{ article.title }}"></h1></div>
+                <div class="medium-1 columns"><p>Fecha:</p></div>
+                <div class="medium-3 columns end">
+                    <div class="row collapse">
+                        <div class="small-4 columns"><span class="post-date"><input name="day" placeholder="DD" type="number" value="{{ article.date | date: 'dd' }}"></span></div>
+                        <div class="small-4 columns"><span class="post-date"><input name="month" placeholder="MM" type="number" value="{{ article.date | date: 'MM' }}"></span></div>
+                        <div class="small-4 columns end"><span class="post-date"><input name="year" placeholder="AAAA" type="number" value="{{ article.date | date: 'yyyy' }}"></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row collapse">
+                <div class="medium-1 columns"><p>Vídeo:</p></div>
+                <div class="medium-3 columns collapse">
+                    <div class="row collapse">
+                        <div class="medium-11 columns end">
+                            <input name="video" placeholder="www.youtube.com" type="text" value="{{ article.video }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="medium-1 columns"><p>Imagen:</p></div>
+                <div class="medium-3 columns">
+                    <div class="medium-11 columns">
+                        <input name="article_image" type="file">
+                    </div>
+                </div>
+                <div class="medium-1 columns"><p>Evento:</p></div>
+                <div class="medium-3 columns">
+                    <div class="small-1 columns">
+                        <input name="event" type="checkbox" ng-model="article.event">
+                    </div>
+                    <div class="small-11 medium-10 columns end">
+                        <input name="event_image" type="file">
+                    </div>
+                </div>
+            </div>
+            <div class="row collapse">
+                <div class="medium-12 columns">
+                    <textarea name="excerpt" placeholder="Extracto" ng-bind="article.excerpt"></textarea>
+                </div>
+            </div>
+            <div class="row collapse">
+                <div style="min-height: 50vh; border: 1px solid black; padding: 1em;" class="article-content" ng-model="article.content" ckeditor="options" ready="onReady()" contenteditable="true"></div>
+                <input type="hidden" name="content" value="{{ article.content }}">
+            </div>
+            <div class="row text-right">
+                <div class="small-12 columns">
+                    <input class="button" type="submit" value="Guardar">
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 

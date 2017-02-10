@@ -445,7 +445,7 @@ app.controller("articleCtrl", function($rootScope, $scope, $routeParams, article
     article.set_values({
         "collection": "articles",
         "filters": {'id': parseInt($routeParams.article)},
-        "values": ['id', 'title', 'date', 'content'],
+        "values": ['id', 'title', 'date', 'event', 'excerpt', 'content'],
         "offset": 0,
         "limit": 1
     });
@@ -455,8 +455,8 @@ app.controller("articleCtrl", function($rootScope, $scope, $routeParams, article
         language: language.current_language(),
         allowedContent: true,
         uploadUrl: '/api/upload_file.rb?type=article_image',
-        filebrowserBrowseUrl: '/api/browse_files.rb?response=ckeditor',
-        filebrowserImageBrowseUrl: '/api/browse_files.rb?type=article_image&response=ckeditor',
+        // filebrowserBrowseUrl: '/api/browse_files.rb?response=ckeditor',
+        // filebrowserImageBrowseUrl: '/api/browse_files.rb?type=article_image&response=ckeditor',
         filebrowserUploadUrl: '/api/upload_file.rb?response=ckeditor',
         filebrowserImageUploadUrl: '/api/upload_file.rb?type=article_image&response=ckeditor',
         entities: false
