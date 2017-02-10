@@ -1,0 +1,16 @@
+<div class="row" ng-controller="sliderCtrl">
+    <div class="medium-10 medium-offset-1 columns">
+        <form action="/api/change_headers.rb" method="POST">
+            <div class="row column" ng-if="line.content != undefined" ng-repeat="line in elements()">
+                <input type="text" name="line" ng-model="line.content">
+            </div>
+            <div class="row column">
+                <input type="text" name="line" ng-model="line.content">
+            </div>
+            <div class="row column text-right">
+                <input class="button" type="submit" value="Guardar">
+            </div>
+        </form>
+    </div>
+</div>
+

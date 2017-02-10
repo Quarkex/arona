@@ -428,6 +428,21 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider) {
     });
 });
 
+app.service('slider', ["language", "$resource", ResourcePaginator]);
+app.controller("sliderCtrl", function($rootScope, $scope, slider) {
+
+    slider.expose_interface($scope);
+
+    slider.set_values({
+        "language": '',
+        "collection": "slider",
+        "filters": {},
+        "values": [],
+        "offset": 0,
+        "limit": 0
+    });
+});
+
 app.service('articles', ["language", "$resource", ResourcePaginator]);
 app.controller("articlesCtrl", function($rootScope, $scope, articles) {
 
