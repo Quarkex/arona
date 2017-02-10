@@ -398,6 +398,11 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider) {
         resolve:{ "check":isValidLang },
         controller: "adminCtrl"
     })
+    .when("/:language/nueva_noticia", {
+        templateUrl : '/admin/assets/panels/nueva_noticia.htm',
+        resolve:{ "check":isValidLang },
+        controller: "adminCtrl"
+    })
     .when("/:language/noticias/:article", {
         templateUrl : '/admin/assets/panels/noticias/view.htm',
         resolve:{ "check":isValidLang },
