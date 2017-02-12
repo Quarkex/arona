@@ -1,0 +1,16 @@
+<form method="POST" action="/api/set_member.rb" ng-controller="memberCtrl">
+                                 <input type="hidden" name="ID"                                                          ng-model="element().ID"       >
+                                 <input type="hidden" name="IDIOMA"    placeholder="es"                                  ng-model="lang()"             >
+                                 <input type="hidden" name="image_name"                                          value="{{ element().name | slugify }}">
+    <label> Nombre:              <input type="text"   name="name"      placeholder="Nombre"                              ng-model="element().name"     ></label>
+    <label> Grupo:               <input type="text"   name="type"      placeholder="Grupo (Equipo, Cuerpo Técnico, etc)" ng-model="element().type"     ></label>
+    <label> Número:              <input type="number" name="number"    placeholder="Número"                              ng-model="element().number"   ></label>
+    <label> Temporadas:          <input type="number" name="seasons"   placeholder="Temporadas"                          ng-model="element().seasons"  ></label>
+    <label> Orígen:              <input type="text"   name="origin"    placeholder="Orígen"                              ng-model="element().origin"   ></label>
+    <label> Fecha de nacimiento: <input type="text"   name="birthdate" placeholder="Fecha de nacimiento (DD/MM/AAAA)"    ng-model="element().birthdate"></label>
+    <label> Posición:            <input type="text"   name="position"  placeholder="Posición"                            ng-model="element().position" ></label>
+    <label> Altura:              <input type="text"   name="height"    placeholder="Altura"                              ng-model="element().height"   ></label>
+    <label> Ficha externa:       <input type="url"    name="link"      placeholder="http://www.acb.com/jugador.php?id="  ng-model="element().link"     ></label>
+    <label> Fotografía:          <input type="file"   name="image"                                                                                     ></label>
+    <input class="button" type="submit" value="Guardar">
+</form>

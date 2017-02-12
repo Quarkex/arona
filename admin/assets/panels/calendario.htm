@@ -1,39 +1,22 @@
-<div class="small-12 colums">
-    <div class="page" ng-controller="matchesCtrl">
-        <div class="small-12 columns"><h1 class="page-title">Calendario</h1></div>
-        <div class="small-12 columns calendar">
-            <tabset>
-            <tab ng-if="type != 'undefined'" ng-repeat="(type, matches) in elements() | groupBy: 'type'" active="$first">
-            <tab-heading>
-                <img alt="{{ type }}" src="/img/logos/leagues/{{ type | slugify }}.png" />
-            </tab-heading>
-            <table>
-                <tbody>
-                    <tr>
-                        <th class="show-for-medium">Jornada</th>
-                        <th>Fecha</th>
-                        <th colspan="2">Local</th>
-                        <th class="show-for-large"></th>
-                        <th colspan="2">Visitante</th>
-                    </tr>
-                    <tr ng-repeat="match in matches">
-                        <td class="show-for-medium"><span class="show-for-large">Jornada </span>{{ match.day_number }}</td>
-                        <td>
-                            <span class="hide-for-medium hide-for-sr">Jornada {{ match.day_number }}<br></span>
-                            {{ match.date | date : translate('date.schema') }}
-                            <br>
-                            <strong>{{ match.hour }}</strong>
-                        </td>
-                        <td>{{ match.local_team }}</td>
-                        <td><img alt="{{ match.local_team }}" src="/img/logos/teams/{{ match.local_team | slugify }}.png"></td>
-                        <td class="show-for-large">VS.</td>
-                        <td><img alt="{{ match_visitor_team }}" src="/img/logos/teams/{{ match.visitor_team | slugify }}.png"></td>
-                        <td>{{ match.visitor_team }}</td>
-                    </tr>
-                </tbody>
-            </table>
-            </tab>
-            </tabset>
-        </div>
+<form method="POST" action="/api/set_calendar.rb" ng-controller="matchesCtrl">
+    <div class="row small-up-3 medium-up-6" ng-repeat="match in elements()">
+        <input type="hidden" name="match_{{ $index }}_ID" ng-model="match.ID">
+        <div class="column"><label> Liga:             <input type="text"   name="match_{{ $index }}_type"         placeholder="Liga"               ng-model="match.type"        ></label></div>
+        <div class="column"><label> Jornada:          <input type="text"   name="match_{{ $index }}_day_number"   placeholder="Jornada"            ng-model="match.day_number"  ></label></div>
+        <div class="column"><label> Fecha:            <input type="text"   name="match_{{ $index }}_date"         placeholder="Fecha (DD/MM/AAAA)" ng-model="match.date"        ></label></div>
+        <div class="column"><label> Hora:             <input type="text"   name="match_{{ $index }}_hour"         placeholder="Hora (HH:MM)"       ng-model="match.hour"        ></label></div>
+        <div class="column"><label> Equipo local:     <input type="text"   name="match_{{ $index }}_local_team"   placeholder="Equipo local"       ng-model="match.local_team"  ></label></div>
+        <div class="column"><label> Equipo visitante: <input type="text"   name="match_{{ $index }}_visitor_team" placeholder="Equipo visitante"   ng-model="match.visitor_team"></label></div>
     </div>
-</div>
+    <div class="row small-up-3 medium-up-6" ng-repeat="empty in empty_rows track by $index">
+        <div class="column"><label> Liga:             <input type="text"   name="match_{{ $index + elements().length }}_type"         placeholder="Liga"              ></label></div>
+        <div class="column"><label> Jornada:          <input type="text"   name="match_{{ $index + elements().length }}_day_number"   placeholder="Jornada"           ></label></div>
+        <div class="column"><label> Fecha:            <input type="text"   name="match_{{ $index + elements().length }}_date"         placeholder="Fecha (DD/MM/AAAA)"></label></div>
+        <div class="column"><label> Hora:             <input type="text"   name="match_{{ $index + elements().length }}_hour"         placeholder="Hora (HH:MM)"      ></label></div>
+        <div class="column"><label> Equipo local:     <input type="text"   name="match_{{ $index + elements().length }}_local_team"   placeholder="Equipo local"      ></label></div>
+        <div class="column"><label> Equipo visitante: <input type="text"   name="match_{{ $index + elements().length }}_visitor_team" placeholder="Equipo visitante"  ></label></div>
+    </div>
+    <div class="row column text-right">
+        <input class="button" type="submit" value="Guardar">
+    </div>
+</form>

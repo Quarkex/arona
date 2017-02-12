@@ -403,6 +403,16 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider) {
         resolve:{ "check":isValidLang },
         controller: "adminCtrl"
     })
+    .when("/:language/miembro/:member", {
+        templateUrl : '/admin/assets/panels/miembro.htm',
+        resolve:{ "check":isValidLang },
+        controller: "memberCtrl"
+    })
+    .when("/:language/nuevo_miembro", {
+        templateUrl : '/admin/assets/panels/nuevo_miembro.htm',
+        resolve:{ "check":isValidLang },
+        controller: "memberCtrl"
+    })
     .when("/:language/noticias/:article", {
         templateUrl : '/admin/assets/panels/noticias/view.htm',
         resolve:{ "check":isValidLang },
@@ -485,6 +495,55 @@ app.controller("articleCtrl", function($rootScope, $scope, $routeParams, article
     // Called when the editor is completely ready.
     $scope.onReady = function () {};
 
+});
+
+app.service('member', ["language", "$resource", ResourcePaginator]);
+app.controller("memberCtrl", function($routeParams, $scope, member) {
+
+    member.expose_interface($scope);
+
+    $scope.element = function() { return member.elements()[0] };
+
+    member.set_values({
+        "language": '',
+        "collection": "team",
+        "filters": {'ID': parseInt($routeParams.member)},
+        "values": [],
+        "offset": 0,
+        "limit": 0
+    });
+});
+
+app.service('team', ["language", "$resource", ResourcePaginator]);
+app.controller("teamCtrl", function($rootScope, $scope, team) {
+
+    team.expose_interface($scope);
+
+    team.set_values({
+        "language": '',
+        "collection": "team",
+        "filters": {},
+        "values": [],
+        "offset": 0,
+        "limit": 0
+    });
+});
+
+app.service('matches', ["language", "$resource", ResourcePaginator]);
+app.controller("matchesCtrl", function($rootScope, $scope, matches) {
+
+    matches.expose_interface($scope);
+
+    $scope.empty_rows = new Array(10);
+
+    matches.set_values({
+        "language": '',
+        "collection": "matches",
+        "filters": {},
+        "values": [],
+        "offset": 0,
+        "limit": 0
+    });
 });
 
 app.controller("adminCtrl", function($rootScope, $location, $routeParams, $resource, page, language ) {

@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="medium-6 medium-offset-3 columns">
+        <form action="/api/upload_file.rb" method="POST">
+            <div class="row columns">
+                <label>Nombre: <input type="text" ng-model="name" placeholder="Nombre del jugador, equipo, liga o similar"></label>
+                <input type="hidden" name="name" value="{{ name | slugify }}">
+            </div>
+            <div class="row columns">
+                <label>Tipo:
+                    <select name="type">
+                        <option value="file">Archivo</option>
+                        <option value="ads">Anuncio</option>
+                        <option value="banner">Banner</option>
+                        <option value="team_member">Foto de miembro</option>
+                        <option value="league_logo">Logo de liga</option>
+                        <option value="team_logo">Logo de equipo</option>
+                    </select>
+                </label>
+            </div>
+            <div class="row columns">
+                <label>Archivo: <input type="file" name="upload"></label>
+            </div>
+            <div class="row columns text-right">
+                <input class="button" type="submit" value="Subir">
+            </div>
+        </form>
+    </div>
+</div>
