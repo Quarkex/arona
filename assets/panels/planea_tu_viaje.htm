@@ -13,3 +13,22 @@
         </div>
     </div>
 </div>
+<div class="row small-12 columns">
+    <div class="medium-6 large-4 large-offset-2 columns"> <a class="button transparent-black full-width" href="#/{{ lang() }}/planea_tu_viaje/folletos_y_mapas">
+            <div class="small-1 small-offset-1 columns"> <i class="material-icons">maps</i>
+            </div>
+            <div class="small-9 columns end"> <span>{{ translate('pagina.titulo_folletos_y_mapas') }}</span>
+            </div>
+        </a>
+    </div>
+    <div class="medium-6 large-4 columns end"> <a class="button transparent-black full-width" href="#/{{ lang() }}/planea_tu_viaje/oficinas_de_informacion">
+            <div class="small-1 small-offset-1 columns"> <i class="material-icons">information</i>
+            </div>
+            <div class="small-9 columns end"> <span>{{ translate('pagina.titulo_oficinas_de_informacion') }}</span>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="row large-8 large-offset-2 columns collapse">
+    <div id="actividades" ng-include="'assets/atoms/main/actividades.htm'" class="main-row"></div>
+</div>
