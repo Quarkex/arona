@@ -1,6 +1,6 @@
 <div class="row">
     <div class="medium-6 medium-offset-3 columns">
-        <form action="/api/upload_file.rb" method="POST">
+        <form action="/api/upload_file.rb?response=none" method="POST" enctype="multipart/form-data">
             <div class="row columns">
                 <label>Nombre: <input type="text" ng-model="name" placeholder="Nombre del jugador, equipo, liga o similar"></label>
                 <input type="hidden" name="name" value="{{ name | slugify }}">
@@ -14,6 +14,7 @@
                         <option value="team_member">Foto de miembro</option>
                         <option value="league_logo">Logo de liga</option>
                         <option value="team_logo">Logo de equipo</option>
+                        <option value="patreon_logo">Logo de patrocinador</option>
                     </select>
                 </label>
             </div>

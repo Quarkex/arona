@@ -50,6 +50,8 @@ begin
         base_dir = "/img/logos/leagues/"
     when "team_logo"
         base_dir = "/img/logos/teams/"
+    when "patreon_logo"
+        base_dir = "/img/patreons/"
     when "article_image"
         base_dir = "/img/articles/"
     end
@@ -58,9 +60,14 @@ begin
         cgi.params["upload"].each do |file|
 
             $filename = file.original_filename
-            if type == 'article_image' then
+            case type
+            when 'article_image' 
                 sha1 = Digest::SHA1.file file
                 $filename = sha1.to_s + File.extname(file.original_filename)
+            when 'team_member', 'team_logo', 'patreon_logo', 'league_logo', 'banner'
+                basename = File.basename(file.original_filename)
+                basename = cgi.params['name'][0] if cgi.params['name'][0] != nil and cgi.params['name'][0] != ''
+                $filename = basename + File.extname(file.original_filename)
             end
             url = base_dir + $filename
             fileName = '..' + url
