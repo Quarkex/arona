@@ -1,6 +1,6 @@
-<form method="POST" action="/api/set_member.rb" ng-controller="memberCtrl">
-                                 <input type="hidden" name="ID"                                                          ng-model="element().ID"       >
-                                 <input type="hidden" name="IDIOMA"    placeholder="es"                                  ng-model="lang()"             >
+<form method="POST" action="/api/set_member.rb" enctype="multipart/form-data" ng-controller="memberCtrl">
+                                 <input type="hidden" name="ID"                                                          value="{{ element().ID  }}"   >
+                                 <input type="hidden" name="IDIOMA"    placeholder="es"                                  value="{{ lang() }}"          >
                                  <input type="hidden" name="image_name"                                          value="{{ element().name | slugify }}">
     <label> Nombre:              <input type="text"   name="name"      placeholder="Nombre"                              ng-model="element().name"     ></label>
     <label> Grupo:               <input type="text"   name="type"      placeholder="Grupo (Equipo, Cuerpo Técnico, etc)" ng-model="element().type"     ></label>
@@ -11,6 +11,6 @@
     <label> Posición:            <input type="text"   name="position"  placeholder="Posición"                            ng-model="element().position" ></label>
     <label> Altura:              <input type="text"   name="height"    placeholder="Altura"                              ng-model="element().height"   ></label>
     <label> Ficha externa:       <input type="url"    name="link"      placeholder="http://www.acb.com/jugador.php?id="  ng-model="element().link"     ></label>
-    <label> Fotografía:          <input type="file"   name="image"                                                                                     ></label>
+    <label> Fotografía:          <input type="file"   name="upload"                                                                                    ></label>
     <input class="button" type="submit" value="Guardar">
 </form>

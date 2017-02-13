@@ -1,7 +1,7 @@
-<form method="POST" action="/api/set_member.rb">
-                                 <input type="hidden" name="IDIOMA"    placeholder="es"                          ng-bind="lang()">
-                                 <input type="hidden" name="image_name"                    value="{{ element().name | slugify }}">
-    <label> Nombre:              <input type="text"   name="name"      placeholder="Nombre"                              ></label>
+<form method="POST" action="/api/set_member.rb" enctype="multipart/form-data">
+                                 <input type="hidden" name="IDIOMA"                                          value="{{ lang() }}">
+                                 <input type="hidden" name="image_name"                              value="{{ name | slugify }}">
+    <label> Nombre:              <input type="text"   name="name"      placeholder="Nombre"               ng-model="name"></label>
     <label> Grupo:               <input type="text"   name="type"      placeholder="Grupo (Equipo, Cuerpo Técnico, etc)" ></label>
     <label> Número:              <input type="number" name="number"    placeholder="Número"                              ></label>
     <label> Temporadas:          <input type="number" name="seasons"   placeholder="Temporadas"                          ></label>
@@ -10,6 +10,6 @@
     <label> Posición:            <input type="text"   name="position"  placeholder="Posición"                            ></label>
     <label> Altura:              <input type="text"   name="height"    placeholder="Altura"                              ></label>
     <label> Ficha externa:       <input type="url"    name="link"      placeholder="http://www.acb.com/jugador.php?id="  ></label>
-    <label> Fotografía:          <input type="file"   name="image"                                                       ></label>
+    <label> Fotografía:          <input type="file"   name="upload"                                                      ></label>
     <input class="button" type="submit" value="Guardar">
 </form>
