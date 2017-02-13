@@ -1,5 +1,5 @@
 <form method="POST" action="/api/set_calendar.rb" ng-controller="matchesCtrl">
-    <div class="row small-up-3 medium-up-6" ng-repeat="match in elements()">
+    <div class="row small-up-3 medium-up-6" ng-repeat="match in elements() | orderBy : 'day_number'">
         <input type="hidden" name="match_{{ $index }}_ID" ng-model="match.ID">
         <div class="column"><label> Liga:             <input type="text"   name="match_{{ $index }}_type"         placeholder="Liga"               ng-model="match.type"        ></label></div>
         <div class="column"><label> Jornada:          <input type="text"   name="match_{{ $index }}_day_number"   placeholder="Jornada"            ng-model="match.day_number"  ></label></div>
