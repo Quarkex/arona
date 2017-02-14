@@ -2,28 +2,30 @@
 <div ng-controller="hotelsCtrl">
     <div class="row">
         <div class="small-12 columns">
-            <h2>{{ string_interpolate( translate('general.', 'numero_de_contenidos'), size(), current_section(), largest_size()) }}</h2>
+            <h2 style="font-size: 24px; padding-top: 1.5em; padding-bottom: 1.5em;">
+                {{ string_interpolate( translate('general.', 'numero_de_contenidos'), size(), current_section(), largest_size()) }}
+            </h2>
         </div>
     </div>
     <div class="row" ng-cloak>
         <md-tabs md-dynamic-height>
             <md-tab label="Zona turística">
-                <div layout="row" layout-align="center center">
+                <div layout="row" layout-align="center center" style="padding-top: 1.5em;padding-bottom: 2em;">
                     <md-button class="md-raised" ng-click="toggle_filter('ZONA', value)" ng-repeat="(value, label) in { 'Playa de las Américas': 'Playa de las Américas', 'Los Cristianos': 'Los Cristianos', 'Costa del Silencio': 'Costa del Silencio', 'Chayofa': 'Chayofa' }">{{ label }}</md-button>
                 </div>
             </md-tab>
             <md-tab label="Categoría">
-                <div layout="row" layout-align="center center">
+                <div layout="row" layout-align="center center" style="padding-top: 1.5em;padding-bottom: 2em;">
                     <md-button class="md-raised" ng-click="toggle_filter('INDICADORES.categoria.contents.label', value)" ng-repeat="(value, label) in { '2_estrellas': '2 estrellas', '3_estrellas': '3 estrellas', '4_estrellas': '4 estrellas', '5_estrellas': '5 estrellas' }">{{ label }}</md-button>
                 </div>
             </md-tab>
             <md-tab label="Accesibilidad">
-                <div layout="row" layout-align="center center">
+                <div layout="row" layout-align="center center" style="padding-top: 1.5em;padding-bottom: 2em;">
                     <md-button class="md-raised" ng-click="toggle_filter('INDICADORES.categoria.contents.label', value)" ng-repeat="(value, label) in { '2_estrellas': '2 estrellas', '3_estrellas': '3 estrellas', '4_estrellas': '4 estrellas', '5_estrellas': '5 estrellas' }">{{ label }}</md-button>
                 </div>
             </md-tab>
             <md-tab label="Servicios">
-                <div layout="row" layout-align="center center">
+                <div layout="row" layout-align="center center" style="padding-top: 1.5em;padding-bottom: 2em;">
                     <md-button class="md-raised" ng-click="toggle_filter('INDICADORES.categoria.contents.label', value)" ng-repeat="(value, label) in { '2_estrellas': '2 estrellas', '3_estrellas': '3 estrellas', '4_estrellas': '4 estrellas', '5_estrellas': '5 estrellas' }">{{ label }}</md-button>
                 </div>
             </md-tab>
@@ -70,20 +72,19 @@
             </md-card>
         </div>
     </div>
-    <div class="row">
-        <div class="small-6 columns" layout="row">
+    <md-content flex class="row" layout-gt-sm="row" layout="column">
+        <div flex class="columns" layout="row" layout-align="center center" layout-align-gt-sm="begin center">
             <md-button ng-click="previous_page();" class="md-icon-button md-primary">
                 <md-icon class="material-icons">keyboard_arrow_left</md-icon>
             </md-button>
             <md-button ng-disabled="p.current" ng-click="page(p.number);" ng-repeat="p in paginator_pages()" class="md-icon-button {{ p.current ? 'current': '' }}">
-                    <span ng-if="p.current" class="show-for-sr">You're on page</span> {{ p.number }}
+                <span ng-if="p.current" class="show-for-sr">You're on page</span> {{ p.number }}
             </md-button>
             <md-button ng-click="next_page();" class="md-icon-button md-primary">
                 <md-icon class="material-icons">keyboard_arrow_right</md-icon>
             </md-button>
-
         </div>
-        <div class="small-6 columns text-right right">
+        <div class="columns text-center large-text-right" style="padding-top: 0.6em;">
             <p class="panel page-counter">{{ 
             string_interpolate( translate('general.', 'paginado_de_contenidos'),
             page(),
@@ -91,25 +92,20 @@
             '',
             size() ) }}</p>
         </div>
-    </div>
-    <div class="row">
-        <div class="small-6 columns">
-            <div class="button-group tiny">
-                <a class="button">
-                    <span class="hide-for-sr">◀</span>
-                    <span class="show-for-sr">{{ translate('general.', 'volver') }}</span>
-                </a>
-                <a class="button">{{ translate('general.', 'atras') }}</a>
-            </div>
+    </md-content>
+    <br>
+    <div class="row" layout="row">
+        <div flex="50" layout="row" layout-align="begin center">
+            <md-content>
+                <md-button class="md-raised md-primary">
+                    <md-icon class="material-icons">arrow_back</md-icon>{{ translate('general.', 'atras') }}
+                </md-button>
+            </md-content>
         </div>
-        <div class="small-6 columns text-right right">
-            <p class="panel last-modified">{{ string_interpolate(translate('general.', 'ultima_modificacion'), last_modified()) }}</p>
+        <div flex="50" layout="row" layout-align="end center">
+            <md-content style="padding: 0.6em 0.6em 0em 0.6em;">
+                <p class="panel last-modified">{{ string_interpolate(translate('general.', 'ultima_modificacion'), last_modified()) }}</p>
+            </md-content>
         </div>
     </div>
 </div>
-
-
-
-</div>
-
-
