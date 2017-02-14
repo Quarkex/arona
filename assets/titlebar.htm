@@ -1,12 +1,16 @@
-<div class="title-bar" ng-class="{'sub-level': level() > 1 }">
-    <div class="title-bar-left">
-        <div class="small-12 columns">
-            <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
-            <span class="title-bar-title">{{ translate('general.', 'menu') }}</span>
-        </div>
+<md-toolbar class="md-hue-2 title-bar" ng-class="{'sub-level': level() > 1 }">
+    <div class="md-toolbar-tools">
+        <md-button class="left-off-canvas-toggle md-icon-button">
+            <md-icon class="material-icons">menu</md-icon>
+        </md-button>
+
+        <h1 flex md-truncate class="md-hue-3">{{ translate('general.', 'menu') }}</h1>
+
+        <md-button class="md-icon-button" href="#/{{ lang() }}/planea_tu_viaje/destino_accesible">
+            <md-icon class="material-icons">accessible</md-icon>
+        </md-button>
+
+        <div ng-include="'assets/language_selector.htm'"></div>
+
     </div>
-    <div class="title-bar-right">
-        <div class="small-3 columns"><a href="#/{{ lang() }}/planea_tu_viaje/destino_accesible"><div class="icon-wrapper"><i class="material-icons">accessible</i></div></a></div>
-        <div class="small-9 columns" ng-include="'assets/language_selector.htm'"></div>
-    </div>
-</div>
+</md-toolbar>

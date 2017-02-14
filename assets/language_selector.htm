@@ -1,10 +1,10 @@
-<ul class="dropdown menu language-selector" dropdown-menu>
-    <li>
-        <a tabindex="0"><i class="material-icons">language</i>{{ lang() | uppercase }}</a>
-        <ul class="menu vertical" style="right:0; left: auto;">
-            <li ng-if="lang() != l" ng-repeat="l in available_languages()">
-                <a href="#{{ path().replace( lang(), l ) }}">{{ l | uppercase }}</a>
-            </li>
-        </ul>
-    </li>
-</ul>
+<md-menu>
+    <md-button aria-label="Open phone interactions menu" class="md-button" ng-click="mainCtrl.openMenu($mdOpenMenu, $event)">
+        <md-icon md-menu-origin class="material-icons">language</md-icon> {{ lang() | uppercase }}
+    </md-button>
+    <md-menu-content width="3">
+        <md-menu-item ng-if="lang() != l" ng-repeat="l in available_languages()">
+            <md-button href="#{{ path().replace( lang(), l ) }}">{{ l | uppercase }}</md-button>
+        </md-menu-item>
+    </md-menu-content>
+</md-menu>

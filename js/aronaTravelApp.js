@@ -58,7 +58,7 @@
  *   E.G: {{ breadcrumbs }} => [{"label":"home", "href":"#/"},{"label":"angular", "href":"#/angular"}]
  */
 
-var app = angular.module("aronaTravelApp", ["ngRoute","ngResource","mm.foundation", "tmh.dynamicLocale"]);
+var app = angular.module("aronaTravelApp", ["ngRoute","ngResource","mm.foundation", "tmh.dynamicLocale", "ngMaterial"]);
 
 app.value('page', {
     'title': "Arona.travel",
@@ -573,7 +573,7 @@ app.controller("activityCtrl", function($routeParams, $scope, activity) {
     });
 });
 
-app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, $resource, page, language ) {
+app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, $resource, page, language, $mdDialog ) {
 
     $rootScope.page = page;
 
@@ -677,6 +677,26 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
 
     $rootScope.randomInt = function(i){
         return Math.floor(Math.random() * i) + 1;
+    };
+
+    this.openMenu = function($mdOpenMenu, ev) {
+        originatorEv = ev;
+        $mdOpenMenu(ev);
+    };
+
+    this.notificationsEnabled = true;
+    this.toggleNotifications = function() {
+        this.notificationsEnabled = !this.notificationsEnabled;
+    };
+
+    $rootScope.set_path = function(p){
+        console.log(p);
+        var ngview = document.querySelectorAll('[ng-view]');
+        for(var i = 0; i < ngview.length; i++){
+            ngview[i].innerHTML = '';
+            if ( i < ngview.length - 1 ) ngview[i].parentElement.removeChild(ngview[i]);
+        }
+        $location.path(p);
     };
 
 });
