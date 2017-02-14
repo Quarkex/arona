@@ -36,37 +36,45 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="medium-6 columns{{ $last ? ' end' : '' }}" ng-repeat="card in elements()">
-            <div class="card">
-                <div class="row">
-                    <div class="small-4 columns">
-                        <a href="#/{{ lang() }}/planea_tu_viaje/donde_alojarse/hoteles/{{ card.CODCONTENIDO }}">
-                            <img alt="{{ card.name }}" src="http://www.arona.travel/portal/imagecache/ficha/{{ card.IMAGEN }}">
-                        </a>
+    <div class="row collapse">
+        <div class="large-6 columns" ng-repeat="card in elements()">
+            <md-card flex-xs md-theme="default" md-theme-watch>
+                <md-card-title>
+                    <div class="medium-4 columns">
+                        <md-card-title-media>
+                            <img class="md-media-md card-media" alt="{{ card.name }}" src="http://www.arona.travel/portal/imagecache/ficha/{{ card.IMAGEN }}">
+                        </md-card-title-media>
                     </div>
-                    <div class="small-8 columns">
-                        <a style="text-align: left;" href="#/{{ lang() }}/planea_tu_viaje/donde_alojarse/hoteles/{{ card.CODCONTENIDO }}">
-                            <h1>{{ card.TITULO }}</h1>
-                        </a>
-                        <p>{{ card.DIRECCION }}</p>
+                    <div class="medium-8 columns">
+                        <md-card-title-text>
+                            <span class="md-headline" style="height: 2em;">
+                                <a style="text-align: left;" href="#/{{ lang() }}/planea_tu_viaje/donde_alojarse/hoteles/{{ card.CODCONTENIDO }}">
+                                    {{ card.TITULO }}
+                                </a>
+                            </span>
+                            <span class="md-subhead" style="height: 3em;">{{ card.DIRECCION }}</span>
+                        </md-card-title-text>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="small-4 small-offset-4 columns">
-                        <a href="mailto:{{ card.EMAIL }}">EMAIL</a>
-                        <a href="{{ card.WEB_PROPIA }}">WEBSITE</a>
+                </md-card-title>
+                <md-card-actions layout="row">
+                    <div class="medium-8 medium-offset-4 columns" layout="row">
+                        <div flex-xs flex="50" layout="row" xs-layout="column">
+                            <md-button href="mailto:{{ card.EMAIL }}">EMAIL</md-button>
+                            <md-button href="{{ card.WEB_PROPIA }}">WEBSITE</md-button>
+                        </div>
+                        <div flex-xs flex="50" layout="row" xs-layout="column">
+                            <md-card-icon-actions layout-align="end center">
+                                <md-button href="{{ card.MAPA }}" target='_blank' class="md-icon-button">
+                                    <md-icon class="material-icons">location_on</md-icon>
+                                </md-button>
+                                <md-button href="mailto:{{ card.CONTACTO }}" class="md-icon-button">
+                                    <md-icon class="material-icons">contact_mail</md-icon>
+                                </md-button>
+                            </md-card-icon-actions>
+                        </div>
                     </div>
-                    <div class="small-4 columns text-right">
-                        <a href="{{ card.MAPA }}" target='_blank'>
-                            <i class="material-icons">location_on</i>
-                        </a>
-                        <a href="mailto:{{ card.CONTACTO }}">
-                            <i class="material-icons">contact_mail</i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+                </md-card-actions>
+            </md-card>
         </div>
     </div>
     <div class="row">
@@ -108,3 +116,9 @@
         </div>
     </div>
 </div>
+
+
+
+</div>
+
+
