@@ -30,7 +30,7 @@
         </md-tabs>
     </div>
     <div class="row collapse">
-        <div class="large-6 columns" ng-repeat="card in elements()">
+        <div class="large-6 columns" ng-class="{'end': $last}" ng-repeat="card in elements()">
             <md-card flex-xs md-theme="default" md-theme-watch>
                 <md-card-title>
                     <div class="medium-4 columns">
