@@ -1,40 +1,42 @@
-<div class="row column bottom-extra">
-    <div class="medium-6 column">
-        <div class="row">
-            <div class="small-6 medium-4 large-4 columns">
-                <a href="#"><img src="/img/bottom_extra/LogoA.png"></a>
-            </div>
-            <div class="small-6 medium-4 large-4 columns">
-                <a href="#"><img src="/img/bottom_extra/LogoB.png"></a>
-            </div>
-            <div class="small-12 medium-4 large-4 columns">
-                <a href="#"><img src="/img/bottom_extra/LogoC.png"></a>
-            </div>
-        </div>
+<div layout="column" layout-gt-sm="row" class="row column bottom-extra" style="overflow: hidden; padding-bottom: 2em;">
+    <div flex-gt-sm="33" style="margin-top: 1em;">
+        <md-grid-list md-cols="2" md-cols-gt-sm="3" md-row-height="4:1" md-row-height-gt-sm="1:1" md-gutter="12px" md-gutter-gt-sm="8px">
+            <md-grid-tile md-rowspan="1" md-rowspan-gt-sm="1" md-colspan="1">
+                <a href="#"><img src="/img/bottom_extra/LogoA.png" style="height: 95px; width: auto;"></a>
+            </md-grid-tile>
+            <md-grid-tile md-rowspan="1" md-rowspan-gt-sm="1" md-colspan="1">
+                <a href="#"><img src="/img/bottom_extra/LogoB.png" style="height: 95px; width: auto;"></a>
+            </md-grid-tile>
+            <md-grid-tile md-rowspan="1" md-rowspan-gt-sm="1" md-colspan-gt-sm="1" md-colspan="2">
+                <a href="#"><img src="/img/bottom_extra/LogoC.png" style="height: 95px; width: auto;"></a>
+            </md-grid-tile>
+        </md-grid-list>
     </div>
-    <div class="medium-3 column">
-        <div class="row">
-            <div class="small-12 medium-12 columns">
-                <a href="#"> <img src="/img/bottom_extra/ButtonA.png"></a>
-            </div>
-            <div class="small-6 medium-12 columns">
+    <div flex-gt-sm="33" style="margin-top: 1em;">
+        <md-grid-list md-cols="2" md-cols-gt-sm="1" md-row-height="6:1" md-gutter="12px" md-gutter-gt-sm="8px">
+            <md-grid-tile md-rowspan="1" md-colspan-gt-sm="1" md-colspan="2">
+                <a href="#"><img src="/img/bottom_extra/ButtonA.png"></a>
+            </md-grid-tile>
+            <md-grid-tile md-rowspan="1" md-colspan="1">
                 <a href="#"><img src="/img/bottom_extra/ButtonB.png"></a>
-            </div>
-            <div class="small-6 medium-12 columns">
+            </md-grid-tile>
+            <md-grid-tile md-rowspan="1" md-colspan="1">
                 <a href="#"><img src="/img/bottom_extra/ButtonC.png"></a>
-            </div>
-        </div>
+            </md-grid-tile>
+        </md-grid-list>
     </div>
-    <div class="medium-3 column">
-        <div class="row">
-            <a class="button transparent expanded secondary" href="#/{{ lang() }}/actividades">{{ translate('pagina.titulo_actividades') }}</a>
-        </div>
-        <div class="row">
-            <a class="button transparent expanded secondary" href="#/{{ lang() }}/galeria/webcams">{{ translate('pagina.titulo_webcams') }}</a>
-        </div>
-        <div class="row">
-            <a class="button transparent expanded secondary" href="#/{{ lang() }}/galeria/arona_360">{{ translate('pagina.titulo_tour_virtual_360') }}</a>
-        </div>
+    <div flex-gt-sm="33" style="margin-top: 1em;">
+        <md-grid-list md-cols="1" md-row-height-gt-sm="6:1" md-row-height="9:1" md-gutter="12px" md-gutter-gt-sm="8px">
+            <md-grid-tile md-rowspan="1" md-colspan="1">
+                <a class="button transparent expanded secondary" href="#/{{ lang() }}/actividades">{{ translate('pagina.titulo_actividades') }}</a>
+            </md-grid-tile>
+            <md-grid-tile md-rowspan="1" md-colspan="1">
+                <a class="button transparent expanded secondary" href="#/{{ lang() }}/galeria/webcams">{{ translate('pagina.titulo_webcams') }}</a>
+            </md-grid-tile>
+            <md-grid-tile md-rowspan="1" md-colspan="1">
+                <a class="button transparent expanded secondary" href="#/{{ lang() }}/galeria/arona_360">{{ translate('pagina.titulo_tour_virtual_360') }}</a>
+            </md-grid-tile>
+        </md-grid-list>
     </div>
 </div>
 
