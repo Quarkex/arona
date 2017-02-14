@@ -58,7 +58,7 @@
  *   E.G: {{ breadcrumbs }} => [{"label":"home", "href":"#/"},{"label":"angular", "href":"#/angular"}]
  */
 
-var app = angular.module("aronaTravelApp", ["ngRoute","ngResource","mm.foundation", "tmh.dynamicLocale", "ngMaterial"]);
+var app = angular.module("aronaTravelApp", ["ngRoute","ngResource","mm.foundation", "tmh.dynamicLocale", "ngAnimate", "ngMaterial"]);
 
 app.value('page', {
     'title': "Arona.travel",
@@ -440,10 +440,12 @@ function ResourcePaginator(language, $resource){
 
 }
 
-app.config(function($routeProvider, tmhDynamicLocaleProvider) {
+app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider) {
     var isValidLang = function($location, language){
         language.current_language($location.path().split('/')[1]);
     };
+
+    $animateProvider.classNameFilter(/angular-animate/);
 
     tmhDynamicLocaleProvider.localeLocationPattern('/js/angularjs/i18n/angular-locale_{{locale}}.js');
 
