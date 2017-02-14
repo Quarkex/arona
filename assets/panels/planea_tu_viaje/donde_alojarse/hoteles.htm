@@ -52,15 +52,15 @@
                 <md-card-actions layout="row">
                     <div class="medium-8 medium-offset-4 columns" layout="row">
                         <div flex-xs flex="50" layout="row" xs-layout="column">
-                            <md-button href="mailto:{{ card.EMAIL }}">EMAIL</md-button>
-                            <md-button href="{{ card.WEB_PROPIA }}">WEBSITE</md-button>
+                            <md-button class="md-primary" href="mailto:{{ card.EMAIL }}">EMAIL</md-button>
+                            <md-button class="md-primary" href="{{ card.WEB_PROPIA }}">WEBSITE</md-button>
                         </div>
                         <div flex-xs flex="50" layout="row" xs-layout="column">
                             <md-card-icon-actions layout-align="end center">
-                                <md-button href="{{ card.MAPA }}" target='_blank' class="md-icon-button">
+                                <md-button href="{{ card.MAPA }}" target='_blank' class="md-icon-button md-primary">
                                     <md-icon class="material-icons">location_on</md-icon>
                                 </md-button>
-                                <md-button href="mailto:{{ card.CONTACTO }}" class="md-icon-button">
+                                <md-button href="mailto:{{ card.CONTACTO }}" class="md-icon-button md-primary">
                                     <md-icon class="material-icons">contact_mail</md-icon>
                                 </md-button>
                             </md-card-icon-actions>
