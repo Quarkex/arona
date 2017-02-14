@@ -5,36 +5,29 @@
             <h2>{{ string_interpolate( translate('general.', 'numero_de_contenidos'), size(), current_section(), largest_size()) }}</h2>
         </div>
     </div>
-    <div class="row">
-        <div class="medium-3 columns">
-            <select name="activities" placeholder="general.activities">
-                <option value="agenda">Zona Turística</option>
-            </select>
-        </div>
-        <div class="medium-3 columns">
-            <select name="activities" placeholder="general.activities">
-                <option value="agenda">Categoría</option>
-            </select>
-        </div>
-        <div class="medium-3 columns">
-            <select name="activities" placeholder="general.activities">
-                <option value="agenda">Acesibilidad</option>
-            </select>
-        </div>
-        <div class="medium-3 columns end">
-            <select name="activities" placeholder="general.activities">
-                <option value="agenda">Servicios</option>
-            </select>
-        </div>
-    </div>
-    <div class="row">
-        <div class="small-12 columns">
-            <div class="button-group centered toggle">
-                <a class="button" ng-click="toggle_filter('INDICADORES.categoria.contents.label', value)" ng-repeat="(value, label) in { '2_estrellas': '2 estrellas', '3_estrellas': '3 estrellas', '4_estrellas': '4 estrellas', '5_estrellas': '5 estrellas' }">
-                    {{ label }}
-                </a>
-            </div>
-        </div>
+    <div class="row" ng-cloak>
+        <md-tabs md-dynamic-height>
+            <md-tab label="Zona turística">
+                <div layout="row" layout-align="center center">
+                    <md-button class="md-raised" ng-click="toggle_filter('ZONA', value)" ng-repeat="(value, label) in { 'Playa de las Américas': 'Playa de las Américas', 'Los Cristianos': 'Los Cristianos', 'Costa del Silencio': 'Costa del Silencio', 'Chayofa': 'Chayofa' }">{{ label }}</md-button>
+                </div>
+            </md-tab>
+            <md-tab label="Categoría">
+                <div layout="row" layout-align="center center">
+                    <md-button class="md-raised" ng-click="toggle_filter('INDICADORES.categoria.contents.label', value)" ng-repeat="(value, label) in { '2_estrellas': '2 estrellas', '3_estrellas': '3 estrellas', '4_estrellas': '4 estrellas', '5_estrellas': '5 estrellas' }">{{ label }}</md-button>
+                </div>
+            </md-tab>
+            <md-tab label="Accesibilidad">
+                <div layout="row" layout-align="center center">
+                    <md-button class="md-raised" ng-click="toggle_filter('INDICADORES.categoria.contents.label', value)" ng-repeat="(value, label) in { '2_estrellas': '2 estrellas', '3_estrellas': '3 estrellas', '4_estrellas': '4 estrellas', '5_estrellas': '5 estrellas' }">{{ label }}</md-button>
+                </div>
+            </md-tab>
+            <md-tab label="Servicios">
+                <div layout="row" layout-align="center center">
+                    <md-button class="md-raised" ng-click="toggle_filter('INDICADORES.categoria.contents.label', value)" ng-repeat="(value, label) in { '2_estrellas': '2 estrellas', '3_estrellas': '3 estrellas', '4_estrellas': '4 estrellas', '5_estrellas': '5 estrellas' }">{{ label }}</md-button>
+                </div>
+            </md-tab>
+        </md-tabs>
     </div>
     <div class="row collapse">
         <div class="large-6 columns" ng-repeat="card in elements()">
