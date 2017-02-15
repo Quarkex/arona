@@ -1,5 +1,5 @@
 <div class="tabs-wrapper" ng-controller="tabsCtrl">
-    <div class="row">
+    <div class="row" style="overflow-x: auto;">
         <md-nav-bar md-selected-nav-item="current_section()">
             <md-nav-item ng-repeat="(label, link) in sublinks()" md-nav-click="tabNavigate( lang() + link.href )" name="{{ label }}">
                 {{ translate('pagina.titulo_', label) }}
