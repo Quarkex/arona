@@ -1,12 +1,26 @@
+.breadcrumbs-wrapper {
+    background-color: #eeeeee;
+    width: 100%;
+    padding: 0;
+}
 .breadcrumbs {
     background-color: #eeeeee;
     padding: 0.5em 2em;
     margin: 0;
 
     li {
+        font-size: 14px;
+        text-transform: unset;
+        color: #4a4a4a;
         a{ color: #015aa9; }
         &:last-of-type{
             a{ color: #4a4a4a; }
         }
     }
+}
+.breadcrumbs li:not(:last-child)::after {
+    content:'keyboard_arrow_right';
+    font-family: 'Material Icons';
+    -webkit-font-feature-settings: 'liga';
+    color: #015aa9;
 }
