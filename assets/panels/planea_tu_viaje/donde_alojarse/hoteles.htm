@@ -72,7 +72,7 @@
             </md-card>
         </div>
     </div>
-    <md-content flex class="row" layout-gt-sm="row" layout="column">
+    <md-content ng-if="paginator_pages().length > 1" flex class="row" layout-gt-sm="row" layout="column">
         <div flex class="columns" layout="row" layout-align="center center" layout-align-gt-sm="begin center">
             <md-button ng-click="previous_page();" class="md-icon-button md-primary">
                 <md-icon class="material-icons">keyboard_arrow_left</md-icon>
