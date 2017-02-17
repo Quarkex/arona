@@ -6,6 +6,15 @@ require 'json'
 cgi = CGI.new
 
 doc = {
+    "idioma.de":                              "Alemán",
+    "idioma.en":                              "Inglés",
+    "idioma.es":                              "Español",
+    "idioma.fi":                              "Finlandés",
+    "idioma.fr":                              "Francés",
+    "idioma.it":                              "Italiano",
+    "idioma.nl":                              "Neerlandés",
+    "idioma.ru":                              "Ruso",
+    "idioma.sv":                              "Sueco",
     "general.actualizarnavegador":            "<p><strong>Por favor actualice su navegador web, está usando una versión desfasada y podría tener graves problemas de seguridad además de perderse mejoras funcionales y de presentación</strong>. Este website ha sido diseñado siguiendo normas <a href='http://www.w3.org/'>W3C (<em>World Wide Web Consortium</em>)</a> y su navegador no soporta niveles actualmente aceptados de conformidad (en particular <a href='http://www.w3.org/TR/CSS21/'>CSS 2.1</a>). Actualizando su navegador disfrutará de una mejor experiencia navegando por internet, no sólo en este sitio.</p><p>Si es usuario de Internet Explorer por favor actualice a la <a href='http://www.microsoft.com/windows/ie/'>última versión disponible</a> (recomendamos Internet Explorer 8). Si usa Internet Explorer 6 sobre Windows 2000 no tiene opción a actualizar a una versión más reciente de Internet Explorer, en este caso le recomendamos que considere instalar alguna versión reciente de navegadores disponibles gratuitamente para su plataforma: <a href='http://getfirefox.com/'>Mozilla FireFox</a>, <a href='http://www.opera.com/'>Opera</a>, <a href='http://www.apple.com/safari/'>Apple Safari</a>, <a href='http://www.google.com/chrome'>Google Chrome</a>.</p>",
     "general.agenda":                         "Agenda",
     "general.albumesFotos":                   "álbumes fotos",
