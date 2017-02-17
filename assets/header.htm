@@ -32,7 +32,7 @@
         </div>
     </div>
 </header>
-<header ng-if="level() > 1" class="section-header" style="background-image: url(/img/headers/pagina.{{ sections()[3] }}.png), url(/img/headers/pagina.{{ sections()[2] }}.png), url(/img/headers/pagina.{{ sections()[1] }}.png)">
+<header ng-if="level() > 1" class="section-header" style="background-image: linear-gradient(to bottom, #0004, #0004), url(/img/headers/pagina.{{ sections()[3] }}.png), url(/img/headers/pagina.{{ sections()[2] }}.png), url(/img/headers/pagina.{{ sections()[1] }}.png)">
     <div class="large-8 large-offset-2 columns">
         <h1>{{ translate('pagina.titulo_', sections()[1] ) }}</h1>
         <h2 ng-if="( translate('pagina.subtitulo_', sections()[1] ) != '' ) && ( level() == 2 )">{{ translate('pagina.subtitulo_', sections()[1] ) }}</h2>
