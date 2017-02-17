@@ -1,16 +1,14 @@
 <div class="row bottomnav">
     <div class="large-10 large-offset-1 columns">
         <div class="row">
-            <md-grid-list md-cols="2" md-cols-gt-xs="4" md-row-height-gt-sm="1:1" md-row-height="4:3" md-gutter-gt-sm="8px" md-gutter="4px" style="min-height: 275px;">
-                <md-grid-tile ng-if="$index < 4"  ng-repeat="(label, link) in nav" md-colspan="1" md-rowspan-gt-xs="3" md-rowspan-gt-sm="1" md-rowspan="4">
-                    <ul style="height: 100%;">
-                        <li><a href="#/{{lang()}}{{link.href}}">{{ translate("pagina.titulo_", label) }}</a></li>
-                        <li ng-repeat="(sublabel, sublink) in link.content">
-                            <a href="#/{{lang()}}{{sublink.href}}">{{ translate("pagina.titulo_", sublabel) }}</a>
-                        </li>
-                    </ul>
-                </md-grid-tile>
-            </md-grid-list>
+            <div class="small-6 medium-3 columns" ng-if="$index < 4"  ng-repeat="(label, link) in nav">
+                <ul style="height: 100%;">
+                    <li><a href="#/{{lang()}}{{link.href}}">{{ translate("pagina.titulo_", label) }}</a></li>
+                    <li ng-repeat="(sublabel, sublink) in link.content">
+                        <a href="#/{{lang()}}{{sublink.href}}">{{ translate("pagina.titulo_", sublabel) }}</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
