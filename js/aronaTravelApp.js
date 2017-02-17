@@ -272,9 +272,10 @@ function ResourcePaginator(language, $resource){
 
     this.last_modified = function(d){
         if (d != undefined){
-            self.variables.last_modified = d;
+            if (d != '' && d != null) self.variables.last_modified = d;
         }
-        return self.variables.stats.last_modified;
+        if (self.variables.last_modified == undefined) return new Date().toISOString();
+        else return self.variables.stats.last_modified;
     };
     scope_interface.push("last_modified");
 
@@ -708,7 +709,7 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
         var args = Array.from(arguments);
         var string = args[0];
 
-        for (var i = 0; i < args.length; i++){
+        for (var i = 1; i < args.length; i++){
             if ( args[i] != undefined) string = string.replace('{'+(i - 1)+'}', args[i]);
         }
 
