@@ -1,13 +1,13 @@
 <div ng-include="'assets/tab-bar.htm'"></div>
 <div ng-controller="hotelsCtrl">
-    <div class="row">
+    <div class="row" style="display: none;">
         <div class="small-12 columns">
             <h2 style="font-size: 24px; padding-top: 1.5em; padding-bottom: 1.5em;">
                 {{ string_interpolate( translate('general.', 'numero_de_contenidos'), size(), current_section(), largest_size()) }}
             </h2>
         </div>
     </div>
-    <div class="row" ng-cloak>
+    <div class="row" ng-cloak style="display: none;">
         <md-tabs md-dynamic-height>
             <md-tab label="Zona turística">
                 <div layout-gt-xs="row" layout="column" layout-align="center center" style="padding-top: 1.5em;padding-bottom: 2em;">
