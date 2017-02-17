@@ -441,7 +441,7 @@ function ResourcePaginator(language, $resource){
 
 }
 
-app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider) {
+app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, $mdThemingProvider) {
     var isValidLang = function($location, language){
         language.current_language($location.path().split('/')[1]);
     };
@@ -449,6 +449,17 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider) 
     $animateProvider.classNameFilter(/angular-animate/);
 
     tmhDynamicLocaleProvider.localeLocationPattern('/js/angularjs/i18n/angular-locale_{{locale}}.js');
+
+    // By default, shades 500, 300 800 and A100 are used for primary and warn intentions, while A200, A100, A400 and A700 are used for accent.
+    $mdThemingProvider.extendPalette('indigo', {
+        '500': '#15388a',
+        'contrastDefaultColor': 'dark'
+    });
+    $mdThemingProvider.extendPalette('pink', {
+        'A100': '#d2251a',
+        'contrastDefaultColor': 'light'
+    });
+
 
     $routeProvider
     .when("/:language", {
