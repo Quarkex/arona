@@ -1,42 +1,44 @@
-<div layout="column" layout-gt-xs="row" class="row column bottom-extra" style="overflow: hidden; padding-bottom: 2em;">
-    <div flex-gt-md="50" flex-gt-xs="33" style="margin-top: 1em;">
-        <md-grid-list md-cols="2" md-cols-gt-xs="3" md-row-height="4:3" md-row-height-gt-xs="1:1" md-gutter="12px" md-gutter-gt-sm="8px">
-            <md-grid-tile md-rowspan="1" md-rowspan-gt-xs="1" md-colspan="1">
-                <a href="#"><img src="/img/bottom_extra/LogoA.png" style="max-height: 95px; width: auto;"></a>
-            </md-grid-tile>
-            <md-grid-tile md-rowspan="1" md-rowspan-gt-xs="1" md-colspan="1">
-                <a href="#"><img src="/img/bottom_extra/LogoB.png" style="max-height: 95px; width: auto;"></a>
-            </md-grid-tile>
-            <md-grid-tile md-rowspan="1" md-rowspan-gt-xs="1" md-colspan-gt-xs="1" md-colspan="2">
-                <a href="#"><img src="/img/bottom_extra/LogoC.png" style="max-height: 95px; width: auto;"></a>
-            </md-grid-tile>
-        </md-grid-list>
-    </div>
-    <div flex-gt-md="25" flex-gt-xs="33" style="margin-top: 1em;">
-        <md-grid-list md-cols="2" md-cols-gt-xs="1" md-row-height="3:1" md-row-height-gt-xs="6:1" md-gutter="12px" md-gutter-gt-xs="8px">
-            <md-grid-tile md-rowspan="1" md-colspan-gt-xs="1" md-colspan="2">
-                <a href="#" class="text-left medium-text-center" style="width: 90%;"><img src="/img/bottom_extra/ButtonA.png"></a>
-            </md-grid-tile>
-            <md-grid-tile md-rowspan="1" md-colspan="1">
-                <a href="#"><img src="/img/bottom_extra/ButtonB.png"></a>
-            </md-grid-tile>
-            <md-grid-tile md-rowspan="1" md-colspan="1">
-                <a href="#"><img src="/img/bottom_extra/ButtonC.png"></a>
-            </md-grid-tile>
-        </md-grid-list>
-    </div>
-    <div flex-gt-md="25" flex-gt-xs="33" style="margin-top: 1em;">
-        <md-grid-list md-cols="1" md-row-height-gt-xs="6:1" md-row-height="9:1" md-gutter="12px" md-gutter-gt-xs="8px">
-            <md-grid-tile md-rowspan="1" md-colspan="1">
-                <a class="button transparent expanded secondary" href="#/{{ lang() }}/actividades">{{ translate('pagina.titulo_actividades') }}</a>
-            </md-grid-tile>
-            <md-grid-tile md-rowspan="1" md-colspan="1">
-                <a class="button transparent expanded secondary" href="#/{{ lang() }}/galeria/webcams">{{ translate('pagina.titulo_webcams') }}</a>
-            </md-grid-tile>
-            <md-grid-tile md-rowspan="1" md-colspan="1">
-                <a class="button transparent expanded secondary" href="#/{{ lang() }}/galeria/arona_360">{{ translate('pagina.titulo_tour_virtual_360') }}</a>
-            </md-grid-tile>
-        </md-grid-list>
+<div class="row bottom-extra" style="overflow: hidden; padding-bottom: 2em;">
+    <div class="large-10 large-offset-1 column" layout="column" layout-gt-xs="row">
+        <div flex-gt-md="50" flex-gt-xs="33" style="margin-top: 1em;">
+            <md-grid-list md-cols="2" md-cols-gt-xs="3" md-row-height="4:3" md-row-height-gt-xs="1:1" md-gutter="12px" md-gutter-gt-sm="8px">
+                <md-grid-tile md-rowspan="1" md-rowspan-gt-xs="1" md-colspan="1">
+                    <a href="#"><img src="/img/bottom_extra/LogoA.png" style="max-height: 95px; width: auto;"></a>
+                </md-grid-tile>
+                <md-grid-tile md-rowspan="1" md-rowspan-gt-xs="1" md-colspan="1">
+                    <a href="#"><img src="/img/bottom_extra/LogoB.png" style="max-height: 95px; width: auto;"></a>
+                </md-grid-tile>
+                <md-grid-tile md-rowspan="1" md-rowspan-gt-xs="1" md-colspan-gt-xs="1" md-colspan="2">
+                    <a href="#"><img src="/img/bottom_extra/LogoC.png" style="max-height: 95px; width: auto;"></a>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+        <div flex-gt-md="25" flex-gt-xs="33" style="margin-top: 1em;">
+            <md-grid-list md-cols="2" md-cols-gt-xs="1" md-row-height="3:1" md-row-height-gt-xs="6:1" md-gutter="12px" md-gutter-gt-xs="8px">
+                <md-grid-tile md-rowspan="1" md-colspan-gt-xs="1" md-colspan="2">
+                    <a href="#" class="text-left medium-text-center" style="width: 90%;"><img src="/img/bottom_extra/ButtonA.png"></a>
+                </md-grid-tile>
+                <md-grid-tile md-rowspan="1" md-colspan="1">
+                    <a href="#"><img src="/img/bottom_extra/ButtonB.png"></a>
+                </md-grid-tile>
+                <md-grid-tile md-rowspan="1" md-colspan="1">
+                    <a href="#"><img src="/img/bottom_extra/ButtonC.png"></a>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+        <div flex-gt-md="25" flex-gt-xs="33" style="margin-top: 1em;">
+            <md-grid-list md-cols="1" md-row-height-gt-xs="6:1" md-row-height="9:1" md-gutter="12px" md-gutter-gt-xs="8px">
+                <md-grid-tile md-rowspan="1" md-colspan="1">
+                    <a class="button transparent expanded secondary" href="#/{{ lang() }}/actividades">{{ translate('pagina.titulo_actividades') }}</a>
+                </md-grid-tile>
+                <md-grid-tile md-rowspan="1" md-colspan="1">
+                    <a class="button transparent expanded secondary" href="#/{{ lang() }}/galeria/webcams">{{ translate('pagina.titulo_webcams') }}</a>
+                </md-grid-tile>
+                <md-grid-tile md-rowspan="1" md-colspan="1">
+                    <a class="button transparent expanded secondary" href="#/{{ lang() }}/galeria/arona_360">{{ translate('pagina.titulo_tour_virtual_360') }}</a>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
     </div>
 </div>
 
