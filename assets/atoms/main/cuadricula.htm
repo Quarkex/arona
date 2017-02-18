@@ -10,7 +10,7 @@
                 <h2>{{ translate('pagina.subtitulo_planea_tu_viaje') }}</h2>
             </div>
         </div>
-        <md-content flex="100">
+        <md-content flex="100" style="overflow: hidden;">
             <md-grid-list md-cols="1" md-cols-gt-xs="2" md-cols-gt-sm="3" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="24px">
                 <md-grid-tile id="{{ id }}" class="index-page-box" md-rowspan="1" md-colspan="1" ng-repeat="id in ['como_llegar', 'donde_alojarse', 'como_moverse']">
                     <a class="button translucid" href="#/{{ lang() }}/planea_tu_viaje/{{ id }}">{{ translate('pagina.titulo_', id) }}</a>
