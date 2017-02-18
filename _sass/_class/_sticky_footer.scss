@@ -16,7 +16,13 @@
 
 .footer-wrapper {
     margin: 0;
-    height: $footer_height;
     min-width: 100%;
-    overflow: hidden;
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {
+    .footer-wrapper {
+        height: $footer_height;
+        overflow: hidden;
+    }
 }
