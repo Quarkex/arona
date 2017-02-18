@@ -1,6 +1,6 @@
 .title-bar {
     padding: 0;
-    background-color: $main_color;
+    background-color: $main_color !important;
     color: $main_color_contrast;
     width: 100%;
     *:not(.submenu) {
