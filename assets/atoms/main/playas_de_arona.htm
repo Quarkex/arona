@@ -1,54 +1,60 @@
 <div class="row">
-    <div class="medium-5 medium-offset-1 columns">
-        <div style="color: white;">
-            <div class="row">
-                <h6>{{ translate('pagina.titulo_el_tiempo') }}</h6>
+    <div class="large-10 large-offset-1 columns">
+        <md-content flex="100" style="background-color: transparent;">
+            <md-grid-list md-cols="1" md-cols-gt-xs="2" md-row-height="4:3" md-gutter="12px" md-gutter-gt-sm="24px">
+                <md-grid-tile md-rowspan="1" md-colspan="1">
+                    <div flex="75" layout="column" style="color: white;">
+                        <div>
+                            <h6>{{ translate('pagina.titulo_el_tiempo') }}</h6>
+                        </div>
+                        <div flex="100" layout="row">
+                            <div flex="50" class="text-left" layout="column" style="font-size: 26px; font-weight: bold;">
+                                <span>Lunes</span>
+                                <span>6 febrero</span>
+                            </div>
+                            <div flex="50" class="text-right" layout="column" style="font-size: 30px; font-weight: bold;">
+                                <span><img src="img/icons/despejado.svg" alt="despejado">20°C</span>
+                                <span style="font-size: 20px;">12°C|3°C</span>
+                            </div>
+                        </div>
+                        <div layout="row" class="text-center" style="margin-top: 2em;">
+                            <div flex="33" flex-gt-xs="25">
+                                <div class="row">MAR</div>
+                                <div class="row">20°C</div>
+                                <div class="row">14°C</div>
+                            </div>
+                            <div flex="33" flex-gt-xs="25">
+                                <div class="row">MIE</div>
+                                <div class="row">20°C</div>
+                                <div class="row">8°C</div>
+                            </div>
+                            <div flex="33" flex-gt-xs="25">
+                                <div class="row">JUE</div>
+                                <div class="row">16°C</div>
+                                <div class="row">7°C</div>
+                            </div>
+                            <div hide-xs flex-gt-xs="25">
+                                <div class="row">VIE</div>
+                                <div class="row">16°C</div>
+                                <div class="row">7°C</div>
+                            </div>
+                        </div>
+                    </div>
+                </md-grid-tile>
+                <md-grid-tile md-rowspan="1" md-colspan="1" layout="column">
+                    <div flex="75" layout="column">
+                        <h2 class="text-center">{{ translate('pagina.subtitulo_camaras_en_vivo') }}</h2>
+                        <div class="text-center">
+                            <a class="button transparent-white" href="#/{{ lang() }}/webcams">{{ translate('pagina.titulo_webcams') }}</a>
+                        </div>
+                    </div>
+                </md-grid-tile>
+            </md-grid-list>
+        </md-content>
+        <div flex="100" layout-margin>
+            <div class="text-center">
+                <a class="button opaque" href="#/{{ lang() }}/vive_tu_estancia/sol_y_playa">{{ translate('pagina.titulo_playas_de_arona') }}</a>
             </div>
-            <div class="row">
-                <div class="medium-6 columns text-left" style="font-size: 26px; font-weight: bold;">
-                    <div class="row">Lunes</div>
-                    <div class="row">6 febrero</div>
-                </div>
-                <div class="medium-6 columns text-right" style="font-size: 30px; font-weight: bold;">
-                    <div class="row"><img src="img/icons/despejado.svg" alt="despejado">20°C</div>
-                    <div class="row" style="font-size: 20px;">12°C|3°C</div>
-                </div>
-            </div>
-            <div class="row text-center">
-                <div class="medium-3 columns">
-                    <div class="row">MAR</div>
-                    <div class="row">20°C</div>
-                    <div class="row">14°C</div>
-                </div>
-                <div class="medium-3 columns">
-                    <div class="row">MIE</div>
-                    <div class="row">20°C</div>
-                    <div class="row">8°C</div>
-                </div>
-                <div class="medium-3 columns">
-                    <div class="row">JUE</div>
-                    <div class="row">16°C</div>
-                    <div class="row">7°C</div>
-                </div>
-                <div class="medium-3 columns">
-                    <div class="row">VIE</div>
-                    <div class="row">16°C</div>
-                    <div class="row">7°C</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="medium-5 columns end text-center">
-        <div>
-            <div class="row">
-                <h2>{{ translate('pagina.subtitulo_camaras_en_vivo') }}</h2>
-            </div>
-            <div class="row"> <a class="button transparent-white" href="#/{{ lang() }}/webcams">{{ translate('pagina.titulo_webcams') }}</a>
-            </div>
-        </div>
-    </div>
-    <div class="small-4 small-offset-4 columns end">
-        <div class="row text-center"> <a class="button opaque" href="#/{{ lang() }}/vive_tu_estancia/sol_y_playa">{{ translate('pagina.titulo_playas_de_arona') }}</a>
         </div>
     </div>
 </div>
