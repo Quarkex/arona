@@ -9,7 +9,23 @@
     h2, h3 {
         display: inline-block;
     }
+}
+/* Small only */
+@media screen and (max-width: 39.9375em) {
+    h1 {
+        font-size: 32px;
+    }
     h2 {
-        font-size: 2em;
+        font-size: 18px;
+    }
+}
+
+/* Medium and up */
+@media screen and (min-width: 40em) {
+    h1 {
+        font-size: 48px;
+    }
+    h2 {
+        font-size: 30px;
     }
 }
