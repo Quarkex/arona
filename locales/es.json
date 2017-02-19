@@ -209,6 +209,7 @@ doc = {
     "pagina.titulo_folletos_y_mapas":         "Folletos y mapas",
     "pagina.titulo_oficinas_de_informacion":  "Oficinas de Información",
     "pagina.titulo_disfruta_de_arona":        "Disfruta de Arona",
+    "pagina.titulo_conoce_arona":             "Cónoce Arona",
     "pagina.titulo_el_tiempo":                "El tiempo",
     "pagina.subtitulo_camaras_en_vivo":       "Disfruta de la imagen en vivo de Arona",
 
@@ -235,7 +236,8 @@ doc = {
     "pagina.titulo_un_poco_de_historia":      "Un poco de historia",
     "pagina.titulo_patrimonio_cultural":      "Patrimonio cultural",
     "pagina.titulo_lugares_de_interes":       "Lugares de interés",
-    "pagina.titulo_tour_virtual_360":         "Arona 360º",
+    "pagina.titulo_tour_virtual_360":         "Tour virtual 360º",
+    "pagina.titulo_arona_360":                "Arona 360º",
     "pagina.titulo_arona_casco":              "Arona casco",
 
     "pagina.titulo_vive_tu_estancia":         "Vive tu estancia",
