@@ -863,3 +863,10 @@ app.filter("pad", [function() {
         return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
     };
 }]);
+app.filter("capitalize", [function() {
+    return function(input, scope) {
+        if (input!=null)
+            input = input.toLowerCase();
+        return input.substring(0,1).toUpperCase()+input.substring(1);
+    }
+}]);
