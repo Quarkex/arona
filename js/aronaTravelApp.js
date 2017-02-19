@@ -530,7 +530,63 @@ app.controller("hotelsCtrl", function($rootScope, $scope, hotels) {
         "filters": {"SUBTIPO_PRINCIPAL": "Hoteles"},
         "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
-        "limit": 30
+        "limit": 100
+    });
+});
+
+app.service('hostels', ["language", "$resource", ResourcePaginator]);
+app.controller("hostelsCtrl", function($rootScope, $scope, hostels) {
+
+    hostels.expose_interface($scope);
+
+    hostels.set_values({
+        "collection": "territoriales",
+        "filters": {"SUBTIPO_PRINCIPAL": "Pensiones"},
+        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+        "offset": 0,
+        "limit": 100
+    });
+});
+
+app.service('ruralHostels', ["language", "$resource", ResourcePaginator]);
+app.controller("ruralHostelsCtrl", function($rootScope, $scope, ruralHostels) {
+
+    ruralHostels.expose_interface($scope);
+
+    ruralHostels.set_values({
+        "collection": "territoriales",
+        "filters": {"SUBTIPO_PRINCIPAL": "Alojamiento Rural"},
+        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+        "offset": 0,
+        "limit": 100
+    });
+});
+
+app.service('aparthotels', ["language", "$resource", ResourcePaginator]);
+app.controller("aparthotelsCtrl", function($rootScope, $scope, aparthotels) {
+
+    aparthotels.expose_interface($scope);
+
+    aparthotels.set_values({
+        "collection": "territoriales",
+        "filters": {"SUBTIPO_PRINCIPAL": "Aparthoteles"},
+        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+        "offset": 0,
+        "limit": 100
+    });
+});
+
+app.service('apartments', ["language", "$resource", ResourcePaginator]);
+app.controller("apartmentsCtrl", function($rootScope, $scope, apartments) {
+
+    apartments.expose_interface($scope);
+
+    apartments.set_values({
+        "collection": "territoriales",
+        "filters": {"SUBTIPO_PRINCIPAL": "Apartamentos"},
+        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+        "offset": 0,
+        "limit": 100
     });
 });
 

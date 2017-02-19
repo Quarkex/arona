@@ -1,0 +1,111 @@
+<div class="row" style="display: none;">
+    <div class="small-12 columns">
+        <h2 style="font-size: 24px; padding-top: 1.5em; padding-bottom: 1.5em;">
+            {{ string_interpolate( translate('general.', 'numero_de_contenidos'), size(), current_section(), largest_size()) }}
+        </h2>
+    </div>
+</div>
+<div class="row" ng-cloak style="display: none;">
+    <md-tabs md-dynamic-height>
+        <md-tab label="Zona turística">
+            <div layout-gt-xs="row" layout="column" layout-align="center center" style="padding-top: 1.5em;padding-bottom: 2em;">
+                <md-button class="md-raised" ng-click="toggle_filter('ZONA', value)" ng-repeat="(value, label) in { 'Playa de las Américas': 'Playa de las Américas', 'Los Cristianos': 'Los Cristianos', 'Costa del Silencio': 'Costa del Silencio', 'Chayofa': 'Chayofa' }">{{ label }}</md-button>
+            </div>
+        </md-tab>
+        <md-tab label="Categoría">
+            <div layout-gt-xs="row" layout="column" layout-align="center center" style="padding-top: 1.5em;padding-bottom: 2em;">
+                <md-button class="md-raised" ng-click="toggle_filter('INDICADORES.categoria.contents.label', value)" ng-repeat="(value, label) in { '2_estrellas': '2 estrellas', '3_estrellas': '3 estrellas', '4_estrellas': '4 estrellas', '5_estrellas': '5 estrellas' }">{{ label }}</md-button>
+            </div>
+        </md-tab>
+        <md-tab label="Accesibilidad">
+            <div layout-gt-xs="row" layout="column" layout-align="center center" style="padding-top: 1.5em;padding-bottom: 2em;">
+                <md-button class="md-raised" ng-click="toggle_filter('INDICADORES.categoria.contents.label', value)" ng-repeat="(value, label) in { '2_estrellas': '2 estrellas', '3_estrellas': '3 estrellas', '4_estrellas': '4 estrellas', '5_estrellas': '5 estrellas' }">{{ label }}</md-button>
+            </div>
+        </md-tab>
+        <md-tab label="Servicios">
+            <div layout-gt-xs="row" layout="column" layout-align="center center" style="padding-top: 1.5em;padding-bottom: 2em;">
+                <md-button class="md-raised" ng-click="toggle_filter('INDICADORES.categoria.contents.label', value)" ng-repeat="(value, label) in { '2_estrellas': '2 estrellas', '3_estrellas': '3 estrellas', '4_estrellas': '4 estrellas', '5_estrellas': '5 estrellas' }">{{ label }}</md-button>
+            </div>
+        </md-tab>
+    </md-tabs>
+</div>
+<div class="row collapse">
+    <div class="medium-6 columns" ng-class="{'end': $last}" ng-repeat="card in elements()">
+        <md-card flex-xs md-theme="default" md-theme-watch style="min-height: 250px; background-color: #f6f6f6;">
+            <md-card-title>
+                <div style="flex-basis:125px;">
+                    <md-card-title-media>
+                        <img class="md-media-md card-media" alt="{{ card.name }}" src="http://www.arona.travel/portal/imagecache/ficha/{{ card.IMAGEN }}">
+                    </md-card-title-media>
+                </div>
+                <div flex>
+                    <md-card-title-text>
+                        <span class="md-headline" style="font-size: 18px;">
+                            <a style="text-align: left;" href="#/{{ lang() }}/planea_tu_viaje/donde_alojarse/hoteles/{{ card.CODCONTENIDO }}">
+                                {{ card.TITULO }}
+                            </a>
+                        </span>
+                        <span class="md-subhead" style="padding-top: 0;">{{ card.DIRECCION }}</span>
+                    </md-card-title-text>
+                </div>
+            </md-card-title>
+            <md-card-actions layout="row">
+                <div class="show-for-large" style="flex-basis:115px;"></div>
+                <div flex layout="row">
+                    <div flex-xs flex="50" layout="row" xs-layout="column">
+                        <md-button class="md-primary" href="mailto:{{ card.EMAIL }}">EMAIL</md-button>
+                        <md-button class="md-primary" href="{{ card.WEB_PROPIA }}">WEBSITE</md-button>
+                    </div>
+                    <div flex-xs flex="50" layout="row" xs-layout="column">
+                        <md-card-icon-actions layout-align="end center">
+                            <md-button href="{{ card.MAPA }}" target='_blank' class="md-icon-button md-primary">
+                                <md-icon class="material-icons">location_on</md-icon>
+                            </md-button>
+                            <md-button href="mailto:{{ card.CONTACTO }}" class="md-icon-button md-primary">
+                                <md-icon class="material-icons">contact_mail</md-icon>
+                            </md-button>
+                        </md-card-icon-actions>
+                    </div>
+                </div>
+            </md-card-actions>
+        </md-card>
+    </div>
+</div>
+<md-content ng-if="paginator_pages().length > 1" flex class="row" layout-gt-sm="row" layout="column">
+    <div flex class="columns" layout="row" layout-align="center center" layout-align-gt-sm="begin center">
+        <md-button ng-click="previous_page();" class="md-icon-button md-primary">
+            <md-icon class="material-icons">keyboard_arrow_left</md-icon>
+        </md-button>
+        <md-button ng-disabled="p.current" ng-click="page(p.number);" ng-repeat="p in paginator_pages()" class="md-icon-button {{ p.current ? 'current': '' }}">
+            <span ng-if="p.current" class="show-for-sr">You're on page</span> {{ p.number }}
+        </md-button>
+        <md-button ng-click="next_page();" class="md-icon-button md-primary">
+            <md-icon class="material-icons">keyboard_arrow_right</md-icon>
+        </md-button>
+    </div>
+    <div class="columns text-center large-text-right" style="padding-top: 0.6em;">
+        <p class="panel page-counter">{{ 
+        string_interpolate( translate('general.', 'paginado_de_contenidos'),
+        page(),
+        pages().length,
+        '',
+        size() ) }}</p>
+    </div>
+</md-content>
+<br>
+<div class="row" layout="row">
+    <div flex="50" layout="row" layout-align="begin center">
+        <md-button class="md-primary" style="min-width: unset; background-color: #eeeeee;" onclick="history.go(-1);">
+            <md-icon class="material-icons">arrow_back</md-icon>
+        </md-button>
+        <md-button class="md-primary" style="min-width: unset; background-color: #eeeeee; margin-left: -6px;" onclick="history.go(-1);">
+            {{ translate('general.', 'volver') }}
+        </md-button>
+    </div>
+    <div flex="50" layout="row" layout-align="end center">
+        <md-content style="padding: 0.6em 0.6em 0em 0.6em;">
+            <p class="panel last-modified">{{ string_interpolate(translate('general.', 'ultima_modificacion'), last_modified()) }}</p>
+        </md-content>
+    </div>
+</div>
+
