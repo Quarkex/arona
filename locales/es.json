@@ -265,7 +265,7 @@ doc = {
     "webcams.imagen_en_vivo":                 "Imagen en vivo",
     "webcams.50":                             "50",
 
-    "date.schema":                            "dd MMMM yyyy",
+    "date.schema":                            "EEEE, dd MMMM yyyy",
     "date.monday":                            "Lunes",
     "date.mon":                               "Lun",
     "date.tuesday":                           "Martes",
