@@ -7,11 +7,5 @@
             <h2>{{ translate('pagina.subtitulo_actividades') }}</h2>
         </div>
     </div>
-    <div ng-include="'assets/news.htm'"></div>
-    <div flex-gt-md="50" flex-offset-gt-md="25" class="columns end text-center">
-        <a class="button transparent-black full-width" href="#/{{ lang() }}/actividades">
-            <div class="small-1 columns"><i class="material-icons">today</i></div>
-            <div class="small-11 columns end"><span>{{ translate('pagina.texto_boton_actividades') }}</span></div>
-        </a>
-    </div>
 </div>
+<div class="showcaser" ng-include="'assets/news.htm'"></div>

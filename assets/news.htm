@@ -1,16 +1,29 @@
 <div class="row">
     <div class="large-10 large-offset-1 columns">
-        <a ng-repeat="article in page.panels['home'].elements" href="#/{{ lang() }}/actividades/{{ article.CODCONTENIDO }}">
-            <div class="medium-6 large-4 columns">
-                <div class="row columns collapse" style="margin-bottom: 2em;">
-                    <div class="large-12 small-6 columns"><img src="http://www.arona.travel/portal/imagecache/ficha/{{ article.IMAGEN }}">
-                    </div>
-                    <div class="large-12 small-6 columns">
-                        <div class="small-12 columns">{{ article.F_INICIO_PUB | date : translate('date.schema') }}</div>
-                        <div class="small-12 columns">{{ article.TITULO }}</div>
-                    </div>
-                </div>
-            </div>
-        </a>
+        <md-content flex="100" style="overflow: hidden;">
+            <md-grid-list md-cols="1" md-cols-gt-xs="2" md-cols-gt-md="3" md-row-height-gt-md="12:5" md-row-height-gt-xs="2:1" md-row-height="2:1" md-gutter="12px" md-gutter-gt-sm="24px">
+                <md-grid-tile class="showcaser-card" md-rowspan="1" md-rowspan-gt-md="4" md-colspan="1" ng-repeat="article in page.panels['home'].elements">
+                    <a style="width: 100%; height:100%;" href="#/{{ lang() }}/actividades/{{ article.CODCONTENIDO }}">
+                        <md-content>
+                            <md-grid-list md-cols="2" md-cols-gt-md="1" md-row-height="3:1">
+                                <md-grid-tile md-colspan="1" md-rowspan="3"><img src="http://www.arona.travel/portal/imagecache/ficha/{{ article.IMAGEN }}"></md-grid-tile>
+                                <md-grid-tile md-colspan="1" md-rowspan="3" md-rowspan-gt-md="2">
+                                    <div style="height: 100%; width: 100%; padding: 1em;" layout="column">
+                                        <div class="showcaser-date">{{ article.F_INICIO_PUB | date : translate('date.schema') }}</div>
+                                        <div>{{ article.TITULO }}</div>
+                                    </div>
+                                </md-grid-tile>
+                            </md-grid-list>
+                        </md-content>
+                    </a>
+                </md-grid-tile>
+                <md-grid-tile md-rowspan="1" md-colspan="1" md-colspan-gt-sm="3">
+                    <a layout="row" class="button transparent-black" href="#/{{ lang() }}/actividades">
+                        <md-icon flex="15" class="material-icons">today</md-icon>
+                        <span flex>{{ translate('pagina.texto_boton_actividades') }}</span>
+                    </a>
+                </md-grid-tile>
+            </md-grid-list>
+        </md-content>
     </div>
 </div>
