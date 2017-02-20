@@ -246,7 +246,7 @@ doc = {
     "pagina.titulo_arte_y_artesania":         "Arte y artesanía",
     "pagina.titulo_costumbres_y_folclore":    "Costumbres y Folclore",
     "pagina.titulo_lugares_de_interes":       "Lugares de interés",
-    "pagina.icono_lugares_de_interes":        "location_on",
+    "pagina.icono_lugares_de_interes":        "place",
     "pagina.titulo_tour_virtual_360":         "Tour virtual 360º",
     "pagina.icono_tour_virtual_360":          "panorama_horizontal",
     "pagina.titulo_arona_360":                "Arona 360º",
