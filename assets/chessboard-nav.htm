@@ -14,7 +14,7 @@
     </div>
 </div>
 <div flex layout="column" style="width: 100%; background-color: #f6f6f6;">
-    <div layout="row" class="large-8 large-offset-2 columns" layout-margin="24px">
+    <div layout="column" layout-gt-xs="row" class="large-8 large-offset-2 columns" layout-margin="24px">
         <div flex ng-if="link.content == undefined" ng-repeat="(label, link) in sublinks()">
             <a flex layout="row" class="icon-button" href="#/{{ lang() }}{{ link.href }}">
                 <div><md-icon class="material-icons md-primary">{{ translate('pagina.icono_', label) }}</md-icon></div>
