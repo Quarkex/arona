@@ -65,7 +65,6 @@ doc = {
             "compras": {"href": "/vive_tu_estancia/actividades_recomendadas/compras"},
             "aprende_español": {"href": "/vive_tu_estancia/actividades_recomendadas/aprende_español"}
         }},
-        "sol_y_playa": {"href": "/vive_tu_estancia/sol_y_playa"},
         "gastronomia": {"href": "/vive_tu_estancia/gastronomia", "content": {
             "restaurantes": {"href": "/vive_tu_estancia/gastronomia/restaurantes"},
             "pastelerias": {"href": "/vive_tu_estancia/gastronomia/pastelerias"},
@@ -89,7 +88,8 @@ doc = {
             "piramide_de_arona": {"href": "/vive_tu_estancia/congresos_y_negocios/piramide_de_arona"},
             "centros_de_convenciones": {"href": "/vive_tu_estancia/congresos_y_negocios/centros_de_convenciones"},
             "otros_centros_de_congresos_de_tenerife": {"href": "/vive_tu_estancia/congresos_y_negocios/otros_centros_de_congresos_de_tenerife"}
-        }}
+        }},
+        "sol_y_playa": {"href": "/vive_tu_estancia/sol_y_playa"}
     }},
     "area_profesional": {"href": "/area_profesional", "content":{
         "noticias_del_sector": {"href": "/area_profesional/noticias_del_sector"},
