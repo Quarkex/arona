@@ -7,7 +7,7 @@
             {{ translate('general.', 'volver') }}
         </md-button>
     </div>
-    <div flex="50" layout="row" layout-align="end center">
+    <div ng-if="last_modified() != ''" flex="50" layout="row" layout-align="end center">
         <md-content style="padding: 0.6em 0.6em 0em 0.6em;">
             <p class="panel last-modified">{{ string_interpolate(translate('general.', 'ultima_modificacion'), last_modified()) }}</p>
         </md-content>
