@@ -1,0 +1,15 @@
+<div class="row" layout="row">
+    <div flex layout="row" layout-align="begin center">
+        <md-button class="md-primary" style="min-width: unset; background-color: #eeeeee;" onclick="history.go(-1);">
+            <md-icon class="material-icons">arrow_back</md-icon>
+        </md-button>
+        <md-button class="md-primary" style="min-width: unset; background-color: #eeeeee; margin-left: -6px;" onclick="history.go(-1);">
+            {{ translate('general.', 'volver') }}
+        </md-button>
+    </div>
+    <div flex="50" layout="row" layout-align="end center">
+        <md-content style="padding: 0.6em 0.6em 0em 0.6em;">
+            <p class="panel last-modified">{{ string_interpolate(translate('general.', 'ultima_modificacion'), last_modified()) }}</p>
+        </md-content>
+    </div>
+</div>
