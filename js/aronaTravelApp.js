@@ -274,7 +274,7 @@ function ResourcePaginator(language, $resource){
         if (d != undefined){
             if (d != '' && d != null) self.variables.last_modified = d;
         }
-        if (self.variables.last_modified == undefined) return new Date().toISOString();
+        if (self.variables.last_modified == undefined) return '';
         else return self.variables.stats.last_modified;
     };
     scope_interface.push("last_modified");
@@ -743,7 +743,10 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
         if (section == undefined) return sections[sections.length - 1];
         else return ( section == sections[sections.length - 1] );
     };
-    $rootScope.breadcrumbs = function() {
+    $rootScope.breadcrumbs = [];
+    $rootScope.$watch(function () {
+            return $location.path()
+    }, function (value) {
         var output = [];
         var path = $location.path().substr(1).split('/');
         var path_length = path.length;
@@ -756,8 +759,8 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
             path.pop();
         }
         output.reverse();
-        return output;
-    };
+        $rootScope.breadcrumbs = output;
+    });
 
     $rootScope.nav = {};
     $resource('/api/fetch_navigation.json', {language:$rootScope.lang()}).get(function(data){
