@@ -1,0 +1,21 @@
+<md-content ng-if="paginator_pages().length > 1" flex class="row" layout-gt-sm="row" layout="column">
+    <div flex class="columns" layout="row" layout-align="center center" layout-align-gt-sm="begin center">
+        <md-button ng-click="previous_page();" class="md-icon-button md-primary">
+            <md-icon class="material-icons">keyboard_arrow_left</md-icon>
+        </md-button>
+        <md-button ng-disabled="p.current" ng-click="page(p.number);" ng-repeat="p in paginator_pages()" class="md-icon-button {{ p.current ? 'current': '' }}">
+            <span ng-if="p.current" class="show-for-sr">You're on page</span> {{ p.number }}
+        </md-button>
+        <md-button ng-click="next_page();" class="md-icon-button md-primary">
+            <md-icon class="material-icons">keyboard_arrow_right</md-icon>
+        </md-button>
+    </div>
+    <div class="columns text-center large-text-right" style="padding-top: 0.6em;">
+        <p class="panel page-counter">{{ 
+        string_interpolate( translate('general.', 'paginado_de_contenidos'),
+        page(),
+        pages().length,
+        '',
+        size() ) }}</p>
+    </div>
+</md-content>
