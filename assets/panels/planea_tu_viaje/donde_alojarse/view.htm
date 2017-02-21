@@ -39,8 +39,8 @@
                     <h3>{{ translate( 'servicio.seccion_', section ) | capitalize }}</h3>
                     <ul>
                         <li ng-repeat="item in section_body.contents">
-                            <img ng-if="'categoria' != section && 'zona_turistica' != section" ng-src="/img/icon/logo-{{ section + '-' + item.label }}.svg" alt="{{ translate( 'servicio.', item.label ) }}">
-                            <span ng-if="'categoria' == section || 'zona_turistica' == section">{{ translate( 'servicio.', item.label ) }}"</span>
+                            <img ng-if="'categoria' != section && 'zona_turistica' != section" ng-src="/img/icons/logo-{{ section.replace('[^a-z A-Z 0-9]+', '-') + '-' + item.label | gsub: '[^a-z A-Z 0-9]+' : '-' : true }}.svg" alt="{{ translate( 'servicio.', item.label ) | gsub: '_' : ' ' : true | capitalize }}">
+                            <span ng-if="'categoria' == section || 'zona_turistica' == section">{{ translate( 'servicio.', item.label ) | gsub: '_' : ' ' : true | capitalize }}"</span>
                         </li>
                     </ul>
                 </div>
