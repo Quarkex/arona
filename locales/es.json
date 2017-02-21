@@ -303,6 +303,21 @@ doc = {
 
     "date.schema":                            "EEEE, dd MMMM yyyy",
 
-    "general.servicios_del_establecimiento":  "Servicios del establecimiento"
+    "general.servicios_del_establecimiento":  "Servicios del establecimiento",
+    "servicio.seccion_instalaciones_deportivas": "Instalaciones deportivas",
+    "servicio.seccion_servicios_en_habitacion": "Servicios en habitación",
+    "servicio.seccion_servicios":             "Servicios",
+    "servicio.seccion_instalaciones":         "Instalaciones",
+    "servicio.seccion_zona_turistica":        "Zona turística",
+    "servicio.seccion_categoria":             "Categoría",
+    "servicio.golf":                          "Golf",
+    "servicio.caja_fuerte":                   "Caja fuerte",
+    "servicio.minibar":                       "Minibar",
+    "servicio.television_en_la_habitacion":   "Televisión en la habitación",
+    "servicio.telefono_en_habitacion":        "Teléfono en la habitación",
+    "servicio.admite_pago_por_tarjeta_de_credito": "Admite pago por tarjeta de crédito",
+    "servicio.aire_acondicionado":            "Aire acondicionado",
+    "servicio.television_por_satelite":       "Televisión por satélite",
+    "servicio.banos":                         "Baños"
 }
 cgi.out("application/json; charset=utf-8"){ doc.to_json }
