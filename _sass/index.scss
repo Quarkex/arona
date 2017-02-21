@@ -10,6 +10,3 @@ div {
         font-size: 14px;
     }
 }
-
-// Workaround for safari flexboxes
-[layout-sm=column] { display: block; }
