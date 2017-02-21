@@ -870,3 +870,16 @@ app.filter("capitalize", [function() {
         return input.substring(0,1).toUpperCase()+input.substring(1);
     }
 }]);
+app.filter("gsub", [function() {
+    return function(input, pattern, replacement, isRegex) {
+        if (isRegex == undefined) isRegex = false;
+        if (input != null && pattern != null && replacement != null){
+            var output = '';
+            if (isRegex) pattern = new RegExp(pattern, "g");
+            if (input!=null) output = input.replace(pattern, replacement);
+            return output;
+        } else {
+            return '';
+        }
+    }
+}]);
