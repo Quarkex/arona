@@ -302,5 +302,7 @@ doc = {
     "webcams.50":                             "50",
 
     "date.schema":                            "EEEE, dd MMMM yyyy",
+
+    "general.servicios_del_establecimiento":  "Servicios del establecimiento"
 }
 cgi.out("application/json; charset=utf-8"){ doc.to_json }
