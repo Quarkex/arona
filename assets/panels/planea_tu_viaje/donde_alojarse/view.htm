@@ -1,10 +1,12 @@
-<div class="row collapse expanded territorial-view" ng-controller="territorialCtrl">
-    <div class="row territorial-header" style="background-image: url('http://www.arona.travel/portal/imagecache/ampliado/{{ element().IMAGEN }}');">
+<div class="territorial-view" ng-controller="territorialCtrl">
+    <div class="territorial-header" style="background-image: url('http://www.arona.travel/portal/imagecache/ampliado/{{ element().IMAGEN }}');">
         <div class="inner-wrapper">
             <h1>{{  element().TITULO }}</h1>
             <h2>{{  element().ZONA }}</h2>
         </div>
     </div>
+</div>
+<div class="territorial-view" ng-controller="territorialCtrl">
     <div class="row">
         <div class="large-10 large-offset-1 columns">
             <div layout-gt-xs="row" layout="column" class="territorial-info" layout-margin>
