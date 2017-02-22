@@ -28,22 +28,22 @@
             </header>
             <div layout="column" class="row post-content">
                 <div class="activity-content" layout="column" ng-if="element()['TAQUILLA'] != null">
-                    <h4 class="section-title">{{ translate('general.seccion_', 'taquilla') | gsub: '_':' ':true | capitalize }}</h4>
+                    <h4 class="section-title">{{ translate('general.seccion_', 'taquilla') + ':' | gsub: '_':' ':true | capitalize }}</h4>
                     <div ng-bind-html="element()['TAQUILLA'] | trust"></div>
                 </div>
 
                 <div class="activity-content" layout="column" ng-if="element()['ORGANIZACION'] != null">
-                    <h4 class="section-title">{{ translate('general.seccion_', 'organiza') | gsub: '_':' ':true | capitalize }}</h4>
+                    <h4 class="section-title">{{ translate('general.seccion_', 'organiza') + ':' | gsub: '_':' ':true | capitalize }}</h4>
                     <div ng-bind="element()['ORGANIZACION']"></div>
                 </div>
 
                 <div class="activity-content" layout="column" ng-if="element()['TELEFONO'] != null">
-                    <h4 class="section-title">{{ translate('general.seccion_', 'contacto') | gsub: '_':' ':true | capitalize }}</h4>
+                    <h4 class="section-title">{{ translate('general.seccion_', 'contacto') + ':' | gsub: '_':' ':true | capitalize }}</h4>
                     <div ng-bind="element()['TELEFONO']"></div>
                 </div>
 
                 <div class="activity-content" layout="column" ng-if="element()['DESCRIPCION_COMUN'] != null">
-                    <h4 class="section-title">{{ translate('general.seccion_', 'descripcion_del_evento') | gsub: '_':' ':true | capitalize }}</h4>
+                    <h4 class="section-title">{{ translate('general.seccion_', 'descripcion_del_evento') + ':' | gsub: '_':' ':true | capitalize }}</h4>
                     <div ng-bind-html="element()['DESCRIPCION_COMUN'] | trust"></div>
                 </div>
             </div>
