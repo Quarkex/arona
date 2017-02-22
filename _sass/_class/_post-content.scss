@@ -3,4 +3,20 @@
     color: black;
     margin-bottom: 3em;
     padding: 2em;
+    .activity-content {
+        &:not(:first-child){
+            margin-top: 1em;
+        }
+    }
+
+    .section-title {
+        width: 100%;
+        border-bottom: 3px solid lightgrey;
+        list-style-type: square;
+        display:list-item;
+        list-style-position: inside;
+        &::marker {
+            color: $secondary_color;
+        }
+    }
 }
