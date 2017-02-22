@@ -34,12 +34,12 @@
 
                 <div class="activity-content" layout="column" ng-if="element()['ORGANIZACION'] != null">
                     <h4 class="section-title">{{ translate('general.seccion_', 'organiza') + ':' | gsub: '_':' ':true | capitalize }}</h4>
-                    <div ng-bind="element()['ORGANIZACION']"></div>
+                    <div ng-bind-html="element()['ORGANIZACION'] | trust"></div>
                 </div>
 
                 <div class="activity-content" layout="column" ng-if="element()['TELEFONO'] != null">
                     <h4 class="section-title">{{ translate('general.seccion_', 'contacto') + ':' | gsub: '_':' ':true | capitalize }}</h4>
-                    <div ng-bind="element()['TELEFONO']"></div>
+                    <div ng-bind-html="element()['TELEFONO'] | trust"></div>
                 </div>
 
                 <div class="activity-content" layout="column" ng-if="element()['DESCRIPCION_COMUN'] != null">
