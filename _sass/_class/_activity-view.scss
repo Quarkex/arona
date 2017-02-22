@@ -1,0 +1,36 @@
+.activity-view {
+    h2 {
+        font-size: 18px;
+    }
+    .post-title {
+        margin-top: 1em;
+    }
+    .post-meta {
+        &.date {
+            font-size: 20px;
+        }
+        &.time {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    }
+}
+/* Medium and up */
+@media screen and (min-width: 40em) {
+    .activity-view {
+        h2 {
+            font-size: 30px;
+        }
+        .post-title {
+            margin-top: 2em;
+        }
+        .post-meta {
+            &.date {
+                font-size: 26px;
+            }
+            &.time {
+                font-size: 30px;
+            }
+        }
+    }
+}

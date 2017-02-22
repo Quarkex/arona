@@ -1,27 +1,33 @@
-<article class="row columns" ng-controller="activityCtrl">
-    <header class="row columns">
-        <div class="small-10 small-offset-1 columns post-title">
-            <h2>{{  element().TITULO }}</h2>
-        </div>
-        <div class="small-10 small-offset-1 columns end post-header">
-            <div class="medium-3 columns">
-                <img src="http://www.arona.travel/portal/imagecache/ampliado/{{ element().IMAGEN }}">
-            </div>
-            <div class="medium-9 columns">
-                <p class="post-meta">
-                <time datetime="{{ element().F_INICIO }}">{{ element().F_INICIO | date: 'EEE dd, MMM yyyy'}}</time>
-                <span ng-if="element().F_FIN != null"> - </span>
-                <time ng-if="element().F_FIN != null" datetime="{{ element().F_FIN }}">{{ element().F_FIN | date: 'EEE dd, MMM yyyy'}}</time>
-                </p>
-                <p class="post-meta" style="font-weight: bold;">
-                <time datetime="{{ element().F_INICIO }}">{{ element().F_INICIO | date: 'hh:mm'}} h</time>
-                <span ng-if="element().F_FIN != null"> - </span>
-                <time ng-if="element().F_FIN != null" datetime="{{ element().F_FIN }}">{{ element().F_FIN | date: 'hh:mm'}} h</time>
-                </p>
-            </div>
-        </div>
-    </header>
-    <div class="row columns" ig-if="element()['DESCRIPCION_COMUN'] != null">
-        <div class="small-10 small-offset-1 columns end post-content" ng-bind-html="element()['DESCRIPCION_COMUN'] | trust"></div>
+<div class="row">
+    <div class="large-10 large-offset-1 columns">
+        <article class="small-12 columns activity-view" ng-controller="activityCtrl">
+            <header>
+                <div class="row post-title"><h2>{{  element().TITULO }}</h2></div>
+                <div class="row post-header">
+                    <div class="medium-3 columns">
+                        <div class="square" style="background-image: url(http://www.arona.travel/portal/imagecache/ampliado/{{ element().IMAGEN }});"></div>
+                    </div>
+                    <div class="medium-9 columns text-center medium-text-left">
+                        <p class="post-meta date">
+                        <time datetime="{{ element().F_INICIO }}">{{ element().F_INICIO | date: 'EEE dd, MMM yyyy'}}</time>
+                        <span ng-if="element().F_FIN != null" class="show-for-medium"> - </span>
+                        <br class="hide-for-medium">
+                        <time ng-if="element().F_FIN != null" datetime="{{ element().F_FIN }}">{{ element().F_FIN | date: 'EEE dd, MMM yyyy'}}</time>
+                        </p>
+                        <p class="post-meta time">
+                        <time datetime="{{ element().F_INICIO }}">{{ element().F_INICIO | date: 'hh:mm'}} h</time>
+                        <span ng-if="element().F_FIN != null"> | </span>
+                        <time ng-if="element().F_FIN != null" datetime="{{ element().F_FIN }}">{{ element().F_FIN | date: 'hh:mm'}} h</time>
+                        </p>
+                    </div>
+                </div>
+            </header>
+            <div class="row post-content" ig-if="element()['DESCRIPCION_COMUN'] != null" ng-bind-html="element()['DESCRIPCION_COMUN'] | trust"></div>
+        </article>
     </div>
-</article>
+</div>
+<div class="row">
+    <div class="large-10 large-offset-1 columns">
+        <div class="small-12 columns" ng-include="'assets/back-bar.htm'"></div>
+    </div>
+</div>
