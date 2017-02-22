@@ -15,10 +15,13 @@
                         <br class="hide-for-medium">
                         <time ng-if="element().F_FIN != null" datetime="{{ element().F_FIN }}">{{ element().F_FIN | date: 'EEE dd, MMM yyyy'}}</time>
                         </p>
-                        <p class="post-meta time">
+                        <p class="post-meta time price">
                         <time datetime="{{ element().F_INICIO }}">{{ element().F_INICIO | date: 'hh:mm'}} h</time>
-                        <span ng-if="element().F_FIN != null"> | </span>
+                        <span ng-if="element().F_FIN != null"> - </span>
                         <time ng-if="element().F_FIN != null" datetime="{{ element().F_FIN }}">{{ element().F_FIN | date: 'hh:mm'}} h</time>
+                        <span ng-if="element().PRECIO != null" class="show-for-medium"> | </span>
+                        <br class="hide-for-medium">
+                        <span ng-if="element().PRECIO != null">{{ element().PRECIO | gsub: '&[#]?[0-9a-z]+;':'':true | gsub: '[^0-9.,]*':'':true | currency:"€" }}</span>
                         </p>
                     </div>
                 </div>

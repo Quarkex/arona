@@ -644,7 +644,7 @@ app.controller("activityCtrl", function($routeParams, $scope, activity) {
     activity.set_values({
         "collection": "actividades",
         "filters": {"CODCONTENIDO": parseInt($routeParams.activity)},
-        "values": ['TITULO', 'TELEFONO', 'F_INICIO', 'F_FIN', 'IMAGEN', 'DESCRIPCION_COMUN', 'TAQUILLA', 'ORGANIZACION', 'DONDE'],
+        "values": ['TITULO', 'TELEFONO', 'F_INICIO', 'F_FIN', 'IMAGEN', 'DESCRIPCION_COMUN', 'TAQUILLA', 'ORGANIZACION', 'DONDE', 'PRECIO'],
         "offset": 0,
         "limit": 1
     });
