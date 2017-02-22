@@ -3,12 +3,12 @@
     <div class="small-10 small-offset-1 columns">
         <ul class="video-list">
             <li ng-repeat="item in elements()">
-                <div class="row">
-                    <a ng-href="{{ item.HREF }}">
-                        <div class="small-2 columns">
-                            <img ng-src="{{ item.IMAGEN }}">
+                <div layout="row" class="row">
+                    <a layout="row" flex ng-href="{{ item.HREF }}" layout-margin>
+                        <div flex-gt-xs="10" flex="20">
+                            <div class="square" style="background-image: url('{{ item.IMAGEN }}')"></div>
                         </div>
-                        <div class="small-10 columns">
+                        <div flex>
                             <h1 ng-bind="item.TITULO"></h1>
                             <p ng-bind="item.DESCRIPCION"></p>
                         </div>
