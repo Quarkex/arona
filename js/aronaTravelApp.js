@@ -634,6 +634,51 @@ app.controller("virtualTourCtrl", function($rootScope, $scope, virtualTour) {
     });
 });
 
+app.service('video', ["language", "$resource", ResourcePaginator]);
+app.controller("videoCtrl", function($scope, video) {
+
+    video.expose_interface($scope);
+
+    // Uncomment this once the server can provide content
+    /*
+    video.set_values({
+        "collection": "recursos",
+        "filters": {"TIPO": "Video"},
+        "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION'],
+        "offset": 0,
+        "limit": 1000
+    });
+    */
+
+    // Remove this once the server can provide content
+    video.elements([{
+        'CODCONTENIDO': '1',
+        'DESCRIPCION': 'Video promocional de Arona para este 2016. Se pretende captar a un público más joven y consumista, de calidad y con inquietudes culturales, deportivas, medioambientales, ocio nocturno¿ A través de diversas acciones transversales (...)',
+        'HREF': '#',
+        'IMAGEN': '/img/videos/01.png',
+        'TITULO': 'Arona, nuevo destino turístico (Spot promocional 2016)'
+    }, {
+        'CODCONTENIDO': '2',
+        'DESCRIPCION': 'El próximo 27 de septiembre es el Día Mundial del Turismo. Los municipios de Arona y Adeje han organizado un programa de actos conjunto.',
+        'HREF': '#',
+        'IMAGEN': '/img/videos/02.png',
+        'TITULO': 'Día Mundial del Turismo 2015'
+    }, {
+        'CODCONTENIDO': '3',
+        'DESCRIPCION': 'En el video promocional se han utilizado las novedosas técnicas de grabación de video 360º Aéreo y terrestre sumándolo a video convencional en show motion, con la finalidad de transmitir de una manera diferente e innovadora el municipio en (...)',
+        'HREF': '#',
+        'IMAGEN': '/img/videos/03.png',
+        'TITULO': 'Spot promocional Arona 2015'
+    }, {
+        'CODCONTENIDO': '4',
+        'DESCRIPCION': 'El Patronato Municipal de Turismo del Ayuntamiento de Arona le anima a participar en las Rutas Guiadas Accesibles Arona para Todos.',
+        'HREF': '#',
+        'IMAGEN': '/img/videos/04.png',
+        'TITULO': 'Rutas Guiadas Accesibles Arona para Todos en LSE'
+    }]);
+
+});
+
 app.service('activities', ["language", "$resource", ResourcePaginator]);
 app.controller("activitiesCtrl", function($rootScope, $scope, activities) {
 

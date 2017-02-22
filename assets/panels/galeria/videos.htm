@@ -1,59 +1,27 @@
 <div ng-include="'assets/tab-bar.htm'"></div>
-<div class="row">
+<div class="row" ng-controller="videoCtrl">
     <div class="small-10 small-offset-1 columns">
         <ul class="video-list">
-            <li>
+            <li ng-repeat="item in elements()">
                 <div class="row">
-                    <a href="#">
+                    <a ng-href="{{ item.HREF }}">
                         <div class="small-2 columns">
-                            <img src="/img/videos/01.png">
+                            <img ng-src="{{ item.IMAGEN }}">
                         </div>
                         <div class="small-10 columns">
-                            <h1>Arona, nuevo destino turístico (Spot promocional 2016)</h1>
-                            <p>Video promocional de Arona para este 2016. Se pretende captar a un público más joven y consumista, de calidad y con inquietudes culturales, deportivas, medioambientales, ocio nocturno¿ A través de diversas acciones transversales (...)</p>
-                        </div>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="row">
-                    <a href="#">
-                        <div class="small-2 columns">
-                            <img src="/img/videos/02.png">
-                        </div>
-                        <div class="small-10 columns">
-                            <h1>Día Mundial del Turismo 2015</h1>
-                            <p>El próximo 27 de septiembre es el Día Mundial del Turismo. Los municipios de Arona y Adeje han organizado un programa de actos conjunto.</p>
-                        </div>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="row">
-                    <a href="#">
-                        <div class="small-2 columns">
-                            <img src="/img/videos/03.png">
-                        </div>
-                        <div class="small-10 columns">
-                            <h1>Spot promocional Arona 2015</h1>
-                            <p>En el video promocional se han utilizado las novedosas técnicas de grabación de video 360º Aéreo y terrestre sumándolo a video convencional en show motion, con la finalidad de transmitir de una manera diferente e innovadora el municipio en (...)</p>
-                        </div>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="row">
-                    <a href="#">
-                        <div class="small-2 columns">
-                            <img src="/img/videos/04.png">
-                        </div>
-                        <div class="small-10 columns">
-                            <h1>Rutas Guiadas Accesibles Arona para Todos en LSE</h1>
-                            <p>El Patronato Municipal de Turismo del Ayuntamiento de Arona le anima a participar en las Rutas Guiadas Accesibles Arona para Todos.</p>
+                            <h1 ng-bind="item.TITULO"></h1>
+                            <p ng-bind="item.DESCRIPCION"></p>
                         </div>
                     </a>
                 </div>
             </li>
         </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="large-10 large-offset-1 columns" ng-controller="videoCtrl">
+        <div ng-include="'assets/paginator.htm'"></div>
+        <br>
+        <div ng-include="'assets/back-bar.htm'"></div>
     </div>
 </div>
