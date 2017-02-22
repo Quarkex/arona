@@ -19,25 +19,30 @@
             </div>
         </div>
         <div ng-include="'assets/elements-feedback-header.htm'"></div>
-        <div class="row">
-            <div class="large-6 columns{{ $last ? ' end' : '' }}" ng-repeat="card in elements()">
-                <a href="#/{{ lang() }}/actividades/47233" class="document-link-box">
-                    <div class="small-12 columns" style="height: 186px;">
-                        <div class="medium-2 columns text-center">
-                            <div class="row">{{ card.F_INICIO_PUB | date: 'dd'}}</div>
-                            <div class="row">{{ card.F_INICIO_PUB | date: 'LLLL' | limitTo: 3 }}</div>
-                        </div>
-                        <div class="medium-4 columns">
-                            <img src="http://www.arona.travel/portal/imagecache/ficha/{{ card.IMAGEN }}">
-                        </div>
-                        <div class="medium-6 columns">
-                            <p>{{ card.TITULO }}</p>
-                        </div>
-                    </div>
+        <div class="row collapse">
+            <div class="medium-6 columns news-card-wrapper" ng-class="{'end': $last}" ng-repeat="card in elements()">
+                <a href="#/{{ lang() }}/actividades/{{ card.CODCONTENIDO }}" class="document-link-box">
+                    <md-card class="news-card" flex layout="row" layout-margin>
+                        <md-card-title layout="row" layout-padding>
+                            <md-card-title-media flex="20" flex-gt-md="15" layout="column" class="card-date">
+                                <div class="date" flex="50" layout="column" layout-align="end center"><span>{{ card.F_INICIO_PUB | date: 'dd'}}</span></div>
+                                <div class="date" flex="50" layout="column" layout-align="start center"><span>{{ card.F_INICIO_PUB | date: 'LLLL' | limitTo: 3 }}</span></div>
+                            </md-card-title-media>
+                            <md-card-title-media flex="40" flex-gt-md="35">
+                                <div class="square" style="background-image: url('http://www.arona.travel/portal/imagecache/ficha/{{ card.IMAGEN }}')"></div>
+                            </md-card-title-media>
+                            <md-card-title-text layout="column" flex="40" flex-gt-md="50">
+                                <md-truncate flex="100" class="md-headline md-primary">
+                                    <p md-truncate class="md-primary">{{ card.TITULO }}</p>
+                                </md-truncate>
+                            </md-card-title-text>
+                        </md-card-title>
+                    </md-card>
                 </a>
             </div>
         </div>
         <div ng-include="'assets/paginator.htm'"></div>
         <br>
         <div ng-include="'assets/back-bar.htm'"></div>
+    </div>
 </div>
