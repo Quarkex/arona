@@ -620,6 +620,20 @@ app.controller("panfletsCtrl", function($rootScope, $scope, panflets) {
     });
 });
 
+app.service('virtualTour', ["language", "$resource", ResourcePaginator]);
+app.controller("virtualTourCtrl", function($rootScope, $scope, virtualTour) {
+
+    virtualTour.expose_interface($scope);
+
+    virtualTour.set_values({
+        "collection": "recursos",
+        "filters": {"TIPO": "Vista 360"},
+        "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN'],
+        "offset": 0,
+        "limit": 1000
+    });
+});
+
 app.service('activities', ["language", "$resource", ResourcePaginator]);
 app.controller("activitiesCtrl", function($rootScope, $scope, activities) {
 
