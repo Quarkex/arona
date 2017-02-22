@@ -1,22 +1,42 @@
 .video-list {
+    margin: 0;
     h1 {
-        font-size: 20px;
-        line-height: 28px;
+        font-size: 14px;
+        line-height: 1.29;
         color: $main_color;
+        text-transform: none;
     }
     p {
         font-size: 16px;
         line-height: 26px;
-        color: grey;
+        margin-bottom: 0;
+        color: $grey;
     }
-    img {
-        width: 136px;
-        height: 136px;
+    div.square {
+        flex-basis: 80px;
+        width: 80px;
+        height: 80px;
     }
     li {
-        margin-top: 1.5em;
-        padding-bottom: 1.5em;
+        margin-top: 0;
         list-style-type: none;
-        border-bottom: 2px solid lightgrey;
+        &:not(:last-child){
+            border-bottom: 2px solid #e4e4e4;
+        }
+    }
+}
+
+/* Medium and up */
+@media screen and (min-width: 40em) {
+    .video-list {
+        h1 {
+            font-size: 20px;
+            line-height: 1.4;
+        }
+        div.square {
+            flex-basis: 136px;
+            width: 136px;
+            height: 136px;
+        }
     }
 }
