@@ -686,7 +686,7 @@ app.controller("activitiesCtrl", function($rootScope, $scope, activities) {
 
     activities.set_values({
         "collection": "actividades",
-        "filters": {},
+        "filters": {"CODSUBTIPOCONT": 595, "CODAREAS": 16},
         "values": ['TITULO', 'F_INICIO_PUB', 'CODCONTENIDO', 'IMAGEN'],
         "offset": 0,
         "limit": 6
