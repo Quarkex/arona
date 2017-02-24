@@ -27,10 +27,10 @@ doc = {
     }},
     "planea_tu_viaje": {"href": "/planea_tu_viaje", "content":{
         "como_llegar": {"href": "/planea_tu_viaje/como_llegar", "content": {
-            "por_mar_y_aire": {"href": "/planea_tu_viaje/por_mar_y_aire"},
-            "buscador_de_vuelos": {"href": "/planea_tu_viaje/buscador_de_vuelos"},
-            "agencias_de_viaje": {"href": "/planea_tu_viaje/agencias_de_viaje"},
-            "touroperadores": {"href": "/planea_tu_viaje/touroperadores"}
+            "por_mar_y_aire": {"href": "/planea_tu_viaje/como_llegar/por_mar_y_aire"},
+            "buscador_de_vuelos": {"href": "/planea_tu_viaje/como_llegar/buscador_de_vuelos"},
+            "agencias_de_viaje": {"href": "/planea_tu_viaje/como_llegar/agencias_de_viaje"},
+            "touroperadores": {"href": "/planea_tu_viaje/como_llegar/touroperadores"}
         }},
         "como_moverse": {"href": "/planea_tu_viaje/como_moverse", "content": {
             "transporte_publico": {"href": "/planea_tu_viaje/como_moverse/transporte_publico"},
