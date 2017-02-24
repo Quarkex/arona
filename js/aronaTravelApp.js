@@ -599,10 +599,21 @@ app.service('territoriales', ["language", "$resource", ResourcePaginator]);
 app.controller("territorialesCtrl", function($scope, $routeParams, territoriales) {
 
     territoriales.expose_interface($scope);
-    console.log ($routeParams.subtipo);
+
+    var codes = {
+        "agencias_de_viaje": 48,
+        "alquiler_de_veiculos": 47,
+        "informacion_portuaria": 524,
+        "por_mar_y_aire": 150,
+        "touroperadores": 251,
+        "transporte_publico": 163
+    };
+
+    var code = codes.hasOwnValue($routeParams.type) ? codes[$routeParams.type] : null;
+
     territoriales.set_values({
         "collection": "territoriales",
-        "filters": {"SUBTIPO_PRINCIPAL": parseInt ($routeParams.type)},
+        "filters": {"CODSUBTIPOCONT": code },
         "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
         "limit": 100
@@ -721,7 +732,6 @@ function Tabs(language, $location, $timeout){
     scope_interface.push("current_section");
 
     this.tabNavigate = function(p){
-        console.log(p);
         $location.path(p);
     };
     scope_interface.push("tabNavigate");
@@ -893,7 +903,6 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
     };
 
     $rootScope.set_path = function(p){
-        console.log(p);
         var ngview = document.querySelectorAll('[ng-view]');
         for(var i = 0; i < ngview.length; i++){
             ngview[i].innerHTML = '';
