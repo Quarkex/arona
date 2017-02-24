@@ -596,7 +596,7 @@ app.controller("apartmentsCtrl", function($rootScope, $scope, apartments) {
 });
 
 app.service('territoriales', ["language", "$resource", ResourcePaginator]);
-app.controller("territorialesCtrl", function($rootScope, $scope, territoriales) {
+app.controller("territorialesCtrl", function($scope, $routeParams, territoriales) {
 
     territoriales.expose_interface($scope);
 
