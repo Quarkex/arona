@@ -480,6 +480,12 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     .when("/:language/planea_tu_viaje/donde_alojarse", {
         redirectTo: "/:language/planea_tu_viaje/donde_alojarse/hoteles"
     })
+    .when("/:language/planea_tu_viaje/como_llegar", {
+        redirectTo: "/:language/planea_tu_viaje/como_llegar/por_mar_y_aire"
+    })
+    .when("/:language/planea_tu_viaje/como_moverse", {
+        redirectTo: "/:language/planea_tu_viaje/como_moverse/transporte_publico"
+    })
     .when("/:language/404", {
         templateUrl : "assets/404.htm",
         resolve:{ "check":isValidLang },
