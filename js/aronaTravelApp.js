@@ -599,7 +599,7 @@ app.service('territoriales', ["language", "$resource", ResourcePaginator]);
 app.controller("territorialesCtrl", function($scope, $routeParams, territoriales) {
 
     territoriales.expose_interface($scope);
-
+    console.log ($routeParams.subtipo);
     territoriales.set_values({
         "collection": "territoriales",
         "filters": {"CODSUBTIPOCONT": parseInt ($routeParams.subtipo)},
