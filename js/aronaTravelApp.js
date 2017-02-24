@@ -491,7 +491,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
         controller: "territorialCtrl"
     })
     .when("/:language/planea_tu_viaje/como_llegar/:type/:subtipo", {
-        templateUrl : '/assets/panels/planea_tu_viaje/como_llegar/view.htm',
+        templateUrl : '/assets/panels/planea_tu_viaje/como_llegar/browser.htm',
         resolve:{ "check":isValidLang },
         controller: "territorialesCtrl"
     })
