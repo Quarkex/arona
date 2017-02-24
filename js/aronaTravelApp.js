@@ -490,7 +490,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
         resolve:{ "check":isValidLang },
         controller: "territorialCtrl"
     })
-    .when("/:language/planea_tu_viaje/como_llegar/:type/:subtipo", {
+    .when("/:language/planea_tu_viaje/como_llegar/:type", {
         templateUrl : '/assets/panels/planea_tu_viaje/como_llegar/browser.htm',
         resolve:{ "check":isValidLang },
         controller: "territorialesCtrl"
@@ -602,7 +602,7 @@ app.controller("territorialesCtrl", function($scope, $routeParams, territoriales
     console.log ($routeParams.subtipo);
     territoriales.set_values({
         "collection": "territoriales",
-        "filters": {"CODSUBTIPOCONT": parseInt ($routeParams.subtipo)},
+        "filters": {"SUBTIPO_PRINCIPAL": parseInt ($routeParams.type)},
         "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
         "limit": 100
