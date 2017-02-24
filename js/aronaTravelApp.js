@@ -598,9 +598,9 @@ app.controller("apartmentsCtrl", function($rootScope, $scope, apartments) {
 app.service('territoriales', ["language", "$resource", ResourcePaginator]);
 app.controller("territorialesCtrl", function($rootScope, $scope, territoriales) {
 
-    apartments.expose_interface($scope);
+    territoriales.expose_interface($scope);
 
-    apartments.set_values({
+    territoriales.set_values({
         "collection": "territoriales",
         "filters": {"CODSUBTIPOCONT": parseInt ($routeParams.subtipo)},
         "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
