@@ -615,7 +615,7 @@ app.controller("territorialesCtrl", function($scope, $routeParams, territoriales
         "transporte_publico": 163
     };
 
-    var code = codes.hasOwnValue($routeParams.type) ? codes[$routeParams.type] : null;
+    var code = codes.hasOwnProperty($routeParams.type) ? codes[$routeParams.type] : null;
 
     territoriales.set_values({
         "collection": "territoriales",
