@@ -753,6 +753,18 @@ app.controller("tabsCtrl", function($routeParams, $scope, tabs) {
     $scope.current_nav = tabs.values.current;
 });
 
+app.service('accordion', ["language", "$location", "$timeout", Navigator]);
+app.controller("accordionCtrl", function($routeParams, $scope, accordion) {
+
+    accordion.expose_interface($scope);
+
+    accordion.set_values({
+        "current": accordion.current_section()
+    });
+
+    $scope.current_nav = accordion.values.current;
+});
+
 app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, $resource, page, language, $mdDialog ) {
 
     $rootScope.page = page;
