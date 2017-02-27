@@ -649,6 +649,21 @@ app.controller("videoCtrl", function($scope, video) {
 
 });
 
+app.service('recommendedActivities', ["language", "$resource", ResourcePaginator]);
+app.controller("recommendedActivitiesCtrl", function($scope, recommendedActivities) {
+
+    recommendedActivities.expose_interface($scope);
+
+    recommendedActivities.set_values({
+        "collection": "territoriales",
+        "filters": {},
+        "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION_COMUN'],
+        "offset": 0,
+        "limit": 10
+    });
+
+});
+
 app.service('activities', ["language", "$resource", ResourcePaginator]);
 app.controller("activitiesCtrl", function($rootScope, $scope, activities) {
 
