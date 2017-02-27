@@ -679,7 +679,7 @@ app.controller("activityCtrl", function($routeParams, $scope, activity) {
     });
 });
 
-function Tabs(language, $location, $timeout){
+function Navigator(language, $location, $timeout){
 
     var self = this;
     var scope_interface = [];
@@ -700,11 +700,11 @@ function Tabs(language, $location, $timeout){
     };
     scope_interface.push("current_section");
 
-    this.tabNavigate = function(p){
+    this.navNavigate = function(p){
         console.log(p);
         $location.path(p);
     };
-    scope_interface.push("tabNavigate");
+    scope_interface.push("navNavigate");
 
     this.set_values = function( new_values ){
         var values_changed = false;
@@ -741,7 +741,7 @@ function Tabs(language, $location, $timeout){
 
 }
 
-app.service('tabs', ["language", "$location", "$timeout", Tabs]);
+app.service('tabs', ["language", "$location", "$timeout", Navigator]);
 app.controller("tabsCtrl", function($routeParams, $scope, tabs) {
 
     tabs.expose_interface($scope);
@@ -750,7 +750,7 @@ app.controller("tabsCtrl", function($routeParams, $scope, tabs) {
         "current": tabs.current_section()
     });
 
-    $scope.current_tab = tabs.values.current;
+    $scope.current_nav = tabs.values.current;
 });
 
 app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, $resource, page, language, $mdDialog ) {
