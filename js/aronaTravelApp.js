@@ -595,74 +595,188 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     });
 });
 
+//FIXME this doesnt handle $routeParams variables and such
+var resourceControllers = {
+    "apartments": {
+        "controllerElements": ["$rootScope", "$scope"],
+        "controllerValues": {
+            "collection": "territoriales",
+            "filters": {"SUBTIPO_PRINCIPAL": "Apartamentos"},
+            "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+            "offset": 0,
+            "limit": 100
+        },
+        "singleElement": false 
+    },
+    "hotels": {
+        "controllerElements": ["$rootScope", "$scope"],
+        "controllerValues": {
+            "collection": "territoriales",
+            "filters": {"SUBTIPO_PRINCIPAL": "Hoteles"},
+            "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+            "offset": 0,
+            "limit": 100
+        },
+        "singleElement": false
+    },
+    "hostels": {
+        "controllerElements": ["$rootScope", "$scope"],
+        "controllerValues": {
+            "collection": "territoriales",
+            "filters": {"SUBTIPO_PRINCIPAL": "Pensiones"},
+            "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+            "offset": 0,
+            "limit": 100
+        },
+        "singleElement": false
+    },
+    "ruralHostels": {
+        "controllerElements": ["$rootScope", "$scope"],
+        "controllerValues": {
+            "collection": "territoriales",
+            "filters": {"SUBTIPO_PRINCIPAL": "Alojamiento Rural"},
+            "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+            "offset": 0,
+            "limit": 100
+        },
+        "singleElement": false
+    },
+    "aparthotels": {
+        "controllerElements": ["$rootScope", "$scope"],
+        "controllerValues": {
+            "collection": "territoriales",
+            "filters": {"SUBTIPO_PRINCIPAL": "Aparthoteles"},
+            "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+            "offset": 0,
+            "limit": 100
+        },
+        "singleElement": false
+    },
+    "panflets": {
+        "controllerElements": ["$rootScope", "$scope"],
+        "controllerValues": {
+            "collection": "documentales",
+            "filters": {"SUBTIPO": "Folletos / Trípticos"},
+            "values": ["CODCONTENIDO", "DESCRIPCION_COMUN", "DOCUMENTO", "IMAGEN", "PALABRAS_CLAVE", "TITULO"],
+            "offset": 0,
+            "limit": 8
+        },
+        "singleElement": false
+    },
+    "virtualTour": {
+        "controllerElements": ["$rootScope", "$scope"],
+        "controllerValues": {
+            "collection": "recursos",
+            "filters": {"TIPO": "Vista 360"},
+            "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN'],
+            "offset": 0,
+            "limit": 1000
+        },
+        "singleElement": false
+    },
+    "video": {
+        "controllerElements": ["$rootScope", "$scope"],
+        "controllerValues": {
+            "collection": "descriptivos",
+            "filters": {"CODSUBTIPOCONT": 441, "CODAREAS": 16},
+            "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION_COMUN'],
+            "offset": 0,
+            "limit": 10
+        },
+        "singleElement": false
+    },
+    "recommendedActivities": {
+        "controllerElements": ["$rootScope", "$scope"],
+        "controllerValues": {
+            "collection": "territoriales",
+            "filters": {},
+            "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION_COMUN'],
+            "offset": 0,
+            "limit": 10
+        },
+        "singleElement": false
+    },
+    "activities": {
+        "controllerElements": ["$rootScope", "$scope"],
+        "controllerValues": {
+            "collection": "actividades",
+            "filters": {"CODSUBTIPOCONT": 595, "CODAREAS": 16},
+            "values": ['TITULO', 'F_INICIO_PUB', 'CODCONTENIDO', 'IMAGEN'],
+            "offset": 0,
+            "limit": 6
+        },
+        "singleElement": false
+    }
+};
+
+// FIXME For some reason the following code only loads the last instance in “resourceControllers”
+/*
+var Ctrls = {};
+for (var ctrl in resourceControllers) if (resourceControllers.hasOwnProperty(ctrl)){
+    var controller = resourceControllers[ctrl];
+
+    var controllerElements = controller["controllerElements"];
+    controllerElements.push(ctrl);
+
+    var controllerClosure = function(){
+        var service = arguments[arguments.length - 1];
+        console.log(service);
+        service.expose_interface($scope);
+        if (controller["singleElement"]) $scope.element = function(){return service.elements()[0]};
+        var values = {};
+        for (var k in controller["controllerValues"]){
+            if (controller["controllerValues"].hasOwnProperty(k)) values[k] = controller["controllerValues"][k];
+        }
+        console.log(values);
+        service.set_values(values);
+    };
+    controllerClosure = controllerClosure.toString();
+    controllerClosure = controllerClosure.slice( controllerClosure.indexOf("{") + 1,  controllerClosure.lastIndexOf("}"));
+    controllerElements.push(controllerClosure);
+
+    var wrapper = function(args) {
+        return function() {
+            return Function.apply(this, args);
+        };
+    };
+
+    Ctrls[ctrl] = wrapper(controllerElements)();
+}
+var serviceElements = ["language", "$resource", ResourcePaginator];
+for (var k in Ctrls) if (Ctrls.hasOwnProperty(k)){
+    app.service(k, serviceElements);
+    app.controller(k + "Ctrl", Ctrls[k]);
+}
+*/
+
 app.service('hotels', ["language", "$resource", ResourcePaginator]);
 app.controller("hotelsCtrl", function($rootScope, $scope, hotels) {
-
     hotels.expose_interface($scope);
-
-    hotels.set_values({
-        "collection": "territoriales",
-        "filters": {"SUBTIPO_PRINCIPAL": "Hoteles"},
-        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
-        "offset": 0,
-        "limit": 100
-    });
+    hotels.set_values(resourceControllers["hotels"]["controllerValues"]);
 });
 
 app.service('hostels', ["language", "$resource", ResourcePaginator]);
 app.controller("hostelsCtrl", function($rootScope, $scope, hostels) {
-
     hostels.expose_interface($scope);
-
-    hostels.set_values({
-        "collection": "territoriales",
-        "filters": {"SUBTIPO_PRINCIPAL": "Pensiones"},
-        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
-        "offset": 0,
-        "limit": 100
-    });
+    hostels.set_values(resourceControllers["hostels"]["controllerValues"]);
 });
 
 app.service('ruralHostels', ["language", "$resource", ResourcePaginator]);
 app.controller("ruralHostelsCtrl", function($rootScope, $scope, ruralHostels) {
-
     ruralHostels.expose_interface($scope);
-
-    ruralHostels.set_values({
-        "collection": "territoriales",
-        "filters": {"SUBTIPO_PRINCIPAL": "Alojamiento Rural"},
-        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
-        "offset": 0,
-        "limit": 100
-    });
+    ruralHostels.set_values(resourceControllers["ruralHostels"]["controllerValues"]);
 });
 
 app.service('aparthotels', ["language", "$resource", ResourcePaginator]);
 app.controller("aparthotelsCtrl", function($rootScope, $scope, aparthotels) {
-
     aparthotels.expose_interface($scope);
-
-    aparthotels.set_values({
-        "collection": "territoriales",
-        "filters": {"SUBTIPO_PRINCIPAL": "Aparthoteles"},
-        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
-        "offset": 0,
-        "limit": 100
-    });
+    aparthotels.set_values(resourceControllers["aparthotels"]["controllerValues"]);
 });
 
 app.service('apartments', ["language", "$resource", ResourcePaginator]);
 app.controller("apartmentsCtrl", function($rootScope, $scope, apartments) {
-
     apartments.expose_interface($scope);
-
-    apartments.set_values({
-        "collection": "territoriales",
-        "filters": {"SUBTIPO_PRINCIPAL": "Apartamentos"},
-        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
-        "offset": 0,
-        "limit": 100
-    });
+    apartments.set_values(resourceControllers["apartments"]["controllerValues"]);
 });
 
 app.service('oficinasInformacion', ["language", "$resource", ResourcePaginator]);
@@ -688,7 +802,7 @@ app.controller("territorialesCtrl", function($scope, $routeParams, territoriales
         "agencias_de_viaje": 48,
         "alquiler_de_vehiculos": 47,
         "informacion_portuaria": 524,
-	"oficinas_de_informacion": 145,   
+        "oficinas_de_informacion": 145,
         "por_mar_y_aire": 150,
         "touroperadores": 251,
         "transporte_publico": 163
@@ -732,34 +846,10 @@ app.controller("accesibilidadCtrl", function($scope, $routeParams, accesibilidad
     });
 });
 
-app.service('territorial', ["language", "$resource", ResourcePaginator]);
-app.controller("territorialCtrl", function($scope, $routeParams, territorial) {
-
-    territorial.expose_interface($scope);
-
-    $scope.element = function(){return territorial.elements()[0]};
-
-    territorial.set_values({
-        "collection": "territoriales",
-        "filters": {"CODCONTENIDO": parseInt($routeParams.territorial)},
-        "values": ["MAPA_IFRAME", "MAPA","CODCONTENIDO","TITULO","ZONA","TELEFONO","FAX","WEB_PROPIA","DIRECCION","EMAIL","INDICADORES", "IMAGEN"],
-        "offset": 0,
-        "limit": 1
-    });
-});
-
 app.service('panflets', ["language", "$resource", ResourcePaginator]);
 app.controller("panfletsCtrl", function($rootScope, $scope, panflets) {
-
     panflets.expose_interface($scope);
-
-    panflets.set_values({
-        "collection": "documentales",
-        "filters": {"SUBTIPO": "Folletos / Trípticos"},
-        "values": ["CODCONTENIDO", "DESCRIPCION_COMUN", "DOCUMENTO", "IMAGEN", "PALABRAS_CLAVE", "TITULO"],
-        "offset": 0,
-        "limit": 8
-    });
+    panflets.set_values(resourceControllers["panflets"]["controllerValues"]);
 });
 
 app.service('guiaAccesibilidad', ["language", "$resource", ResourcePaginator]);
@@ -778,31 +868,20 @@ app.controller("guiaAccesibilidadCtrl", function($rootScope, $scope, guiaAccesib
 
 app.service('virtualTour', ["language", "$resource", ResourcePaginator]);
 app.controller("virtualTourCtrl", function($rootScope, $scope, virtualTour) {
-
     virtualTour.expose_interface($scope);
-
-    virtualTour.set_values({
-        "collection": "recursos",
-        "filters": {"TIPO": "Vista 360"},
-        "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN'],
-        "offset": 0,
-        "limit": 1000
-    });
+    virtualTour.set_values(resourceControllers["virtualTour"]["controllerValues"]);
 });
 
 app.service('video', ["language", "$resource", ResourcePaginator]);
 app.controller("videoCtrl", function($scope, video) {
-
     video.expose_interface($scope);
+    video.set_values(resourceControllers["video"]["controllerValues"]);
+});
 
-    video.set_values({
-        "collection": "descriptivos",
-        "filters": {"CODSUBTIPOCONT": 441, "CODAREAS": 16},
-        "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION_COMUN'],
-        "offset": 0,
-        "limit": 10
-    });
-
+app.service('recommendedActivities', ["language", "$resource", ResourcePaginator]);
+app.controller("recommendedActivitiesCtrl", function($scope, recommendedActivities) {
+    recommendedActivities.expose_interface($scope);
+    recommendedActivities.set_values(resourceControllers["recommendedActivities"]["controllerValues"]);
 });
 
 app.service('videoAccesible', ["language", "$resource", ResourcePaginator]);
@@ -837,25 +916,30 @@ app.controller("descriptivoCtrl", function($scope, $routeParams, descriptivo) {
 
 app.service('activities', ["language", "$resource", ResourcePaginator]);
 app.controller("activitiesCtrl", function($rootScope, $scope, activities) {
-
     activities.expose_interface($scope);
+    activities.set_values(resourceControllers["activities"]["controllerValues"]);
+});
 
-    activities.set_values({
-        "collection": "actividades",
-        "filters": {"CODSUBTIPOCONT": 595, "CODAREAS": 16},
-        "values": ['TITULO', 'F_INICIO_PUB', 'CODCONTENIDO', 'IMAGEN'],
+app.service('territorial', ["language", "$resource", ResourcePaginator]);
+app.controller("territorialCtrl", function($scope, $routeParams, territorial) {
+
+    territorial.expose_interface($scope);
+
+    $scope.element = function(){return territorial.elements()[0]};
+
+    territorial.set_values({
+        "collection": "territoriales",
+        "filters": {"CODCONTENIDO": parseInt($routeParams.territorial)},
+        "values": ["MAPA_IFRAME", "MAPA","CODCONTENIDO","TITULO","ZONA","TELEFONO","FAX","WEB_PROPIA","DIRECCION","EMAIL","INDICADORES", "IMAGEN"],
         "offset": 0,
-        "limit": 6
+        "limit": 1
     });
 });
 
 app.service('activity', ["language", "$resource", ResourcePaginator]);
 app.controller("activityCtrl", function($routeParams, $scope, activity) {
-
     activity.expose_interface($scope);
-
     $scope.element = function(){return activity.elements()[0]};
-
     activity.set_values({
         "collection": "actividades",
         "filters": {"CODCONTENIDO": parseInt($routeParams.activity)},
@@ -865,7 +949,7 @@ app.controller("activityCtrl", function($routeParams, $scope, activity) {
     });
 });
 
-function Tabs(language, $location, $timeout){
+function Navigator(language, $location, $timeout){
 
     var self = this;
     var scope_interface = [];
@@ -886,10 +970,10 @@ function Tabs(language, $location, $timeout){
     };
     scope_interface.push("current_section");
 
-    this.tabNavigate = function(p){
+    this.navNavigate = function(p){
         $location.path(p);
     };
-    scope_interface.push("tabNavigate");
+    scope_interface.push("navNavigate");
 
     this.set_values = function( new_values ){
         var values_changed = false;
@@ -926,7 +1010,7 @@ function Tabs(language, $location, $timeout){
 
 }
 
-app.service('tabs', ["language", "$location", "$timeout", Tabs]);
+app.service('tabs', ["language", "$location", "$timeout", Navigator]);
 app.controller("tabsCtrl", function($routeParams, $scope, tabs) {
 
     tabs.expose_interface($scope);
@@ -935,7 +1019,19 @@ app.controller("tabsCtrl", function($routeParams, $scope, tabs) {
         "current": tabs.current_section()
     });
 
-    $scope.current_tab = tabs.values.current;
+    $scope.current_nav = tabs.values.current;
+});
+
+app.service('accordion', ["language", "$location", "$timeout", Navigator]);
+app.controller("accordionCtrl", function($routeParams, $scope, accordion) {
+
+    accordion.expose_interface($scope);
+
+    accordion.set_values({
+        "current": accordion.current_section()
+    });
+
+    $scope.current_nav = accordion.values.current;
 });
 
 app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, $resource, page, language, $mdDialog ) {
@@ -981,7 +1077,7 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
         $rootScope.nav = data;
     });
     $rootScope.sublinks = function(link){
-        var sections = link == undefined ? $rootScope.sections() : '/' + $rootScope.lang() + link.substring(1).split('/');
+        var sections = link == undefined ? $rootScope.sections() : ( '/' + link).split('/');
         var sublinks = $rootScope.nav;
         for ( var i = 1; i < (sections.length + 1); i++){
             if ( sublinks.hasOwnProperty(sections[i]) ){

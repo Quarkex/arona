@@ -3,7 +3,7 @@
         <div class="large-10 large-offset-1 columns">
             <div style="overflow-x: auto;">
                 <md-nav-bar md-selected-nav-item="current_section()">
-                    <md-nav-item ng-repeat="(label, link) in sublinks()" md-nav-click="tabNavigate( lang() + link.href )" name="{{ label }}">
+                    <md-nav-item ng-repeat="(label, link) in sublinks()" md-nav-click="navNavigate( lang() + link.href )" name="{{ label }}">
                         {{ translate('pagina.titulo_', label) }}
                     </md-nav-item>
                 </md-nav-bar>
