@@ -501,6 +501,21 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
         resolve:{ "check":isValidLang },
         controller: "territorialesCtrl"
     })
+    .when("/:language/planea_tu_viaje/como_llegar/:type/:territorial", {
+        templateUrl : '/assets/panels/planea_tu_viaje/como_llegar/view.htm',
+        resolve:{ "check":isValidLang },
+        controller: "territorialesCtrl"
+    })
+    .when("/:language/planea_tu_viaje/como_moverse/:type", {
+        templateUrl : '/assets/panels/planea_tu_viaje/como_moverse/browser.htm',
+        resolve:{ "check":isValidLang },
+        controller: "territorialesCtrl"
+    })
+    .when("/:language/planea_tu_viaje/como_moverse/:type/:territorial", {
+        templateUrl : '/assets/panels/planea_tu_viaje/como_moverse/view.htm',
+        resolve:{ "check":isValidLang },
+        controller: "territorialesCtrl"
+    })
     .when("/:language/actividades/:activity", {
         templateUrl : '/assets/panels/actividades/view.htm',
         resolve:{ "check":isValidLang },
@@ -608,8 +623,9 @@ app.controller("territorialesCtrl", function($scope, $routeParams, territoriales
 
     var codes = {
         "agencias_de_viaje": 48,
-        "alquiler_de_veiculos": 47,
+        "alquiler_de_vehiculos": 47,
         "informacion_portuaria": 524,
+	"oficinas_de_informacion": 145,   
         "por_mar_y_aire": 150,
         "touroperadores": 251,
         "transporte_publico": 163
@@ -619,7 +635,7 @@ app.controller("territorialesCtrl", function($scope, $routeParams, territoriales
 
     territoriales.set_values({
         "collection": "territoriales",
-        "filters": {"CODSUBTIPOCONT": code },
+        "filters": {"CODSUBTIPOCONT": code, "CODAREAS": 16 },
         "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
         "limit": 100
