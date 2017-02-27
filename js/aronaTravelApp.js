@@ -516,6 +516,16 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
         resolve:{ "check":isValidLang },
         controller: "territorialesCtrl"
     })
+    .when("/:language/planea_tu_viaje/:type", {
+        templateUrl : '/assets/panels/planea_tu_viaje/browser.htm',
+        resolve:{ "check":isValidLang },
+        controller: "territorialesCtrl"
+    })
+    .when("/:language/planea_tu_viaje/:type/:territorial", {
+        templateUrl : '/assets/panels/planea_tu_viaje/view.htm',
+        resolve:{ "check":isValidLang },
+        controller: "territorialesCtrl"
+    })
     .when("/:language/actividades/:activity", {
         templateUrl : '/assets/panels/actividades/view.htm',
         resolve:{ "check":isValidLang },
@@ -632,6 +642,7 @@ app.controller("territorialesCtrl", function($scope, $routeParams, territoriales
     };
 
     var code = codes.hasOwnProperty($routeParams.type) ? codes[$routeParams.type] : null;
+console.log (code);
 
     territoriales.set_values({
         "collection": "territoriales",
