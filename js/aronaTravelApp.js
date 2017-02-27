@@ -808,7 +808,7 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
         $rootScope.nav = data;
     });
     $rootScope.sublinks = function(link){
-        var sections = link == undefined ? $rootScope.sections() : '/' + $rootScope.lang() + link.substring(1).split('/');
+        var sections = link == undefined ? $rootScope.sections() : ( '/' + link).split('/');
         var sublinks = $rootScope.nav;
         for ( var i = 1; i < (sections.length + 1); i++){
             if ( sublinks.hasOwnProperty(sections[i]) ){
