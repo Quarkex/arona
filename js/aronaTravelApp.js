@@ -480,6 +480,12 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     .when("/:language/planea_tu_viaje/donde_alojarse", {
         redirectTo: "/:language/planea_tu_viaje/donde_alojarse/hoteles"
     })
+    .when("/:language/planea_tu_viaje/como_llegar", {
+        redirectTo: "/:language/planea_tu_viaje/como_llegar/por_mar_y_aire"
+    })
+    .when("/:language/planea_tu_viaje/como_moverse", {
+        redirectTo: "/:language/planea_tu_viaje/como_moverse/transporte_publico"
+    })
     .when("/:language/404", {
         templateUrl : "assets/404.htm",
         resolve:{ "check":isValidLang },
@@ -489,6 +495,26 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
         templateUrl : '/assets/panels/planea_tu_viaje/donde_alojarse/view.htm',
         resolve:{ "check":isValidLang },
         controller: "territorialCtrl"
+    })
+    .when("/:language/planea_tu_viaje/como_llegar/:type", {
+        templateUrl : '/assets/panels/planea_tu_viaje/como_llegar/browser.htm',
+        resolve:{ "check":isValidLang },
+        controller: "territorialesCtrl"
+    })
+    .when("/:language/planea_tu_viaje/como_llegar/:type/:territorial", {
+        templateUrl : '/assets/panels/planea_tu_viaje/como_llegar/view.htm',
+        resolve:{ "check":isValidLang },
+        controller: "territorialesCtrl"
+    })
+    .when("/:language/planea_tu_viaje/como_moverse/:type", {
+        templateUrl : '/assets/panels/planea_tu_viaje/como_moverse/browser.htm',
+        resolve:{ "check":isValidLang },
+        controller: "territorialesCtrl"
+    })
+    .when("/:language/planea_tu_viaje/como_moverse/:type/:territorial", {
+        templateUrl : '/assets/panels/planea_tu_viaje/como_moverse/view.htm',
+        resolve:{ "check":isValidLang },
+        controller: "territorialesCtrl"
     })
     .when("/:language/actividades/:activity", {
         templateUrl : '/assets/panels/actividades/view.htm',
@@ -704,6 +730,32 @@ app.controller("apartmentsCtrl", function($rootScope, $scope, apartments) {
     apartments.set_values(resourceControllers["apartments"]["controllerValues"]);
 });
 
+app.service('territoriales', ["language", "$resource", ResourcePaginator]);
+app.controller("territorialesCtrl", function($scope, $routeParams, territoriales) {
+
+    territoriales.expose_interface($scope);
+
+    var codes = {
+        "agencias_de_viaje": 48,
+        "alquiler_de_vehiculos": 47,
+        "informacion_portuaria": 524,
+        "oficinas_de_informacion": 145,
+        "por_mar_y_aire": 150,
+        "touroperadores": 251,
+        "transporte_publico": 163
+    };
+
+    var code = codes.hasOwnProperty($routeParams.type) ? codes[$routeParams.type] : null;
+
+    territoriales.set_values({
+        "collection": "territoriales",
+        "filters": {"CODSUBTIPOCONT": code, "CODAREAS": 16 },
+        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+        "offset": 0,
+        "limit": 100
+    });
+});
+
 app.service('panflets', ["language", "$resource", ResourcePaginator]);
 app.controller("panfletsCtrl", function($rootScope, $scope, panflets) {
     panflets.expose_interface($scope);
@@ -785,7 +837,6 @@ function Navigator(language, $location, $timeout){
     scope_interface.push("current_section");
 
     this.navNavigate = function(p){
-        console.log(p);
         $location.path(p);
     };
     scope_interface.push("navNavigate");
@@ -969,7 +1020,6 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
     };
 
     $rootScope.set_path = function(p){
-        console.log(p);
         var ngview = document.querySelectorAll('[ng-view]');
         for(var i = 0; i < ngview.length; i++){
             ngview[i].innerHTML = '';
