@@ -202,6 +202,7 @@ doc = {
     "pagina.titulo_restaurantes":                           "Restaurantes",
     "pagina.titulo_compras":                                "Compras",
     "pagina.titulo_guia_de_accesibilidad":                  "Guía de accesibilidad",
+    "pagina.titulo_alquiler_de_ayudas_tecnicas":            "Alquiler de ayudas técnicas",
 
     "pagina.titulo_folletos_y_mapas":                       "Folletos y mapas",
     "pagina.icono_folletos_y_mapas":                        "maps",

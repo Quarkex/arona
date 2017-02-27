@@ -28,7 +28,6 @@ doc = {
     "planea_tu_viaje": {"href": "/planea_tu_viaje", "content":{
         "como_llegar": {"href": "/planea_tu_viaje/como_llegar", "content": {
             "por_mar_y_aire": {"href": "/planea_tu_viaje/como_llegar/por_mar_y_aire"},
-            "buscador_de_vuelos": {"href": "/planea_tu_viaje/como_llegar/buscador_de_vuelos"},
             "agencias_de_viaje": {"href": "/planea_tu_viaje/como_llegar/agencias_de_viaje"},
             "touroperadores": {"href": "/planea_tu_viaje/como_llegar/touroperadores"}
         }},
@@ -45,13 +44,14 @@ doc = {
             "pensiones": {"href": "/planea_tu_viaje/donde_alojarse/pensiones"}
         }},
         "destino_accesible": {"href": "/planea_tu_viaje/destino_accesible", "content": {
-            "playa_de_las_vistas": {"href": "/webcams/playa_de_las_vistas"},
-            "donde_alojarse": {"href": "/planea_tu_viaje/donde_alojarse"},
+            "playa_de_las_vistas": {"href": "/planea_tu_viaje/destino_accesible/playa_de_las_vistas"},
+            "donde_alojarse": {"href": "/planea_tu_viaje/destino_accesible/donde_alojarse"},
             "restaurantes": {"href": "/planea_tu_viaje/destino_accesible/restaurantes"},
             "compras": {"href": "/planea_tu_viaje/destino_accesible/compras"},
             "agencias_de_viaje": {"href": "/planea_tu_viaje/destino_accesible/agencias_de_viaje"},
             "guia_de_accesibilidad": {"href": "/planea_tu_viaje/destino_accesible/guia_de_accesibilidad"},
-            "videos": {"href": "/galeria/videos"}
+            "videos": {"href": "/planea_tu_viaje/destino_accesible/videos"},
+            "alquiler_de_ayudas_tecnicas": {"href": "/planea_tu_viaje/destino_accesible/alquiler_de_ayudas_tecnicas"}
         }},
         "folletos_y_mapas": {"href": "/planea_tu_viaje/folletos_y_mapas"},
         "oficinas_de_informacion": {"href": "/planea_tu_viaje/oficinas_de_informacion"}

@@ -486,6 +486,15 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     .when("/:language/planea_tu_viaje/como_moverse", {
         redirectTo: "/:language/planea_tu_viaje/como_moverse/transporte_publico"
     })
+    .when("/:language/planea_tu_viaje/destino_accesible", {
+        redirectTo: "/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas"
+    })
+    .when("/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas", {
+        redirectTo: "/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas/2105"
+    })
+    .when("/:language/planea_tu_viaje/destino_accesible/donde_alojarse", {
+        redirectTo: "/:language/planea_tu_viaje/destino_accesible/donde_alojarse/hoteles"
+    })
     .when("/:language/404", {
         templateUrl : "assets/404.htm",
         resolve:{ "check":isValidLang },
@@ -516,10 +525,40 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
         resolve:{ "check":isValidLang },
         controller: "territorialesCtrl"
     })
-    .when("/:language/planea_tu_viaje/:type", {
-        templateUrl : '/assets/panels/planea_tu_viaje/browser.htm',
+    .when("/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas/:descriptivo", {
+        templateUrl : '/assets/panels/planea_tu_viaje/destino_accesible/playa_de_las_vistas.htm',
         resolve:{ "check":isValidLang },
-        controller: "territorialesCtrl"
+        controller: "accesibilidadCtrl"
+    })
+    .when("/:language/planea_tu_viaje/destino_accesible/donde_alojarse/:type", {
+        templateUrl : '/assets/panels/planea_tu_viaje/donde_alojarse/browser.htm',
+        resolve:{ "check":isValidLang },
+        controller: "accesibilidadCtrl"
+    })
+    .when("/:language/planea_tu_viaje/destino_accesible/donde_alojarse/:type/:territorial", {
+        templateUrl : '/assets/panels/planea_tu_viaje/donde_alojarse/view.htm',
+        resolve:{ "check":isValidLang },
+        controller: "accesibilidadCtrl"
+    })
+    .when("/:language/planea_tu_viaje/destino_accesible/videos", {
+        templateUrl : '/assets/panels/planea_tu_viaje/destino_accesible/videos.htm',
+        resolve:{ "check":isValidLang },
+        controller: "videoAccesibleCtrl"
+    })
+    .when("/:language/planea_tu_viaje/destino_accesible/guia_de_accesibilidad", {
+        templateUrl : '/assets/panels/planea_tu_viaje/destino_accesible/guia_de_accesibilidad.htm',
+        resolve:{ "check":isValidLang },
+        controller: "videoAccesibleCtrl"
+    })
+    .when("/:language/planea_tu_viaje/destino_accesible/:type", {
+        templateUrl : '/assets/panels/planea_tu_viaje/destino_accesible/browser.htm',
+        resolve:{ "check":isValidLang },
+        controller: "accesibilidadCtrl"
+    })
+    .when("/:language/planea_tu_viaje/destino_accesible/:type/:territorial", {
+        templateUrl : '/assets/panels/planea_tu_viaje/destino_accesible/view.htm',
+        resolve:{ "check":isValidLang },
+        controller: "accesibilidadCtrl"
     })
     .when("/:language/planea_tu_viaje/:type/:territorial", {
         templateUrl : '/assets/panels/planea_tu_viaje/view.htm',
@@ -626,6 +665,20 @@ app.controller("apartmentsCtrl", function($rootScope, $scope, apartments) {
     });
 });
 
+app.service('oficinasInformacion', ["language", "$resource", ResourcePaginator]);
+app.controller("oficinasInformacionCtrl", function($rootScope, $scope, oficinasInformacion) {
+
+    oficinasInformacion.expose_interface($scope);
+
+    oficinasInformacion.set_values({
+        "collection": "territoriales",
+        "filters": {"CODSUBTIPOCONT": 145, "CODAREAS": 16 },
+        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+        "offset": 0,
+        "limit": 100
+    });
+});
+
 app.service('territoriales', ["language", "$resource", ResourcePaginator]);
 app.controller("territorialesCtrl", function($scope, $routeParams, territoriales) {
 
@@ -653,6 +706,31 @@ console.log (code);
     });
 });
 
+app.service('accesibilidad', ["language", "$resource", ResourcePaginator]);
+app.controller("accesibilidadCtrl", function($scope, $routeParams, accesibilidad) {
+
+    accesibilidad.expose_interface($scope);
+
+    var codes = {
+        "agencias_de_viaje": 48,
+	"compras": 157,
+	"hoteles": 26,
+	"aparthoteles": 659,
+	"apartamentos": 40,
+	"restaurantes": 30,
+	"alquiler_de_ayudas_tecnicas": 669
+    };
+
+    var code = codes.hasOwnProperty($routeParams.type) ? codes[$routeParams.type] : null;
+
+    accesibilidad.set_values({
+        "collection": "territoriales",
+        "filters": {"CODSUBTIPOCONT": code, "CODAREAS": 16}, // "VALORES_INDICADORES": 37},
+        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+        "offset": 0,
+        "limit": 100
+    });
+});
 
 app.service('territorial', ["language", "$resource", ResourcePaginator]);
 app.controller("territorialCtrl", function($scope, $routeParams, territorial) {
@@ -678,6 +756,20 @@ app.controller("panfletsCtrl", function($rootScope, $scope, panflets) {
     panflets.set_values({
         "collection": "documentales",
         "filters": {"SUBTIPO": "Folletos / Trípticos"},
+        "values": ["CODCONTENIDO", "DESCRIPCION_COMUN", "DOCUMENTO", "IMAGEN", "PALABRAS_CLAVE", "TITULO"],
+        "offset": 0,
+        "limit": 8
+    });
+});
+
+app.service('guiaAccesibilidad', ["language", "$resource", ResourcePaginator]);
+app.controller("guiaAccesibilidadCtrl", function($rootScope, $scope, guiaAccesibilidad) {
+
+    guiaAccesibilidad.expose_interface($scope);
+
+    guiaAccesibilidad.set_values({
+        "collection": "documentales",
+        "filters": {"CODSUBTIPOCONT": 292, "CODAREAS": 16, "CODSUBAREAS": 277},
         "values": ["CODCONTENIDO", "DESCRIPCION_COMUN", "DOCUMENTO", "IMAGEN", "PALABRAS_CLAVE", "TITULO"],
         "offset": 0,
         "limit": 8
@@ -712,6 +804,36 @@ app.controller("videoCtrl", function($scope, video) {
     });
 
 });
+
+app.service('videoAccesible', ["language", "$resource", ResourcePaginator]);
+app.controller("videoAccesibleCtrl", function($scope, videoAccesible) {
+
+    videoAccesible.expose_interface($scope);
+    videoAccesible.set_values({
+        "collection": "descriptivos",
+        "filters": {"CODSUBTIPOCONT": 441, "CODAREAS": 16, "CODSUBARES": 277},
+        "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION_COMUN'],
+        "offset": 0,
+        "limit": 10
+    });
+});
+
+app.service('descriptivo', ["language", "$resource", ResourcePaginator]);
+app.controller("descriptivoCtrl", function($scope, $routeParams, descriptivo) {
+
+    descriptivo.expose_interface($scope);
+
+    $scope.element = function(){return descriptivo.element()[0]};
+
+    descriptivo.set_values({
+        "collection": "descriptivos",
+        "filters": {"CODCONTENIDO": parseInt ($routeParams.descriptivo)},
+        "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION_COMUN'],
+        "offset": 0,
+        "limit": 1
+    });
+});
+
 
 app.service('activities', ["language", "$resource", ResourcePaginator]);
 app.controller("activitiesCtrl", function($rootScope, $scope, activities) {
