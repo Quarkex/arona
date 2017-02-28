@@ -509,9 +509,6 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     .when("/:language/planea_tu_viaje/destino_accesible", {
         redirectTo: "/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas"
     })
-    .when("/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas", {
-        redirectTo: "/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas/2105"
-    })
     .when("/:language/planea_tu_viaje/destino_accesible/donde_alojarse", {
         redirectTo: "/:language/planea_tu_viaje/destino_accesible/donde_alojarse/hoteles"
     })
@@ -520,52 +517,70 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
         resolve:{ "check":isValidLang },
         controller: "aronaTravelCtrl"
     })
-    .when("/:language/planea_tu_viaje/:section/:type", {
-        templateUrl :function(urlattr){ return '/assets/panels/planea_tu_viaje/browser.htm'; },
+    .when("/:language/:section/:subsection/:type", {
+        templateUrl :function(urlattr){
+
+            var url = '/assets/panels/';
+            switch(urlattr.section) {
+                case "planea_tu_viaje":
+
+                    url += urlattr.section + '/';
+                    switch(urlattr.subsection) {
+
+                        case "destino_accesible":
+                            url += urlattr.subsection + '/';
+                            switch(urlattr.type) {
+                                case "videos":
+                                case "guia_de_accesibilidad":
+                                case "playa_de_las_vistas":
+                                    url += urlattr.type + '.htm';
+                                    break;
+                                default:
+                                    url += 'browser.htm';
+                            }
+                            break;
+
+                        default:
+                            url += 'browser.htm';
+
+                    }
+                    break;
+                default:
+                    url += urlattr.section + '/' + urlattr.subsection + '/browser.htm';
+            }
+            return url;
+        },
         resolve:{ "check":isValidLang },
         controller: "territorialesCtrl"
     })
-    .when("/:language/planea_tu_viaje/:section/:type/:territorial", {
-        templateUrl :function(urlattr){ return '/assets/panels/planea_tu_viaje/' + urlattr.section + '/view.htm'; },
+    .when("/:language/:section/:subsection/:type/:id", {
+        templateUrl :function(urlattr){
+
+            var url = '/assets/panels/';
+            switch(urlattr.section) {
+
+                case "planea_tu_viaje":
+                    url += urlattr.section + '/';
+                    switch(urlattr.subsection) {
+                        case "destino_accesible":
+                        case "donde_alojarse":
+                            url += urlattr.subsection + '/view.htm';
+                            break;
+                        default:
+                            url += 'view.htm';
+                    }
+                    break;
+
+                default:
+                    url += urlattr.section + '/' + urlattr.subsection + '/view.htm';
+            }
+            return url;
+
+        },
         resolve:{ "check":isValidLang },
-        controller: "territorialesCtrl"
+        controller: "aronaTravelCtrl"
     })
-    .when("/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas/:descriptivo", {
-        templateUrl : '/assets/panels/planea_tu_viaje/view.htm',
-        resolve:{ "check":isValidLang },
-        controller: "accesibilidadCtrl"
-    })
-    .when("/:language/planea_tu_viaje/destino_accesible/donde_alojarse/:type", {
-        templateUrl : '/assets/panels/planea_tu_viaje/donde_alojarse/browser.htm',
-        resolve:{ "check":isValidLang },
-        controller: "accesibilidadCtrl"
-    })
-    .when("/:language/planea_tu_viaje/destino_accesible/donde_alojarse/:type/:territorial", {
-        templateUrl : '/assets/panels/planea_tu_viaje/donde_alojarse/view.htm',
-        resolve:{ "check":isValidLang },
-        controller: "accesibilidadCtrl"
-    })
-    .when("/:language/planea_tu_viaje/destino_accesible/videos", {
-        templateUrl : '/assets/panels/planea_tu_viaje/destino_accesible/videos.htm',
-        resolve:{ "check":isValidLang },
-        controller: "videoAccesibleCtrl"
-    })
-    .when("/:language/planea_tu_viaje/destino_accesible/guia_de_accesibilidad", {
-        templateUrl : '/assets/panels/planea_tu_viaje/destino_accesible/guia_de_accesibilidad.htm',
-        resolve:{ "check":isValidLang },
-        controller: "videoAccesibleCtrl"
-    })
-    .when("/:language/planea_tu_viaje/destino_accesible/:type", {
-        templateUrl : '/assets/panels/planea_tu_viaje/browser.htm',
-        resolve:{ "check":isValidLang },
-        controller: "accesibilidadCtrl"
-    })
-    .when("/:language/planea_tu_viaje/destino_accesible/:type/:territorial", {
-        templateUrl : '/assets/panels/planea_tu_viaje/view.htm',
-        resolve:{ "check":isValidLang },
-        controller: "accesibilidadCtrl"
-    })
-    .when("/:language/territoriales/:type/:territorial", {
+    .when("/:language/territoriales/:type/:id", {
         templateUrl : '/assets/panels/territoriales/view.htm',
         resolve:{ "check":isValidLang },
         controller: "territorialesCtrl"
@@ -883,7 +898,7 @@ app.controller("territorialCtrl", function($scope, $routeParams, territorial) {
 
     territorial.set_values({
         "collection": "territoriales",
-        "filters": {"CODCONTENIDO": parseInt($routeParams.territorial)},
+        "filters": {"CODCONTENIDO": parseInt($routeParams.id)},
         "values": ["MAPA_IFRAME", "MAPA","CODCONTENIDO","TITULO","ZONA","TELEFONO","FAX","WEB_PROPIA","DIRECCION","EMAIL","INDICADORES", "IMAGEN"],
         "offset": 0,
         "limit": 1
