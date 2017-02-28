@@ -809,7 +809,6 @@ app.controller("territorialesCtrl", function($scope, $routeParams, territoriales
     };
 
     var code = codes.hasOwnProperty($routeParams.type) ? codes[$routeParams.type] : null;
-console.log (code);
 
     territoriales.set_values({
         "collection": "territoriales",
