@@ -1,0 +1,12 @@
+<div class="large-10 large-offset-1 columns">
+    <div ng-include="'assets/elements-feedback-header.htm'" style="display: none;"></div>
+    <ng-include class="row" ng-cloak style="display: none;" src="'assets/atoms/' + current_section() + '/filters.htm'"></ng-include>
+    <div class="row collapse">
+        <div class="medium-6 columns" ng-class="{'end': $last}" ng-repeat="card in elements()">
+            <ng-include src="'assets/atoms/' + current_section() + '/card.htm'"></ng-include>
+        </div>
+    </div>
+    <div ng-include="'assets/paginator.htm'"></div>
+    <br>
+    <div ng-include="'assets/back-bar.htm'"></div>
+</div>

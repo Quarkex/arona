@@ -1,15 +1,2 @@
 <div ng-include="'assets/tab-bar.htm'"></div>
-<div class="row" ng-controller="territorialesCtrl">
-    <div class="large-10 large-offset-1 columns">
-        <div ng-include="'assets/elements-feedback-header.htm'" style="display: none;"></div>
-        <ng-include class="row" ng-cloak style="display: none;" src="'assets/panels/planea_tu_viaje/' + sections()[sections().length - 2] + '/filters.htm'"></ng-include>
-        <div class="row collapse">
-            <div class="medium-6 columns" ng-class="{'end': $last}" ng-repeat="card in elements()">
-                <ng-include src="'assets/panels/planea_tu_viaje/' + sections()[sections().length - 2] + '/card.htm'"></ng-include>
-            </div>
-        </div>
-        <div ng-include="'assets/paginator.htm'"></div>
-        <br>
-        <div ng-include="'assets/back-bar.htm'"></div>
-    </div>
-</div>
+<div class="row" ng-controller="territorialesCtrl" ng-include="'assets/atoms/' + sections()[sections().length - 3] + '/browser.htm'"></div>
