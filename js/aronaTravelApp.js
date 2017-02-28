@@ -826,12 +826,12 @@ app.controller("accesibilidadCtrl", function($scope, $routeParams, accesibilidad
 
     var codes = {
         "agencias_de_viaje": 48,
-	"compras": 157,
-	"hoteles": 26,
-	"aparthoteles": 659,
-	"apartamentos": 40,
-	"restaurantes": 30,
-	"alquiler_de_ayudas_tecnicas": 669
+        "compras": 157,
+        "hoteles": 26,
+        "aparthoteles": 659,
+        "apartamentos": 40,
+        "restaurantes": 30,
+        "alquiler_de_ayudas_tecnicas": 669
     };
 
     var code = codes.hasOwnProperty($routeParams.type) ? codes[$routeParams.type] : null;
