@@ -65,6 +65,26 @@ app.value('page', {
     'panels':{}
 });
 
+app.value('constants', {
+    'CODSUBTIPOCONT':{
+        "agencias_de_viaje":           48,
+        "alojamiento_rural":           15,
+        "alquiler_de_ayudas_tecnicas": 669,
+        "alquiler_de_vehiculos":       47,
+        "apartahteles":                659,
+        "apartamentos":                40,
+        "compras":                     157,
+        "hoteles":                     26,
+        "informacion_portuaria":       524,
+        "oficinas_de_informacion":     145,
+        "pensiones":                   25,
+        "por_mar_y_aire":              150,
+        "restaurantes":                30,
+        "touroperadores":              251,
+        "transporte_publico":          163
+    }
+});
+
 function Languaje($location, $window, $resource, tmhDynamicLocale){
 
     var self = this;
@@ -500,28 +520,13 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
         resolve:{ "check":isValidLang },
         controller: "aronaTravelCtrl"
     })
-    .when("/:language/planea_tu_viaje/donde_alojarse/:type/:territorial", {
-        templateUrl : '/assets/panels/planea_tu_viaje/donde_alojarse/view.htm',
-        resolve:{ "check":isValidLang },
-        controller: "territorialCtrl"
-    })
-    .when("/:language/planea_tu_viaje/como_llegar/:type", {
-        templateUrl : '/assets/panels/planea_tu_viaje/browser.htm',
+    .when("/:language/planea_tu_viaje/:section/:type", {
+        templateUrl :function(urlattr){ return '/assets/panels/planea_tu_viaje/browser.htm'; },
         resolve:{ "check":isValidLang },
         controller: "territorialesCtrl"
     })
-    .when("/:language/planea_tu_viaje/como_llegar/:type/:territorial", {
-        templateUrl : '/assets/panels/planea_tu_viaje/view.htm',
-        resolve:{ "check":isValidLang },
-        controller: "territorialesCtrl"
-    })
-    .when("/:language/planea_tu_viaje/como_moverse/:type", {
-        templateUrl : '/assets/panels/planea_tu_viaje/browser.htm',
-        resolve:{ "check":isValidLang },
-        controller: "territorialesCtrl"
-    })
-    .when("/:language/planea_tu_viaje/como_moverse/:type/:territorial", {
-        templateUrl : '/assets/panels/planea_tu_viaje/view.htm',
+    .when("/:language/planea_tu_viaje/:section/:type/:territorial", {
+        templateUrl :function(urlattr){ return '/assets/panels/planea_tu_viaje/' + urlattr.section + '/view.htm'; },
         resolve:{ "check":isValidLang },
         controller: "territorialesCtrl"
     })
@@ -749,36 +754,6 @@ for (var k in Ctrls) if (Ctrls.hasOwnProperty(k)){
 }
 */
 
-app.service('hotels', ["language", "$resource", ResourcePaginator]);
-app.controller("hotelsCtrl", function($rootScope, $scope, hotels) {
-    hotels.expose_interface($scope);
-    hotels.set_values(resourceControllers["hotels"]["controllerValues"]);
-});
-
-app.service('hostels', ["language", "$resource", ResourcePaginator]);
-app.controller("hostelsCtrl", function($rootScope, $scope, hostels) {
-    hostels.expose_interface($scope);
-    hostels.set_values(resourceControllers["hostels"]["controllerValues"]);
-});
-
-app.service('ruralHostels', ["language", "$resource", ResourcePaginator]);
-app.controller("ruralHostelsCtrl", function($rootScope, $scope, ruralHostels) {
-    ruralHostels.expose_interface($scope);
-    ruralHostels.set_values(resourceControllers["ruralHostels"]["controllerValues"]);
-});
-
-app.service('aparthotels', ["language", "$resource", ResourcePaginator]);
-app.controller("aparthotelsCtrl", function($rootScope, $scope, aparthotels) {
-    aparthotels.expose_interface($scope);
-    aparthotels.set_values(resourceControllers["aparthotels"]["controllerValues"]);
-});
-
-app.service('apartments', ["language", "$resource", ResourcePaginator]);
-app.controller("apartmentsCtrl", function($rootScope, $scope, apartments) {
-    apartments.expose_interface($scope);
-    apartments.set_values(resourceControllers["apartments"]["controllerValues"]);
-});
-
 app.service('oficinasInformacion', ["language", "$resource", ResourcePaginator]);
 app.controller("oficinasInformacionCtrl", function($rootScope, $scope, oficinasInformacion) {
 
@@ -794,21 +769,11 @@ app.controller("oficinasInformacionCtrl", function($rootScope, $scope, oficinasI
 });
 
 app.service('territoriales', ["language", "$resource", ResourcePaginator]);
-app.controller("territorialesCtrl", function($scope, $routeParams, territoriales) {
+app.controller("territorialesCtrl", function($scope, $routeParams, territoriales, constants) {
 
     territoriales.expose_interface($scope);
 
-    var codes = {
-        "agencias_de_viaje": 48,
-        "alquiler_de_vehiculos": 47,
-        "informacion_portuaria": 524,
-        "oficinas_de_informacion": 145,
-        "por_mar_y_aire": 150,
-        "touroperadores": 251,
-        "transporte_publico": 163
-    };
-
-    var code = codes.hasOwnProperty($routeParams.type) ? codes[$routeParams.type] : null;
+    var code = constants["CODSUBTIPOCONT"].hasOwnProperty($routeParams.type) ? constants["CODSUBTIPOCONT"][$routeParams.type] : null;
 
     territoriales.set_values({
         "collection": "territoriales",
@@ -820,21 +785,11 @@ app.controller("territorialesCtrl", function($scope, $routeParams, territoriales
 });
 
 app.service('accesibilidad', ["language", "$resource", ResourcePaginator]);
-app.controller("accesibilidadCtrl", function($scope, $routeParams, accesibilidad) {
+app.controller("accesibilidadCtrl", function($scope, $routeParams, accesibilidad, constants) {
 
     accesibilidad.expose_interface($scope);
 
-    var codes = {
-        "agencias_de_viaje": 48,
-        "compras": 157,
-        "hoteles": 26,
-        "aparthoteles": 659,
-        "apartamentos": 40,
-        "restaurantes": 30,
-        "alquiler_de_ayudas_tecnicas": 669
-    };
-
-    var code = codes.hasOwnProperty($routeParams.type) ? codes[$routeParams.type] : null;
+    var code = constants["CODSUBTIPOCONT"].hasOwnProperty($routeParams.type) ? constants["CODSUBTIPOCONT"][$routeParams.type] : null;
 
     accesibilidad.set_values({
         "collection": "territoriales",
