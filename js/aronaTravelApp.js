@@ -506,27 +506,27 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
         controller: "territorialCtrl"
     })
     .when("/:language/planea_tu_viaje/como_llegar/:type", {
-        templateUrl : '/assets/panels/planea_tu_viaje/como_llegar/browser.htm',
+        templateUrl : '/assets/panels/planea_tu_viaje/browser.htm',
         resolve:{ "check":isValidLang },
         controller: "territorialesCtrl"
     })
     .when("/:language/planea_tu_viaje/como_llegar/:type/:territorial", {
-        templateUrl : '/assets/panels/planea_tu_viaje/como_llegar/view.htm',
+        templateUrl : '/assets/panels/planea_tu_viaje/view.htm',
         resolve:{ "check":isValidLang },
         controller: "territorialesCtrl"
     })
     .when("/:language/planea_tu_viaje/como_moverse/:type", {
-        templateUrl : '/assets/panels/planea_tu_viaje/como_moverse/browser.htm',
+        templateUrl : '/assets/panels/planea_tu_viaje/browser.htm',
         resolve:{ "check":isValidLang },
         controller: "territorialesCtrl"
     })
     .when("/:language/planea_tu_viaje/como_moverse/:type/:territorial", {
-        templateUrl : '/assets/panels/planea_tu_viaje/como_moverse/view.htm',
+        templateUrl : '/assets/panels/planea_tu_viaje/view.htm',
         resolve:{ "check":isValidLang },
         controller: "territorialesCtrl"
     })
     .when("/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas/:descriptivo", {
-        templateUrl : '/assets/panels/planea_tu_viaje/destino_accesible/playa_de_las_vistas.htm',
+        templateUrl : '/assets/panels/planea_tu_viaje/view.htm',
         resolve:{ "check":isValidLang },
         controller: "accesibilidadCtrl"
     })
@@ -551,12 +551,12 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
         controller: "videoAccesibleCtrl"
     })
     .when("/:language/planea_tu_viaje/destino_accesible/:type", {
-        templateUrl : '/assets/panels/planea_tu_viaje/destino_accesible/browser.htm',
+        templateUrl : '/assets/panels/planea_tu_viaje/browser.htm',
         resolve:{ "check":isValidLang },
         controller: "accesibilidadCtrl"
     })
     .when("/:language/planea_tu_viaje/destino_accesible/:type/:territorial", {
-        templateUrl : '/assets/panels/planea_tu_viaje/destino_accesible/view.htm',
+        templateUrl : '/assets/panels/planea_tu_viaje/view.htm',
         resolve:{ "check":isValidLang },
         controller: "accesibilidadCtrl"
     })
