@@ -192,7 +192,7 @@ doc = {
 
     "pagina.titulo_donde_alojarse":                         "Donde alojarse",
     "pagina.titulo_hoteles":                                "Hoteles",
-    "pagina.titulo_apartahoteles":                          "Apartahoteles",
+    "pagina.titulo_aparthoteles":                           "Aparthoteles",
     "pagina.titulo_apartamentos":                           "Apartamentos",
     "pagina.titulo_alojamiento_rural":                      "Alojamiento rural",
     "pagina.titulo_pensiones":                              "Pensiones",
