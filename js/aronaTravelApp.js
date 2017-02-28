@@ -560,8 +560,8 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
         resolve:{ "check":isValidLang },
         controller: "accesibilidadCtrl"
     })
-    .when("/:language/planea_tu_viaje/:type/:territorial", {
-        templateUrl : '/assets/panels/planea_tu_viaje/view.htm',
+    .when("/:language/territoriales/:type/:territorial", {
+        templateUrl : '/assets/panels/territoriales/view.htm',
         resolve:{ "check":isValidLang },
         controller: "territorialesCtrl"
     })
