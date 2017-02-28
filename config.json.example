@@ -1,0 +1,3 @@
+$config["mongo-ip"]   = "127.0.0.1"
+$config["mongo-port"] = 27017
+$config["mongo-db"]   = "arona"
