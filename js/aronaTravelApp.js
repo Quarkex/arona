@@ -519,66 +519,60 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     })
     .when("/:language/:section/:subsection/:type", {
         templateUrl :function(urlattr){
-
-            var url = '/assets/panels/';
-            switch(urlattr.section) {
-                case "planea_tu_viaje":
-
-                    url += urlattr.section + '/';
-                    switch(urlattr.subsection) {
-
-                        case "destino_accesible":
-                            url += urlattr.subsection + '/';
-                            switch(urlattr.type) {
-                                case "videos":
-                                case "guia_de_accesibilidad":
-                                case "playa_de_las_vistas":
-                                    url += urlattr.type + '.htm';
-                                    break;
-                                default:
-                                    url += 'browser.htm';
-                            }
-                            break;
-
-                        default:
-                            url += 'browser.htm';
-
-                    }
-                    break;
-                default:
-                    url += urlattr.section + '/' + urlattr.subsection + '/browser.htm';
+            var url = '/assets/panels';
+            var path = [ urlattr.section, urlattr.subsection, urlattr.type ];
+            var custom_values = [
+                [],
+                ["destino_accesible"],
+                ["guia_de_accesibilidad", "videos", "playa_de_las_vistas"]
+            ];
+            for (var i = 0; i < path.length; i++){
+                switch(i){
+                    case 1:
+                    case 2:
+                        if (custom_values[i].includes(path[i])) url += '/' + path[i];
+                        break;
+                    default:
+                        url += '/' + path[i];
+                }
             }
+            url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
             return url;
-        },
-        resolve:{ "check":isValidLang },
-        controller: "territorialesCtrl"
-    })
-    .when("/:language/:section/:subsection/:type/:id", {
-        templateUrl :function(urlattr){
-
-            var url = '/assets/panels/';
-            switch(urlattr.section) {
-
-                case "planea_tu_viaje":
-                    url += urlattr.section + '/';
-                    switch(urlattr.subsection) {
-                        case "destino_accesible":
-                        case "donde_alojarse":
-                            url += urlattr.subsection + '/view.htm';
-                            break;
-                        default:
-                            url += 'view.htm';
-                    }
-                    break;
-
-                default:
-                    url += urlattr.section + '/' + urlattr.subsection + '/view.htm';
-            }
-            return url;
-
         },
         resolve:{ "check":isValidLang },
         controller: "aronaTravelCtrl"
+    })
+    .when("/:language/:section/:subsection/:type/:id", {
+        templateUrl :function(urlattr){
+            var url = '/assets/panels';
+            var path = [ urlattr.section, urlattr.subsection, urlattr.type, urlattr.id ];
+            var custom_values = [
+                ["vive_tu_estancia", "planea_tu_viaje"],
+                ["destino_accesible", "donde_alojarse"],
+                []
+            ];
+            for (var i = 0; i < path.length; i++){
+                switch(i){
+                    case 1:
+                    case 2:
+                        if (custom_values[i].includes(path[i])) url += '/' + path[i];
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        url += '/' + path[i];
+                }
+            }
+            url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
+            return url;
+        },
+        resolve:{ "check":isValidLang },
+        controller: "aronaTravelCtrl"
+    })
+    .when("/:language/vive_tu_estancia/:subsection", {
+        templateUrl : '/assets/panels/vive_tu_estancia/browser.htm',
+        resolve:{ "check":isValidLang },
+        controller: "activityCtrl"
     })
     .when("/:language/territoriales/:type/:id", {
         templateUrl : '/assets/panels/territoriales/view.htm',
