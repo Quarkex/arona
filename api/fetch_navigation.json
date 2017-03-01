@@ -58,12 +58,36 @@ doc = {
     }},
     "vive_tu_estancia": {"href": "/vive_tu_estancia", "content":{
         "actividades_recomendadas": {"href": "/vive_tu_estancia/actividades_recomendadas", "content": {
-            "deporte_y_aventura": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura"},
-            "salud_y_belleza": {"href": "/vive_tu_estancia/actividades_recomendadas/salud_y_belleza"},
-            "golf": {"href": "/vive_tu_estancia/actividades_recomendadas/golf"},
-            "ocio_diurno": {"href": "/vive_tu_estancia/actividades_recomendadas/ocio_diurno"},
-            "compras": {"href": "/vive_tu_estancia/actividades_recomendadas/compras"},
-            "aprende_español": {"href": "/vive_tu_estancia/actividades_recomendadas/aprende_español"}
+            "deporte_y_aventura": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura", "content": {
+                "a": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/a"},
+                "b": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/b"},
+                "c": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/c"}
+            }},
+            "salud_y_belleza": {"href": "/vive_tu_estancia/actividades_recomendadas/salud_y_belleza", "content": {
+                "a": {"href": "/vive_tu_estancia/actividades_recomendadas/salud_y_belleza/a"},
+                "b": {"href": "/vive_tu_estancia/actividades_recomendadas/salud_y_belleza/b"},
+                "c": {"href": "/vive_tu_estancia/actividades_recomendadas/salud_y_belleza/c"}
+            }},
+            "golf": {"href": "/vive_tu_estancia/actividades_recomendadas/golf", "content": {
+                "a": {"href": "/vive_tu_estancia/actividades_recomendadas/golf/a"},
+                "b": {"href": "/vive_tu_estancia/actividades_recomendadas/golf/b"},
+                "c": {"href": "/vive_tu_estancia/actividades_recomendadas/golf/c"}
+            }},
+            "ocio_diurno": {"href": "/vive_tu_estancia/actividades_recomendadas/ocio_diurno", "content": {
+                "a": {"href": "/vive_tu_estancia/actividades_recomendadas/ocio_diurno/a"},
+                "b": {"href": "/vive_tu_estancia/actividades_recomendadas/ocio_diurno/b"},
+                "c": {"href": "/vive_tu_estancia/actividades_recomendadas/ocio_diurno/c"}
+            }},
+            "compras": {"href": "/vive_tu_estancia/actividades_recomendadas/compras", "content": {
+                "a": {"href": "/vive_tu_estancia/actividades_recomendadas/compras/a"},
+                "b": {"href": "/vive_tu_estancia/actividades_recomendadas/compras/b"},
+                "c": {"href": "/vive_tu_estancia/actividades_recomendadas/compras/c"}
+            }},
+            "aprende_español": {"href": "/vive_tu_estancia/actividades_recomendadas/aprende_espanol", "content": {
+                "a": {"href": "/vive_tu_estancia/actividades_recomendadas/aprende_espanol/a"},
+                "b": {"href": "/vive_tu_estancia/actividades_recomendadas/aprende_espanol/b"},
+                "c": {"href": "/vive_tu_estancia/actividades_recomendadas/aprende_espanol/c"}
+            }}
         }},
         "gastronomia": {"href": "/vive_tu_estancia/gastronomia", "content": {
             "restaurantes": {"href": "/vive_tu_estancia/gastronomia/restaurantes"},
