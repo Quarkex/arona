@@ -84,8 +84,9 @@ app.value('constants', {
         "auditorios":                         596,
         "centros_civicos":                    466,
         "centros_culturales":                 146,
-        "ciclismo":                           454,
+        "ciclismo":                           323,
         "compras":                            157,
+        "deporte_y_aventura":                 454,
         "discotecas_y_pubs":                  249,
         "espacios_naturales":                 327,
         "especialidades_nauticas":            169,
@@ -806,11 +807,12 @@ app.controller("oficinasInformacionCtrl", function($rootScope, $scope, oficinasI
 });
 
 app.service('territoriales', ["language", "$resource", ResourcePaginator]);
-app.controller("territorialesCtrl", function($scope, $routeParams, territoriales, constants) {
+app.controller("territorialesCtrl", function($scope, territoriales, constants) {
 
     territoriales.expose_interface($scope);
 
-    var code = constants["CODSUBTIPOCONT"].hasOwnProperty($routeParams.type) ? constants["CODSUBTIPOCONT"][$routeParams.type] : null;
+    var section = $scope.path().split('/').pop();
+    var code = constants["CODSUBTIPOCONT"].hasOwnProperty(section) ? constants["CODSUBTIPOCONT"][section] : null;
 
     territoriales.set_values({
         "collection": "territoriales",
