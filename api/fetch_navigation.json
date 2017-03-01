@@ -59,9 +59,16 @@ doc = {
     "vive_tu_estancia": {"href": "/vive_tu_estancia", "content":{
         "actividades_recomendadas": {"href": "/vive_tu_estancia/actividades_recomendadas", "content": {
             "deporte_y_aventura": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura", "content": {
-                "a": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/a"},
-                "b": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/b"},
-                "c": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/c"}
+                "instalaciones_deportivas": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/instalaciones_deportivas"},
+                "ciclismo": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/ciclismo"},
+                "especialidades_nauticas": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/especialidades_nauticas"},
+                "ocio_y_playas": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/ocio_y_playas"},
+                "tenis_y_especialidades_con_raqueta": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/tenis_y_especialidades_con_raqueta"},
+                "hipica": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/hipica"},
+                "motor": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/motor"},
+                "otras_especialidades": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/otras_especialidades"},
+                "espacios_naturales": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/espacios_naturales"},
+                "gimnasia_y_juegos_deportivos": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/gimnasia_y_juegos_deportivos"}
             }},
             "salud_y_belleza": {"href": "/vive_tu_estancia/actividades_recomendadas/salud_y_belleza", "content": {
                 "a": {"href": "/vive_tu_estancia/actividades_recomendadas/salud_y_belleza/a"},
