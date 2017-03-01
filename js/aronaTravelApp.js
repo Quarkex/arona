@@ -67,12 +67,12 @@ app.value('page', {
 
 app.value('constants', {
     "CODCONTENIDO": {
-        "playa_de_las_vistas":         112,
-        "playa_de_las_galletas":       112,
-        "puerto_de_las_galletas":      112,
-        "plaza_de_arona":              112,
-        "los_cristianos":              112,
-        "otras_webcams":               112,
+        "playa_de_las_vistas":         22539,
+        "playa_de_las_galletas":       22569,
+        "puerto_de_las_galletas":      489,
+        "plaza_de_arona":              22543,
+        "los_cristianos":              22573,
+        "otras_webcams":               22585,
     },
     'CODSUBTIPOCONT':{
         "agencias_de_viaje":           48,
@@ -921,15 +921,15 @@ app.controller("activityCtrl", function($routeParams, $scope, activity) {
     });
 });
 
-app.service('webcam', ["language", "$resource", ResourcePaginator]);
-app.controller("webcamCtrl", function($routeParams, $scope, webcam, constants) {
-    webcam.expose_interface($scope);
-    $scope.element = function(){return activity.elements()[0]};
+app.service('webcams', ["language", "$resource", ResourcePaginator]);
+app.controller("webcamsCtrl", function($scope, webcams, constants) {
+    webcams.expose_interface($scope);
 
-    var code = constants["CODSUBTIPOCONT"].hasOwnProperty($routeParams.section) ? constants["CODSUBTIPOCONT"][$routeParams.subsection] : null;
+    var webcam_string = $scope.path().split('/').pop();
+    var code = constants["CODSUBTIPOCONT"].hasOwnProperty(webcam_string) ? constants["CODSUBTIPOCONT"][webcam_string] : null;
 
-    webcam.set_values({
-        "collection": "externos",
+    webcams.set_values({
+        "collection": "territoriales",
         "filters": {"CODSUBTIPOCONT": code},
         "values": ['TITULO'],
         "offset": 0,
@@ -938,16 +938,17 @@ app.controller("webcamCtrl", function($routeParams, $scope, webcam, constants) {
 });
 
 app.service('webcam', ["language", "$resource", ResourcePaginator]);
-app.controller("webcamCtrl", function($routeParams, $scope, webcam, constants) {
+app.controller("webcamCtrl", function($scope, webcam, constants) {
     webcam.expose_interface($scope);
-    $scope.element = function(){return activity.elements()[0]};
+    $scope.element = function(){return webcam.elements()[0]};
 
-    var code = constants["CODCONTENIDO"].hasOwnProperty($routeParams.subsection) ? constants["CODCONTENIDO"][$routeParams.subsection] : null;
+    var webcam_string = $scope.path().split('/').pop();
+    var code = constants["CODCONTENIDO"].hasOwnProperty(webcam_string) ? constants["CODCONTENIDO"][webcam_string] : null;
 
     webcam.set_values({
-        "collection": "externos",
+        "collection": "territoriales",
         "filters": {"CODCONTENIDO": code},
-        "values": ['TITULO'],
+        "values": ['DESCRIPCION_COMUN', 'WEBCAM', 'DATOS_INTERES', 'FMODIFICACION'],
         "offset": 0,
         "limit": 1
     });

@@ -86,6 +86,10 @@ begin
                     item[value] = nil
                     case value
 
+                    when "WEBCAM"
+                        #FIXME this should be dinamic
+                        item[value] = '<iframe src="http://www.skylinewebcams.com/webcam/espana/canarias/santa-cruz-de-tenerife/playa-las-vistas.html?w=339" width="800" height="500" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>'
+
                     when "MAPA"
                         address = ""
                         chunks = [ "TIPO_VIA", "NOMBRE_VIA", "NUMERO", "BLOQUE", "PORTAL", "ESCALERA", "PLANTA", "PUERTA", "LOCAL", "CODIGO_POSTAL", "ZONA" ]

@@ -1,9 +1,7 @@
 <div flex layout="column" class="webcam-wrapper" ng-controller="webcamCtrl">
     <h1 flex="100" class="element-title">{{ translate( 'pagina.titulo_', current_section() ) }}</h1>
-    <div flex="100" class="webcam"><img src="/img/placeholders/webcam.png" alt="Webcam placeholder"></div>
-    <div flex="100" class="webcam-description">
-        <p>Las Vistas, situada en Los Cristianos, es una de las playas más extensas y populares del municipio de Arona.</p>
-    </div>
+    <div flex="100" class="webcam" ng-bind-html="element().WEBCAM | trust"></div>
+    <div flex="100" class="webcam-description" ng-bind-html="element().DATOS_INTERES | trust"></div>
     <div flex="100" layout="row">
         <div flex="25" layout="row" layout-align="begin center">
             <md-button class="md-button md-primary" ng-href="#/{{ lang() }}">
