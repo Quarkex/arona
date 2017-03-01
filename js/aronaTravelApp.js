@@ -66,6 +66,14 @@ app.value('page', {
 });
 
 app.value('constants', {
+    "CODCONTENIDO": {
+        "playa_de_las_vistas":         112,
+        "playa_de_las_galletas":       112,
+        "puerto_de_las_galletas":      112,
+        "plaza_de_arona":              112,
+        "los_cristianos":              112,
+        "otras_webcams":               112,
+    },
     'CODSUBTIPOCONT':{
         "agencias_de_viaje":           48,
         "alojamiento_rural":           15,
@@ -81,7 +89,8 @@ app.value('constants', {
         "por_mar_y_aire":              150,
         "restaurantes":                30,
         "touroperadores":              251,
-        "transporte_publico":          163
+        "transporte_publico":          163,
+        "webcam":                      342
     }
 });
 
@@ -890,6 +899,38 @@ app.controller("activityCtrl", function($routeParams, $scope, activity) {
         "collection": "actividades",
         "filters": {"CODCONTENIDO": parseInt($routeParams.activity)},
         "values": ['TITULO', 'TELEFONO', 'F_INICIO', 'F_FIN', 'IMAGEN', 'DESCRIPCION_COMUN', 'TAQUILLA', 'ORGANIZACION', 'DONDE', 'PRECIO'],
+        "offset": 0,
+        "limit": 1
+    });
+});
+
+app.service('webcam', ["language", "$resource", ResourcePaginator]);
+app.controller("webcamCtrl", function($routeParams, $scope, webcam, constants) {
+    webcam.expose_interface($scope);
+    $scope.element = function(){return activity.elements()[0]};
+
+    var code = constants["CODSUBTIPOCONT"].hasOwnProperty($routeParams.section) ? constants["CODSUBTIPOCONT"][$routeParams.subsection] : null;
+
+    webcam.set_values({
+        "collection": "externos",
+        "filters": {"CODSUBTIPOCONT": code},
+        "values": ['TITULO'],
+        "offset": 0,
+        "limit": 1000
+    });
+});
+
+app.service('webcam', ["language", "$resource", ResourcePaginator]);
+app.controller("webcamCtrl", function($routeParams, $scope, webcam, constants) {
+    webcam.expose_interface($scope);
+    $scope.element = function(){return activity.elements()[0]};
+
+    var code = constants["CODCONTENIDO"].hasOwnProperty($routeParams.subsection) ? constants["CODCONTENIDO"][$routeParams.subsection] : null;
+
+    webcam.set_values({
+        "collection": "externos",
+        "filters": {"CODCONTENIDO": code},
+        "values": ['TITULO'],
         "offset": 0,
         "limit": 1
     });
