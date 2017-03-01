@@ -73,15 +73,32 @@ app.value('constants', {
         "alquiler_de_vehiculos":       47,
         "apartahteles":                659,
         "apartamentos":                40,
+	"auditorios":		       596,	
+	"centros_civicos":	       466,	
+	"centros_culturales":	       146,	
+	"ciclismo":		       454,
         "compras":                     157,
+	"discotecas_y_pubs":	       249,
         "hoteles":                     26,
         "informacion_portuaria":       524,
+	"instalaciones_deportivas":    321,
+	"museos":		       250, 
         "oficinas_de_informacion":     145,
+	"pastelerias":		       582,
         "pensiones":                   25,
         "por_mar_y_aire":              150,
         "restaurantes":                30,
+	"salud_y_belleza":	       159,
+	"senderismo":		       327,
+	"sol_y_playa":		       154,	
         "touroperadores":              251,
-        "transporte_publico":          163
+        "transporte_publico":          163,
+	"zonas_de_acampada":	       18
+    },
+    'CODSUBAREA':{
+	"ciclismo":		       323,
+	"museos":		       157,
+	"zonas_de_acampada":	       18
     }
 });
 
