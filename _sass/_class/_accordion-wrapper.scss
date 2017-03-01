@@ -1,0 +1,49 @@
+.accordion-wrapper {
+    h2 {
+        font-size: 20px;
+        text-transform: uppercase;
+        border-bottom: 3px solid #d2251a;
+    }
+    li {
+        list-style-type: none;
+        font-size: 14px;
+    }
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+    .accordion-title{
+        padding: 0.525rem 0.5rem;
+        border: none;
+        color: $black;
+        border-bottom: 2px solid $background_color;
+    }
+    .accordion-title::before{
+        content: 'arrow_drop_down';
+        font-family: 'Material Icons';
+        font-size: 18px;
+        margin-top: -10px;
+    }
+    .is-active > .accordion-title::before{
+        content: 'arrow_drop_up';
+    }
+    .accordion-content {
+        padding: 0;
+        border: none;
+        background-color: $secondary_color_contrast;
+        a {
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            li {
+                padding: 0.25125rem 0.5rem;
+                &.active {
+                    color: $black !important;
+                }
+            }
+            &:not(:last-child){
+                border-bottom: 2px solid white;
+            }
+        }
+    }
+}
