@@ -1,16 +1,9 @@
-<div class="row" ng-controller="territorialesCtrl">
-    <div layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">
+<div class="row">
+    <div flex="100" layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">
         <div flex flex-gt-md="25" ng-include="'assets/accordion.htm'"></div>
-        <div flex>
+        <div flex ng-controller="territorialesCtrl">
             <div ng-include="'assets/atoms/vive_tu_estancia/browser.htm'"></div>
         </div>
-    </div>
-</div>
-<div class="row" ng-controller="territorialesCtrl">
-    <div class="large-10 large-offset-1 columns">
-        <div ng-include="'assets/paginator.htm'"></div>
-        <br>
-        <div ng-include="'assets/back-bar.htm'"></div>
     </div>
 </div>
 
