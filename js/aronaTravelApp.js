@@ -538,6 +538,9 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     .when("/:language/planea_tu_viaje/destino_accesible/donde_alojarse", {
         redirectTo: "/:language/planea_tu_viaje/destino_accesible/donde_alojarse/hoteles"
     })
+    .when("/:language/webcams", {
+        redirectTo: "/:language/webcams/playa_de_las_vistas"
+    })
     .when("/:language/404", {
         templateUrl : "assets/404.htm",
         resolve:{ "check":isValidLang },
