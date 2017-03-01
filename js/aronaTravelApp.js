@@ -467,7 +467,10 @@ function ResourcePaginator(language, $resource){
         var values_changed = false;
         for (var k in new_values){
             if (new_values.hasOwnProperty(k)) {
-                if (!angular.equals(self.values[k], new_values[k])){
+                //FIXME this should be refactored to check object equality
+                //this “if” statement is a quick'n'dirty fix
+                if (typeof new_values[k] == 'object'){
+                    // begin of duplicate code
                     values_changed = true;
                     // if it's a non-null object...
                     if (self.values[k] !== null && typeof self.values[k] === 'object'){
@@ -483,6 +486,26 @@ function ResourcePaginator(language, $resource){
                     } else {
                         // if it's not an object, replace it
                         self.values[k] = new_values[k];
+                    }
+                    // end of duplicate code
+                } else {
+                    if (!angular.equals(self.values[k], new_values[k])){
+                        values_changed = true;
+                        // if it's a non-null object...
+                        if (self.values[k] !== null && typeof self.values[k] === 'object'){
+                            var values = new_values[k];
+                            // ...for every value in it...
+                            for ( var value in values) if (values.hasOwnProperty(value)) {
+                                // if it's not null, update it
+                                if (values[value] != null) self.values[k][value] = values[value];
+                                // else, remove it
+                                else delete self.values[k][value];
+                            }
+
+                        } else {
+                            // if it's not an object, replace it
+                            self.values[k] = new_values[k];
+                        }
                     }
                 }
             }
