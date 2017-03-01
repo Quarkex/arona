@@ -877,11 +877,11 @@ app.controller("descriptivoCtrl", function($scope, $routeParams, descriptivo) {
 
     descriptivo.expose_interface($scope);
 
-    $scope.element = function(){return descriptivo.element()[0]};
+    $scope.element = function(){return descriptivos.element()[0]};
 
     descriptivo.set_values({
         "collection": "descriptivos",
-        "filters": {"CODCONTENIDO": parseInt ($routeParams.descriptivo)},
+        "filters": {"CODCONTENIDO": parseInt ($routeParams.id)},
         "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION_COMUN'],
         "offset": 0,
         "limit": 1
