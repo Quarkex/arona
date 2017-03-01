@@ -65,6 +65,26 @@ app.value('page', {
     'panels':{}
 });
 
+app.value('constants', {
+    'CODSUBTIPOCONT':{
+        "agencias_de_viaje":           48,
+        "alojamiento_rural":           15,
+        "alquiler_de_ayudas_tecnicas": 669,
+        "alquiler_de_vehiculos":       47,
+        "apartahteles":                659,
+        "apartamentos":                40,
+        "compras":                     157,
+        "hoteles":                     26,
+        "informacion_portuaria":       524,
+        "oficinas_de_informacion":     145,
+        "pensiones":                   25,
+        "por_mar_y_aire":              150,
+        "restaurantes":                30,
+        "touroperadores":              251,
+        "transporte_publico":          163
+    }
+});
+
 function Languaje($location, $window, $resource, tmhDynamicLocale){
 
     var self = this;
@@ -489,9 +509,6 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     .when("/:language/planea_tu_viaje/destino_accesible", {
         redirectTo: "/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas"
     })
-    .when("/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas", {
-        redirectTo: "/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas/2105"
-    })
     .when("/:language/planea_tu_viaje/destino_accesible/donde_alojarse", {
         redirectTo: "/:language/planea_tu_viaje/destino_accesible/donde_alojarse/hoteles"
     })
@@ -500,68 +517,65 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
         resolve:{ "check":isValidLang },
         controller: "aronaTravelCtrl"
     })
-    .when("/:language/planea_tu_viaje/donde_alojarse/:type/:territorial", {
-        templateUrl : '/assets/panels/planea_tu_viaje/donde_alojarse/view.htm',
+    .when("/:language/:section/:subsection/:type", {
+        templateUrl :function(urlattr){
+            var url = '/assets/panels';
+            var path = [ urlattr.section, urlattr.subsection, urlattr.type ];
+            var custom_values = [
+                [],
+                ["destino_accesible"],
+                ["guia_de_accesibilidad", "videos", "playa_de_las_vistas"]
+            ];
+            for (var i = 0; i < path.length; i++){
+                switch(i){
+                    case 1:
+                    case 2:
+                        if (custom_values[i].includes(path[i])) url += '/' + path[i];
+                        break;
+                    default:
+                        url += '/' + path[i];
+                }
+            }
+            url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
+            return url;
+        },
         resolve:{ "check":isValidLang },
-        controller: "territorialCtrl"
+        controller: "aronaTravelCtrl"
     })
-    .when("/:language/planea_tu_viaje/como_llegar/:type", {
-        templateUrl : '/assets/panels/planea_tu_viaje/como_llegar/browser.htm',
+    .when("/:language/:section/:subsection/:type/:id", {
+        templateUrl :function(urlattr){
+            var url = '/assets/panels';
+            var path = [ urlattr.section, urlattr.subsection, urlattr.type, urlattr.id ];
+            var custom_values = [
+                ["vive_tu_estancia", "planea_tu_viaje"],
+                ["destino_accesible", "donde_alojarse"],
+                []
+            ];
+            for (var i = 0; i < path.length; i++){
+                switch(i){
+                    case 1:
+                    case 2:
+                        if (custom_values[i].includes(path[i])) url += '/' + path[i];
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        url += '/' + path[i];
+                }
+            }
+            url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
+            return url;
+        },
         resolve:{ "check":isValidLang },
-        controller: "territorialesCtrl"
+        controller: "aronaTravelCtrl"
     })
-    .when("/:language/planea_tu_viaje/como_llegar/:type/:territorial", {
-        templateUrl : '/assets/panels/planea_tu_viaje/como_llegar/view.htm',
+    .when("/:language/vive_tu_estancia/:subsection", {
+        templateUrl : '/assets/panels/vive_tu_estancia/browser.htm',
         resolve:{ "check":isValidLang },
-        controller: "territorialesCtrl"
+        controller: "activityCtrl"
     })
-    .when("/:language/planea_tu_viaje/como_moverse/:type", {
-        templateUrl : '/assets/panels/planea_tu_viaje/como_moverse/browser.htm',
-        resolve:{ "check":isValidLang },
-        controller: "territorialesCtrl"
-    })
-    .when("/:language/planea_tu_viaje/como_moverse/:type/:territorial", {
-        templateUrl : '/assets/panels/planea_tu_viaje/como_moverse/view.htm',
-        resolve:{ "check":isValidLang },
-        controller: "territorialesCtrl"
-    })
-    .when("/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas/:descriptivo", {
-        templateUrl : '/assets/panels/planea_tu_viaje/destino_accesible/playa_de_las_vistas.htm',
-        resolve:{ "check":isValidLang },
-        controller: "accesibilidadCtrl"
-    })
-    .when("/:language/planea_tu_viaje/destino_accesible/donde_alojarse/:type", {
-        templateUrl : '/assets/panels/planea_tu_viaje/donde_alojarse/browser.htm',
-        resolve:{ "check":isValidLang },
-        controller: "accesibilidadCtrl"
-    })
-    .when("/:language/planea_tu_viaje/destino_accesible/donde_alojarse/:type/:territorial", {
-        templateUrl : '/assets/panels/planea_tu_viaje/donde_alojarse/view.htm',
-        resolve:{ "check":isValidLang },
-        controller: "accesibilidadCtrl"
-    })
-    .when("/:language/planea_tu_viaje/destino_accesible/videos", {
-        templateUrl : '/assets/panels/planea_tu_viaje/destino_accesible/videos.htm',
-        resolve:{ "check":isValidLang },
-        controller: "videoAccesibleCtrl"
-    })
-    .when("/:language/planea_tu_viaje/destino_accesible/guia_de_accesibilidad", {
-        templateUrl : '/assets/panels/planea_tu_viaje/destino_accesible/guia_de_accesibilidad.htm',
-        resolve:{ "check":isValidLang },
-        controller: "videoAccesibleCtrl"
-    })
-    .when("/:language/planea_tu_viaje/destino_accesible/:type", {
-        templateUrl : '/assets/panels/planea_tu_viaje/destino_accesible/browser.htm',
-        resolve:{ "check":isValidLang },
-        controller: "accesibilidadCtrl"
-    })
-    .when("/:language/planea_tu_viaje/destino_accesible/:type/:territorial", {
-        templateUrl : '/assets/panels/planea_tu_viaje/destino_accesible/view.htm',
-        resolve:{ "check":isValidLang },
-        controller: "accesibilidadCtrl"
-    })
-    .when("/:language/planea_tu_viaje/:type/:territorial", {
-        templateUrl : '/assets/panels/planea_tu_viaje/view.htm',
+    .when("/:language/territoriales/:type/:id", {
+        templateUrl : '/assets/panels/territoriales/view.htm',
         resolve:{ "check":isValidLang },
         controller: "territorialesCtrl"
     })
@@ -685,17 +699,6 @@ var resourceControllers = {
         },
         "singleElement": false
     },
-    "recommendedActivities": {
-        "controllerElements": ["$rootScope", "$scope"],
-        "controllerValues": {
-            "collection": "territoriales",
-            "filters": {},
-            "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION_COMUN'],
-            "offset": 0,
-            "limit": 10
-        },
-        "singleElement": false
-    },
     "activities": {
         "controllerElements": ["$rootScope", "$scope"],
         "controllerValues": {
@@ -749,36 +752,6 @@ for (var k in Ctrls) if (Ctrls.hasOwnProperty(k)){
 }
 */
 
-app.service('hotels', ["language", "$resource", ResourcePaginator]);
-app.controller("hotelsCtrl", function($rootScope, $scope, hotels) {
-    hotels.expose_interface($scope);
-    hotels.set_values(resourceControllers["hotels"]["controllerValues"]);
-});
-
-app.service('hostels', ["language", "$resource", ResourcePaginator]);
-app.controller("hostelsCtrl", function($rootScope, $scope, hostels) {
-    hostels.expose_interface($scope);
-    hostels.set_values(resourceControllers["hostels"]["controllerValues"]);
-});
-
-app.service('ruralHostels', ["language", "$resource", ResourcePaginator]);
-app.controller("ruralHostelsCtrl", function($rootScope, $scope, ruralHostels) {
-    ruralHostels.expose_interface($scope);
-    ruralHostels.set_values(resourceControllers["ruralHostels"]["controllerValues"]);
-});
-
-app.service('aparthotels', ["language", "$resource", ResourcePaginator]);
-app.controller("aparthotelsCtrl", function($rootScope, $scope, aparthotels) {
-    aparthotels.expose_interface($scope);
-    aparthotels.set_values(resourceControllers["aparthotels"]["controllerValues"]);
-});
-
-app.service('apartments', ["language", "$resource", ResourcePaginator]);
-app.controller("apartmentsCtrl", function($rootScope, $scope, apartments) {
-    apartments.expose_interface($scope);
-    apartments.set_values(resourceControllers["apartments"]["controllerValues"]);
-});
-
 app.service('oficinasInformacion', ["language", "$resource", ResourcePaginator]);
 app.controller("oficinasInformacionCtrl", function($rootScope, $scope, oficinasInformacion) {
 
@@ -794,22 +767,11 @@ app.controller("oficinasInformacionCtrl", function($rootScope, $scope, oficinasI
 });
 
 app.service('territoriales', ["language", "$resource", ResourcePaginator]);
-app.controller("territorialesCtrl", function($scope, $routeParams, territoriales) {
+app.controller("territorialesCtrl", function($scope, $routeParams, territoriales, constants) {
 
     territoriales.expose_interface($scope);
 
-    var codes = {
-        "agencias_de_viaje": 48,
-        "alquiler_de_vehiculos": 47,
-        "informacion_portuaria": 524,
-        "oficinas_de_informacion": 145,
-        "por_mar_y_aire": 150,
-        "touroperadores": 251,
-        "transporte_publico": 163
-    };
-
-    var code = codes.hasOwnProperty($routeParams.type) ? codes[$routeParams.type] : null;
-console.log (code);
+    var code = constants["CODSUBTIPOCONT"].hasOwnProperty($routeParams.type) ? constants["CODSUBTIPOCONT"][$routeParams.type] : null;
 
     territoriales.set_values({
         "collection": "territoriales",
@@ -821,21 +783,11 @@ console.log (code);
 });
 
 app.service('accesibilidad', ["language", "$resource", ResourcePaginator]);
-app.controller("accesibilidadCtrl", function($scope, $routeParams, accesibilidad) {
+app.controller("accesibilidadCtrl", function($scope, $routeParams, accesibilidad, constants) {
 
     accesibilidad.expose_interface($scope);
 
-    var codes = {
-        "agencias_de_viaje": 48,
-	"compras": 157,
-	"hoteles": 26,
-	"aparthoteles": 659,
-	"apartamentos": 40,
-	"restaurantes": 30,
-	"alquiler_de_ayudas_tecnicas": 669
-    };
-
-    var code = codes.hasOwnProperty($routeParams.type) ? codes[$routeParams.type] : null;
+    var code = constants["CODSUBTIPOCONT"].hasOwnProperty($routeParams.type) ? constants["CODSUBTIPOCONT"][$routeParams.type] : null;
 
     accesibilidad.set_values({
         "collection": "territoriales",
@@ -876,12 +828,6 @@ app.service('video', ["language", "$resource", ResourcePaginator]);
 app.controller("videoCtrl", function($scope, video) {
     video.expose_interface($scope);
     video.set_values(resourceControllers["video"]["controllerValues"]);
-});
-
-app.service('recommendedActivities', ["language", "$resource", ResourcePaginator]);
-app.controller("recommendedActivitiesCtrl", function($scope, recommendedActivities) {
-    recommendedActivities.expose_interface($scope);
-    recommendedActivities.set_values(resourceControllers["recommendedActivities"]["controllerValues"]);
 });
 
 app.service('videoAccesible', ["language", "$resource", ResourcePaginator]);
@@ -929,7 +875,7 @@ app.controller("territorialCtrl", function($scope, $routeParams, territorial) {
 
     territorial.set_values({
         "collection": "territoriales",
-        "filters": {"CODCONTENIDO": parseInt($routeParams.territorial)},
+        "filters": {"CODCONTENIDO": parseInt($routeParams.id)},
         "values": ["MAPA_IFRAME", "MAPA","CODCONTENIDO","TITULO","ZONA","TELEFONO","FAX","WEB_PROPIA","DIRECCION","EMAIL","INDICADORES", "IMAGEN"],
         "offset": 0,
         "limit": 1
