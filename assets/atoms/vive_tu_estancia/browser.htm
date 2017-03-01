@@ -1,5 +1,5 @@
 <div ng-if="params.id || ! nav[params.section]['content'][params.subsection]['content'][params.type]['content'] " class="large-10 large-offset-1 columns">
-    <h2 class="element-title" ng-bind="translate( 'general.titulo_', params.id ) | gsub:'_':' '|capitalize"></h2>
+    <h2 class="element-title" ng-bind="translate( 'general.titulo_', params.id ? params.id : params.type ? params.type : params.subsection ) | gsub:'_':' '|capitalize"></h2>
     <div ng-include="'assets/elements-feedback-header.htm'" style="display: none;"></div>
     <ng-include class="row" ng-cloak style="display: none;" src="'assets/atoms/' + sections()[1] + '/filters.htm'"></ng-include>
     <div class="row collapse">
