@@ -816,7 +816,7 @@ app.controller("territorialesCtrl", function($scope, territoriales, constants) {
 
     territoriales.set_values({
         "collection": "territoriales",
-        "filters": {"CODSUBTIPOCONT": code, "CODAREAS": 16 },
+        "filters": {$or: [{"CODSUBTIPOCONT": code}, {"CODSUBAREAS": code}, { "CODSUBAREAS": {$in: [code]} }], "CODAREAS": {$in: [15, 16]} },
         "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
         "limit": 100
@@ -828,11 +828,12 @@ app.controller("accesibilidadCtrl", function($scope, $routeParams, accesibilidad
 
     accesibilidad.expose_interface($scope);
 
-    var code = constants["CODSUBTIPOCONT"].hasOwnProperty($routeParams.type) ? constants["CODSUBTIPOCONT"][$routeParams.type] : null;
+    var section = $scope.path().split('/').pop();
+    var code = constants["CODSUBTIPOCONT"].hasOwnProperty(section) ? constants["CODSUBTIPOCONT"][section] : null;
 
     accesibilidad.set_values({
         "collection": "territoriales",
-        "filters": {"CODSUBTIPOCONT": code, "CODAREAS": 16}, // "VALORES_INDICADORES": 37},
+        "filters": {$or: [{"CODSUBTIPOCONT": code}, {"CODSUBAREAS": code}, { "CODSUBAREAS": {$in: [code]} }], "CODAREAS": {$in: [15, 16]} }, // "VALORES_INDICADORES": 37},
         "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
         "limit": 100
