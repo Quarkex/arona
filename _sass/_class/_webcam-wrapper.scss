@@ -1,4 +1,7 @@
-.webcam-wrapper {
-    margin:1em 1em 1em 0;
-    padding:2em 2em 2em 0;
+/* Large and up */
+@media screen and (min-width: 64em) {
+    .webcam-wrapper {
+        margin:1em 1em 1em 0;
+        padding:2em 2em 2em 0;
+    }
 }
