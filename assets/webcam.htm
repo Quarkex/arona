@@ -1,45 +1,29 @@
-<div class="mall-12 columns webcam-wrapper">
-    <div class="row column"><h1>{{ translate( 'pagina.titulo_', current_section() ) }}</h1></div>
-    <div class="row column webcam">
-        <img src="/img/placeholders/webcam.png" alt="Webcam placeholder">
-    </div>
-    <div class="row column webcam-description">
+<div flex layout="column" class="webcam-wrapper" ng-controller="webcamCtrl">
+    <h1 flex="100" class="element-title">{{ translate( 'pagina.titulo_', current_section() ) }}</h1>
+    <div flex="100" class="webcam"><img src="/img/placeholders/webcam.png" alt="Webcam placeholder"></div>
+    <div flex="100" class="webcam-description">
         <p>Las Vistas, situada en Los Cristianos, es una de las playas más extensas y populares del municipio de Arona.</p>
     </div>
-    <div class="row">
-        <div class="large-6 columns collapse">
-            <a class="button transparent-black" href="#/{{ lang() }}">
-                <div class="small-2 small-offset-1 columns">
-                    <i class="material-icons">place</i>
-                </div>
-                <div class="small-8 columns end">
-                    <span>{{ translate('webcams.', 'ubicacion') }}</span>
-                </div>
-            </a>
+    <div flex="100" layout="row">
+        <div flex="25" layout="row" layout-align="begin center">
+            <md-button class="md-button md-primary" ng-href="#/{{ lang() }}">
+                <md-icon class="material-icons" style="margin-top: -0.25em;">place</md-icon> {{ translate('webcams.', 'ubicacion') }}
+            </md-button>
         </div>
-        <div class="large-6 columns collapse text-right">
-            <a class="button">{{ translate('webcams.', 'modo_24_h') }}</a>
-            <a class="button">{{ translate('webcams.', 'imagen_en_vivo') }}</a>
-            <a class="button">{{ translate('webcams.', '50') }}</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="small-12 columns webcam-extra-content">
-            <h1>{{ translate('general.', 'mas_informacion') }}</h1>
+        <div flex layout="row" layout-align="end center">
+            <md-button class="md-button md-raised md-primary" ng-href="#/{{ lang() }}">
+                {{ translate('webcams.', 'modo_24_h') }}
+            </md-button>
+            <md-button class="md-button md-raised md-primary" ng-href="#/{{ lang() }}">
+                {{ translate('webcams.', 'imagen_en_vivo') }}
+            </md-button>
+            <md-button class="md-button md-raised md-primary" ng-href="#/{{ lang() }}">
+                {{ translate('webcams.', '50') }}
+            </md-button>
         </div>
     </div>
-    <div class="row">
-        <div class="small-6 columns">
-            <div class="button-group tiny">
-                <a class="button">
-                    <span class="hide-for-sr">◀</span>
-                    <span class="show-for-sr">{{ translate('general.', 'volver') }}</span>
-                </a>
-                <a class="button">{{ translate('general.', 'atras') }}</a>
-            </div>
-        </div>
-        <div class="small-6 columns text-right right">
-            <p class="panel last-modified">{{ translate('general.', 'ultima_modificacion') }}</p>
-        </div>
+    <div flex="100" class="webcam-extra-content">
+        <h1>{{ translate('general.', 'mas_informacion') }}</h1>
     </div>
+    <ng-include src="'assets/back-bar.htm'"></ng-include>
 </div>
