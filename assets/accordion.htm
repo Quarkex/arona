@@ -1,4 +1,5 @@
 <div class="accordion-wrapper">
+    <h2 ng-bind="translate( 'pagina.titulo_', params.subsection )"></h2>
     <accordion close-others="true" ng-controller="accordionCtrl">
     <accordion-group is-open="::(params.type == label )" ng-repeat="(label, link) in sublinks(path().split('/').slice(2, 4).join('/'), true)">
         <accordion-heading>{{ translate('pagina.titulo_', label) }}</accordion-heading>
