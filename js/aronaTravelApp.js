@@ -1133,8 +1133,8 @@ app.filter("gsub", [function() {
         if (isRegex == undefined) isRegex = false;
         if (input != null && pattern != null && replacement != null){
             var output = '';
-            if (isRegex) pattern = new RegExp(pattern, "g");
-            if (input!=null) output = input.replace(pattern, replacement);
+            if (! isRegex) pattern = pattern.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+            if (input!=null) output = input.replace(new RegExp(pattern, "g"), replacement);
             return output;
         } else {
             return '';
