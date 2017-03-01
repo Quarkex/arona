@@ -1,0 +1,12 @@
+<div class="accordion-wrapper">
+    <accordion close-others="true" ng-controller="accordionCtrl">
+    <accordion-group is-open="::(params.type == label )" ng-repeat="(label, link) in sublinks(path().split('/').slice(2, 4).join('/'), true)">
+        <accordion-heading>{{ translate('pagina.titulo_', label) }}</accordion-heading>
+        <ul layout="column">
+            <li ng-class="{ 'active': (params.id == sublabel) }" ng-repeat="(sublabel, sublink) in link.content">
+                <a ng-href="#/{{ lang() }}{{ sublink.href }}">{{ translate('pagina.titulo_', sublabel) }}</a>
+            </li>
+        </ul>
+    </accordion-group>
+    </accordion>
+</div>
