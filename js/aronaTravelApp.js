@@ -699,17 +699,6 @@ var resourceControllers = {
         },
         "singleElement": false
     },
-    "recommendedActivities": {
-        "controllerElements": ["$rootScope", "$scope"],
-        "controllerValues": {
-            "collection": "territoriales",
-            "filters": {},
-            "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION_COMUN'],
-            "offset": 0,
-            "limit": 10
-        },
-        "singleElement": false
-    },
     "activities": {
         "controllerElements": ["$rootScope", "$scope"],
         "controllerValues": {
@@ -839,12 +828,6 @@ app.service('video', ["language", "$resource", ResourcePaginator]);
 app.controller("videoCtrl", function($scope, video) {
     video.expose_interface($scope);
     video.set_values(resourceControllers["video"]["controllerValues"]);
-});
-
-app.service('recommendedActivities', ["language", "$resource", ResourcePaginator]);
-app.controller("recommendedActivitiesCtrl", function($scope, recommendedActivities) {
-    recommendedActivities.expose_interface($scope);
-    recommendedActivities.set_values(resourceControllers["recommendedActivities"]["controllerValues"]);
 });
 
 app.service('videoAccesible', ["language", "$resource", ResourcePaginator]);
