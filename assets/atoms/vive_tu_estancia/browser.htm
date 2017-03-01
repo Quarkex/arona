@@ -2,7 +2,7 @@
     <div ng-include="'assets/elements-feedback-header.htm'" style="display: none;"></div>
     <ng-include class="row" ng-cloak style="display: none;" src="'assets/atoms/' + sections()[1] + '/filters.htm'"></ng-include>
     <div class="row collapse">
-        <div class="medium-6 columns" ng-class="{'end': $last}" ng-repeat="card in elements()">
+        <div class="medium-12 columns" ng-class="{'end': $last}" ng-repeat="card in elements()">
             <ng-include src="'assets/atoms/' + sections()[1] + '/card.htm'"></ng-include>
         </div>
     </div>
