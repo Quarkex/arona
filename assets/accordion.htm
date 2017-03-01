@@ -2,16 +2,16 @@
     <h2 ng-bind="translate( 'pagina.titulo_', params.subsection )"></h2>
     <accordion close-others="true" ng-controller="accordionCtrl">
     <accordion-group is-open="::(params.type == label )" ng-repeat="(label, link) in sublinks(path().split('/').slice(2, 4).join('/'), true)">
-        <accordion-heading>{{ translate('pagina.titulo_', label) }}</accordion-heading>
+        <accordion-heading>{{ translate('pagina.titulo_', label) | gsub:'_':' ':true | capitalize }}</accordion-heading>
         <ul layout="column">
             <a ng-if="! link.content" ng-href="#/{{ lang() }}{{ link.href }}">
                 <li ng-class="{ 'active': (params.id == label) }">
-                    {{ translate('pagina.titulo_', label) }}
+                    {{ translate('pagina.titulo_', label) | gsub:'_':' ':true | capitalize }}
                 </li>
             </a>
             <a ng-if="link.content" ng-href="#/{{ lang() }}{{ sublink.href }}" ng-repeat="(sublabel, sublink) in link.content">
                 <li ng-class="{ 'active': (params.id == sublabel) }">
-                    {{ translate('pagina.titulo_', sublabel) }}
+                    {{ translate('pagina.titulo_', sublabel) | gsub:'_':' ':true | capitalize }}
                 </li>
             </a>
         </ul>
