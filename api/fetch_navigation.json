@@ -6,140 +6,140 @@ require 'json'
 cgi = CGI.new
 
 doc = {
-    "destino_arona": {"href": "/destino_arona", "content":{
-        "datos_generales": {"href": "/destino_arona/datos_generales", "content":{
-                "situacion_orografia_y_vegetacion": {"href": "/destino_arona/datos_generales/situacion_orografia_y_vegetacion"},
-                "clima": {"href": "/destino_arona/datos_generales/clima"},
-                "compromiso_con_la_calidad": {"href": "/destino_arona/datos_generales/compromiso_con_la_calidad"}
+    "destino_arona":                                  {"href": "/destino_arona", "content":{
+        "datos_generales":                            {"href": "/destino_arona/datos_generales", "content":{
+                "situacion_orografia_y_vegetacion":   {"href": "/destino_arona/datos_generales/situacion_orografia_y_vegetacion"},
+                "clima":                              {"href": "/destino_arona/datos_generales/clima"},
+                "compromiso_con_la_calidad":          {"href": "/destino_arona/datos_generales/compromiso_con_la_calidad"}
         }},
-        "un_poco_de_historia": {"href": "/destino_arona/un_poco_de_historia", "content":{
-                "la_conquista_de_canarias": {"href": "/destino_arona/un_poco_de_historia/la_conquista_de_canarias"},
-                "historia_de_arona": {"href": "/destino_arona/un_poco_de_historia"}
+        "un_poco_de_historia":                        {"href": "/destino_arona/un_poco_de_historia", "content":{
+                "la_conquista_de_canarias":           {"href": "/destino_arona/un_poco_de_historia/la_conquista_de_canarias"},
+                "historia_de_arona":                  {"href": "/destino_arona/un_poco_de_historia"}
         }},
-        "patrimonio_cultural": {"href": "/destino_arona/patrimonio_cultural", "content":{
-                "arquitectura_tradicional": {"href": "/destino_arona/patrimonio_cultural/arquitectura_tradicional"},
-                "arte_y_artesania": {"href": "/destino_arona/patrimonio_cultural/arte_y_artesania"},
-                "costumbres_y_folclore": {"href": "/destino_arona/patrimonio_cultural/costumbres_y_folclore"}
+        "patrimonio_cultural":                        {"href": "/destino_arona/patrimonio_cultural", "content":{
+                "arquitectura_tradicional":           {"href": "/destino_arona/patrimonio_cultural/arquitectura_tradicional"},
+                "arte_y_artesania":                   {"href": "/destino_arona/patrimonio_cultural/arte_y_artesania"},
+                "costumbres_y_folclore":              {"href": "/destino_arona/patrimonio_cultural/costumbres_y_folclore"}
         }},
-        "lugares_de_interes": {"href": "/destino_arona/lugares_de_interes"},
-        "tour_virtual_360": {"href": "/galeria/tour_virtual_360"},
-        "arona_casco": {"href": "/destino_arona/arona_casco"}
+        "lugares_de_interes":                         {"href": "/destino_arona/lugares_de_interes"},
+        "tour_virtual_360":                           {"href": "/galeria/tour_virtual_360"},
+        "arona_casco":                                {"href": "/destino_arona/arona_casco"}
     }},
-    "planea_tu_viaje": {"href": "/planea_tu_viaje", "content":{
-        "como_llegar": {"href": "/planea_tu_viaje/como_llegar", "content": {
-            "por_mar_y_aire": {"href": "/planea_tu_viaje/como_llegar/por_mar_y_aire"},
-            "agencias_de_viaje": {"href": "/planea_tu_viaje/como_llegar/agencias_de_viaje"},
-            "touroperadores": {"href": "/planea_tu_viaje/como_llegar/touroperadores"}
+    "planea_tu_viaje":                                {"href": "/planea_tu_viaje", "content":{
+        "como_llegar":                                {"href": "/planea_tu_viaje/como_llegar", "content": {
+            "por_mar_y_aire":                         {"href": "/planea_tu_viaje/como_llegar/por_mar_y_aire"},
+            "agencias_de_viaje":                      {"href": "/planea_tu_viaje/como_llegar/agencias_de_viaje"},
+            "touroperadores":                         {"href": "/planea_tu_viaje/como_llegar/touroperadores"}
         }},
-        "como_moverse": {"href": "/planea_tu_viaje/como_moverse", "content": {
-            "transporte_publico": {"href": "/planea_tu_viaje/como_moverse/transporte_publico"},
-            "alquiler_de_vehiculos": {"href": "/planea_tu_viaje/como_moverse/alquiler_de_vehiculos"},
-            "informacion_portuaria": {"href": "/planea_tu_viaje/como_moverse/informacion_portuaria"}
+        "como_moverse":                               {"href": "/planea_tu_viaje/como_moverse", "content": {
+            "transporte_publico":                     {"href": "/planea_tu_viaje/como_moverse/transporte_publico"},
+            "alquiler_de_vehiculos":                  {"href": "/planea_tu_viaje/como_moverse/alquiler_de_vehiculos"},
+            "informacion_portuaria":                  {"href": "/planea_tu_viaje/como_moverse/informacion_portuaria"}
         }},
-        "donde_alojarse": {"href": "/planea_tu_viaje/donde_alojarse", "content": {
-            "hoteles": {"href": "/planea_tu_viaje/donde_alojarse/hoteles"},
-            "aparthoteles": {"href": "/planea_tu_viaje/donde_alojarse/aparthoteles"},
-            "apartamentos": {"href": "/planea_tu_viaje/donde_alojarse/apartamentos"},
-            "alojamiento_rural": {"href": "/planea_tu_viaje/donde_alojarse/alojamiento_rural"},
-            "pensiones": {"href": "/planea_tu_viaje/donde_alojarse/pensiones"}
+        "donde_alojarse":                             {"href": "/planea_tu_viaje/donde_alojarse", "content": {
+            "hoteles":                                {"href": "/planea_tu_viaje/donde_alojarse/hoteles"},
+            "aparthoteles":                           {"href": "/planea_tu_viaje/donde_alojarse/aparthoteles"},
+            "apartamentos":                           {"href": "/planea_tu_viaje/donde_alojarse/apartamentos"},
+            "alojamiento_rural":                      {"href": "/planea_tu_viaje/donde_alojarse/alojamiento_rural"},
+            "pensiones":                              {"href": "/planea_tu_viaje/donde_alojarse/pensiones"}
         }},
-        "destino_accesible": {"href": "/planea_tu_viaje/destino_accesible", "content": {
-            "playa_de_las_vistas": {"href": "/planea_tu_viaje/destino_accesible/playa_de_las_vistas"},
-            "donde_alojarse": {"href": "/planea_tu_viaje/destino_accesible/donde_alojarse"},
-            "restaurantes": {"href": "/planea_tu_viaje/destino_accesible/restaurantes"},
-            "compras": {"href": "/planea_tu_viaje/destino_accesible/compras"},
-            "agencias_de_viaje": {"href": "/planea_tu_viaje/destino_accesible/agencias_de_viaje"},
-            "guia_de_accesibilidad": {"href": "/planea_tu_viaje/destino_accesible/guia_de_accesibilidad"},
-            "videos": {"href": "/planea_tu_viaje/destino_accesible/videos"},
-            "alquiler_de_ayudas_tecnicas": {"href": "/planea_tu_viaje/destino_accesible/alquiler_de_ayudas_tecnicas"}
+        "destino_accesible":                          {"href": "/planea_tu_viaje/destino_accesible", "content": {
+            "playa_de_las_vistas":                    {"href": "/planea_tu_viaje/destino_accesible/playa_de_las_vistas"},
+            "donde_alojarse":                         {"href": "/planea_tu_viaje/destino_accesible/donde_alojarse"},
+            "restaurantes":                           {"href": "/planea_tu_viaje/destino_accesible/restaurantes"},
+            "compras":                                {"href": "/planea_tu_viaje/destino_accesible/compras"},
+            "agencias_de_viaje":                      {"href": "/planea_tu_viaje/destino_accesible/agencias_de_viaje"},
+            "guia_de_accesibilidad":                  {"href": "/planea_tu_viaje/destino_accesible/guia_de_accesibilidad"},
+            "videos":                                 {"href": "/planea_tu_viaje/destino_accesible/videos"},
+            "alquiler_de_ayudas_tecnicas":            {"href": "/planea_tu_viaje/destino_accesible/alquiler_de_ayudas_tecnicas"}
         }},
-        "folletos_y_mapas": {"href": "/planea_tu_viaje/folletos_y_mapas"},
-        "oficinas_de_informacion": {"href": "/planea_tu_viaje/oficinas_de_informacion"}
+        "folletos_y_mapas":                           {"href": "/planea_tu_viaje/folletos_y_mapas"},
+        "oficinas_de_informacion":                    {"href": "/planea_tu_viaje/oficinas_de_informacion"}
     }},
-    "vive_tu_estancia": {"href": "/vive_tu_estancia", "content":{
-        "actividades_recomendadas": {"href": "/vive_tu_estancia/actividades_recomendadas", "content": {
-            "deporte_y_aventura": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura", "content": {
-                "instalaciones_deportivas": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/instalaciones_deportivas"},
-                "ciclismo": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/ciclismo"},
-                "especialidades_nauticas": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/especialidades_nauticas"},
-                "ocio_y_playas": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/ocio_y_playas"},
+    "vive_tu_estancia":                               {"href": "/vive_tu_estancia", "content":{
+        "actividades_recomendadas":                   {"href": "/vive_tu_estancia/actividades_recomendadas", "content": {
+            "deporte_y_aventura":                     {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura", "content": {
+                "instalaciones_deportivas":           {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/instalaciones_deportivas"},
+                "ciclismo":                           {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/ciclismo"},
+                "especialidades_nauticas":            {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/especialidades_nauticas"},
+                "ocio_y_playas":                      {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/ocio_y_playas"},
                 "tenis_y_especialidades_con_raqueta": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/tenis_y_especialidades_con_raqueta"},
-                "hipica": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/hipica"},
-                "motor": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/motor"},
-                "otras_especialidades": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/otras_especialidades"},
-                "espacios_naturales": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/espacios_naturales"},
-                "gimnasia_y_juegos_deportivos": {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/gimnasia_y_juegos_deportivos"}
+                "hipica":                             {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/hipica"},
+                "motor":                              {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/motor"},
+                "otras_especialidades":               {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/otras_especialidades"},
+                "espacios_naturales":                 {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/espacios_naturales"},
+                "gimnasia_y_juegos_deportivos":       {"href": "/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/gimnasia_y_juegos_deportivos"}
             }},
-            "salud_y_belleza": {"href": "/vive_tu_estancia/actividades_recomendadas/salud_y_belleza", "content": {
-                "a": {"href": "/vive_tu_estancia/actividades_recomendadas/salud_y_belleza/a"},
-                "b": {"href": "/vive_tu_estancia/actividades_recomendadas/salud_y_belleza/b"},
-                "c": {"href": "/vive_tu_estancia/actividades_recomendadas/salud_y_belleza/c"}
+            "salud_y_belleza":                        {"href": "/vive_tu_estancia/actividades_recomendadas/salud_y_belleza", "content": {
+                "a":                                  {"href": "/vive_tu_estancia/actividades_recomendadas/salud_y_belleza/a"},
+                "b":                                  {"href": "/vive_tu_estancia/actividades_recomendadas/salud_y_belleza/b"},
+                "c":                                  {"href": "/vive_tu_estancia/actividades_recomendadas/salud_y_belleza/c"}
             }},
-            "golf": {"href": "/vive_tu_estancia/actividades_recomendadas/golf", "content": {
-                "a": {"href": "/vive_tu_estancia/actividades_recomendadas/golf/a"},
-                "b": {"href": "/vive_tu_estancia/actividades_recomendadas/golf/b"},
-                "c": {"href": "/vive_tu_estancia/actividades_recomendadas/golf/c"}
+            "golf":                                   {"href": "/vive_tu_estancia/actividades_recomendadas/golf", "content": {
+                "a":                                  {"href": "/vive_tu_estancia/actividades_recomendadas/golf/a"},
+                "b":                                  {"href": "/vive_tu_estancia/actividades_recomendadas/golf/b"},
+                "c":                                  {"href": "/vive_tu_estancia/actividades_recomendadas/golf/c"}
             }},
-            "ocio_diurno": {"href": "/vive_tu_estancia/actividades_recomendadas/ocio_diurno", "content": {
-                "a": {"href": "/vive_tu_estancia/actividades_recomendadas/ocio_diurno/a"},
-                "b": {"href": "/vive_tu_estancia/actividades_recomendadas/ocio_diurno/b"},
-                "c": {"href": "/vive_tu_estancia/actividades_recomendadas/ocio_diurno/c"}
+            "ocio_diurno":                            {"href": "/vive_tu_estancia/actividades_recomendadas/ocio_diurno", "content": {
+                "a":                                  {"href": "/vive_tu_estancia/actividades_recomendadas/ocio_diurno/a"},
+                "b":                                  {"href": "/vive_tu_estancia/actividades_recomendadas/ocio_diurno/b"},
+                "c":                                  {"href": "/vive_tu_estancia/actividades_recomendadas/ocio_diurno/c"}
             }},
-            "compras": {"href": "/vive_tu_estancia/actividades_recomendadas/compras", "content": {
-                "a": {"href": "/vive_tu_estancia/actividades_recomendadas/compras/a"},
-                "b": {"href": "/vive_tu_estancia/actividades_recomendadas/compras/b"},
-                "c": {"href": "/vive_tu_estancia/actividades_recomendadas/compras/c"}
+            "compras":                                {"href": "/vive_tu_estancia/actividades_recomendadas/compras", "content": {
+                "a":                                  {"href": "/vive_tu_estancia/actividades_recomendadas/compras/a"},
+                "b":                                  {"href": "/vive_tu_estancia/actividades_recomendadas/compras/b"},
+                "c":                                  {"href": "/vive_tu_estancia/actividades_recomendadas/compras/c"}
             }},
-            "aprende_español": {"href": "/vive_tu_estancia/actividades_recomendadas/aprende_espanol", "content": {
-                "a": {"href": "/vive_tu_estancia/actividades_recomendadas/aprende_espanol/a"},
-                "b": {"href": "/vive_tu_estancia/actividades_recomendadas/aprende_espanol/b"},
-                "c": {"href": "/vive_tu_estancia/actividades_recomendadas/aprende_espanol/c"}
+            "aprende_español":                        {"href": "/vive_tu_estancia/actividades_recomendadas/aprende_espanol", "content": {
+                "a":                                  {"href": "/vive_tu_estancia/actividades_recomendadas/aprende_espanol/a"},
+                "b":                                  {"href": "/vive_tu_estancia/actividades_recomendadas/aprende_espanol/b"},
+                "c":                                  {"href": "/vive_tu_estancia/actividades_recomendadas/aprende_espanol/c"}
             }}
         }},
-        "gastronomia": {"href": "/vive_tu_estancia/gastronomia", "content": {
-            "restaurantes": {"href": "/vive_tu_estancia/gastronomia/restaurantes"},
-            "pastelerias": {"href": "/vive_tu_estancia/gastronomia/pastelerias"},
-            "recetas_de_cocina_tradicional": {"href": "/vive_tu_estancia/gastronomia/recetas_de_cocina_tradicional"}
+        "gastronomia":                                {"href": "/vive_tu_estancia/gastronomia", "content": {
+            "restaurantes":                           {"href": "/vive_tu_estancia/gastronomia/restaurantes"},
+            "pastelerias":                            {"href": "/vive_tu_estancia/gastronomia/pastelerias"},
+            "recetas_de_cocina_tradicional":          {"href": "/vive_tu_estancia/gastronomia/recetas_de_cocina_tradicional"}
         }},
-        "cultura": {"href": "/vive_tu_estancia/cultura", "content": {
-            "museos": {"href": "/vive_tu_estancia/cultura/museos"},
-            "centros_culturales": {"href": "/vive_tu_estancia/cultura/centros_culturales"},
-            "agenda_mensual": {"href": "/vive_tu_estancia/cultura/agenda_mensual"}
+        "cultura":                                    {"href": "/vive_tu_estancia/cultura", "content": {
+            "museos":                                 {"href": "/vive_tu_estancia/cultura/museos"},
+            "centros_culturales":                     {"href": "/vive_tu_estancia/cultura/centros_culturales"},
+            "agenda_mensual":                         {"href": "/vive_tu_estancia/cultura/agenda_mensual"}
         }},
-        "ocio_nocturno": {"href": "/vive_tu_estancia/ocio_nocturno", "content": {
-            "discotecas_y_pubs": {"href": "/vive_tu_estancia/ocio_nocturno/discotecas_y_pubs"},
-            "espectaculos": {"href": "/vive_tu_estancia/ocio_nocturno/espectaculos"}
+        "ocio_nocturno":                              {"href": "/vive_tu_estancia/ocio_nocturno", "content": {
+            "discotecas_y_pubs":                      {"href": "/vive_tu_estancia/ocio_nocturno/discotecas_y_pubs"},
+            "espectaculos":                           {"href": "/vive_tu_estancia/ocio_nocturno/espectaculos"}
         }},
-        "naturaleza_y_paisajes": {"href": "/vive_tu_estancia/naturaleza_y_paisajes", "content": {
-            "senderismo": {"href": "/vive_tu_estancia/naturaleza_y_paisajes/senderismo"},
-            "zonas_de_acampada": {"href": "/vive_tu_estancia/naturaleza_y_paisajes/zonas_de_acampada"}
+        "naturaleza_y_paisajes":                      {"href": "/vive_tu_estancia/naturaleza_y_paisajes", "content": {
+            "senderismo":                             {"href": "/vive_tu_estancia/naturaleza_y_paisajes/senderismo"},
+            "zonas_de_acampada":                      {"href": "/vive_tu_estancia/naturaleza_y_paisajes/zonas_de_acampada"}
         }},
-        "congresos_y_negocios": {"href": "/vive_tu_estancia/congresos_y_negocios", "content": {
-            "hoteles": {"href": "/vive_tu_estancia/congresos_y_negocios/hoteles"},
-            "piramide_de_arona": {"href": "/vive_tu_estancia/congresos_y_negocios/piramide_de_arona"},
-            "centros_de_convenciones": {"href": "/vive_tu_estancia/congresos_y_negocios/centros_de_convenciones"},
+        "congresos_y_negocios":                       {"href": "/vive_tu_estancia/congresos_y_negocios", "content": {
+            "hoteles":                                {"href": "/vive_tu_estancia/congresos_y_negocios/hoteles"},
+            "piramide_de_arona":                      {"href": "/vive_tu_estancia/congresos_y_negocios/piramide_de_arona"},
+            "centros_de_convenciones":                {"href": "/vive_tu_estancia/congresos_y_negocios/centros_de_convenciones"},
             "otros_centros_de_congresos_de_tenerife": {"href": "/vive_tu_estancia/congresos_y_negocios/otros_centros_de_congresos_de_tenerife"}
         }},
-        "sol_y_playa": {"href": "/vive_tu_estancia/sol_y_playa"}
+        "sol_y_playa":                                {"href": "/vive_tu_estancia/sol_y_playa"}
     }},
-    "area_profesional": {"href": "/area_profesional", "content":{
-        "noticias_del_sector": {"href": "/area_profesional/noticias_del_sector"},
-        "descargas": {"href": "/area_profesional/descargas"},
-        "enlaces_de_interes": {"href": "/area_profesional/enlaces_de_interes"},
-        "buzon_de_sugerencias": {"href": "/area_profesional/buzon_de_sugerencias"}
+    "area_profesional":                               {"href": "/area_profesional", "content":{
+        "noticias_del_sector":                        {"href": "/area_profesional/noticias_del_sector"},
+        "descargas":                                  {"href": "/area_profesional/descargas"},
+        "enlaces_de_interes":                         {"href": "/area_profesional/enlaces_de_interes"},
+        "buzon_de_sugerencias":                       {"href": "/area_profesional/buzon_de_sugerencias"}
     }},
-    "galeria": {"href": "/galeria", "content":{
-        "tour_virtual_360": {"href": "/galeria/tour_virtual_360"},
-        "albumes": {"href": "/galeria/albumes"},
-        "videos": {"href": "/galeria/videos"}
+    "galeria":                                        {"href": "/galeria", "content":{
+        "tour_virtual_360":                           {"href": "/galeria/tour_virtual_360"},
+        "albumes":                                    {"href": "/galeria/albumes"},
+        "videos":                                     {"href": "/galeria/videos"}
     }},
-    "webcams": {"href": "/webcams", "content":{
-        "playa_de_las_vistas":    {"href": "/webcams/playa_de_las_vistas"},
-        "playa_de_las_galletas":  {"href": "/webcams/playa_de_las_galletas"},
-        "puerto_de_las_galletas": {"href": "/webcams/puerto_de_las_galletas"},
-        "plaza_de_arona":         {"href": "/webcams/plaza_de_arona"},
-        "los_cristianos":         {"href": "/webcams/plaza_de_arona"},
-        "otras_webcams":          {"href": "/webcams/otras_webcams"}
+    "webcams":                                        {"href": "/webcams", "content":{
+        "playa_de_las_vistas":                        {"href": "/webcams/playa_de_las_vistas"},
+        "playa_de_las_galletas":                      {"href": "/webcams/playa_de_las_galletas"},
+        "puerto_de_las_galletas":                     {"href": "/webcams/puerto_de_las_galletas"},
+        "plaza_de_arona":                             {"href": "/webcams/plaza_de_arona"},
+        "los_cristianos":                             {"href": "/webcams/plaza_de_arona"},
+        "otras_webcams":                              {"href": "/webcams/otras_webcams"}
     }}
 }
 cgi.out("application/json; charset=utf-8"){ doc.to_json }
