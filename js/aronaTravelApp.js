@@ -578,7 +578,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
             var custom_values = [
                 ["vive_tu_estancia", "planea_tu_viaje"],
                 ["destino_accesible", "donde_alojarse"],
-                []
+                ["playa_de_las_vistas"]
             ];
             for (var i = 0; i < path.length; i++){
                 switch(i){
@@ -593,6 +593,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
                 }
             }
             url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
+console.log(url);
             return url;
         },
         resolve:{ "check":isValidLang },
@@ -817,10 +818,11 @@ app.controller("accesibilidadCtrl", function($scope, $routeParams, accesibilidad
     accesibilidad.expose_interface($scope);
 
     var code = constants["CODSUBTIPOCONT"].hasOwnProperty($routeParams.type) ? constants["CODSUBTIPOCONT"][$routeParams.type] : null;
+console.log (code);
 
     accesibilidad.set_values({
         "collection": "territoriales",
-        "filters": {"CODSUBTIPOCONT": code, "CODAREAS": 16, "VALORESINDICADORES": 37 },
+        "filters": {"CODSUBTIPOCONT": code, "CODAREAS": 16, "VALORESINDICADORES": { $in:[37] } },
         "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
         "limit": 100
