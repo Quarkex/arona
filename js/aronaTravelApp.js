@@ -566,6 +566,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
                 }
             }
             url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
+console.log (url);
             return url;
         },
         resolve:{ "check":isValidLang },
@@ -882,7 +883,7 @@ app.controller("descriptivoCtrl", function($scope, $routeParams, descriptivo) {
     descriptivo.set_values({
         "collection": "descriptivos",
         "filters": {"CODCONTENIDO": parseInt ($routeParams.id)},
-        "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION_COMUN'],
+        "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION_COMUN','TEXTO'],
         "offset": 0,
         "limit": 1
     });
