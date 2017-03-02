@@ -595,7 +595,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
             var path = [ urlattr.section, urlattr.type ];
             var custom_values = [
                 [],
-                ["oficinas_de_informacion"]
+                ["oficinas_de_informacion","lugares_de_interes"]
             ];
             for (var i = 0; i < path.length; i++){
                 switch(i){
