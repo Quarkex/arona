@@ -85,16 +85,20 @@ app.value('constants', {
         "alquiler_de_vehiculos":       47,
         "apartahteles":                659,
         "apartamentos":                40,
+	"arquitectura_tradicional":    490,
+	"arte_y_artesania":	       473,
         "auditorios":                  596,
         "centros_civicos":             466,
         "centros_culturales":          146,
         "ciclismo":                    454,
         "compras":                     157,
+	"costumbres_y_folclore":       490,
         "discotecas_y_pubs":           249,
 	"historia_de_arona":           329,
         "hoteles":                     26,
         "informacion_portuaria":       524,
         "instalaciones_deportivas":    321,
+	"lugares_de_interes":	       331,	
         "museos":                      250,
         "oficinas_de_informacion":     145,
         "pastelerias":                 582,
@@ -111,7 +115,9 @@ app.value('constants', {
         "zonas_de_acampada":           18
     },
     'CODSUBAREA':{
+	"arquitectura_tradicional":    278,
         "ciclismo":                    323,
+	"costumbres_y_folclore":       155,
         "museos":                      157,
         "zonas_de_acampada":           18
     }
@@ -549,6 +555,29 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
         resolve:{ "check":isValidLang },
         controller: "aronaTravelCtrl"
     })
+    .when("/:language/:section/:type", {
+        templateUrl :function(urlattr){
+            var url = '/assets/panels';
+            var path = [ urlattr.section, urlattr.type ];
+            var custom_values = [
+                [],
+                ["oficinas_de_informacion"]
+            ];
+            for (var i = 0; i < path.length; i++){
+                switch(i){
+                    case 1:
+                        if (custom_values[i].includes(path[i])) url += '/' + path[i];
+                        break;
+                    default:
+                        url += '/' + path[i];
+                }
+            }
+            url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
+            return url;
+        },
+        resolve:{ "check":isValidLang },
+        controller: "aronaTravelCtrl"
+    })
     .when("/:language/:section/:subsection/:type", {
         templateUrl :function(urlattr){
             var url = '/assets/panels';
@@ -784,30 +813,18 @@ for (var k in Ctrls) if (Ctrls.hasOwnProperty(k)){
 }
 */
 
-app.service('oficinasInformacion', ["language", "$resource", ResourcePaginator]);
-app.controller("oficinasInformacionCtrl", function($rootScope, $scope, oficinasInformacion) {
-
-    oficinasInformacion.expose_interface($scope);
-
-    oficinasInformacion.set_values({
-        "collection": "territoriales",
-        "filters": {"CODSUBTIPOCONT": 145, "CODAREAS": 16 },
-        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
-        "offset": 0,
-        "limit": 100
-    });
-});
-
 app.service('territoriales', ["language", "$resource", ResourcePaginator]);
 app.controller("territorialesCtrl", function($scope, $routeParams, territoriales, constants) {
 
     territoriales.expose_interface($scope);
 
-    var code = constants["CODSUBTIPOCONT"].hasOwnProperty($routeParams.type) ? constants["CODSUBTIPOCONT"][$routeParams.type] : null;
+
+    var codeSubtipo = constants["CODSUBTIPOCONT"].hasOwnProperty($routeParams.type) ? constants["CODSUBTIPOCONT"][$routeParams.type] : null;
+    var codeSubarea = constants["CODSUBAREA"].hasOwnProperty($routeParams.type) ? constants["CODSUBAREA"][$routeParams.type] : null;
 
     territoriales.set_values({
         "collection": "territoriales",
-        "filters": {"CODSUBTIPOCONT": code, "CODAREAS": 16 },
+        "filters": {"CODSUBTIPOCONT": codeSubtipo, "CODAREAS": 16, "CODSUBAREAS": codeSubarea },
         "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
         "limit": 100
@@ -837,11 +854,12 @@ app.controller("descriptivosCtrl", function($scope, $routeParams, descriptivos, 
 
     $scope.element = function(){return descriptivos.elements()[0]};
 
-    var code = constants["CODSUBTIPOCONT"].hasOwnProperty($routeParams.type) ? constants["CODSUBTIPOCONT"][$routeParams.type] : null;
+    var codeSubtipo = constants["CODSUBTIPOCONT"].hasOwnProperty($routeParams.type) ? constants["CODSUBTIPOCONT"][$routeParams.type] : null;
+    var codeSubarea = constants["CODSUBAREA"].hasOwnProperty($routeParams.type) ? constants["CODSUBAREA"][$routeParams.type] : null;
 
     descriptivos.set_values({
         "collection": "descriptivos",
-        "filters": {"CODSUBTIPOCONT": code, "CODAREAS": 16 },
+        "filters": {"CODSUBTIPOCONT": codeSubtipo, "CODAREAS": 16, "CODSUBAREAS": codeSubarea },
         "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION_COMUN','TEXTO'],
         "offset": 0,
         "limit": 100
