@@ -67,12 +67,16 @@ app.value('page', {
 
 app.value('constants', {
     "CODCONTENIDO": {
-        "playa_de_las_vistas":         22539,
-        "playa_de_las_galletas":       22569,
-        "puerto_de_las_galletas":      489,
-        "plaza_de_arona":              22543,
-        "los_cristianos":              22573,
-        "otras_webcams":               22585,
+        "clima":                              21687,
+        "compromiso_con_la_calidad":          21849,
+        "playa_de_las_vistas":                22539,
+        "playa_de_las_vistas_accesible":      2106,
+        "playa_de_las_galletas":              22569,
+        "puerto_de_las_galletas":             489,
+        "plaza_de_arona":                     22543,
+        "la_conquista_de_canarias":           4180,
+        "los_cristianos":                     22573,
+        "otras_webcams":                      22585
     },
     'CODSUBTIPOCONT':{
         "agencias_de_viaje":                  48,
@@ -93,6 +97,7 @@ app.value('constants', {
         "gimnasia_y_juegos_deportivos":       172,
         "golf":                               310,
         "hipica":                             379,
+        "historia_de_arona":                  329,
         "hoteles":                            26,
         "informacion_portuaria":              524,
         "instalaciones_deportivas":           321,
@@ -108,6 +113,7 @@ app.value('constants', {
         "restaurantes":                       30,
         "salud_y_belleza":                    159,
         "senderismo":                         327,
+        "situacion_orografia_y_vegetacion":   506,
         "sol_y_playa":                        154,
         "tenis_y_especialidades_con_raqueta": 175,
         "touroperadores":                     251,
@@ -116,9 +122,9 @@ app.value('constants', {
         "zonas_de_acampada":                  18
     },
     'CODSUBAREA':{
-        "ciclismo":                    323,
-        "museos":                      157,
-        "zonas_de_acampada":           18
+        "ciclismo":                           323,
+        "museos":                             157,
+        "zonas_de_acampada":                  18
     }
 });
 
@@ -566,9 +572,6 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     .when("/:language/planea_tu_viaje/como_moverse", {
         redirectTo: "/:language/planea_tu_viaje/como_moverse/transporte_publico"
     })
-    .when("/:language/planea_tu_viaje/destino_accesible", {
-        redirectTo: "/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas"
-    })
     .when("/:language/planea_tu_viaje/destino_accesible/donde_alojarse", {
         redirectTo: "/:language/planea_tu_viaje/destino_accesible/donde_alojarse/hoteles"
     })
@@ -587,7 +590,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
             var custom_values = [
                 [],
                 ["destino_accesible"],
-                ["guia_de_accesibilidad", "videos", "playa_de_las_vistas"]
+                ["guia_de_accesibilidad", "videos", "playa_de_las_vistas_accesible", "clima", "compromiso_con_la_calidad","la_conquista_de_canarias"]
             ];
             for (var i = 0; i < path.length; i++){
                 switch(i){
@@ -856,12 +859,48 @@ app.controller("accesibilidadCtrl", function($scope, $routeParams, accesibilidad
 
     accesibilidad.set_values({
         "collection": "territoriales",
-        "filters": {$or: [{"CODSUBTIPOCONT": code}, {"CODSUBAREAS": code}, { "CODSUBAREAS": {$in: [code]} }], "CODAREAS": {$in: [15, 16]} }, // "VALORES_INDICADORES": 37},
+        "filters": {$or: [{"CODSUBTIPOCONT": code}, {"CODSUBAREAS": code}, { "CODSUBAREAS": {$in: [code]} }], "CODAREAS": {$in: [15, 16]}, "VALORESINDICADORES": { $in:[37] } },
         "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
         "limit": 100
     });
 });
+
+app.service('descriptivos', ["language", "$resource", ResourcePaginator]);
+app.controller("descriptivosCtrl", function($scope, $routeParams, descriptivos, constants) {
+
+    descriptivos.expose_interface($scope);
+
+    $scope.element = function(){return descriptivos.elements()[0]};
+
+    var code = constants["CODSUBTIPOCONT"].hasOwnProperty($routeParams.type) ? constants["CODSUBTIPOCONT"][$routeParams.type] : null;
+
+    descriptivos.set_values({
+        "collection": "descriptivos",
+        "filters": {"CODSUBTIPOCONT": code, "CODAREAS": 16 },
+        "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION_COMUN','TEXTO'],
+        "offset": 0,
+        "limit": 100
+    });
+});
+
+app.service('territoriales', ["language", "$resource", ResourcePaginator]);
+app.controller("territorialesCtrl", function($scope, $routeParams, territoriales, constants) {
+
+    territoriales.expose_interface($scope);
+
+    var code = constants["CODSUBTIPOCONT"].hasOwnProperty($routeParams.type) ? constants["CODSUBTIPOCONT"][$routeParams.type] : null;
+
+    territoriales.set_values({
+        "collection": "territoriales",
+        "filters": {"CODSUBTIPOCONT": code, "CODAREAS": 16 },
+>>>>>>> 3865c40a74e2c04c089fe0973228935141a8f5bd
+        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+        "offset": 0,
+        "limit": 100
+    });
+});
+
 
 app.service('panflets', ["language", "$resource", ResourcePaginator]);
 app.controller("panfletsCtrl", function($rootScope, $scope, panflets) {
@@ -909,16 +948,18 @@ app.controller("videoAccesibleCtrl", function($scope, videoAccesible) {
 });
 
 app.service('descriptivo', ["language", "$resource", ResourcePaginator]);
-app.controller("descriptivoCtrl", function($scope, $routeParams, descriptivo) {
+app.controller("descriptivoCtrl", function($scope, $routeParams, descriptivo, constants) {
 
     descriptivo.expose_interface($scope);
 
-    $scope.element = function(){return descriptivos.element()[0]};
+    $scope.element = function(){return descriptivo.elements()[0]};
+ 
+    var code = constants["CODCONTENIDO"].hasOwnProperty($routeParams.type) ? constants["CODCONTENIDO"][$routeParams.type] : null;
 
     descriptivo.set_values({
         "collection": "descriptivos",
-        "filters": {"CODCONTENIDO": parseInt ($routeParams.id)},
-        "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION_COMUN'],
+        "filters": {"CODCONTENIDO": code},
+        "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION_COMUN','TEXTO'],
         "offset": 0,
         "limit": 1
     });
