@@ -632,6 +632,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
                 }
             }
             url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
+console.log (url);
             return url;
         },
         resolve:{ "check":isValidLang },
@@ -659,6 +660,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
                 }
             }
             url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
+console.log (url);
             return url;
         },
         resolve:{ "check":isValidLang },
@@ -953,12 +955,13 @@ app.controller("descriptivoCtrl", function($scope, $routeParams, descriptivo, co
     descriptivo.expose_interface($scope);
 
     $scope.element = function(){return descriptivo.elements()[0]};
- 
-    var code = constants["CODCONTENIDO"].hasOwnProperty($routeParams.type) ? constants["CODCONTENIDO"][$routeParams.type] : null;
+
+    var section = $scope.path().split('/').pop();
+    var code = constants["CODCONTENIDO"].hasOwnProperty(section) ? constants["CODCONTENIDO"][section] : null;
 
     descriptivo.set_values({
         "collection": "descriptivos",
-        "filters": {"CODCONTENIDO": code},
+        "filters": {"CODCONTENIDO": { $in: [code, parseInt (section)]}},
         "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION_COMUN','TEXTO'],
         "offset": 0,
         "limit": 1
@@ -979,9 +982,12 @@ app.controller("territorialCtrl", function($scope, $routeParams, territorial) {
 
     $scope.element = function(){return territorial.elements()[0]};
 
+    var section = $scope.path().split('/').pop();
+    var code = constants["CODCONTENIDO"].hasOwnProperty(section) ? constants["CODCONTENIDO"][section] : null;
+
     territorial.set_values({
         "collection": "territoriales",
-        "filters": {"CODCONTENIDO": parseInt($routeParams.id)},
+        "filters": {"CODCONTENIDO": { $in: [code, parseInt (section)]}},
         "values": ["MAPA_IFRAME", "MAPA","CODCONTENIDO","TITULO","ZONA","TELEFONO","FAX","WEB_PROPIA","DIRECCION","EMAIL","INDICADORES", "IMAGEN"],
         "offset": 0,
         "limit": 1
