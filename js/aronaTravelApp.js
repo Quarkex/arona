@@ -532,9 +532,6 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     .when("/:language/planea_tu_viaje/como_moverse", {
         redirectTo: "/:language/planea_tu_viaje/como_moverse/transporte_publico"
     })
-    .when("/:language/planea_tu_viaje/destino_accesible", {
-        redirectTo: "/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas"
-    })
     .when("/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas", {
         redirectTo: "/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas/2106"
     })
