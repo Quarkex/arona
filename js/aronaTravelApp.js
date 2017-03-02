@@ -533,7 +533,10 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
         redirectTo: "/:language/planea_tu_viaje/como_moverse/transporte_publico"
     })
     .when("/:language/planea_tu_viaje/destino_accesible", {
-        redirectTo: "/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas/2105"
+        redirectTo: "/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas"
+    })
+    .when("/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas", {
+        redirectTo: "/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas/2106"
     })
     .when("/:language/planea_tu_viaje/destino_accesible/donde_alojarse", {
         redirectTo: "/:language/planea_tu_viaje/destino_accesible/donde_alojarse/hoteles"
@@ -878,7 +881,7 @@ app.controller("descriptivoCtrl", function($scope, $routeParams, descriptivo) {
     descriptivo.expose_interface($scope);
 
     $scope.element = function(){return descriptivo.elements()[0]};
-
+ 
     descriptivo.set_values({
         "collection": "descriptivos",
         "filters": {"CODCONTENIDO": parseInt ($routeParams.id)},
