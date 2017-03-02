@@ -820,7 +820,7 @@ app.controller("accesibilidadCtrl", function($scope, $routeParams, accesibilidad
 
     accesibilidad.set_values({
         "collection": "territoriales",
-        "filters": {"CODSUBTIPOCONT": code, "CODAREAS": 16i, "VALORESINDICADORES": 37 },
+        "filters": {"CODSUBTIPOCONT": code, "CODAREAS": 16, "VALORESINDICADORES": 37 },
         "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
         "limit": 100
