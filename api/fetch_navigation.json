@@ -22,8 +22,6 @@ doc = {
                 "costumbres_y_folclore":              {"href": "/destino_arona/patrimonio_cultural/costumbres_y_folclore"}
         }},
         "lugares_de_interes":                         {"href": "/destino_arona/lugares_de_interes"},
-        "tour_virtual_360":                           {"href": "/galeria/tour_virtual_360"},
-        "arona_casco":                                {"href": "/destino_arona/arona_casco"}
     }},
     "planea_tu_viaje":                                {"href": "/planea_tu_viaje", "content":{
         "como_llegar":                                {"href": "/planea_tu_viaje/como_llegar", "content": {
