@@ -14,7 +14,7 @@ doc = {
         }},
         "un_poco_de_historia":                        {"href": "/destino_arona/un_poco_de_historia", "content":{
                 "la_conquista_de_canarias":           {"href": "/destino_arona/un_poco_de_historia/la_conquista_de_canarias"},
-                "historia_de_arona":                  {"href": "/destino_arona/un_poco_de_historia"}
+                "historia_de_arona":                  {"href": "/destino_arona/un_poco_de_historia/historia_de_arona"}
         }},
         "patrimonio_cultural":                        {"href": "/destino_arona/patrimonio_cultural", "content":{
                 "arquitectura_tradicional":           {"href": "/destino_arona/patrimonio_cultural/arquitectura_tradicional"},
@@ -44,7 +44,7 @@ doc = {
             "pensiones":                              {"href": "/planea_tu_viaje/donde_alojarse/pensiones"}
         }},
         "destino_accesible":                          {"href": "/planea_tu_viaje/destino_accesible", "content": {
-            "playa_de_las_vistas":                    {"href": "/planea_tu_viaje/destino_accesible/playa_de_las_vistas"},
+            "playa_de_las_vistas":                    {"href": "/planea_tu_viaje/destino_accesible/playa_de_las_vistas_accesible"},
             "donde_alojarse":                         {"href": "/planea_tu_viaje/destino_accesible/donde_alojarse"},
             "restaurantes":                           {"href": "/planea_tu_viaje/destino_accesible/restaurantes"},
             "compras":                                {"href": "/planea_tu_viaje/destino_accesible/compras"},

@@ -74,6 +74,7 @@ app.value('constants', {
         "playa_de_las_galletas":       22569,
         "puerto_de_las_galletas":      489,
         "plaza_de_arona":              22543,
+	"la_conquista_de_canarias":    4180,
         "los_cristianos":              22573,
         "otras_webcams":               22585,
     },
@@ -90,7 +91,7 @@ app.value('constants', {
         "ciclismo":                    454,
         "compras":                     157,
         "discotecas_y_pubs":           249,
-	"historia":		       329,
+	"historia_de_arona":           329,
         "hoteles":                     26,
         "informacion_portuaria":       524,
         "instalaciones_deportivas":    321,
@@ -555,7 +556,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
             var custom_values = [
                 [],
                 ["destino_accesible"],
-                ["guia_de_accesibilidad", "videos", "playa_de_las_vistas_accesible", "clima", "compromiso_con_la_calidad"]
+                ["guia_de_accesibilidad", "videos", "playa_de_las_vistas_accesible", "clima", "compromiso_con_la_calidad","la_conquista_de_canarias"]
             ];
             for (var i = 0; i < path.length; i++){
                 switch(i){
@@ -595,7 +596,6 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
                 }
             }
             url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
-console.log(url);
             return url;
         },
         resolve:{ "check":isValidLang },
@@ -820,7 +820,6 @@ app.controller("accesibilidadCtrl", function($scope, $routeParams, accesibilidad
     accesibilidad.expose_interface($scope);
 
     var code = constants["CODSUBTIPOCONT"].hasOwnProperty($routeParams.type) ? constants["CODSUBTIPOCONT"][$routeParams.type] : null;
-console.log (code);
 
     accesibilidad.set_values({
         "collection": "territoriales",
@@ -835,6 +834,8 @@ app.service('descriptivos', ["language", "$resource", ResourcePaginator]);
 app.controller("descriptivosCtrl", function($scope, $routeParams, descriptivos, constants) {
 
     descriptivos.expose_interface($scope);
+
+    $scope.element = function(){return descriptivos.elements()[0]};
 
     var code = constants["CODSUBTIPOCONT"].hasOwnProperty($routeParams.type) ? constants["CODSUBTIPOCONT"][$routeParams.type] : null;
 
@@ -917,7 +918,7 @@ app.controller("descriptivoCtrl", function($scope, $routeParams, descriptivo, co
     $scope.element = function(){return descriptivo.elements()[0]};
  
     var code = constants["CODCONTENIDO"].hasOwnProperty($routeParams.type) ? constants["CODCONTENIDO"][$routeParams.type] : null;
-console.log (code);
+
     descriptivo.set_values({
         "collection": "descriptivos",
         "filters": {"CODCONTENIDO": code},
