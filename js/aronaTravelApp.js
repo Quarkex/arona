@@ -611,7 +611,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
             var path = [ urlattr.section, urlattr.type ];
             var custom_values = [
                 [],
-                ["oficinas_de_informacion","lugares_de_interes","arona_360","albumes","videos","folletos_y_mapas"]
+                ["oficinas_de_informacion","lugares_de_interes","arona_360","albumes","videos","folletos_y_mapas","destino_accesible"]
             ];
             for (var i = 0; i < path.length; i++){
                 switch(i){
@@ -623,6 +623,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
                 }
             }
             url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
+console.log (url);
             return url;
         },
         resolve:{ "check":isValidLang },
