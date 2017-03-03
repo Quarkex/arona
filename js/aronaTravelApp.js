@@ -90,27 +90,27 @@ app.value('constants', {
         "auditorios":                         596,
         "centros_civicos":                    466,
         "centros_culturales":                 146,
-        "ciclismo":                           323,
+        "ciclismo":                           454,
         "compras":                            157,
         "costumbres_y_folclore":              490,
         "deporte_y_aventura":                 454,
         "discotecas_y_pubs":                  249,
         "espacios_naturales":                 327,
-        "especialidades_nauticas":            169,
-        "gimnasia_y_juegos_deportivos":       172,
+        "especialidades_nauticas":            454,
+        "gimnasia_y_juegos_deportivos":       253,
         "golf":                               310,
-        "hipica":                             379,
+        "hipica":                             454,
         "historia_de_arona":                  329,
         "hoteles":                            26,
         "informacion_portuaria":              524,
         "instalaciones_deportivas":           321,
         "lugares_de_interes":                 331,
-        "motor":                              268,
+        "motor":                              454,
         "museos":                             250,
         "ocio_diurno":                        152, //parques temáticos y atracciones
-        "ocio_y_playas":                      156,
+        "ocio_y_playas":                      454,
         "oficinas_de_informacion":            145,
-        "otras_especialidades":               174,
+        "otras_especialidades":               454,
         "pastelerias":                        582,
         "pensiones":                          25,
         "por_mar_y_aire":                     150,
@@ -119,7 +119,7 @@ app.value('constants', {
         "senderismo":                         327,
         "situacion_orografia_y_vegetacion":   506,
         "sol_y_playa":                        154,
-        "tenis_y_especialidades_con_raqueta": 175,
+        "tenis_y_especialidades_con_raqueta": 454,
         "touroperadores":                     251,
         "transporte_publico":                 163,
         "webcam":                             342,
@@ -129,9 +129,23 @@ app.value('constants', {
         "arquitectura_tradicional":           278,
         "ciclismo":                           323,
         "costumbres_y_folclore":              155,
+        "especialidades_nauticas":            169,
+        "hipica":                             379,
+        "motor":                              268,
         "museos":                             157,
+        "ocio_y_playas":                      156,
+        "otras_especialidades":               174,
+        "tenis_y_especialidades_con_raqueta": 175,
         "zonas_de_acampada":                  18
-    }
+    },
+    'CODAREA':{
+	"ciclismo":			      15,
+        "especialidades_nauticas":            15,
+	"hipica":			      15,
+        "motor":                              15,
+        "otras_especialidades":               15,
+        "tenis_y_especialidades_con_raqueta": 15
+    }	
 });
 
 function Languaje($location, $window, $resource, tmhDynamicLocale){
@@ -872,10 +886,11 @@ app.controller("territorialesCtrl", function($scope, territoriales, constants) {
     var section = $scope.path().split('/').pop();
     var codeSubtipo = constants["CODSUBTIPOCONT"].hasOwnProperty(section) ? constants["CODSUBTIPOCONT"][section] : null;
     var codeSubarea = constants["CODSUBAREA"].hasOwnProperty(section) ? constants["CODSUBAREA"][section] : null;
+    var codeArea = constants["CODAREA"].hasOwnProperty(section) ? constants["CODAREA"][section] : 16;
 
     territoriales.set_values({
         "collection": "territoriales",
-        "filters": {"CODSUBTIPOCONT": codeSubtipo, "CODAREAS": 16, "CODSUBAREAS": codeSubarea },
+        "filters": {"CODSUBTIPOCONT": codeSubtipo, "CODAREAS": codeArea, "CODSUBAREAS": codeSubarea },
         "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
         "limit": 100
