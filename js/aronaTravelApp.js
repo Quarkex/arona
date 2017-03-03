@@ -569,6 +569,15 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     .when("/:language/galeria", {
         redirectTo: "/:language/galeria/tour_virtual_360"
     })
+    .when("/:language/destino_arona/datos_generales", {
+        redirectTo: "/:language/destino_arona/datos_generales/situacion_orografia_y_vegetacion"
+    })
+    .when("/:language/destino_arona/un_poco_de_historia", {
+        redirectTo: "/:language/destino_arona/un_poco_de_historia/la_conquista_de_canarias"
+    })
+    .when("/:language/destino_arona/patrimonio_cultural", {
+        redirectTo: "/:language/destino_arona/patrimonio_cultural/arquitectura_tradicional"
+    })
     .when("/:language/planea_tu_viaje/donde_alojarse", {
         redirectTo: "/:language/planea_tu_viaje/donde_alojarse/hoteles"
     })
@@ -580,6 +589,12 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     })
     .when("/:language/planea_tu_viaje/destino_accesible/donde_alojarse", {
         redirectTo: "/:language/planea_tu_viaje/destino_accesible/donde_alojarse/hoteles"
+    })
+    .when("/:language/planea_tu_viaje/destino_accesible/donde_alojarse", {
+        redirectTo: "/:language/planea_tu_viaje/destino_accesible/donde_alojarse/hoteles"
+    })
+    .when("/:language/area_profesional/quejas_y_sugerencias", {
+        redirectTo: "https://sede.arona.org/eParticipa/Products/Carpeta/Public/Requests/InetReqPublic.aspx?TypeId=39093&URLConfirmation=InetReqConfirmationPublic.aspx&AppScope=CIUDADANO"
     })
     .when("/:language/webcams", {
         redirectTo: "/:language/webcams/playa_de_las_vistas"
@@ -632,7 +647,6 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
                 }
             }
             url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
-console.log (url);
             return url;
         },
         resolve:{ "check":isValidLang },
@@ -660,7 +674,6 @@ console.log (url);
                 }
             }
             url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
-console.log (url);
             return url;
         },
         resolve:{ "check":isValidLang },
@@ -975,7 +988,7 @@ app.controller("activitiesCtrl", function($rootScope, $scope, activities) {
 });
 
 app.service('territorial', ["language", "$resource", ResourcePaginator]);
-app.controller("territorialCtrl", function($scope, $routeParams, territorial) {
+app.controller("territorialCtrl", function($scope, $routeParams, territorial, constants) {
 
     territorial.expose_interface($scope);
 

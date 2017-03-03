@@ -103,8 +103,7 @@ doc = {
     "area_profesional":                               {"href": "/area_profesional", "content":{
         "noticias_del_sector":                        {"href": "/area_profesional/noticias_del_sector"},
         "descargas":                                  {"href": "/area_profesional/descargas"},
-        "enlaces_de_interes":                         {"href": "/area_profesional/enlaces_de_interes"},
-        "buzon_de_sugerencias":                       {"href": "/area_profesional/buzon_de_sugerencias"}
+        "quejas_y_sugerencias":                       {"href": "/area_profesional/quejas_y_sugerencias"}
     }},
     "galeria":                                        {"href": "/galeria", "content":{
         "tour_virtual_360":                           {"href": "/galeria/tour_virtual_360"},
