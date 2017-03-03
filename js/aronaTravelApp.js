@@ -567,7 +567,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
         controller: "aronaTravelCtrl"
     })
     .when("/:language/galeria", {
-        redirectTo: "/:language/galeria/tour_virtual_360"
+        redirectTo: "/:language/galeria/arona_360"
     })
     .when("/:language/destino_arona/datos_generales", {
         redirectTo: "/:language/destino_arona/datos_generales/situacion_orografia_y_vegetacion"
@@ -610,7 +610,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
             var path = [ urlattr.section, urlattr.type ];
             var custom_values = [
                 [],
-                ["oficinas_de_informacion","lugares_de_interes"]
+                ["oficinas_de_informacion","lugares_de_interes","arona_360","albumes","videos"]
             ];
             for (var i = 0; i < path.length; i++){
                 switch(i){

@@ -106,7 +106,7 @@ doc = {
         "quejas_y_sugerencias":                       {"href": "/area_profesional/quejas_y_sugerencias"}
     }},
     "galeria":                                        {"href": "/galeria", "content":{
-        "tour_virtual_360":                           {"href": "/galeria/tour_virtual_360"},
+        "arona_360":                           	      {"href": "/galeria/arona_360"},
         "albumes":                                    {"href": "/galeria/albumes"},
         "videos":                                     {"href": "/galeria/videos"}
     }},
