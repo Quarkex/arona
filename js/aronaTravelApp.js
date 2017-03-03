@@ -283,6 +283,7 @@ function ResourcePaginator(language, $resource){
     this.resource = $resource( self.variables.url, self.variables.parameters, self.variables.actions, self.variables.settings );
 
     function get(){
+        self.elements([]);
         self.resource.get( self.values, function(data){
             if (self.values.collection != null) {
                 if (data[0] == null){
