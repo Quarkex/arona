@@ -97,6 +97,7 @@ app.value('constants', {
         "discotecas_y_pubs":                  249,
         "espacios_naturales":                 327,
         "especialidades_nauticas":            454,
+	"espectaculos":			      330,
         "gimnasia_y_juegos_deportivos":       253,
         "golf":                               310,
         "hipica":                             454,
@@ -130,20 +131,23 @@ app.value('constants', {
         "ciclismo":                           323,
         "costumbres_y_folclore":              155,
         "especialidades_nauticas":            169,
+	"espectaculos":			      156,
         "hipica":                             379,
         "motor":                              268,
-        "museos":                             157,
+        "museos":                             155,
         "ocio_y_playas":                      156,
         "otras_especialidades":               174,
         "tenis_y_especialidades_con_raqueta": 175,
         "zonas_de_acampada":                  18
     },
     'CODAREA':{
+        "centros_culturales":                 6,
 	"ciclismo":			      15,
         "especialidades_nauticas":            15,
 	"hipica":			      15,
         "motor":                              15,
         "otras_especialidades":               15,
+        "pastelerias":                        null,
         "tenis_y_especialidades_con_raqueta": 15
     }	
 });
