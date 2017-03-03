@@ -611,7 +611,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
             var path = [ urlattr.section, urlattr.type ];
             var custom_values = [
                 [],
-                ["oficinas_de_informacion","lugares_de_interes","arona_360","albumes","videos"]
+                ["oficinas_de_informacion","lugares_de_interes","arona_360","albumes","videos","folletos_y_mapas"]
             ];
             for (var i = 0; i < path.length; i++){
                 switch(i){
