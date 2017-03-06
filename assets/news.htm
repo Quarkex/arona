@@ -9,7 +9,7 @@
                                 <md-grid-tile md-colspan="1" md-rowspan="3"><img src="http://www.arona.org/portal/imagecache/ficha/{{ article.IMAGEN }}"></md-grid-tile>
                                 <md-grid-tile md-colspan="1" md-rowspan="3" md-rowspan-gt-md="2">
                                     <div style="height: 100%; width: 100%; padding: 1em;" layout="column">
-                                        <div class="showcaser-date">{{ article.F_INICIO_PUB | date : translate('date.schema') | capitalize }}</div>
+                                        <div class="showcaser-date">{{ article.F_INICIO | date : translate('date.schema') | capitalize }}</div>
                                         <div>{{ article.TITULO }}</div>
                                     </div>
                                 </md-grid-tile>

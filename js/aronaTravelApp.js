@@ -863,7 +863,7 @@ var resourceControllers = {
         "controllerValues": {
             "collection": "actividades",
             "filters": {"CODSUBTIPOCONT": 595, "CODAREAS": 16},
-            "values": ['TITULO', 'F_INICIO_PUB', 'CODCONTENIDO', 'IMAGEN'],
+            "values": ['TITULO', 'F_INICIO', 'CODCONTENIDO', 'IMAGEN'],
             "offset": 0,
             "limit": 6
         },
@@ -1275,7 +1275,7 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
         'offset': 0,
         'limit': 3,
         'filters': {"CODAREAS": 16, "CODSUBTIPOCONT": 595},
-        'values': ['TITULO', 'F_INICIO_PUB', 'CODCONTENIDO', 'IMAGEN'],
+        'values': ['TITULO', 'F_INICIO', 'CODCONTENIDO', 'IMAGEN'],
         'elements': {}
     };
 
