@@ -612,6 +612,24 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     .when("/:language/planea_tu_viaje/destino_accesible/donde_alojarse", {
         redirectTo: "/:language/planea_tu_viaje/destino_accesible/donde_alojarse/hoteles"
     })
+    .when("/:language/vive_tu_estancia/actividades_recomendadas", {
+        redirectTo: "/:language/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/instalaciones_deportivas"
+    })
+    .when("/:language/vive_tu_estancia/gastronomia", {
+        redirectTo: "/:language/vive_tu_estancia/gastronomia/restaurantes"
+    })
+    .when("/:language/vive_tu_estancia/cultura", {
+        redirectTo: "/:language/vive_tu_estancia/cultura/museos"
+    })
+    .when("/:language/vive_tu_estancia/ocio_nocturno", {
+        redirectTo: "/:language/vive_tu_estancia/ocio_nocturno/discotecas_y_pubs"
+    })
+    .when("/:language/vive_tu_estancia/naturaleza_y_paisajes", {
+        redirectTo: "/:language/vive_tu_estancia/naturaleza_y_paisajes/senderismo"
+    })
+    .when("/:language/vive_tu_estancia/congresos_y_negocios", {
+        redirectTo: "/:language/vive_tu_estancia/congresos_y_negocios/hoteles"
+    })
     .when("/:language/area_profesional/quejas_y_sugerencias", {
         redirectTo: "https://sede.arona.org/eParticipa/Products/Carpeta/Public/Requests/InetReqPublic.aspx?TypeId=39093&URLConfirmation=InetReqConfirmationPublic.aspx&AppScope=CIUDADANO"
     })
