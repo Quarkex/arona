@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require 'cgi'
+require 'json'
+require 'open-uri'
+require 'nokogiri'
+require 'date'
+
+cgi = CGI.new
+doc = Nokogiri::HTML(open('http://www.aemet.es/xml/municipios/localidad_38006.xml'))
+
+output  = []
+doc.css('prediccion > dia').each do | day |
+    element = {}
+    element["date"] = DateTime.strptime(day.attr('fecha'), '%Y-%m-%d').iso8601
+    element["sky_status"] = day.css("estado_cielo").first.attr('descripcion').downcase.gsub(' ', '_')
+    @temp = day.at_css("temperatura")
+    element["max_temp"] = @temp.at_css('maxima').text.to_i
+    element["min_temp"] = @temp.at_css('minima').text.to_i
+    output.push element
+end
+
+cgi.out("application/json; charset=utf-8"){ output.to_json }
