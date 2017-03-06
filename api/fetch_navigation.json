@@ -112,11 +112,11 @@ doc = {
     }},
     "webcams":                                        {"href": "/webcams", "content":{
         "playa_de_las_vistas":                        {"href": "/webcams/playa_de_las_vistas"},
-        "playa_de_las_galletas":                      {"href": "/webcams/playa_de_las_galletas"},
-        "puerto_de_las_galletas":                     {"href": "/webcams/puerto_de_las_galletas"},
-        "plaza_de_arona":                             {"href": "/webcams/plaza_de_arona"},
-        "los_cristianos":                             {"href": "/webcams/plaza_de_arona"},
-        "otras_webcams":                              {"href": "/webcams/otras_webcams"}
+       # "playa_de_las_galletas":                      {"href": "/webcams/playa_de_las_galletas"},
+       # "puerto_de_las_galletas":                     {"href": "/webcams/puerto_de_las_galletas"},
+       # "plaza_de_arona":                             {"href": "/webcams/plaza_de_arona"},
+       # "los_cristianos":                             {"href": "/webcams/plaza_de_arona"},
+       # "otras_webcams":                              {"href": "/webcams/otras_webcams"}
     }}
 }
 cgi.out("application/json; charset=utf-8"){ doc.to_json }

@@ -3,7 +3,7 @@
     <div flex="100" class="webcam" ng-bind-html="element().WEBCAM | trust"></div>
     <div flex="100" class="webcam-description" ng-bind-html="element().DATOS_INTERES | trust"></div>
     <div flex="100" layout="column" layout-gt-md="row">
-        <div flex="25" layout="column" layout-gt-xs="row" layout-align="center center" layout-align-gt-md="begin center">
+<!--        <div flex="25" layout="column" layout-gt-xs="row" layout-align="center center" layout-align-gt-md="begin center">
             <md-button class="md-button md-primary" ng-href="#/{{ lang() }}">
                 <md-icon class="material-icons" style="margin-top: -0.25em;">place</md-icon> {{ translate('webcams.', 'ubicacion') }}
             </md-button>
@@ -18,10 +18,10 @@
             <md-button class="md-button md-raised md-primary" ng-href="#/{{ lang() }}">
                 {{ translate('webcams.', '50') }}
             </md-button>
-        </div>
-    </div>
-    <div flex="100" class="webcam-extra-content">
+        </div> -->
+    </div> 
+<!--    <div flex="100" class="webcam-extra-content">
         <h1>{{ translate('general.', 'mas_informacion') }}</h1>
-    </div>
+    </div>  -->
     <ng-include src="'assets/back-bar.htm'"></ng-include>
 </div>
