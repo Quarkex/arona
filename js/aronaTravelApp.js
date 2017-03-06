@@ -685,7 +685,6 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
                 }
             }
             url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
-console.log (url);
             return url;
         },
         resolve:{ "check":isValidLang },
@@ -713,7 +712,6 @@ console.log (url);
                 }
             }
             url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
-console.log (url);
             return url;
         },
         resolve:{ "check":isValidLang },
@@ -1067,12 +1065,16 @@ app.controller("territorialCtrl", function($scope, $routeParams, territorial, co
 });
 
 app.service('activity', ["language", "$resource", ResourcePaginator]);
-app.controller("activityCtrl", function($routeParams, $scope, activity) {
+app.controller("activityCtrl", function($routeParams, $scope, constants, activity) {
     activity.expose_interface($scope);
     $scope.element = function(){return activity.elements()[0]};
+
+    var section = $scope.path().split('/').pop();
+    var code = constants["CODCONTENIDO"].hasOwnProperty(section) ? constants["CODCONTENIDO"][section] : null;
+
     activity.set_values({
         "collection": "actividades",
-        "filters": {"CODCONTENIDO": parseInt($routeParams.activity)},
+        "filters": {"CODCONTENIDO": { $in: [code, parseInt (section)]}},
         "values": ['TITULO', 'TELEFONO', 'F_INICIO', 'F_FIN', 'IMAGEN', 'DESCRIPCION_COMUN', 'TAQUILLA', 'ORGANIZACION', 'DONDE', 'PRECIO'],
         "offset": 0,
         "limit": 1
