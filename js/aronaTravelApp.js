@@ -863,7 +863,7 @@ var resourceControllers = {
         "controllerValues": {
             "collection": "actividades",
             "filters": {"CODSUBTIPOCONT": 595, "CODAREAS": 16},
-            "values": ['TITULO', 'F_INICIO_PUB', 'CODCONTENIDO', 'IMAGEN'],
+            "values": ['TITULO', 'F_INICIO', 'CODCONTENIDO', 'IMAGEN'],
             "offset": 0,
             "limit": 6
         },
@@ -1275,7 +1275,7 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
         'offset': 0,
         'limit': 3,
         'filters': {"CODAREAS": 16, "CODSUBTIPOCONT": 595},
-        'values': ['TITULO', 'F_INICIO_PUB', 'CODCONTENIDO', 'IMAGEN'],
+        'values': ['TITULO', 'F_INICIO', 'CODCONTENIDO', 'IMAGEN'],
         'elements': {}
     };
 
@@ -1344,9 +1344,9 @@ app.filter("pad", [function() {
 }]);
 app.filter("capitalize", [function() {
     return function(input, scope) {
-        if (input!=null)
-            input = input.toLowerCase();
-        return input.substring(0,1).toUpperCase()+input.substring(1);
+        var output = '';
+        if (input!=null) output = input.substring(0,1).toUpperCase()+input.substring(1).toLowerCase();
+        return output
     }
 }]);
 app.filter("gsub", [function() {
