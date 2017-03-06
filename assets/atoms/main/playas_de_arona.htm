@@ -13,7 +13,7 @@
                                 <span>{{ weather[0]['date'] | date: 'd LLLL' }}</span>
                             </div>
                             <div flex="50" class="text-right" layout="column" style="font-size: 30px; font-weight: bold;">
-                                <span style="color: #f7d603;"><img src="img/icons/{{ weather[0]['sky_status'] | gsub: '_':'-' }}.svg" alt="{{ translate('clima.', weather[0]['sky_status']) | gsub:'_':' '|capitalize }}">{{ weather[0]['max_temp'] }}°C</span>
+                                <span style="color: #f7d603;"><img src="img/icons/weather/{{ weather[0]['sky_status'] | gsub: '_':'-' }}.svg" alt="{{ translate('clima.', weather[0]['sky_status']) | gsub:'_':' '|capitalize }}">{{ weather[0]['max_temp'] }}°C</span>
                                 <span style="font-size: 20px;">{{ weather[0]['max_temp'] }}°C|{{ weather[0]['min_temp'] }}°C</span>
                             </div>
                         </div>
