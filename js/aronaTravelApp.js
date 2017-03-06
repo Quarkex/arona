@@ -1344,9 +1344,9 @@ app.filter("pad", [function() {
 }]);
 app.filter("capitalize", [function() {
     return function(input, scope) {
-        if (input!=null)
-            input = input.toLowerCase();
-        return input.substring(0,1).toUpperCase()+input.substring(1);
+        var output = '';
+        if (input!=null) output = input.substring(0,1).toUpperCase()+input.substring(1).toLowerCase();
+        return output
     }
 }]);
 app.filter("gsub", [function() {
