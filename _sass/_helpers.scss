@@ -50,10 +50,20 @@
     }
 }
 
+@media not print
+{
+    .show-for-print, .show-for-print * {
+        display: none !important;
+    }
+}
 @media print
 {
     .hide-for-print, .hide-for-print *
     {
         display: none !important;
     }
+    table { font-size: 10px; page-break-inside:auto }
+    tr    { page-break-inside:avoid; page-break-after:auto }
+    thead { display:table-header-group }
+    tfoot { display:table-footer-group }
 }
