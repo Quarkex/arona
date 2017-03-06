@@ -226,7 +226,7 @@ doc = {
     "pagina.titulo_noticias_del_sector":      "News of the sector",
     "pagina.titulo_descargas":                "Downloads",
     "pagina.titulo_enlaces_de_interes":       "Links of interest",
-    "pagina.titulo_buzon_de_sugerencias":     "Suggestions mailbox",
+    "pagina.titulo_quejas_y_sugerencias":     "Suggestions mailbox",
 
     "date.schema":                            "dd MMMM yyyy",
     "date.monday":                            "Monday",

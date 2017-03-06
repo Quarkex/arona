@@ -287,7 +287,7 @@ doc = {
     "pagina.titulo_noticias_del_sector":                    "Noticias del sector",
     "pagina.titulo_descargas":                              "Descargas",
     "pagina.titulo_enlaces_de_interes":                     "Enlaces de interés",
-    "pagina.titulo_buzon_de_sugerencias":                   "Buzón de sugerencias",
+    "pagina.titulo_quejas_y_sugerencias":                   "Quejas y sugerencias",
 
     "general.paginado_de_contenidos":                       "Página {0} de {1} ({3} contenidos)",
     "general.ultima_modificacion":                          "Última modificación: {0}",
