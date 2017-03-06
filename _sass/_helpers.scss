@@ -49,3 +49,11 @@
         line-height: 0.6em;
     }
 }
+
+@media print
+{
+    .hide-for-print, .hide-for-print *
+    {
+        display: none !important;
+    }
+}
