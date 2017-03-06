@@ -829,6 +829,17 @@ var resourceControllers = {
         },
         "singleElement": false
     },
+    "album": {
+        "controllerElements": ["$rootScope", "$scope"],
+        "controllerValues": {
+            "collection": "descriptivos",
+            "filters": {"CODSUBTIPOCONT": 290, "CODAREAS": 16},
+            "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION_COMUN'],
+            "offset": 0,
+            "limit": 10
+        },
+        "singleElement": false
+    },
     "activities": {
         "controllerElements": ["$rootScope", "$scope"],
         "controllerValues": {
@@ -967,6 +978,12 @@ app.service('video', ["language", "$resource", ResourcePaginator]);
 app.controller("videoCtrl", function($scope, video) {
     video.expose_interface($scope);
     video.set_values(resourceControllers["video"]["controllerValues"]);
+});
+
+app.service('album', ["language", "$resource", ResourcePaginator]);
+app.controller("albumCtrl", function($scope, album) {
+    album.expose_interface($scope);
+    album.set_values(resourceControllers["album"]["controllerValues"]);
 });
 
 app.service('videoAccesible', ["language", "$resource", ResourcePaginator]);
