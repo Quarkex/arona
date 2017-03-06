@@ -606,11 +606,11 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     .when("/:language/planea_tu_viaje/como_moverse", {
         redirectTo: "/:language/planea_tu_viaje/como_moverse/transporte_publico"
     })
-    .when("/:language/planea_tu_viaje/destino_accesible/donde_alojarse", {
-        redirectTo: "/:language/planea_tu_viaje/destino_accesible/donde_alojarse/hoteles"
+    .when("/:language/planea_tu_viaje/destino_accesible", {
+        redirectTo: "/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas_accesible"
     })
     .when("/:language/planea_tu_viaje/destino_accesible/donde_alojarse", {
-        redirectTo: "/:language/planea_tu_viaje/destino_accesible/donde_alojarse/hoteles"
+        redirectTo: "/:language/planea_tu_viaje/destino_accesible/hoteles"
     })
     .when("/:language/vive_tu_estancia/actividades_recomendadas", {
         redirectTo: "/:language/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/instalaciones_deportivas"
@@ -659,7 +659,6 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
                 }
             }
             url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
-console.log (url);
             return url;
         },
         resolve:{ "check":isValidLang },
@@ -685,6 +684,7 @@ console.log (url);
                 }
             }
             url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
+console.log (url);
             return url;
         },
         resolve:{ "check":isValidLang },
@@ -697,7 +697,7 @@ console.log (url);
             var custom_values = [
                 ["vive_tu_estancia", "planea_tu_viaje"],
                 ["destino_accesible", "donde_alojarse"],
-                []
+                ["donde_alojarse"]
             ];
             for (var i = 0; i < path.length; i++){
                 switch(i){
@@ -712,6 +712,7 @@ console.log (url);
                 }
             }
             url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
+console.log (url);
             return url;
         },
         resolve:{ "check":isValidLang },
@@ -936,11 +937,13 @@ app.controller("accesibilidadCtrl", function($scope, $routeParams, accesibilidad
     accesibilidad.expose_interface($scope);
 
     var section = $scope.path().split('/').pop();
-    var code = constants["CODSUBTIPOCONT"].hasOwnProperty(section) ? constants["CODSUBTIPOCONT"][section] : null;
+    var codeSubtipo = constants["CODSUBTIPOCONT"].hasOwnProperty(section) ? constants["CODSUBTIPOCONT"][section] : null;
+    var codeSubarea = constants["CODSUBAREA"].hasOwnProperty(section) ? constants["CODSUBAREA"][section] : null;
+    var codeArea = constants["CODAREA"].hasOwnProperty(section) ? constants["CODAREA"][section] : 16;
 
     accesibilidad.set_values({
         "collection": "territoriales",
-        "filters": {$or: [{"CODSUBTIPOCONT": code}, {"CODSUBAREAS": code}, { "CODSUBAREAS": {$in: [code]} }], "CODAREAS": {$in: [15, 16]}, "VALORESINDICADORES": { $in:[37] } },
+        "filters": {"CODSUBTIPOCONT": codeSubtipo, "CODAREAS": codeArea, "CODSUBAREAS": codeSubarea, "VALORESINDICADORES": { $in:[37] } },
         "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
         "limit": 100
