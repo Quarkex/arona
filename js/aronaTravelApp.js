@@ -112,6 +112,7 @@ app.value('constants', {
         "ocio_y_playas":                      454,
         "oficinas_de_informacion":            145,
         "otras_especialidades":               454,
+        "otros_centros_de_congresos_de_tenerife": 398,
         "pastelerias":                        582,
         "pensiones":                          25,
         "por_mar_y_aire":                     150,
@@ -138,7 +139,7 @@ app.value('constants', {
         "ocio_y_playas":                      156,
         "otras_especialidades":               174,
         "tenis_y_especialidades_con_raqueta": 175,
-        "zonas_de_acampada":                  18
+        "zonas_de_acampada":                  157 
     },
     'CODAREA':{
         "centros_culturales":                 6,
@@ -1271,7 +1272,7 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
         'url': '/api/fetch.json',
         'offset': 0,
         'limit': 3,
-        'filters': {},
+        'filters': {"CODAREAS": 16, "CODSUBTIPOCONT": 595},
         'values': ['TITULO', 'F_INICIO_PUB', 'CODCONTENIDO', 'IMAGEN'],
         'elements': {}
     };
