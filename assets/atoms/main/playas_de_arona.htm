@@ -9,34 +9,34 @@
                         </div>
                         <div flex="100" layout="row">
                             <div flex="50" class="text-left" layout="column" style="font-size: 26px; font-weight: bold;">
-                                <span>Lunes</span>
-                                <span>6 febrero</span>
+                                <span>{{ weather[0]['date'] | date: 'EEEE' | capitalize }}</span>
+                                <span>{{ weather[0]['date'] | date: 'd LLLL' }}</span>
                             </div>
                             <div flex="50" class="text-right" layout="column" style="font-size: 30px; font-weight: bold;">
-                                <span style="color: #f7d603;"><img src="img/icons/despejado.svg" alt="despejado">20°C</span>
-                                <span style="font-size: 20px;">12°C|3°C</span>
+                                <span style="color: #f7d603;"><img src="img/icons/{{ weather[0]['sky_status'] }}.svg" alt="{{ translate('clima.', weather[0]['sky_status']) | gsub:'_':' '|capitalize }}">{{ weather[0]['max_temp'] }}°C</span>
+                                <span style="font-size: 20px;">{{ weather[0]['max_temp'] }}°C|{{ weather[0]['min_temp'] }}°C</span>
                             </div>
                         </div>
                         <div layout="row" class="text-center" style="margin-top: 2em;">
                             <div flex="33" flex-gt-xs="25">
-                                <div class="row">MAR</div>
-                                <div class="row">20°C</div>
-                                <div class="row">14°C</div>
+                                <div class="row">{{ weather[1]['date'] | date: 'EEE' | uppercase }}</div>
+                                <div class="row">{{ weather[1]['max_temp'] }}°C</div>
+                                <div class="row">{{ weather[1]['min_temp'] }}°C</div>
                             </div>
                             <div flex="33" flex-gt-xs="25">
-                                <div class="row">MIE</div>
-                                <div class="row">20°C</div>
-                                <div class="row">8°C</div>
+                                <div class="row">{{ weather[2]['date'] | date: 'EEE' | uppercase }}</div>
+                                <div class="row">{{ weather[2]['max_temp'] }}°C</div>
+                                <div class="row">{{ weather[2]['min_temp'] }}°C</div>
                             </div>
                             <div flex="33" flex-gt-xs="25">
-                                <div class="row">JUE</div>
-                                <div class="row">16°C</div>
-                                <div class="row">7°C</div>
+                                <div class="row">{{ weather[3]['date'] | date: 'EEE' | uppercase }}</div>
+                                <div class="row">{{ weather[3]['max_temp'] }}°C</div>
+                                <div class="row">{{ weather[3]['min_temp'] }}°C</div>
                             </div>
                             <div hide-xs flex-gt-xs="25">
-                                <div class="row">VIE</div>
-                                <div class="row">16°C</div>
-                                <div class="row">7°C</div>
+                                <div class="row">{{ weather[4]['date'] | date: 'EEE' | uppercase }}</div>
+                                <div class="row">{{ weather[4]['max_temp'] }}°C</div>
+                                <div class="row">{{ weather[4]['min_temp'] }}°C</div>
                             </div>
                         </div>
                     </div>

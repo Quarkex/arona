@@ -1196,6 +1196,8 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
         $rootScope.breadcrumbs = output;
     });
 
+    $rootScope.weather = $resource('/api/fetch_weather.json').query();
+
     $rootScope.nav = {};
     $resource('/api/fetch_navigation.json', {language:$rootScope.lang()}).get(function(data){
         $rootScope.nav = data;
