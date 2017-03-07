@@ -101,8 +101,8 @@ doc = {
         "sol_y_playa":                                {"href": "/vive_tu_estancia/sol_y_playa"}
     }},
     "area_profesional":                               {"href": "/area_profesional", "content":{
-        "noticias_del_sector":                        {"href": "/area_profesional/noticias_del_sector"},
-        "descargas":                                  {"href": "/area_profesional/descargas"},
+       # "noticias_del_sector":                        {"href": "/area_profesional/noticias_del_sector"},
+       # "descargas":                                  {"href": "/area_profesional/descargas"},
         "quejas_y_sugerencias":                       {"href": "/area_profesional/quejas_y_sugerencias"}
     }},
     "galeria":                                        {"href": "/galeria", "content":{
