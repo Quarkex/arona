@@ -4,10 +4,10 @@
         <div class="large-6 {{ $even? '' : 'large-pull-6' }} columns">
             <ul class="link-list">
                 <li>
-                    <a href="#/{{ lang() }}{{ link.href }}">{{ translate('pagina.titulo_', label) }}</a>
+                    <a href="{{ link.href.substr(0,1) == '/' ? '#/' + lang() : '' }}{{ link.href }}">{{ translate('pagina.titulo_', label) }}</a>
                 </li>
                 <li ng-repeat="(sublabel, sublink) in link.content">
-                    <a href="#/{{ lang() }}{{ sublink.href }}">{{ translate('pagina.titulo_', sublabel) }}</a>
+                    <a href="{{ sublink.href.substr(0,1) == '/' ? '#/' + lang() : '' }}{{ sublink.href }}">{{ translate('pagina.titulo_', sublabel) }}</a>
                 </li>
             </ul>
         </div>
@@ -16,7 +16,7 @@
 <div flex="100" layout="row" style="background-color: #f6f6f6;" layout-align="center center">
     <div flex="100" flex-gt-md="65" layout="column" layout-gt-md="row" layout-margin="24px">
         <div flex flex-gt-md="50" ng-if="link.content == undefined" ng-repeat="(label, link) in sublinks()">
-            <a flex layout="row" class="icon-button" href="#/{{ lang() }}{{ link.href }}">
+            <a flex layout="row" class="icon-button" href="{{ link.href.substr(0,1) == '/' ? '#/' + lang() : '' }}{{ link.href }}">
                 <div><md-icon class="material-icons md-primary">{{ translate('pagina.icono_', label) }}</md-icon></div>
                 <span>{{ translate('pagina.titulo_', label) }}</span>
             </a>

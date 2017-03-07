@@ -2,10 +2,10 @@
     <md-content>
         <md-list flex ng-repeat="(label, link) in nav">
             <md-subheader class="md-no-sticky">
-                <md-button class="md-primary" ng-href="#/{{lang()}}{{link.href}}">{{ translate("pagina.titulo_", label) }}</md-button>
+                <md-button class="md-primary" ng-href="{{ link.href.substr(0,1) == '/' ? '#/' + lang() : '' }}{{link.href}}">{{ translate("pagina.titulo_", label) }}</md-button>
             </md-subheader>
             <md-list-item class="md-1-line" ng-if="link.content != undefined" ng-repeat="(sublabel, sublink) in link.content">
-                <md-button ng-href="#/{{lang()}}{{sublink.href}}">{{ translate("pagina.titulo_", sublabel) }}</md-button>
+                <md-button ng-href="{{ sublink.href.substr(0,1) == '/' ? '#/' + lang() : '' }}{{sublink.href}}">{{ translate("pagina.titulo_", sublabel) }}</md-button>
             </md-list-item>
         </md-list>
     </md-content>

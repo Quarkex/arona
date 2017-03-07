@@ -4,12 +4,12 @@
     <accordion-group is-open="::(params.type == label )" ng-repeat="(label, link) in sublinks(path().split('/').slice(2, 4).join('/'), true)">
         <accordion-heading>{{ translate('pagina.titulo_', label) | gsub:'_':' ' | capitalize }}</accordion-heading>
         <ul layout="column">
-            <a ng-if="! link.content" ng-href="#/{{ lang() }}{{ link.href }}">
+            <a ng-if="! link.content" ng-href="{{ link.href.substr(0,1) == '/' ? '#/' + lang() : '' }}{{ link.href }}">
                 <li ng-class="{ 'active': (params.id == label) }">
                     {{ translate('pagina.titulo_', label) | gsub:'_':' ' | capitalize }}
                 </li>
             </a>
-            <a ng-if="link.content" ng-href="#/{{ lang() }}{{ sublink.href }}" ng-repeat="(sublabel, sublink) in link.content">
+            <a ng-if="link.content" ng-href="{{ sublink.href.substr(0,1) == '/' ? '#/' + lang() : '' }}{{ sublink.href }}" ng-repeat="(sublabel, sublink) in link.content">
                 <li ng-class="{ 'active': (params.id == sublabel) }">
                     {{ translate('pagina.titulo_', sublabel) | gsub:'_':' ' | capitalize }}
                 </li>
