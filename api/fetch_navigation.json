@@ -103,7 +103,7 @@ doc = {
     "area_profesional":                               {"href": "/area_profesional", "content":{
        # "noticias_del_sector":                        {"href": "/area_profesional/noticias_del_sector"},
        # "descargas":                                  {"href": "/area_profesional/descargas"},
-        "Turismo Responsable":                        {"href": "http://www.arona.travel/turismoresponsable"},
+        "Turismo responsable":                        {"href": "http://www.arona.travel/turismoresponsable"},
         "quejas_y_sugerencias":                       {"href": "https://sede.arona.org/eParticipa/Products/Carpeta/Public/Requests/InetReqPublic.aspx?TypeId=39093&URLConfirmation=InetReqConfirmationPublic.aspx&AppScope=CIUDADANO"}
     }},
     "galeria":                                        {"href": "/galeria", "content":{
