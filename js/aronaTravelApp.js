@@ -631,9 +631,6 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     .when("/:language/vive_tu_estancia/congresos_y_negocios", {
         redirectTo: "/:language/vive_tu_estancia/congresos_y_negocios/hoteles"
     })
-    .when("/:language/area_profesional/quejas_y_sugerencias", {
-        redirectTo: "https://sede.arona.org/eParticipa/Products/Carpeta/Public/Requests/InetReqPublic.aspx?TypeId=39093&URLConfirmation=InetReqConfirmationPublic.aspx&AppScope=CIUDADANO"
-    })
     .when("/:language/webcams", {
         redirectTo: "/:language/webcams/playa_de_las_vistas"
     })
