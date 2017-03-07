@@ -3,9 +3,9 @@
         <div class="row">
             <div class="small-6 medium-3 columns" ng-if="$index < 4"  ng-repeat="(label, link) in nav">
                 <ul style="height: 100%;">
-                    <li><a href="#/{{lang()}}{{link.href}}">{{ translate("pagina.titulo_", label) }}</a></li>
+                    <li><a href="{{ link.href.substr(0,1) == '/' ? '#/' + lang() : '' }}{{link.href}}">{{ translate("pagina.titulo_", label) }}</a></li>
                     <li ng-repeat="(sublabel, sublink) in link.content">
-                        <a href="#/{{lang()}}{{sublink.href}}">{{ translate("pagina.titulo_", sublabel) }}</a>
+                        <a href="{{ sublink.href.substr(0,1) == '/' ? '#/' + lang() : '' }}{{sublink.href}}">{{ translate("pagina.titulo_", sublabel) }}</a>
                     </li>
                 </ul>
             </div>
