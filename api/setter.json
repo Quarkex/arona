@@ -1,0 +1,221 @@
+#!/usr/bin/env ruby
+################################################################################
+#                                                                              #
+#  CGI value setter script                                                     #
+#                                                                              #
+#  Expects a JSON body by POST method, or as a string on the first parameter   #
+#  if using it by CLI, with the following parameters:                          #
+#                                                                              #
+#  - collection (required)                                                     #
+#    The mongo collection in which to perform the query                        #
+#                                                                              #
+#  - filters                                                                   #
+#    An array of JSON objects with the filters leading to the elements         #
+#    to update, E.G: an unique ID field.                                       #
+#                                                                              #
+#  - values                                                                    #
+#    The values to update in the objects returned by the filters. Will insert  #
+#    the element if the filter is not found or nil.                            #
+#                                                                              #
+#  If you prefer to use an XLSX file, you may pass the file as the first       #
+#  parameter, and the destination collection as the second parameter.          #
+#  If you fail to provide a collection using this method, it will default to   #
+#  “test” as it is custom with MongoDB.                                        #
+#                                                                              #
+#  The script anwsers with an array of updated results.                        #
+#                                                                              #
+#  If something goes wrong, the output array will contain an object with an    #
+#  error value containing the error message.                                   #
+#                                                                              #
+################################################################################
+
+require 'cgi'
+require 'json'
+require 'mongo'
+
+$config = {}
+
+# Default config values
+$config["mongo-ip"]   = "127.0.0.1"
+$config["mongo-port"] = 27017
+$config["mongo-db"]   = "arona"
+
+configFile = File.expand_path(File.dirname(__FILE__)) + '/../config.json'
+load configFile if File.file? configFile
+
+Mongo::Logger.logger.level = ::Logger::FATAL
+
+client = Mongo::Client.new([ $config['mongo-ip'] + ':' + $config['mongo-port'].to_s ], :database => $config['mongo-db'])
+db = client.database
+
+class Hash
+    def hmap(&block)
+        Hash[self.map {|k, v| block.call(k,v) }]
+    end
+    def hmap!(&block)
+        replace hmap(&block)
+    end
+end
+
+def parseValue( value )
+    case value.to_s
+    when /^[0-9]{14}$/
+        value.gsub!(/^([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})$/, '\1-\2-\3T\4:\5:\6Z')
+    when /^-?\d+[,.]?\d*$/
+        value = ( value.to_i == value.to_f ) ? value.to_i : value.to_f
+    when /^[\- 0-9]+;[\- 0-9 ;]+$/
+        value = value.to_s.split(';')
+        value.map! {|x| x.to_i }
+    when /^$/
+        value = nil
+    else
+        value = value.to_s
+    end
+    value
+end
+
+def buildIndicators( doc )
+    codigosindicadores      = doc["CODIGOSINDICADORES"]
+    valoresindicadoreslista = doc["VALORESINDICADORESLISTA"]
+    etiquetaindicadores     = doc["ETIQUETAINDICADORES"]
+    valoresindicadores      = doc["VALORESINDICADORES"]
+
+    if codigosindicadores != nil and etiquetaindicadores != nil then
+        indicadores = {}
+        etiquetaindicadores.each_index do | j |
+            key = etiquetaindicadores[j].to_s.downcase
+            key.gsub!(/[ ]+/, "_")
+            key.gsub!(/á/, 'a')
+            key.gsub!(/é/, 'e')
+            key.gsub!(/í/, 'i')
+            key.gsub!(/ó/, 'o')
+            key.gsub!(/ú/, 'u')
+            key.gsub!(/ñ/, 'n')
+            indicadores[key] = {"code": codigosindicadores[j], "contents": [] } if indicadores != nil
+        end
+        if valoresindicadores != nil and valoresindicadoreslista != nil then
+            valoresindicadores.each_index do | j |
+                key = etiquetaindicadores[j].to_s.downcase
+                key.gsub!(/[ ]+/, "_")
+                key.gsub!(/á/, 'a')
+                key.gsub!(/é/, 'e')
+                key.gsub!(/í/, 'i')
+                key.gsub!(/ó/, 'o')
+                key.gsub!(/ú/, 'u')
+                key.gsub!(/ñ/, 'n')
+                label = valoresindicadoreslista[j].to_s.downcase
+                label.gsub!(/[ ]+/, "_")
+                label.gsub!(/á/, 'a')
+                label.gsub!(/é/, 'e')
+                label.gsub!(/í/, 'i')
+                label.gsub!(/ó/, 'o')
+                label.gsub!(/ú/, 'u')
+                label.gsub!(/ñ/, 'n')
+                indicador = {"code": valoresindicadores[j].to_i, "label": label }
+                indicadores[key][:contents].push(indicador) if indicadores[key] != nil
+            end
+        end
+        doc["INDICADORES"] = indicadores
+    end
+    doc
+end
+
+cgi = CGI.new
+output = []
+
+json = cgi.params.keys.first if cgi.params.keys.first != nil
+json = ARGV[0] if ARGV[0] != nil
+
+# If json is an xlsx file...
+if json[-5, 5] == ".xlsx" then
+    puts "Will try to load an xlsx"
+
+    language = json[-7, 2] # last two characters before extension are considered a lang code
+    puts "Guessed lang code: " + language
+
+    parameters = { "collection" => ARGV[1] != nil ? ARGV[1] : 'test', "filters" => [], "values" => [] }
+
+    require 'roo'
+    file = Roo::Spreadsheet.open(ARGV[0])
+    file = Roo::Excelx.new(ARGV[0])
+
+    file.default_sheet = file.sheets[0]
+
+    file.each_with_pagename do |name, sheet|
+        sheet.each_with_index() do |values, index|
+
+            row = index + 1
+            if row != 1 then # First row is for headers
+                doc = { "IDIOMA" => language }
+                values.each_with_index() do |value, index|
+                    column = index + 1
+                    key = sheet.cell(1, column).to_s
+                    doc[key] = value
+                end
+                parameters["filters"].push nil
+                parameters["values"].push doc
+            end
+
+        end if name == "Exportar Hoja de Trabajo"
+    end
+else
+    parameters = JSON.parse(json)
+end
+
+puts "Script in CLI mode" if ARGV[0] != nil
+begin
+
+    # CGI tries to parse the request body as form parameters so a
+    # blob of JSON awkwardly ends up as the one and only parameter key.
+    if parameters.has_key?("collection") then
+        puts "Working with collection: " + parameters['collection'].to_s if ARGV[0] != nil
+        collection = client[parameters['collection']]
+
+        if parameters.has_key? 'filters'  then filters = parameters['filters']  else filters = []    end
+        if parameters.has_key? 'values'   then values  = parameters['values']   else values  = []    end
+
+        if filters.size == values.size then
+            puts "number of filters and values match." if ARGV[0] != nil
+            updated = 0
+            filterless = []
+            filters.each_with_index do | filter, index |
+                puts "filter " + index.to_s + ": " + filter.inspect if ARGV[0] != nil
+                doc = values[index]
+                doc.hmap! { | k, v | [ k, parseValue(v) ]}
+
+                if doc.keys.include?('CODIGOSINDICADORES')\
+                || doc.keys.include?('VALORESINDICADORESLISTA')\
+                || doc.keys.include?('ETIQUETAINDICADORES')\
+                || doc.keys.include?('VALORESINDICADORES')
+                then doc = buildIndicators doc end
+
+                if filter == nil then
+                    puts "Will insert new document." if ARGV[0] != nil
+                    filterless.push doc
+                else
+                    puts "Will update a document." if ARGV[0] != nil
+                    updated += 1
+                    collection.find_one_and_update(filter, doc, {upsert: true})
+                end
+
+                puts "Values: " + doc.inspect if ARGV[0] != nil
+
+            end
+            inserted = 0
+            inserted = collection.insert_many(filterless).inserted_count if filterless.size > 0
+            result = {"collection": parameters['collection'], "updated": updated, "inserted": inserted}
+            output.push result
+        else
+            puts "number of filters and values do not match." if ARGV[0] != nil
+            puts "number of filters: " + filters.size.to_s if ARGV[0] != nil
+            puts "number of values: " + values.size.to_s if ARGV[0] != nil
+        end
+
+    else
+        output = [ nil ]
+    end
+rescue Exception => e
+    output.push({"parameters": parameters, "error": e.message, "backtrace": e.backtrace })
+end
+cgi.out("documentType=application/json; charset=utf-8"){ output.to_json } unless ARGV[0] != nil
+puts "Result: " + output.to_json if ARGV[0] != nil
