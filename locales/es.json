@@ -179,7 +179,7 @@ doc = {
     "pagina.titulo_planea_tu_viaje":                        "Planea tu viaje",
     "pagina.subtitulo_planea_tu_viaje":                     "Guía para alojarte, moverte, comer y disfrutar de Arona",
 
-    "pagina.titulo_como_llegar":                            "Como llegar",
+    "pagina.titulo_como_llegar":                            "Cómo llegar",
     "pagina.titulo_por_mar_y_aire":                         "Por mar y aire",
     "pagina.titulo_buscador_de_vuelos":                     "Buscador de vuelos",
     "pagina.titulo_agencias_de_viaje":                      "Agencias de viaje",
@@ -190,7 +190,7 @@ doc = {
     "pagina.titulo_alquiler_de_vehiculos":                  "Alquiler de vehículos",
     "pagina.titulo_informacion_portuaria":                  "Información portuaria",
 
-    "pagina.titulo_donde_alojarse":                         "Donde alojarse",
+    "pagina.titulo_donde_alojarse":                         "Dónde alojarse",
     "pagina.titulo_hoteles":                                "Hoteles",
     "pagina.titulo_aparthoteles":                           "Aparthoteles",
     "pagina.titulo_apartamentos":                           "Apartamentos",
@@ -209,7 +209,7 @@ doc = {
     "pagina.titulo_oficinas_de_informacion":                "Oficinas de Información",
     "pagina.icono_oficinas_de_informacion":                 "info_outline",
     "pagina.titulo_disfruta_de_arona":                      "Disfruta de Arona",
-    "pagina.titulo_conoce_arona":                           "Cónoce Arona",
+    "pagina.titulo_conoce_arona":                           "Conoce Arona",
     "pagina.titulo_el_tiempo":                              "El tiempo",
     "pagina.subtitulo_camaras_en_vivo":                     "Disfruta de la imagen en vivo de Arona",
 
