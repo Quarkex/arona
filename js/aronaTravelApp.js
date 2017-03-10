@@ -86,8 +86,10 @@ app.value('constants', {
         "apartahteles":                       659,
         "apartamentos":                       40,
         "arquitectura_tradicional":           490,
+	"arona_unica":			      517,	
         "arte_y_artesania":                   473,
         "auditorios":                         596,
+	"biosphere":			      517,
         "centros_civicos":                    466,
         "centros_culturales":                 146,
         "ciclismo":                           454,
@@ -98,6 +100,7 @@ app.value('constants', {
         "espacios_naturales":                 327,
         "especialidades_nauticas":            454,
 	"espectaculos":			      330,
+	"estadisticas":			      592,
         "gimnasia_y_juegos_deportivos":       253,
         "golf":                               310,
         "hipica":                             454,
@@ -116,6 +119,7 @@ app.value('constants', {
         "pastelerias":                        582,
         "pensiones":                          25,
         "por_mar_y_aire":                     150,
+	"publicaciones_y_revistas":	      522,	
         "restaurantes":                       30,
         "salud_y_belleza":                    159,
         "senderismo":                         327,
@@ -129,6 +133,7 @@ app.value('constants', {
     },
     'CODSUBAREA':{
         "arquitectura_tradicional":           278,
+	"biosphere":			      464,
         "ciclismo":                           323,
         "costumbres_y_folclore":              155,
         "especialidades_nauticas":            169,
@@ -632,6 +637,9 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     .when("/:language/vive_tu_estancia/congresos_y_negocios", {
         redirectTo: "/:language/vive_tu_estancia/congresos_y_negocios/hoteles"
     })
+    .when("/:language/area_profesional/descargas", {
+        redirectTo: "/:language/area_profesional/descargas/biosphere"
+    })
     .when("/:language/webcams", {
         redirectTo: "/:language/webcams/playa_de_las_vistas"
     })
@@ -669,7 +677,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
             var path = [ urlattr.section, urlattr.subsection, urlattr.type ];
             var custom_values = [
                 [],
-                ["destino_accesible"],
+                ["destino_accesible","descargas"],
                 ["guia_de_accesibilidad", "videos", "playa_de_las_vistas_accesible", "clima", "compromiso_con_la_calidad","la_conquista_de_canarias"]
             ];
             for (var i = 0; i < path.length; i++){
@@ -961,6 +969,25 @@ app.controller("descriptivosCtrl", function($scope, $routeParams, descriptivos, 
         "collection": "descriptivos",
         "filters": {"CODSUBTIPOCONT": codeSubtipo, "CODAREAS": 16, "CODSUBAREAS": codeSubarea },
         "values": ['TITULO', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'DESCRIPCION_COMUN','TEXTO'],
+        "offset": 0,
+        "limit": 100
+    });
+});
+
+app.service('documentales', ["language", "$resource", ResourcePaginator]);
+app.controller("documentalesCtrl", function($scope, documentales, constants) {
+
+    documentales.expose_interface($scope);
+
+    var section = $scope.path().split('/').pop();
+    var codeSubtipo = constants["CODSUBTIPOCONT"].hasOwnProperty(section) ? constants["CODSUBTIPOCONT"][section] : null;
+    var codeSubarea = constants["CODSUBAREA"].hasOwnProperty(section) ? constants["CODSUBAREA"][section] : null;
+    var codeArea = constants["CODAREA"].hasOwnProperty(section) ? constants["CODAREA"][section] : 16;
+
+    documentales.set_values({
+        "collection": "documentales",
+        "filters": {"CODSUBTIPOCONT": codeSubtipo, "CODAREAS": codeArea, "CODSUBAREAS": codeSubarea },
+        "values": ["CODCONTENIDO", "DESCRIPCION_COMUN", "DOCUMENTO", "IMAGEN", "PALABRAS_CLAVE", "TITULO"],
         "offset": 0,
         "limit": 100
     });

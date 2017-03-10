@@ -1,0 +1,67 @@
+<div ng-include="'assets/tab-bar.htm'"></div>
+<div ng-controller="documentalesCtrl">
+    <div class="row">
+        <div class="small-6 columns">
+            <h2>{{ string_interpolate( translate('general.', 'numero_de_contenidos'), size(), translate('general.', current_section()), largest_size()) }}</h2>
+        </div>
+        <div class="small-6 columns right"></div>
+    </div>
+    <div class="row">
+        <div class="medium-12 columns{{ $last ? ' end' : '' }}" ng-repeat="card in elements()">
+            <div class="card">
+                <div class="row">
+                    <div class="small-4 columns">
+                        <a href="{{ card.DOCUMENTO }}">
+                            <img alt="{{ card.name }}" src="http://www.arona.org/portal/imagecache/listadodescargas/{{ card.IMAGEN }}">
+                        </a>
+                    </div>
+                    <div class="small-8 columns">
+                        <a style="text-align: left;" href="http://www.arona.org/portal/{{ card.DOCUMENTO }}">
+                            <h1>{{ card.TITULO }}</h1>
+                        </a>
+                        <p ng-bind-html="card.DESCRIPCION_COMUN | trust"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-6 columns">
+            <ul class="pagination" role="navigation" aria-label="Pagination">
+                <li class="pagination-previous" ng-click="previous_page();">
+                    <a aria-label="Previous page"></a>
+                </li>
+                <li ng-repeat="p in pages()" class="{{ p.current ? 'current': '' }}" >
+                    <a ng-if="! p.current" ng-click="page(p.number);">{{ p.number }}</a>
+                    <span ng-if="p.current"><span class="show-for-sr">You're on page</span> {{ p.number }}</span>
+                </li>
+                <li class="pagination-next" ng-click="next_page();">
+                    <a aria-label="Next page"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="small-6 columns text-right right">
+            <p class="panel page-counter">{{ 
+            string_interpolate( translate('general.', 'paginado_de_contenidos'),
+            page(),
+            pages().length,
+            '',
+            size() ) }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-6 columns">
+            <div class="button-group tiny">
+                <a class="button">
+                    <span class="hide-for-sr">◀</span>
+                    <span class="show-for-sr">{{ translate('general.', 'volver') }}</span>
+                </a>
+                <a class="button">{{ translate('general.', 'atras') }}</a>
+            </div>
+        </div>
+        <div class="small-6 columns text-right right">
+            <p class="panel last-modified">{{ string_interpolate(translate('general.', 'ultima_modificacion'), last_modified()) }}</p>
+        </div>
+    </div>
+</div>
+
