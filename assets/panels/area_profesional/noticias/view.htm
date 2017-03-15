@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="large-10 large-offset-1 columns">
+        <article class="small-12 columns activity-view" ng-controller="noticiaCtrl">
+            <header>
+                <div class="row post-title"><h2 ng-bind="element().TITULO"></h2></div>
+                <div class="row post-header">
+                    <div class="medium-3 columns">
+                        <div class="square" style="background-image: url(http://www.arona.org/portal/imagecache/ampliado/{{ element().IMAGEN }});"></div>
+                    </div>
+            <div class="date" flex="50" layout="column" layout-align="start center"><span>{{ card.F_PUB_ORIGINAL | date: 'LLLL' | limitTo: 3 }}</span></div>
+            <div layout="column" class="row post-content">N
+                <div class="activity-content" layout="column" ng-if="element()['RESUMEN'] != null">
+                    <div ng-bind-html="element()['RESUMEN'] | trust"></div>
+                </div>
+                <div class="activity-content" layout="column" ng-if="element()['DESCRIPCION_COMUN'] != null">
+                    <div ng-bind-html="element()['DESCRIPCION_COMUN'] | trust"></div>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
+<div class="row">
+    <div class="large-10 large-offset-1 columns">
+        <div class="small-12 columns" ng-include="'assets/back-bar.htm'"></div>
+    </div>
+</div>
