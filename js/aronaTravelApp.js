@@ -665,7 +665,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
             var path = [ urlattr.section, urlattr.type ];
             var custom_values = [
                 [],
-                ["oficinas_de_informacion","lugares_de_interes","arona_360","albumes","videos","folletos_y_mapas","destino_accesible"]
+                ["oficinas_de_informacion","lugares_de_interes","arona_360","albumes","videos","folletos_y_mapas","destino_accesible","noticias"]
             ];
             for (var i = 0; i < path.length; i++){
                 switch(i){
@@ -677,6 +677,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
                 }
             }
             url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
+console.log(url);
             return url;
         },
         resolve:{ "check":isValidLang },
@@ -1035,6 +1036,22 @@ app.controller("documentalesCtrl", function($scope, documentales, constants) {
     });
 });
 
+app.service('noticias', ["language", "$resource", ResourcePaginator]);
+app.controller("noticiasCtrl", function($scope, $routeParams, noticias, constants) {
+
+    noticias.expose_interface($scope);
+
+    $scope.element = function(){return noticias.elements()[0]};
+
+    noticias.set_values({
+        "collection": "noticias",
+        "filters": {"CODAREAS": 16 },
+        "values": ['TITULO', 'TITULO_CORTO', 'F_PUB_ORIGINAL', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'RESUMEN', 'DESCRIPCION_COMUN','TEXTO', 'FMODIFICACION'],
+        "offset": 0,
+        "limit": 100
+    });
+});
+
 app.service('panflets', ["language", "$resource", ResourcePaginator]);
 app.controller("panfletsCtrl", function($rootScope, $scope, panflets) {
     panflets.expose_interface($scope);
@@ -1105,6 +1122,24 @@ app.controller("descriptivoCtrl", function($scope, $routeParams, descriptivo, co
     });
 });
 
+app.service('noticia', ["language", "$resource", ResourcePaginator]);
+app.controller("noticiaCtrl", function($scope, $routeParams, noticia, constants) {
+
+    noticia.expose_interface($scope);
+
+    $scope.element = function(){return noticia.elements()[0]};
+
+    var section = $scope.path().split('/').pop();
+    var code = constants["CODCONTENIDO"].hasOwnProperty(section) ? constants["CODCONTENIDO"][section] : null;
+
+    noticia.set_values({
+        "collection": "noticias",
+        "filters": {"CODCONTENIDO": { $in: [code, parseInt (section)]}},
+        "values": ['TITULO', 'TITULO_CORTO', 'F_PUB_ORIGINAL', 'HREF', 'CODCONTENIDO', 'IMAGEN', 'RESUMEN', 'DESCRIPCION_COMUN','TEXTO', 'FMODIFICACION'],
+        "offset": 0,
+        "limit": 1
+    });
+});
 
 app.service('activities', ["language", "$resource", ResourcePaginator]);
 app.controller("activitiesCtrl", function($rootScope, $scope, activities) {
