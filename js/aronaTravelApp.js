@@ -66,6 +66,16 @@ app.value('page', {
 });
 
 app.value('constants', {
+    "SUBTIPO_PRINCIPAL": {
+        "apartamentos":                           "Apartamentos",
+        "hoteles":                                "Hoteles",
+        "pensiones":                              "Pensiones",
+        "ialojamiento_rural":                     "Alojamiento Rural",
+        "aparthoteles":                           "Aparthoteles"
+    },
+    "SUBTIPO": {
+        "panflets":                               "Folletos / Trípticos"
+    },
     "CODCONTENIDO": {
         "clima":                                  21687,
         "compromiso_con_la_calidad":              21849,
@@ -131,7 +141,7 @@ app.value('constants', {
         "webcam":                                 342,
         "zonas_de_acampada":                      18
     },
-    'CODSUBAREA':{
+    'CODSUBAREAS':{
         "arquitectura_tradicional":               278,
         "biosphere":                              464,
         "ciclismo":                               323,
@@ -146,8 +156,9 @@ app.value('constants', {
         "tenis_y_especialidades_con_raqueta":     175,
         "zonas_de_acampada":                      157
     },
-    'CODAREA':{
+    'CODAREAS':{
         "centros_culturales":                     6,
+        "instalaciones_deportivas":               15,
         "ciclismo":                               15,
         "especialidades_nauticas":                15,
         "hipica":                                 15,
@@ -765,61 +776,61 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
 
 //FIXME this doesnt handle $routeParams variables and such
 var resourceControllers = {
-    "apartments": {
-        "controllerElements": ["$rootScope", "$scope"],
-        "controllerValues": {
-            "collection": "territoriales",
-            "filters": {"SUBTIPO_PRINCIPAL": "Apartamentos"},
-            "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
-            "offset": 0,
-            "limit": 100
-        },
-        "singleElement": false 
-    },
-    "hotels": {
-        "controllerElements": ["$rootScope", "$scope"],
-        "controllerValues": {
-            "collection": "territoriales",
-            "filters": {"SUBTIPO_PRINCIPAL": "Hoteles"},
-            "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
-            "offset": 0,
-            "limit": 100
-        },
-        "singleElement": false
-    },
-    "hostels": {
-        "controllerElements": ["$rootScope", "$scope"],
-        "controllerValues": {
-            "collection": "territoriales",
-            "filters": {"SUBTIPO_PRINCIPAL": "Pensiones"},
-            "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
-            "offset": 0,
-            "limit": 100
-        },
-        "singleElement": false
-    },
-    "ruralHostels": {
-        "controllerElements": ["$rootScope", "$scope"],
-        "controllerValues": {
-            "collection": "territoriales",
-            "filters": {"SUBTIPO_PRINCIPAL": "Alojamiento Rural"},
-            "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
-            "offset": 0,
-            "limit": 100
-        },
-        "singleElement": false
-    },
-    "aparthotels": {
-        "controllerElements": ["$rootScope", "$scope"],
-        "controllerValues": {
-            "collection": "territoriales",
-            "filters": {"SUBTIPO_PRINCIPAL": "Aparthoteles"},
-            "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
-            "offset": 0,
-            "limit": 100
-        },
-        "singleElement": false
-    },
+    //"apartments": {
+    //    "controllerElements": ["$rootScope", "$scope"],
+    //    "controllerValues": {
+    //        "collection": "territoriales",
+    //        "filters": {"SUBTIPO_PRINCIPAL": "Apartamentos"},
+    //        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+    //        "offset": 0,
+    //        "limit": 100
+    //    },
+    //    "singleElement": false 
+    //},
+    //"hotels": {
+    //    "controllerElements": ["$rootScope", "$scope"],
+    //    "controllerValues": {
+    //        "collection": "territoriales",
+    //        "filters": {"SUBTIPO_PRINCIPAL": "Hoteles"},
+    //        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+    //        "offset": 0,
+    //        "limit": 100
+    //    },
+    //    "singleElement": false
+    //},
+    //"hostels": {
+    //    "controllerElements": ["$rootScope", "$scope"],
+    //    "controllerValues": {
+    //        "collection": "territoriales",
+    //        "filters": {"SUBTIPO_PRINCIPAL": "Pensiones"},
+    //        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+    //        "offset": 0,
+    //        "limit": 100
+    //    },
+    //    "singleElement": false
+    //},
+    //"ruralHostels": {
+    //    "controllerElements": ["$rootScope", "$scope"],
+    //    "controllerValues": {
+    //        "collection": "territoriales",
+    //        "filters": {"SUBTIPO_PRINCIPAL": "Alojamiento Rural"},
+    //        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+    //        "offset": 0,
+    //        "limit": 100
+    //    },
+    //    "singleElement": false
+    //},
+    //"aparthotels": {
+    //    "controllerElements": ["$rootScope", "$scope"],
+    //    "controllerValues": {
+    //        "collection": "territoriales",
+    //        "filters": {"SUBTIPO_PRINCIPAL": "Aparthoteles"},
+    //        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+    //        "offset": 0,
+    //        "limit": 100
+    //    },
+    //    "singleElement": false
+    //},
     "panflets": {
         "controllerElements": ["$rootScope", "$scope"],
         "controllerValues": {
@@ -922,14 +933,45 @@ app.controller("territorialesCtrl", function($scope, territoriales, constants) {
 
     territoriales.expose_interface($scope);
 
-    var section = $scope.path().split('/').pop();
-    var codeSubtipo = constants["CODSUBTIPOCONT"].hasOwnProperty(section) ? constants["CODSUBTIPOCONT"][section] : null;
-    var codeSubarea = constants["CODSUBAREA"].hasOwnProperty(section) ? constants["CODSUBAREA"][section] : null;
-    var codeArea = constants["CODAREA"].hasOwnProperty(section) ? constants["CODAREA"][section] : 16;
+    var filters = function() {
+        var section = $scope.path().split('/').pop();
+        var output = { "$and": [] };
+
+        var process_variable = function(variable){
+            if (constants[variable].hasOwnProperty(section)){
+                value = constants[variable][section];
+                if ( Array.isArray(value) ){
+                    if (variable == "CODAREAS") value.push(16);
+                    var options = [];
+                    for ( var j = 0; j < value.length; j++ ){
+                        var filter = {};
+                        filter[variable] = value[j];
+                        options.push(filter);
+                    }
+                    return { "$or": options };
+                } else {
+                    var filter = {};
+                    filter[variable] = value;
+                    return filter;
+                }
+            } else if (variable == "CODAREAS") {
+                // If no CODAREAS given, assume it's Turismo
+                return { "CODAREAS": 16 };
+            } else return null;
+        };
+
+        var variables = ["SUBTIPO_PRINCIPAL", "CODSUBTIPOCONT", "CODAREAS", "CODSUBAREAS"];
+        variables.forEach(function(element, index){
+            var filter = process_variable(element);
+            if (filter != null) output.$and.push(filter);
+        });
+
+        return output;
+    };
 
     territoriales.set_values({
         "collection": "territoriales",
-        "filters": {"CODSUBTIPOCONT": codeSubtipo, "CODAREAS": codeArea, "CODSUBAREAS": codeSubarea },
+        "filters": filters(),
         "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
         "limit": 100
@@ -943,8 +985,8 @@ app.controller("accesibilidadCtrl", function($scope, $routeParams, accesibilidad
 
     var section = $scope.path().split('/').pop();
     var codeSubtipo = constants["CODSUBTIPOCONT"].hasOwnProperty(section) ? constants["CODSUBTIPOCONT"][section] : null;
-    var codeSubarea = constants["CODSUBAREA"].hasOwnProperty(section) ? constants["CODSUBAREA"][section] : null;
-    var codeArea = constants["CODAREA"].hasOwnProperty(section) ? constants["CODAREA"][section] : 16;
+    var codeSubarea = constants["CODSUBAREAS"].hasOwnProperty(section) ? constants["CODSUBAREAS"][section] : null;
+    var codeArea = constants["CODAREAS"].hasOwnProperty(section) ? constants["CODAREAS"][section] : 16;
 
     accesibilidad.set_values({
         "collection": "territoriales",
@@ -981,8 +1023,8 @@ app.controller("documentalesCtrl", function($scope, documentales, constants) {
 
     var section = $scope.path().split('/').pop();
     var codeSubtipo = constants["CODSUBTIPOCONT"].hasOwnProperty(section) ? constants["CODSUBTIPOCONT"][section] : null;
-    var codeSubarea = constants["CODSUBAREA"].hasOwnProperty(section) ? constants["CODSUBAREA"][section] : null;
-    var codeArea = constants["CODAREA"].hasOwnProperty(section) ? constants["CODAREA"][section] : 16;
+    var codeSubarea = constants["CODSUBAREAS"].hasOwnProperty(section) ? constants["CODSUBAREAS"][section] : null;
+    var codeArea = constants["CODAREAS"].hasOwnProperty(section) ? constants["CODAREAS"][section] : 16;
 
     documentales.set_values({
         "collection": "documentales",
