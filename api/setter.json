@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# encoding: utf-8
 ################################################################################
 #                                                                              #
 #  CGI value setter script                                                     #
@@ -57,6 +58,10 @@ class Hash
     end
 end
 
+class Object; def ensure_array; [self] end end
+class Array; def ensure_array; to_a end end
+class NilClass; def ensure_array; to_a end end
+
 def parseValue( value )
     case value.to_s
     when /^[0-9]{14}$/
@@ -74,51 +79,48 @@ def parseValue( value )
     value
 end
 
-def buildIndicators( doc )
-    codigosindicadores      = doc["CODIGOSINDICADORES"]
-    valoresindicadoreslista = doc["VALORESINDICADORESLISTA"]
-    etiquetaindicadores     = doc["ETIQUETAINDICADORES"]
-    valoresindicadores      = doc["VALORESINDICADORES"]
+# def slugify( string )
+#     string = string.to_s.downcase
+#     string.gsub!(/[ ]+/, "_")
+#     string.gsub!(/á/, 'a')
+#     string.gsub!(/é/, 'e')
+#     string.gsub!(/í/, 'i')
+#     string.gsub!(/ó/, 'o')
+#     string.gsub!(/ú/, 'u')
+#     string.gsub!(/ñ/, 'n')
+#     string
+# end
 
-    if codigosindicadores != nil and etiquetaindicadores != nil then
-        indicadores = {}
-        etiquetaindicadores.each_index do | j |
-            key = etiquetaindicadores[j].to_s.downcase
-            key.gsub!(/[ ]+/, "_")
-            key.gsub!(/á/, 'a')
-            key.gsub!(/é/, 'e')
-            key.gsub!(/í/, 'i')
-            key.gsub!(/ó/, 'o')
-            key.gsub!(/ú/, 'u')
-            key.gsub!(/ñ/, 'n')
-            indicadores[key] = {"code": codigosindicadores[j], "contents": [] } if indicadores != nil
-        end
-        if valoresindicadores != nil and valoresindicadoreslista != nil then
-            valoresindicadores.each_index do | j |
-                key = etiquetaindicadores[j].to_s.downcase
-                key.gsub!(/[ ]+/, "_")
-                key.gsub!(/á/, 'a')
-                key.gsub!(/é/, 'e')
-                key.gsub!(/í/, 'i')
-                key.gsub!(/ó/, 'o')
-                key.gsub!(/ú/, 'u')
-                key.gsub!(/ñ/, 'n')
-                label = valoresindicadoreslista[j].to_s.downcase
-                label.gsub!(/[ ]+/, "_")
-                label.gsub!(/á/, 'a')
-                label.gsub!(/é/, 'e')
-                label.gsub!(/í/, 'i')
-                label.gsub!(/ó/, 'o')
-                label.gsub!(/ú/, 'u')
-                label.gsub!(/ñ/, 'n')
-                indicador = {"code": valoresindicadores[j].to_i, "label": label }
-                indicadores[key][:contents].push(indicador) if indicadores[key] != nil
-            end
-        end
-        doc["INDICADORES"] = indicadores
-    end
-    doc
-end
+#Deprecated. will be constructed dinamically in fetch.json
+#--------------------------------------------------------#
+#def buildIndicators( doc )
+#    codigosindicadores      = doc["CODIGOSINDICADORES"]
+#    etiquetaindicadores     = doc["ETIQUETAINDICADORES"]
+#    valoresindicadoreslista = doc["VALORESINDICADORESLISTA"]
+#    valoresindicadores      = doc["VALORESINDICADORES"]
+#
+#    codigosindicadores      = codigosindicadores.split(';')      if not codigosindicadores.is_array?
+#    etiquetaindicadores     = etiquetaindicadores.split(';')     if not etiquetaindicadores.is_array?
+#    valoresindicadoreslista = valoresindicadoreslista.split(';') if not valoresindicadoreslista.is_array?
+#    valoresindicadores      = valoresindicadores.split(';')      if not valoresindicadores.is_array?
+#
+#    if codigosindicadores != nil and etiquetaindicadores != nil then
+#        indicadores = {}
+#        etiquetaindicadores.each_with_index do | key, j |
+#            indicadores[slugify key] = {"code": codigosindicadores[j], "contents": [] } if indicadores != nil
+#        end
+#        if valoresindicadores != nil and valoresindicadoreslista != nil then
+#            valoresindicadores.each_with_index do | valor, j |
+#                key = slugify etiquetaindicadores[j]
+#                label = slugify valoresindicadoreslista[j]
+#                indicador = {"code": valor.to_i, "label": label }
+#                indicadores[key][:contents].push(indicador) if indicadores[key] != nil
+#            end
+#        end
+#        doc["INDICADORES"] = indicadores
+#    end
+#    doc
+#end
 
 cgi = CGI.new
 output = []
@@ -183,24 +185,35 @@ begin
                 doc = values[index]
                 doc.hmap! { | k, v | [ k, parseValue(v) ]}
 
-                if doc.keys.include?('CODIGOSINDICADORES')\
-                || doc.keys.include?('VALORESINDICADORESLISTA')\
-                || doc.keys.include?('ETIQUETAINDICADORES')\
-                || doc.keys.include?('VALORESINDICADORES')
-                then doc = buildIndicators doc end
+                #Deprecated. will be constructed dinamically in fetch.json
+                #--------------------------------------------------------#
+                #if doc.keys.include?('CODIGOSINDICADORES')\
+                #|| doc.keys.include?('VALORESINDICADORESLISTA')\
+                #|| doc.keys.include?('ETIQUETAINDICADORES')\
+                #|| doc.keys.include?('VALORESINDICADORES')
+                #then doc = buildIndicators doc end
+                #--------------------------------------------------------#
 
                 if filter == nil then
                     puts "Will insert new document." if ARGV[0] != nil
                     filterless.push doc
                 else
-                    puts "Will update a document." if ARGV[0] != nil
-                    updated += 1
-                    collection.find_one_and_update(filter, doc, {upsert: true})
+                    puts "Will update a document using filter: " + filter.inspect if ARGV[0] != nil
+                    puts "Will update it with the following values: " + doc.inspect if ARGV[0] != nil
+                    returned_BSON = collection.find(filter).first
+                    if returned_BSON == nil then
+                        puts "The document was not found." if ARGV[0] != nil
+                        filterless.push doc
+                    else
+                        collection.find_one_and_update(filter, { "$set": doc })
+                        updated += 1
+                    end
                 end
 
                 puts "Values: " + doc.inspect if ARGV[0] != nil
 
             end
+            puts "will insert " + filterless.size.to_s + " documents" if ARGV[0] != nil
             inserted = 0
             inserted = collection.insert_many(filterless).inserted_count if filterless.size > 0
             result = {"collection": parameters['collection'], "updated": updated, "inserted": inserted}
