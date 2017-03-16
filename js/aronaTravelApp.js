@@ -1006,7 +1006,7 @@ app.controller("descriptivosCtrl", function($scope, $routeParams, descriptivos, 
     $scope.element = function(){return descriptivos.elements()[0]};
 
     var codeSubtipo = constants["CODSUBTIPOCONT"].hasOwnProperty($routeParams.type) ? constants["CODSUBTIPOCONT"][$routeParams.type] : null;
-    var codeSubarea = constants["CODSUBAREA"].hasOwnProperty($routeParams.type) ? constants["CODSUBAREA"][$routeParams.type] : null;
+    var codeSubarea = constants["CODSUBAREAS"].hasOwnProperty($routeParams.type) ? constants["CODSUBAREAS"][$routeParams.type] : null;
 
     descriptivos.set_values({
         "collection": "descriptivos",
