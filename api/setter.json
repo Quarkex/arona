@@ -125,47 +125,47 @@ end
 cgi = CGI.new
 output = []
 
-json = cgi.params.keys.first if cgi.params.keys.first != nil
-json = ARGV[0] if ARGV[0] != nil
-
-# If json is an xlsx file...
-if json[-5, 5] == ".xlsx" then
-    puts "Will try to load an xlsx"
-
-    language = json[-7, 2] # last two characters before extension are considered a lang code
-    puts "Guessed lang code: " + language
-
-    parameters = { "collection" => ARGV[1] != nil ? ARGV[1] : 'test', "filters" => [], "values" => [] }
-
-    require 'roo'
-    file = Roo::Spreadsheet.open(ARGV[0])
-    file = Roo::Excelx.new(ARGV[0])
-
-    file.default_sheet = file.sheets[0]
-
-    file.each_with_pagename do |name, sheet|
-        sheet.each_with_index() do |values, index|
-
-            row = index + 1
-            if row != 1 then # First row is for headers
-                doc = { "IDIOMA" => language }
-                values.each_with_index() do |value, index|
-                    column = index + 1
-                    key = sheet.cell(1, column).to_s
-                    doc[key] = value
-                end
-                parameters["filters"].push nil
-                parameters["values"].push doc
-            end
-
-        end if name == "Exportar Hoja de Trabajo"
-    end
-else
-    parameters = JSON.parse(json)
-end
-
-puts "Script in CLI mode" if ARGV[0] != nil
 begin
+    puts "Script in CLI mode" if ARGV[0] != nil
+    json = cgi.params.keys.join('&') if cgi.params.keys.first != nil
+    json = ARGV[0] if ARGV[0] != nil
+
+    # If json is an xlsx file...
+    if json[-5, 5] == ".xlsx" then
+        puts "Will try to load an xlsx" if ARGV[0] != nil
+
+        language = json[-7, 2] # last two characters before extension are considered a lang code
+        puts "Guessed lang code: " + language if ARGV[0] != nil
+
+        parameters = { "collection" => ARGV[1] != nil ? ARGV[1] : 'test', "filters" => [], "values" => [] }
+
+        require 'roo'
+        file = Roo::Spreadsheet.open(ARGV[0])
+        file = Roo::Excelx.new(ARGV[0])
+
+        file.default_sheet = file.sheets[0]
+
+        file.each_with_pagename do |name, sheet|
+            sheet.each_with_index() do |values, index|
+
+                row = index + 1
+                if row != 1 then # First row is for headers
+                    doc = { "IDIOMA" => language }
+                    values.each_with_index() do |value, index|
+                        column = index + 1
+                        key = sheet.cell(1, column).to_s
+                        doc[key] = value
+                    end
+                    parameters["filters"].push nil
+                    parameters["values"].push doc
+                end
+
+            end if name == "Exportar Hoja de Trabajo"
+        end
+    else
+        parameters = json
+        parameters = JSON.parse(json)
+    end
 
     # CGI tries to parse the request body as form parameters so a
     # blob of JSON awkwardly ends up as the one and only parameter key.
@@ -232,3 +232,4 @@ rescue Exception => e
 end
 cgi.out("documentType=application/json; charset=utf-8"){ output.to_json } unless ARGV[0] != nil
 puts "Result: " + output.to_json if ARGV[0] != nil
+puts ''
