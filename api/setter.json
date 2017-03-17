@@ -79,49 +79,6 @@ def parseValue( value )
     value
 end
 
-# def slugify( string )
-#     string = string.to_s.downcase
-#     string.gsub!(/[ ]+/, "_")
-#     string.gsub!(/á/, 'a')
-#     string.gsub!(/é/, 'e')
-#     string.gsub!(/í/, 'i')
-#     string.gsub!(/ó/, 'o')
-#     string.gsub!(/ú/, 'u')
-#     string.gsub!(/ñ/, 'n')
-#     string
-# end
-
-#Deprecated. will be constructed dinamically in fetch.json
-#--------------------------------------------------------#
-#def buildIndicators( doc )
-#    codigosindicadores      = doc["CODIGOSINDICADORES"]
-#    etiquetaindicadores     = doc["ETIQUETAINDICADORES"]
-#    valoresindicadoreslista = doc["VALORESINDICADORESLISTA"]
-#    valoresindicadores      = doc["VALORESINDICADORES"]
-#
-#    codigosindicadores      = codigosindicadores.split(';')      if not codigosindicadores.is_array?
-#    etiquetaindicadores     = etiquetaindicadores.split(';')     if not etiquetaindicadores.is_array?
-#    valoresindicadoreslista = valoresindicadoreslista.split(';') if not valoresindicadoreslista.is_array?
-#    valoresindicadores      = valoresindicadores.split(';')      if not valoresindicadores.is_array?
-#
-#    if codigosindicadores != nil and etiquetaindicadores != nil then
-#        indicadores = {}
-#        etiquetaindicadores.each_with_index do | key, j |
-#            indicadores[slugify key] = {"code": codigosindicadores[j], "contents": [] } if indicadores != nil
-#        end
-#        if valoresindicadores != nil and valoresindicadoreslista != nil then
-#            valoresindicadores.each_with_index do | valor, j |
-#                key = slugify etiquetaindicadores[j]
-#                label = slugify valoresindicadoreslista[j]
-#                indicador = {"code": valor.to_i, "label": label }
-#                indicadores[key][:contents].push(indicador) if indicadores[key] != nil
-#            end
-#        end
-#        doc["INDICADORES"] = indicadores
-#    end
-#    doc
-#end
-
 cgi = CGI.new
 output = []
 
@@ -184,15 +141,6 @@ begin
                 puts "filter " + index.to_s + ": " + filter.inspect if ARGV[0] != nil
                 doc = values[index]
                 doc.hmap! { | k, v | [ k, parseValue(v) ]}
-
-                #Deprecated. will be constructed dinamically in fetch.json
-                #--------------------------------------------------------#
-                #if doc.keys.include?('CODIGOSINDICADORES')\
-                #|| doc.keys.include?('VALORESINDICADORESLISTA')\
-                #|| doc.keys.include?('ETIQUETAINDICADORES')\
-                #|| doc.keys.include?('VALORESINDICADORES')
-                #then doc = buildIndicators doc end
-                #--------------------------------------------------------#
 
                 if filter == nil then
                     puts "Will insert new document." if ARGV[0] != nil
