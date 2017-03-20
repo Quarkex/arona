@@ -7,7 +7,7 @@
                     <div class="medium-3 columns">
                         <div class="square" style="background-image: url(http://www.arona.org/portal/imagecache/ampliado/{{ element().IMAGEN }});"></div>
                     </div>
-            <div class="showcaser-date">{{ card.F_PUB_ORIGINAL | date : translate('date.schema') | capitalize }}</div>
+            <div class="showcaser-date">{{ element().F_PUB_ORIGINAL | date : translate('date.schema') | capitalize }}</div>
             <div layout="column" class="row post-content">
                 <div class="activity-content" layout="column" ng-if="element()['RESUMEN'] != null">
                     <div ng-bind-html="element()['RESUMEN'] | trust"></div>
