@@ -11,7 +11,7 @@
                     <a style="text-align: left;" href="#/{{ lang() }}/{{ sections()[1] }}/{{ sections()[2] }}/{{ card.CODCONTENIDO }}">
                         {{ card.TITULO }}
                     </a>
-                <div class="date" flex="50" layout="column" layout-align="start center"><span>{{ card.F_PUB_ORIGINAL | date: 'LLLL' | limitTo: 3 }}</span></div>
+                <div class="showcaser-date">{{ card.F_PUB_ORIGINAL | date : translate('date.schema') | capitalize }}</div>
                 </span>
             </md-card-title-text>
         </div>
