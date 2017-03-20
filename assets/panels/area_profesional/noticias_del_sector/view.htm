@@ -8,7 +8,7 @@
                         <div class="square" style="background-image: url(http://www.arona.org/portal/imagecache/ampliado/{{ element().IMAGEN }});"></div>
                     </div>
             <div class="date" flex="50" layout="column" layout-align="start center"><span>{{ card.F_PUB_ORIGINAL | date: 'LLLL' | limitTo: 3 }}</span></div>
-            <div layout="column" class="row post-content">N
+            <div layout="column" class="row post-content">
                 <div class="activity-content" layout="column" ng-if="element()['RESUMEN'] != null">
                     <div ng-bind-html="element()['RESUMEN'] | trust"></div>
                 </div>

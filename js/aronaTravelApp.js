@@ -665,7 +665,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
             var path = [ urlattr.section, urlattr.type ];
             var custom_values = [
                 [],
-                ["oficinas_de_informacion","lugares_de_interes","arona_360","albumes","videos","folletos_y_mapas","destino_accesible","noticias"]
+                ["oficinas_de_informacion","lugares_de_interes","arona_360","albumes","videos","folletos_y_mapas","destino_accesible","noticias_del_sector"]
             ];
             for (var i = 0; i < path.length; i++){
                 switch(i){
@@ -677,7 +677,6 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
                 }
             }
             url += isNaN(path[path.length -1]) ? "/browser.htm" : "/view.htm";
-console.log(url);
             return url;
         },
         resolve:{ "check":isValidLang },
@@ -689,7 +688,7 @@ console.log(url);
             var path = [ urlattr.section, urlattr.subsection, urlattr.type ];
             var custom_values = [
                 [],
-                ["destino_accesible","descargas"],
+                ["destino_accesible","descargas","noticias_del_sector"],
                 ["guia_de_accesibilidad", "videos", "playa_de_las_vistas_accesible", "clima", "compromiso_con_la_calidad","la_conquista_de_canarias"]
             ];
             for (var i = 0; i < path.length; i++){
