@@ -2,8 +2,41 @@
 
 require 'cgi'
 require 'json'
+require 'mongo'
 
 cgi = CGI.new
+
+$config = {}
+
+# Default config values
+$config["mongo-ip"]   = "127.0.0.1"
+$config["mongo-port"] = 27017
+$config["mongo-db"]   = "arona"
+
+configFile = File.expand_path(File.dirname(__FILE__)) + '/../config.json'
+load configFile if File.file? configFile
+
+Mongo::Logger.logger.level = ::Logger::FATAL
+
+client = Mongo::Client.new([ $config['mongo-ip'] + ':' + $config['mongo-port'].to_s ], :database => $config['mongo-db'])
+db = client.database
+collection = client["menus"]
+collection.indexes.create_one( { :date => -1 }, unique: false )
+collection.indexes.create_one( { "CODMENU" => 1 }, unique: false )
+collection.indexes.create_one( { "IDIOMA" => 1 }, unique: false )
+
+def slugify( string )
+    string.gsub!(/á/, "a")
+    string.gsub!(/é/, "e")
+    string.gsub!(/í/, "i")
+    string.gsub!(/ó/, "o")
+    string.gsub!(/ú/, "u")
+    string.gsub!(/ñ/, "n")
+    string.gsub!(/[\s]+/, "_")
+    string.gsub!(/[^a-z A-Z _ \- 0-9]*/, "")
+    string.downcase!
+    string
+end
 
 doc = {
     "idioma.de":                                            "Deutsch",
@@ -318,4 +351,14 @@ doc = {
     "servicio.television_por_satelite":                     "Televisión por satélite",
     "servicio.banos":                                       "Baños"
 }
+
+db_strings = collection.find({"IDIOMA": "es"}, {"NOMBRE": 1, "RESUMEN": 1})
+db_strings.each do | row |
+    page_title = row["NOMBRE"].to_s
+    page_subtitle = row["RESUMEN"].to_s
+    dictionary_key = slugify page_title
+    doc["pagina.titulo_" + dictionary_key] = page_title if not doc.has_key? "pagina.titulo_" + dictionary_key unless row["NOMBRE"].to_s == ''
+    doc["pagina.subtitulo_" + dictionary_key] = page_subtitle if not doc.has_key? "pagina.subtitulo_" + dictionary_key unless row["RESUMEN"].to_s == ''
+end
+
 cgi.out("application/json; charset=utf-8"){ doc.to_json }

@@ -2,8 +2,41 @@
 
 require 'cgi'
 require 'json'
+require 'mongo'
 
 cgi = CGI.new
+
+$config = {}
+
+# Default config values
+$config["mongo-ip"]   = "127.0.0.1"
+$config["mongo-port"] = 27017
+$config["mongo-db"]   = "arona"
+
+configFile = File.expand_path(File.dirname(__FILE__)) + '/../config.json'
+load configFile if File.file? configFile
+
+Mongo::Logger.logger.level = ::Logger::FATAL
+
+client = Mongo::Client.new([ $config['mongo-ip'] + ':' + $config['mongo-port'].to_s ], :database => $config['mongo-db'])
+db = client.database
+collection = client["menus"]
+collection.indexes.create_one( { :date => -1 }, unique: false )
+collection.indexes.create_one( { "CODMENU" => 1 }, unique: false )
+collection.indexes.create_one( { "IDIOMA" => 1 }, unique: false )
+
+def slugify( string )
+    string.gsub!(/á/, "a")
+    string.gsub!(/é/, "e")
+    string.gsub!(/í/, "i")
+    string.gsub!(/ó/, "o")
+    string.gsub!(/ú/, "u")
+    string.gsub!(/ñ/, "n")
+    string.gsub!(/[\s]+/, "_")
+    string.gsub!(/[^a-z A-Z _ \- 0-9]*/, "")
+    string.downcase!
+    string
+end
 
 doc = {
     "general.actualizarnavegador":            "<p><strong>Please upgrade your web browser. You are using an old or unsupported browser that could have serious security issues and lack some important presentational or functional features</strong>. This website has been designed following <a href='http://www.w3.org/'>W3C (<em>World Wide Web Consortium</em>)</a> standards and your browser doesn't meet currently accepted minimum levels of conformity (in particular <a href='http://www.w3.org/TR/CSS21/'>CSS 2.1</a>). You will enyoy a better browsing experience upgrading your browser. This advice is not particular to this site.</p><p>If you are an Internet Explorer user please upgrade to the <a href='http://www.microsoft.com/windows/ie/'>latest version available</a> (we recommed Internet Explorer 8). If you are using Internet Explorer 6 on Windows 2000 upgrading to a later version isn't an option, in that case we advice you to consider installing a recent version of free browsers available for your platform: <a href='http://getfirefox.com/'>Mozilla FireFox</a>, <a href='http://www.opera.com/'>Opera</a>, <a href='http://www.apple.com/safari/'>Apple Safari</a>, <a href='http://www.google.com/chrome'>Google Chrome</a>.</p>",
@@ -269,4 +302,18 @@ doc = {
     "date.september":                         "September",
     "date.sep":                               "Sep"
 }
+
+db_strings = collection.find({"IDIOMA": "es"}, {"CODMENU": 1, "NOMBRE": 1})
+db_strings.each do | row |
+    dictionary_key = slugify row["NOMBRE"].to_s
+    row = collection.find({"IDIOMA": "en", "CODMENU": row["CODMENU"]}, {"NOMBRE": 1, "RESUMEN": 1})
+    if row.first != nil then
+        row = row.first
+        page_title = row["NOMBRE"].to_s
+        page_subtitle = row["RESUMEN"].to_s
+        doc["pagina.titulo_" + dictionary_key] = page_title if not doc.has_key? "pagina.titulo_" + dictionary_key unless row["NOMBRE"].to_s == ''
+        doc["pagina.subtitulo_" + dictionary_key] = page_subtitle if not doc.has_key? "pagina.subtitulo_" + dictionary_key unless row["RESUMEN"].to_s == ''
+    end
+end
+
 cgi.out("application/json; charset=utf-8"){ doc.to_json }
