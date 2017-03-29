@@ -106,10 +106,10 @@ begin
 
                             def buildIndicators( doc )
                                 indicadores = {}
-                                codigosindicadores      = doc["CODIGOSINDICADORES"]
-                                etiquetaindicadores     = doc["ETIQUETAINDICADORES"]
-                                valoresindicadoreslista = doc["VALORESINDICADORESLISTA"]
-                                valoresindicadores      = doc["VALORESINDICADORES"]
+                                codigosindicadores      = doc["CODIGOSINDICADORES"]     == nil ? '' : doc["CODIGOSINDICADORES"]
+                                etiquetaindicadores     = doc["ETIQUETAINDICADORES"]    == nil ? '' : doc["ETIQUETAINDICADORES"]
+                                valoresindicadoreslista = doc["VALORESINDICADORESLISTA"]== nil ? '' : doc["VALORESINDICADORESLISTA"]
+                                valoresindicadores      = doc["VALORESINDICADORES"]     == nil ? '' : doc["VALORESINDICADORES"]
 
                                 codigosindicadores      = codigosindicadores.split(';')      if not codigosindicadores.kind_of?(Array)
                                 etiquetaindicadores     = etiquetaindicadores.split(';')     if not etiquetaindicadores.kind_of?(Array)
