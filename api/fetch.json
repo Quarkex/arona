@@ -164,7 +164,7 @@ begin
 
                     when "MAPA_IFRAME"
                         address = ""
-                        chunks = [ "TIPO_VIA", "NOMBRE_VIA", "NUMERO", "BLOQUE", "PORTAL", "ESCALERA", "PLANTA", "PUERTA", "LOCAL", "CODIGO_POSTAL", "ZONA" ]
+                        chunks = [ "TIPO_VIA", "NOMBRE_VIA", "NUMERO", "BLOQUE", "PORTAL", "ESCALERA", "PLANTA", "PUERTA", "LOCAL", "CODIGO_POSTAL" ]
 
                         chunks.each do | chunk |
                             if document.has_key? chunk and document[chunk] != nil then
