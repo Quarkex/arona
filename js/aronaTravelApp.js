@@ -1159,7 +1159,7 @@ app.controller("territorialCtrl", function($scope, $routeParams, territorial, co
     territorial.set_values({
         "collection": "territoriales",
         "filters": {"CODCONTENIDO": { $in: [code, parseInt (section)]}},
-        "values": ["MAPA_IFRAME", "MAPA","CODCONTENIDO","TITULO","ZONA","TELEFONO","FAX","WEB_PROPIA","DIRECCION","EMAIL","INDICADORES", "IMAGEN"],
+        "values": ["MAPA_IFRAME", "MAPA","CODCONTENIDO","TITULO","ZONA","TELEFONO","FAX","WEB_PROPIA","DIRECCION","EMAIL","INDICADORES", "IMAGEN", "DESCRIPCION_COMUN"],
         "offset": 0,
         "limit": 1
     });
