@@ -111,10 +111,10 @@ begin
                                 valoresindicadoreslista = doc["VALORESINDICADORESLISTA"]== nil ? '' : doc["VALORESINDICADORESLISTA"]
                                 valoresindicadores      = doc["VALORESINDICADORES"]     == nil ? '' : doc["VALORESINDICADORES"]
 
-                                codigosindicadores      = codigosindicadores.split(';')      if not codigosindicadores.kind_of?(Array)
-                                etiquetaindicadores     = etiquetaindicadores.split(';')     if not etiquetaindicadores.kind_of?(Array)
-                                valoresindicadoreslista = valoresindicadoreslista.split(';') if not valoresindicadoreslista.kind_of?(Array)
-                                valoresindicadores      = valoresindicadores.split(';')      if not valoresindicadores.kind_of?(Array)
+                                codigosindicadores      = codigosindicadores.split('&')      if not codigosindicadores.kind_of?(Array)
+                                etiquetaindicadores     = etiquetaindicadores.split('&')     if not etiquetaindicadores.kind_of?(Array)
+                                valoresindicadoreslista = valoresindicadoreslista.split('&') if not valoresindicadoreslista.kind_of?(Array)
+                                valoresindicadores      = valoresindicadores.split('&')      if not valoresindicadores.kind_of?(Array)
 
                                 if codigosindicadores != nil and etiquetaindicadores != nil then
                                     etiquetaindicadores.each_with_index do | key, j |
