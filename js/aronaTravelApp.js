@@ -302,7 +302,8 @@ function ResourcePaginator(language, $resource){
             }
         },
         // hash with custom settings
-        'settings': {}
+        'settings': {},
+        'element_status': 'ok'
     };
 
     // hash as seen by the final cgi
@@ -320,6 +321,7 @@ function ResourcePaginator(language, $resource){
 
     function get(){
         self.elements([]);
+        self.element_status('loading');
         self.resource.get( self.values, function(data){
             if (self.values.collection != null) {
                 if (data[0] == null){
@@ -341,13 +343,23 @@ function ResourcePaginator(language, $resource){
                             console.warn(error_object.parameters);
                             if (data.length > 0) last_item = data[data.length - 1];
                             else last_item = {};
+                            self.element_status('error');
                         }
                     }
                     self.elements(data);
+                    self.element_status('ok');
                 }
             }
         });
     }
+
+    this.element_status = function(e){
+        if (e != undefined){
+            self.variables.element_status = e;
+        }
+        return self.variables.element_status;
+    };
+    scope_interface.push("element_status");
 
     this.elements = function(e){
         if (e != undefined){

@@ -2,11 +2,11 @@
     <h2 class="element-title" ng-bind="translate( 'general.titulo_', params.id ? params.id : params.type ? params.type : params.subsection ) | gsub:'_':' '|capitalize"></h2>
     <div ng-include="'assets/elements-feedback-header.htm'" style="display: none;"></div>
     <ng-include class="row" ng-cloak style="display: none;" src="'assets/atoms/' + sections()[1] + '/filters.htm'"></ng-include>
-    <div ng-if="elements().length == 0" layout-align="space-around" layout="row" layout-margin>
+    <div ng-if="element_status() == 'loading'" layout-align="space-around" layout="row" layout-margin>
         <md-progress-circular md-mode="indeterminate"></md-progress-circular>
     </div>
     <div class="row collapse">
-        <div class="medium-12 columns" ng-class="{'end': $last}" ng-repeat="card in elements()">
+        <div ng-if="element_status() == 'ok'" class="medium-12 columns" ng-class="{'end': $last}" ng-repeat="card in elements()">
             <ng-include src="'assets/atoms/' + sections()[1] + '/card.htm'"></ng-include>
         </div>
     </div>
