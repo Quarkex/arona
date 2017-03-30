@@ -198,7 +198,8 @@ begin
 
                     when "IMAGEN", "DOCUMENTO"
                         if document.has_key? value then
-                            resource = resources.find({ "CODRECURSO": document[value] }).sort("RECURSO" => -1).first
+                            resource = resources.find({ "IDIOMA": "es", "CODRECURSO": document[value] }).sort("RECURSO" => -1).first
+                            resource = resources.find({ "CODRECURSO": document[value] }).sort("RECURSO" => -1).first if resource == nil
                             item[value] = resource == nil ? nil : resource["RECURSO"]
                         end
 
