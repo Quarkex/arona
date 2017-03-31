@@ -14,7 +14,7 @@
     </div>
 </div>
 <div flex="100" layout="row" style="background-color: #f6f6f6;" layout-align="center center">
-    <div flex="100" flex-gt-md="65" layout="column" layout-gt-md="row" layout-margin="24px">
+    <div flex="100" flex-gt-md="65" layout="column" layout-gt-md="row" layout-margin="24px" layout-align="center center">
         <div flex flex-gt-md="50" ng-if="link.content == undefined" ng-repeat="(label, link) in sublinks()">
             <a flex layout="row" class="icon-button" href="{{ link.href.substr(0,1) == '/' ? '#/' + lang() : '' }}{{ link.href }}">
                 <div><md-icon class="material-icons md-primary">{{ translate('pagina.icono_', label) }}</md-icon></div>
