@@ -1,0 +1,25 @@
+<div ng-include="'assets/tab-bar.htm'"></div>
+<div class="row" ng-controller="guiaAccesibilidadCtrl">
+    <div class="small-10 small-offset-1 columns">
+        <ul class="video-list">
+            <li ng-repeat="item in elements()">
+                <div layout="row" class="row">
+                    <a layout="row" flex ng-href="{{ item.HREF }}" layout-margin>
+                        <div class="square" style="background-image: url(http://www.arona.org/portal/imagecache/ampliado/{{ item.IMAGEN }})"></div>
+                        <div flex>
+                            <h1 ng-bind="item.TITULO"></h1>
+                            <p ng-bind-html="item.DESCRIPCION_COMUN | trust"></p>
+                        </div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="large-10 large-offset-1 columns" ng-controller="guiaAccesibilidadCtrl">
+        <div ng-include="'assets/paginator.htm'"></div>
+        <br>
+        <div ng-include="'assets/back-bar.htm'"></div>
+    </div>
+</div>

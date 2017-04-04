@@ -701,7 +701,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
             var custom_values = [
                 [],
                 ["destino_accesible","descargas","noticias_del_sector"],
-                ["guia_de_accesibilidad", "videos", "playa_de_las_vistas_accesible", "clima", "compromiso_con_la_calidad","la_conquista_de_canarias"]
+                ["guia_de_accesibilidad", "videos", "alquiler_de_ayudas_tecnicas", "playa_de_las_vistas_accesible", "clima", "compromiso_con_la_calidad","la_conquista_de_canarias"]
             ];
             for (var i = 0; i < path.length; i++){
                 switch(i){
