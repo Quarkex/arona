@@ -189,7 +189,8 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
             }
         },
         // hash with custom settings
-        'settings': {}
+        'settings': {},
+        'element_status': 'empty'
     };
 
     this.dictionary = function(o){
@@ -259,6 +260,7 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
     this.resource = $resource( self.variables.url, self.variables.parameters, self.variables.actions, self.variables.settings );
 
     this.get = function(){
+        self.language_status('loading');
         self.resource.get( self.values, function(data){
             if (data != null){
                 for (var k in data){
@@ -267,9 +269,18 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
                     }
                 }
                 tmhDynamicLocale.set(self.current_language());
+                self.language_status('ok');
             }
         });
     };
+
+    this.language_status = function(e){
+        if (e != undefined){
+            self.variables.language_status = e;
+        }
+        return self.variables.language_status;
+    };
+    scope_interface.push("language_status");
 
     this.expose_interface = function(scope){
         for ( var i = 0; i < scope_interface.length; i++ ){
