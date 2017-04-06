@@ -75,6 +75,9 @@ def parseValue( value )
         value = nil
     else
         value = value.to_s
+        if parameters.has_key?("escaped_strings") then
+            value = URI.unescape(value) if parameters["escaped_strings"] == true
+        end
     end
     value
 end
