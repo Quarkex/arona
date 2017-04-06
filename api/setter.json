@@ -63,6 +63,9 @@ class Array; def ensure_array; to_a end end
 class NilClass; def ensure_array; to_a end end
 
 def parseValue( value )
+    if parameters.has_key?("escaped_values") then
+        value = URI.unescape(value) if parameters["escaped_values"] == true
+    end
     case value.to_s
     when /^[0-9]{14}$/
         value.gsub!(/^([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})$/, '\1-\2-\3T\4:\5:\6Z')
@@ -75,9 +78,6 @@ def parseValue( value )
         value = nil
     else
         value = value.to_s
-        if parameters.has_key?("escaped_strings") then
-            value = URI.unescape(value) if parameters["escaped_strings"] == true
-        end
     end
     value
 end
