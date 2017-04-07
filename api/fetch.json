@@ -32,6 +32,7 @@
 require 'cgi'
 require 'json'
 require 'mongo'
+require 'date'
 
 $config = {}
 
@@ -79,7 +80,30 @@ begin
 
         doc.each do | document |
             if values == [] then
-                output.push(document)
+                should_add_document = true
+                date_constraints = ["F_INICIO_PUB", "F_FIN_PUB"]
+                date_constraints.each do | date_tag |
+                    if document.has_key?(date_tag) then
+                        def param_date date
+                            DateTime.iso8601(date)
+                        rescue ArgumentError
+                            nil
+                        end
+                        constraint = param_date document[date_tag]
+                        if constraint != nil then
+                            case date_tag
+
+                            when "F_INICIO_PUB"
+                                should_add_document = false if DateTime.now < constraint
+
+                            when "F_FIN_PUB"
+                                should_add_document = false if DateTime.now > constraint
+
+                            end
+                        end
+                    end
+                end
+                output.push(document) if should_add_document == true
             else
                 item = {}
                 values.each do | value |
@@ -211,7 +235,30 @@ begin
 
                     end
                 end
-                output.push(item)
+                should_add_document = true
+                date_constraints = ["F_INICIO_PUB", "F_FIN_PUB"]
+                date_constraints.each do | date_tag |
+                    if document.has_key?(date_tag) then
+                        def param_date date
+                            DateTime.iso8601(date)
+                        rescue ArgumentError
+                            nil
+                        end
+                        constraint = param_date document[date_tag]
+                        if constraint != nil then
+                            case date_tag
+
+                            when "F_INICIO_PUB"
+                                should_add_document = false if DateTime.now < constraint
+
+                            when "F_FIN_PUB"
+                                should_add_document = false if DateTime.now > constraint
+
+                            end
+                        end
+                    end
+                end
+                output.push(item) if should_add_document == true
             end
         end
 
