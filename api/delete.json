@@ -1,0 +1,132 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+################################################################################
+#                                                                              #
+#  CGI value deleter script                                                    #
+#                                                                              #
+#  Expects a JSON body by POST method, or as a string on the first parameter   #
+#  if using it by CLI, with the following parameters:                          #
+#                                                                              #
+#  - collection (required)                                                     #
+#    The mongo collection in which to perform the query                        #
+#                                                                              #
+#  - filters                                                                   #
+#    An array of JSON objects with the filters leading to the elements         #
+#    to delete, E.G: an unique ID field.                                       #
+#                                                                              #
+#  If you prefer to use an XLSX file, you may pass the file as the first       #
+#  parameter, and the destination collection as the second parameter.          #
+#  If you fail to provide a collection using this method, it will default to   #
+#  “test” as it is custom with MongoDB.                                        #
+#                                                                              #
+#  The script anwsers with an array of updated results.                        #
+#                                                                              #
+#  If something goes wrong, the output array will contain an object with an    #
+#  error value containing the error message.                                   #
+#                                                                              #
+################################################################################
+
+require 'uri'
+require 'cgi'
+require 'json'
+require 'mongo'
+
+$config = {}
+
+# Default config values
+$config["mongo-ip"]   = "127.0.0.1"
+$config["mongo-port"] = 27017
+$config["mongo-db"]   = "arona"
+
+configFile = File.expand_path(File.dirname(__FILE__)) + '/../config.json'
+load configFile if File.file? configFile
+
+Mongo::Logger.logger.level = ::Logger::FATAL
+
+client = Mongo::Client.new([ $config['mongo-ip'] + ':' + $config['mongo-port'].to_s ], :database => $config['mongo-db'])
+db = client.database
+
+class Hash
+    def hmap(&block)
+        Hash[self.map {|k, v| block.call(k,v) }]
+    end
+    def hmap!(&block)
+        replace hmap(&block)
+    end
+end
+
+class Object; def ensure_array; [self] end end
+class Array; def ensure_array; to_a end end
+class NilClass; def ensure_array; to_a end end
+
+cgi = CGI.new
+output = []
+
+begin
+    puts "Script in CLI mode" if ARGV[0] != nil
+    json = cgi.params.keys.join('&') if cgi.params.keys.first != nil
+    json = ARGV[0] if ARGV[0] != nil
+
+    # If json is an xlsx file...
+    if json[-5, 5] == ".xlsx" then
+        puts "Will try to load an xlsx" if ARGV[0] != nil
+
+        language = json[-7, 2] # last two characters before extension are considered a lang code
+        puts "Guessed lang code: " + language if ARGV[0] != nil
+
+        $parameters = { "collection" => ARGV[1] != nil ? ARGV[1] : 'test', "filters" => [] }
+
+        require 'roo'
+        file = Roo::Spreadsheet.open(ARGV[0])
+        file = Roo::Excelx.new(ARGV[0])
+
+        file.default_sheet = file.sheets[0]
+
+        file.each_with_pagename do |name, sheet|
+            sheet.each_with_index() do |values, index|
+
+                row = index + 1
+                if row != 1 then # First row is for headers
+                    doc = { "IDIOMA" => language }
+                    values.each_with_index() do |value, index|
+                        column = index + 1
+                        key = sheet.cell(1, column).to_s
+                        doc[key] = value
+                    end
+                    $parameters["filters"].push doc
+                end
+
+            end if name == "Exportar Hoja de Trabajo"
+        end
+    else
+        $parameters = json
+        $parameters = JSON.parse(json)
+    end
+
+    # CGI tries to parse the request body as form parameters so a
+    # blob of JSON awkwardly ends up as the one and only parameter key.
+    if $parameters.has_key?("collection") then
+        puts "Working with collection: " + $parameters['collection'].to_s if ARGV[0] != nil
+        collection = client[$parameters['collection']]
+
+        if $parameters.has_key? 'filters' then filters = $parameters['filters'] else filters = [] end
+
+        deleted = 0
+        filters.each_with_index do | filter, index |
+            if filter != nil then
+                targets = collection.find(filter).count()
+                result = collection.delete_many(filter)
+                deleted += targets if result == true
+            end
+        end
+        puts "Deleted " + deleted.to_s + " documents" if ARGV[0] != nil
+        result = {"collection": $parameters['collection'], "deleted": deleted}
+    else
+        output = [ nil ]
+    end
+rescue Exception => e
+    output.push({"parameters": $parameters, "error": e.message, "backtrace": e.backtrace })
+end
+cgi.out("documentType=application/json; charset=utf-8"){ output.to_json } unless ARGV[0] != nil
+puts "Result: " + output.to_json if ARGV[0] != nil
+puts ''
