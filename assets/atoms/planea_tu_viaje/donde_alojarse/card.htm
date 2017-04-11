@@ -20,15 +20,15 @@
         <div class="show-for-large" style="flex-basis:115px;"></div>
         <div flex layout="row">
             <div flex-xs flex="50" layout="row" xs-layout="column">
-                <md-button class="md-primary" ng-if="card.EMAIL != null" ng-href="'mailto:' + card.EMAIL">EMAIL</md-button>
-                <md-button class="md-primary" ng-if="card.WEB_PROPIA != null" ng-href="card.WEB_PROPIA">WEBSITE</md-button>
+                <md-button class="md-primary" ng-if="card.EMAIL != null" ng-href="{{ 'mailto:' + card.EMAIL }}">EMAIL</md-button>
+                <md-button class="md-primary" ng-if="card.WEB_PROPIA != null" ng-href="{{ card.WEB_PROPIA }}">WEBSITE</md-button>
             </div>
             <div flex-xs flex="50" layout="row" xs-layout="column">
                 <md-card-icon-actions layout-align="end center">
                     <md-button href="{{ card.MAPA }}" target='_blank' class="md-icon-button md-primary">
                         <md-icon class="material-icons">place</md-icon>
                     </md-button>
-                    <md-button ng-href="'mailto:' + card.CONTACTO" class="md-icon-button md-primary">
+                    <md-button ng-if="card.CONTACTO != null" ng-href="{{ 'mailto:' + card.CONTACTO }}" class="md-icon-button md-primary">
                         <md-icon class="material-icons">contact_mail</md-icon>
                     </md-button>
                 </md-card-icon-actions>
