@@ -56,22 +56,22 @@ begin
 
     # CGI tries to parse the request body as form parameters so a
     # blob of JSON awkwardly ends up as the one and only parameter key.
-    parameters = JSON.parse(cgi.params.keys.first)
-    if parameters.has_key?("collection") then
-        collection = client[parameters['collection']]
-        collection.indexes.create_one( { :date => -1 }, unique: false )
-        resources = client['recursos']
+    $parameters = JSON.parse(cgi.params.keys.first)
+    if $parameters.has_key?("collection") then
+        $collection = client[$parameters['collection']]
+        $collection.indexes.create_one( { :date => -1 }, unique: false )
+        $resources = client['recursos']
 
-        if parameters.has_key? 'filters'  then filters = parameters['filters']  else filters = {}    end
-        if parameters.has_key? 'language' then lang    = parameters['language'] else lang    = "en"  end
-        if parameters.has_key? 'values'   then values  = parameters['values']   else values  = []    end
-        if parameters.has_key? 'offset'   then offset  = parameters['offset']   else offset  = 0     end
-        if parameters.has_key? 'limit'    then limit   = parameters['limit']    else limit   = 4     end
-        if parameters.has_key? 'stats'    then stats   = parameters['stats']    else stats   = false end
+        if $parameters.has_key? 'filters'  then filters = $parameters['filters']  else filters = {}    end
+        if $parameters.has_key? 'language' then lang    = $parameters['language'] else lang    = "en"  end
+        if $parameters.has_key? 'values'   then values  = $parameters['values']   else values  = []    end
+        if $parameters.has_key? 'offset'   then offset  = $parameters['offset']   else offset  = 0     end
+        if $parameters.has_key? 'limit'    then limit   = $parameters['limit']    else limit   = 4     end
+        if $parameters.has_key? 'stats'    then stats   = $parameters['stats']    else stats   = false end
 
         filters["IDIOMA"] = lang
 
-        doc = collection.find( filters )
+        doc = $collection.find( filters )
         #sts["size"] = doc.count()
 
         doc = doc.sort({"F_INICIO_PUB": -1})
@@ -80,6 +80,7 @@ begin
 
         $skipped_elements = 0
         doc.each do | document |
+            @doc = document
             if values == [] then
                 should_add_document = true
                 date_constraints = ["F_INICIO_PUB", "F_FIN_PUB"]
@@ -112,132 +113,15 @@ begin
             else
                 item = {}
                 values.each do | value |
-                    item[value] = nil
-                    case value
-
-                    when "INDICADORES"
-                        if document.keys.include?('CODIGOSINDICADORES')\
-                        && document.keys.include?('VALORESINDICADORESLISTA')\
-                        && document.keys.include?('ETIQUETAINDICADORES')\
-                        && document.keys.include?('VALORESINDICADORES')\
-                        then
-                            def slugify( string )
-                                string = string.to_s.downcase
-                                string.gsub!(/[ ]+/, "_")
-                                string.gsub!(/á/, 'a')
-                                string.gsub!(/é/, 'e')
-                                string.gsub!(/í/, 'i')
-                                string.gsub!(/ó/, 'o')
-                                string.gsub!(/ú/, 'u')
-                                string.gsub!(/ñ/, 'n')
-                                string
-                            end
-
-                            def buildIndicators( doc )
-                                indicadores = {}
-                                codigosindicadores      = doc["CODIGOSINDICADORES"]     == nil ? '' : doc["CODIGOSINDICADORES"]
-                                etiquetaindicadores     = doc["ETIQUETAINDICADORES"]    == nil ? '' : doc["ETIQUETAINDICADORES"]
-                                valoresindicadoreslista = doc["VALORESINDICADORESLISTA"]== nil ? '' : doc["VALORESINDICADORESLISTA"]
-                                valoresindicadores      = doc["VALORESINDICADORES"]     == nil ? '' : doc["VALORESINDICADORES"]
-
-                                codigosindicadores      = codigosindicadores.split('&')      if not codigosindicadores.kind_of?(Array)
-                                etiquetaindicadores     = etiquetaindicadores.split('&')     if not etiquetaindicadores.kind_of?(Array)
-                                valoresindicadoreslista = valoresindicadoreslista.split('&') if not valoresindicadoreslista.kind_of?(Array)
-                                valoresindicadores      = valoresindicadores.split('&')      if not valoresindicadores.kind_of?(Array)
-
-                                if codigosindicadores != nil and etiquetaindicadores != nil then
-                                    etiquetaindicadores.each_with_index do | key, j |
-                                        indicadores[slugify key] = {"code": codigosindicadores[j], "contents": [] } if indicadores != nil
-                                    end
-                                    if valoresindicadores != nil and valoresindicadoreslista != nil then
-                                        valoresindicadores.each_with_index do | valor, j |
-                                            key = slugify etiquetaindicadores[j]
-                                            label = slugify valoresindicadoreslista[j]
-                                            indicador = {"code": valor.to_i, "label": label }
-                                            indicadores[key][:contents].push(indicador) if indicadores[key] != nil
-                                        end
-                                    end
-                                else
-                                    indicadores = nil
-                                end
-                                indicadores
-                            end
-
-                            item[value] = buildIndicators document
-                        else
-                            item[value] = nil
-                        end
-
-                    when "WEBCAM"
-                        #FIXME this should be dinamic
-                        if document['CODCONTENIDO'] == 22539 then
-                            item[value] = '<iframe src="http://www.skylinewebcams.com/webcam/espana/canarias/santa-cruz-de-tenerife/playa-las-vistas.html?w=339" width="800" height="500" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>'
-                        else
-                            item[value] = '<img alt="Webcam placeholder" src="img/placeholders/webcam.png">'
-                        end
-
-                    when "MAPA"
-                        address = ""
-                        chunks = [ "TIPO_VIA", "NOMBRE_VIA", "NUMERO", "BLOQUE", "PORTAL", "ESCALERA", "PLANTA", "PUERTA", "LOCAL", "CODIGO_POSTAL", "ZONA" ]
-
-                        chunks.each do | chunk |
-                            if document.has_key? chunk and document[chunk] != nil then
-                                address = address + ",+" if not address == "" unless chunk == "CODIGO_POSTAL" or chunk == "NOMBRE_VIA"
-                                address = address + "+"  if chunk == "NOMBRE_VIA" or chunk == "CODIGO_POSTAL" unless address == ""
-                                address = address + document[chunk].to_s.gsub(' ', '+')
-                                #address = CGI::escape address
-                            end
-                        end
-
-                        item[value] = "https://www.google.es/maps/place/" + address if address != ""
-
-                    when "MAPA_IFRAME"
-                        address = ""
-                        chunks = [ "TIPO_VIA", "NOMBRE_VIA", "NUMERO", "BLOQUE", "PORTAL", "ESCALERA", "PLANTA", "PUERTA", "LOCAL", "CODIGO_POSTAL" ]
-
-                        chunks.each do | chunk |
-                            if document.has_key? chunk and document[chunk] != nil then
-                                address = address + ",+" if not address == "" unless chunk == "CODIGO_POSTAL" or chunk == "NOMBRE_VIA"
-                                address = address + "+"  if chunk == "NOMBRE_VIA" or chunk == "CODIGO_POSTAL" unless address == ""
-                                address = address + document[chunk].to_s.gsub(' ', '+')
-                                #address = CGI::escape address
-                            end
-                        end
-
-                        api_key = "AIzaSyCZgh8qgEhKEsZNchyy3bBjIXoZxWHPlH0"
-                        map = "https://www.google.com/maps/embed/v1/place?key=" + api_key + "&q=" + address
-
-                        item[value] = '<iframe width="600" height="450" frameborder="0" style="border:0" src="' + map + '" allowfullscreen></iframe>' if address != ""
-
-                    when "DIRECCION"
-                        address = ""
-                        chunks = [ "TIPO_VIA", "NOMBRE_VIA", "NUMERO", "BLOQUE", "PORTAL", "ESCALERA", "PLANTA", "PUERTA", "LOCAL", "CODIGO_POSTAL", "ZONA" ]
-
-                        chunks.each do | chunk |
-                            if document.has_key? chunk and document[chunk] != nil then
-                                chunk = chunk.to_s
-                                address = address + ", " if not address == "" unless chunk == "CODIGO_POSTAL" or chunk == "NOMBRE_VIA"
-                                address = address + " "  if chunk == "NOMBRE_VIA" unless address == ""
-                                address = address + ". " if chunk == "CODIGO_POSTAL" unless address == ""
-                                address = address + document[chunk].to_s
-                            end
-                        end
-
-                        item[value] = address if address != ""
-
-                    when "IMAGEN", "DOCUMENTO"
-                        if document.has_key? value then
-                            resource = resources.find({ "IDIOMA": "es", "CODRECURSO": document[value] }).sort("RECURSO" => -1).first
-                            resource = resources.find({ "CODRECURSO": document[value] }).sort("RECURSO" => -1).first if resource == nil
-                            item[value] = resource == nil ? nil : resource["RECURSO"]
-                        end
-
-                    when  "F_INICIO_PUB", "F_FIN_PUB", "F_INICIO", "F_FIN"
-                        item[value] = document[value] if document[value] != "9999-99-99T99:99:99Z"
-
+                    @value = value
+                    item[@value] = nil
+                    module_file = File.dirname(__FILE__) + '/fetch_custom_values/' + @value + '.rb'
+                    if File.exist? (module_file) then
+                        @custom_value = nil
+                        load module_file
+                        item[@value] = @custom_value
                     else
-                        item[value] = document[value] if document.has_key? value
-
+                        item[@value] = document[@value] if document.has_key? @value
                     end
                 end
                 should_add_document = true
@@ -277,7 +161,7 @@ begin
         output = [ nil ]
     end
 rescue Exception => e
-    output.push({"error": e.message, "parameters": parameters, "backtrace": e.backtrace })
+    output.push({"error": e.message, "parameters": $parameters, "backtrace": e.backtrace })
 end
 output.push( sts ) if stats
 cgi.out("documentType=application/json; charset=utf-8"){ output.to_json }
