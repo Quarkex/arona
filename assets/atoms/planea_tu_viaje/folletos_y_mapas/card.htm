@@ -6,7 +6,7 @@
             </a>
         </div>
         <div class="small-8 columns">
-            <a style="text-align: left;" href="http://www.arona.org/portal/{{ card.DOCUMENTO }}">
+            <a style="text-align: left;" ng-href="'http://www.arona.org/portal/' + card.DOCUMENTO">
                 <h1>{{ card.TITULO }}</h1>
             </a>
             <p ng-bind-html="card.DESCRIPCION_COMUN | trust"></p>
