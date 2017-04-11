@@ -78,38 +78,42 @@ begin
         #doc = doc.skip(offset) if not offset == 0
         #doc = doc.limit(limit) if not limit == 0
 
+        def should_add( document )
+            output = true
+            date_constraints = ["F_INICIO_PUB", "F_FIN_PUB"]
+            date_constraints.each do | date_tag |
+                if document.has_key?(date_tag) then
+                    def param_date date
+                        DateTime.iso8601(date)
+                    rescue ArgumentError
+                        nil
+                    end
+                    constraint = param_date document[date_tag]
+                    if constraint != nil then
+                        case date_tag
+
+                        when "F_INICIO_PUB"
+                            output = false if DateTime.now < constraint
+
+                        when "F_FIN_PUB"
+                            output = false if DateTime.now > constraint
+
+                        end
+                    end
+                end
+            end
+            output
+        end
+
         $skipped_elements = 0
         doc.each do | document |
             @doc = document
             if values == [] then
-                should_add_document = true
-                date_constraints = ["F_INICIO_PUB", "F_FIN_PUB"]
-                date_constraints.each do | date_tag |
-                    if document.has_key?(date_tag) then
-                        def param_date date
-                            DateTime.iso8601(date)
-                        rescue ArgumentError
-                            nil
-                        end
-                        constraint = param_date document[date_tag]
-                        if constraint != nil then
-                            case date_tag
-
-                            when "F_INICIO_PUB"
-                                should_add_document = false if DateTime.now < constraint
-
-                            when "F_FIN_PUB"
-                                should_add_document = false if DateTime.now > constraint
-
-                            end
-                        end
-                    end
-                end
                 if $skipped_elements >= offset then
                     output.push(document)
                 else
                     $skipped_elements += 1
-                end unless not should_add_document == true
+                end unless not should_add(document) == true
             else
                 item = {}
                 values.each do | value |
@@ -124,34 +128,11 @@ begin
                         item[@value] = document[@value] if document.has_key? @value
                     end
                 end
-                should_add_document = true
-                date_constraints = ["F_INICIO_PUB", "F_FIN_PUB"]
-                date_constraints.each do | date_tag |
-                    if document.has_key?(date_tag) then
-                        def param_date date
-                            DateTime.iso8601(date)
-                        rescue ArgumentError
-                            nil
-                        end
-                        constraint = param_date document[date_tag]
-                        if constraint != nil then
-                            case date_tag
-
-                            when "F_INICIO_PUB"
-                                should_add_document = false if DateTime.now < constraint
-
-                            when "F_FIN_PUB"
-                                should_add_document = false if DateTime.now > constraint
-
-                            end
-                        end
-                    end
-                end
                 if $skipped_elements >= offset then
                     output.push(item)
                 else
                     $skipped_elements += 1
-                end unless not should_add_document == true
+                end unless not should_add(document) == true
             end
         end
         sts["size"] = output.count()
