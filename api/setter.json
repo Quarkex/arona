@@ -67,6 +67,7 @@ def parseValue( value )
     if $parameters.has_key?("escaped_values") then
         value = Base64.decode64(value) if $parameters["escaped_values"] == true
         value = URI.unescape(value) if $parameters["escaped_values"] == true
+        value = Base64.decode64(value) if $parameters["escaped_values"] == true
     end
     case value.to_s
     when /^[0-9]{14}$/
