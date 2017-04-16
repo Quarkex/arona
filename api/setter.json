@@ -65,8 +65,8 @@ class NilClass; def ensure_array; to_a end end
 
 def parseValue( value )
     if $parameters.has_key?("escaped_values") then
-        value = Base64.decode64(value) if $parameters["escaped_values"] == true
-        value = URI.unescape(value) if $parameters["escaped_values"] == true
+        value = Base64.decode64(value.force_encoding('UTF-8')) if $parameters["escaped_values"] == true
+        value = URI.unescape(value.force_encoding('UTF-8')) if $parameters["escaped_values"] == true
     end
     case value.to_s
     when /^[0-9]{14}$/
@@ -90,6 +90,7 @@ output = []
 begin
     puts "Script in CLI mode" if ARGV[0] != nil
     json = cgi.params.keys.join('&') if cgi.params.keys.first != nil
+    json = json + '=' + cgi.params[cgi.params.keys.first].join if cgi.params[cgi.params.keys.first] != nil
     json = ARGV[0] if ARGV[0] != nil
 
     # If json is an xlsx file...
@@ -125,7 +126,7 @@ begin
             end if name == "Exportar Hoja de Trabajo"
         end
     else
-        $parameters = json
+        $parameters = json.force_encoding('UTF-8')
         $parameters = JSON.parse(json)
     end
 
