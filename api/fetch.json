@@ -47,7 +47,7 @@ load configFile if File.file? configFile
 Mongo::Logger.logger.level = ::Logger::FATAL
 
 client = Mongo::Client.new([ $config['mongo-ip'] + ':' + $config['mongo-port'].to_s ], :database => $config['mongo-db'])
-db = client.database
+$db = client.database
 
 cgi = CGI.new
 output = []
