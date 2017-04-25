@@ -94,7 +94,7 @@ output = []
 begin
     puts "Script in CLI mode" if ARGV[0] != nil
     json = cgi.params.keys.join('&') if cgi.params.keys.first != nil
-    json = json + '=' + cgi.params[cgi.params.keys.first].join if cgi.params[cgi.params.keys.first] != nil
+    json = json + '=' + cgi.params[cgi.params.keys.first].join if cgi.params[cgi.params.keys.first] != ''
     json = ARGV[0] if ARGV[0] != nil
 
     # If json is an xlsx file...
