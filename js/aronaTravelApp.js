@@ -804,7 +804,7 @@ var resourceControllers = {
     //    "controllerValues": {
     //        "collection": "territoriales",
     //        "filters": {"SUBTIPO_PRINCIPAL": "Apartamentos"},
-    //        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+    //        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
     //        "offset": 0,
     //        "limit": 100
     //    },
@@ -815,7 +815,7 @@ var resourceControllers = {
     //    "controllerValues": {
     //        "collection": "territoriales",
     //        "filters": {"SUBTIPO_PRINCIPAL": "Hoteles"},
-    //        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+    //        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
     //        "offset": 0,
     //        "limit": 100
     //    },
@@ -826,7 +826,7 @@ var resourceControllers = {
     //    "controllerValues": {
     //        "collection": "territoriales",
     //        "filters": {"SUBTIPO_PRINCIPAL": "Pensiones"},
-    //        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+    //        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
     //        "offset": 0,
     //        "limit": 100
     //    },
@@ -837,7 +837,7 @@ var resourceControllers = {
     //    "controllerValues": {
     //        "collection": "territoriales",
     //        "filters": {"SUBTIPO_PRINCIPAL": "Alojamiento Rural"},
-    //        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+    //        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
     //        "offset": 0,
     //        "limit": 100
     //    },
@@ -848,7 +848,7 @@ var resourceControllers = {
     //    "controllerValues": {
     //        "collection": "territoriales",
     //        "filters": {"SUBTIPO_PRINCIPAL": "Aparthoteles"},
-    //        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+    //        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
     //        "offset": 0,
     //        "limit": 100
     //    },
@@ -859,7 +859,7 @@ var resourceControllers = {
         "controllerValues": {
             "collection": "documentales",
             "filters": {"SUBTIPO": "Folletos / Trípticos"},
-            "values": ["CODCONTENIDO", "DESCRIPCION_COMUN", "DOCUMENTO", "IMAGEN", "PALABRAS_CLAVE", "TITULO", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+            "values": ["CODCONTENIDO", "DESCRIPCION_COMUN", "DOCUMENTO", "IMAGEN", "PALABRAS_CLAVE", "TITULO"],
             "offset": 0,
             "limit": 8
         },
@@ -870,7 +870,7 @@ var resourceControllers = {
         "controllerValues": {
             "collection": "recursos",
             "filters": {"TIPO": "Vista 360"},
-            "values": ["TITULO", "HREF", "CODCONTENIDO", "IMAGEN", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+            "values": ["TITULO", "HREF", "CODCONTENIDO", "IMAGEN"],
             "offset": 0,
             "limit": 1000
         },
@@ -881,7 +881,7 @@ var resourceControllers = {
         "controllerValues": {
             "collection": "descriptivos",
             "filters": {"CODSUBTIPOCONT": 441, "CODAREAS": 16},
-            "values": ["TITULO", "HREF", "CODCONTENIDO", "IMAGEN", "DESCRIPCION_COMUN", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+            "values": ["TITULO", "HREF", "CODCONTENIDO", "IMAGEN", "DESCRIPCION_COMUN"],
             "offset": 0,
             "limit": 10
         },
@@ -892,7 +892,7 @@ var resourceControllers = {
         "controllerValues": {
             "collection": "descriptivos",
             "filters": {"CODSUBTIPOCONT": 290, "CODAREAS": 16},
-            "values": ["TITULO", "HREF", "CODCONTENIDO", "IMAGEN", "DESCRIPCION_COMUN", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+            "values": ["TITULO", "HREF", "CODCONTENIDO", "IMAGEN", "DESCRIPCION_COMUN"],
             "offset": 0,
             "limit": 10
         },
@@ -903,7 +903,7 @@ var resourceControllers = {
         "controllerValues": {
             "collection": "actividades",
             "filters": {"CODSUBTIPOCONT": 595, "CODAREAS": 16},
-            "values": ["TITULO", "F_INICIO", "CODCONTENIDO", "IMAGEN", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+            "values": ["TITULO", "F_INICIO", "CODCONTENIDO", "IMAGEN"],
             "offset": 0,
             "limit": 6
         },
@@ -995,7 +995,7 @@ app.controller("territorialesCtrl", function($scope, territoriales, constants) {
     territoriales.set_values({
         "collection": "territoriales",
         "filters": filters(),
-        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
         "limit": 100
     });
@@ -1014,7 +1014,7 @@ app.controller("accesibilidadCtrl", function($scope, $routeParams, accesibilidad
     accesibilidad.set_values({
         "collection": "territoriales",
         "filters": {"CODSUBTIPOCONT": codeSubtipo, "CODAREAS": codeArea, "CODSUBAREAS": codeSubarea, "VALORESINDICADORES": { $in:[37] } },
-        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
         "limit": 100
     });
@@ -1033,7 +1033,7 @@ app.controller("descriptivosCtrl", function($scope, $routeParams, descriptivos, 
     descriptivos.set_values({
         "collection": "descriptivos",
         "filters": {"CODSUBTIPOCONT": codeSubtipo, "CODAREAS": 16, "CODSUBAREAS": codeSubarea },
-        "values": ["TITULO", "HREF", "CODCONTENIDO", "IMAGEN", "DESCRIPCION_COMUN", "TEXTO", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+        "values": ["TITULO", "HREF", "CODCONTENIDO", "IMAGEN", "DESCRIPCION_COMUN", "TEXTO"],
         "offset": 0,
         "limit": 100
     });
@@ -1052,7 +1052,7 @@ app.controller("documentalesCtrl", function($scope, documentales, constants) {
     documentales.set_values({
         "collection": "documentales",
         "filters": {"CODSUBTIPOCONT": codeSubtipo, "CODAREAS": codeArea, "CODSUBAREAS": codeSubarea },
-        "values": ["CODCONTENIDO", "DESCRIPCION_COMUN", "DOCUMENTO", "IMAGEN", "PALABRAS_CLAVE", "TITULO", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+        "values": ["CODCONTENIDO", "DESCRIPCION_COMUN", "DOCUMENTO", "IMAGEN", "PALABRAS_CLAVE", "TITULO"],
         "offset": 0,
         "limit": 100
     });
@@ -1068,7 +1068,7 @@ app.controller("noticiasCtrl", function($scope, $routeParams, noticias, constant
     noticias.set_values({
         "collection": "noticias",
         "filters": {"CODAREAS": 16 },
-        "values": ["TITULO", "TITULO_CORTO", "F_PUB_ORIGINAL", "HREF", "CODCONTENIDO", "IMAGEN", "RESUMEN", "DESCRIPCION_COMUN", "TEXTO", "FMODIFICACION", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+        "values": ["TITULO", "TITULO_CORTO", "F_PUB_ORIGINAL", "HREF", "CODCONTENIDO", "IMAGEN", "RESUMEN", "DESCRIPCION_COMUN", "TEXTO", "FMODIFICACION"],
         "offset": 0,
         "limit": 100
     });
@@ -1119,7 +1119,7 @@ app.controller("videoAccesibleCtrl", function($scope, videoAccesible) {
     videoAccesible.set_values({
         "collection": "descriptivos",
         "filters": {"CODSUBTIPOCONT": 441, "CODAREAS": 16, "CODSUBARES": 277},
-        "values": ["TITULO", "HREF", "CODCONTENIDO", "IMAGEN", "DESCRIPCION_COMUN", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+        "values": ["TITULO", "HREF", "CODCONTENIDO", "IMAGEN", "DESCRIPCION_COMUN"],
         "offset": 0,
         "limit": 10
     });
@@ -1215,7 +1215,7 @@ app.controller("webcamsCtrl", function($scope, webcams, constants) {
     webcams.set_values({
         "collection": "territoriales",
         "filters": {"CODSUBTIPOCONT": code},
-        "values": ["TITULO", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+        "values": ["TITULO"],
         "offset": 0,
         "limit": 1000
     });
@@ -1399,7 +1399,7 @@ app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, 
         'offset': 0,
         'limit': 3,
         'filters': {"CODAREAS": 16, "CODSUBTIPOCONT": 595},
-        "values": ["TITULO", "F_INICIO", "CODCONTENIDO", "IMAGEN", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+        "values": ["TITULO", "F_INICIO", "CODCONTENIDO", "IMAGEN"],
         'elements': {}
     };
 
