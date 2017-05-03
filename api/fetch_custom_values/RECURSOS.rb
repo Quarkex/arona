@@ -3,6 +3,7 @@ if @doc.has_key? 'COD' + @value then
 
     if doc_resources.is_a? String then
         doc_resources = doc_resources.split '&'
+        doc_resources = doc_resources[0].split ';' if doc_resources.size == 1
         doc_resources.map! { |i| i.to_i }
     elsif doc_resources.is_a? Integer then
         doc_resources = [doc_resources]

@@ -22,10 +22,17 @@ if @doc.keys.include?('CODIGOSINDICADORES')\
         valoresindicadoreslista = doc["VALORESINDICADORESLISTA"]== nil ? '' : doc["VALORESINDICADORESLISTA"]
         valoresindicadores      = doc["VALORESINDICADORES"]     == nil ? '' : doc["VALORESINDICADORES"]
 
-        codigosindicadores      = codigosindicadores.split('&')      if not codigosindicadores.kind_of?(Array)
-        etiquetaindicadores     = etiquetaindicadores.split('&')     if not etiquetaindicadores.kind_of?(Array)
-        valoresindicadoreslista = valoresindicadoreslista.split('&') if not valoresindicadoreslista.kind_of?(Array)
-        valoresindicadores      = valoresindicadores.split('&')      if not valoresindicadores.kind_of?(Array)
+        codigosindicadores      = codigosindicadores.split('&')         if not codigosindicadores.kind_of?(Array)
+        codigosindicadores      = codigosindicadores[0].split(';')      if codigosindicadores.size == 1
+
+        etiquetaindicadores     = etiquetaindicadores.split('&')        if not etiquetaindicadores.kind_of?(Array)
+        etiquetaindicadores     = etiquetaindicadores[0].split(';')     if etiquetaindicadores.size == 1
+
+        valoresindicadoreslista = valoresindicadoreslista.split('&')    if not valoresindicadoreslista.kind_of?(Array)
+        valoresindicadoreslista = valoresindicadoreslista[0].split(';') if valoresindicadoreslista.size == 1
+
+        valoresindicadores      = valoresindicadores.split('&')         if not valoresindicadores.kind_of?(Array)
+        valoresindicadores      = valoresindicadores[0].split(';')      if valoresindicadores.size == 1
 
         if codigosindicadores != nil and etiquetaindicadores != nil then
             etiquetaindicadores.each_with_index do | key, j |
