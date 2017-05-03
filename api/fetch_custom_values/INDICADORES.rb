@@ -52,7 +52,9 @@ if @doc.keys.include?('CODIGOSINDICADORES')\
         indicadores
     end
 
-    @custom_value = buildIndicators @doc
+    output = buildIndicators @doc
+
+    @custom_value = output.empty? ? nil : output
 else
     @custom_value = nil
 end
