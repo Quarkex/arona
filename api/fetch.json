@@ -79,7 +79,7 @@ begin
         end
 
         doc = $collection.find( filters )
-        #sts["size"] = doc.count()
+        sts["size"] = doc.count()
 
         doc = doc.sort({"F_INICIO_PUB": -1})
         doc = doc.skip(offset) if not offset == 0
@@ -103,7 +103,6 @@ begin
             end
         end
         output += doc
-        sts["size"] = output.count()
 
     else
         output = [ nil ]
