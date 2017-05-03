@@ -70,73 +70,40 @@ begin
         if $parameters.has_key? 'stats'    then stats   = $parameters['stats']    else stats   = false end
 
         filters["IDIOMA"] = lang
+        filters["F_INICIO_PUB"] = {'$lt': DateTime.now }
+        filters["F_FIN_PUB"] = {'$gte': DateTime.now }
+
+        projection = {}
+        values.each do |value|
+            projection[value] = 1
+        end
 
         doc = $collection.find( filters )
         #sts["size"] = doc.count()
 
         doc = doc.sort({"F_INICIO_PUB": -1})
-        #doc = doc.skip(offset) if not offset == 0
-        #doc = doc.limit(limit) if not limit == 0
+        doc = doc.skip(offset) if not offset == 0
+        doc = doc.limit(limit) if not limit == 0
+        doc = doc.projection(projection) if not projection.empty?
+        doc = doc.to_a
 
-        def should_add( document )
-            output = true
-            date_constraints = ["F_INICIO_PUB", "F_FIN_PUB"]
-            date_constraints.each do | date_tag |
-                if document.has_key?(date_tag) then
-                    def param_date date
-                        DateTime.iso8601(date)
-                    rescue ArgumentError
-                        nil
-                    end
-                    constraint = param_date document[date_tag]
-                    if constraint != nil then
-                        case date_tag
-
-                        when "F_INICIO_PUB"
-                            output = false if DateTime.now < constraint
-
-                        when "F_FIN_PUB"
-                            output = false if DateTime.now > constraint
-
-                        end
-                    end
-                end
-            end
-            output
+        modules = {}
+        values.each do | value |
+            module_file = File.dirname(__FILE__) + '/fetch_custom_values/' + value + '.rb'
+            modules[value] = module_file if File.exist? (module_file)
         end
 
-        $skipped_elements = 0
         doc.each do | document |
             @doc = document
-            if values == [] then
-                if $skipped_elements >= offset then
-                    output.push(document)
-                else
-                    $skipped_elements += 1
-                end unless not should_add(document) == true
-            else
-                item = {}
-                values.each do | value |
-                    @value = value
-                    item[@value] = nil
-                    module_file = File.dirname(__FILE__) + '/fetch_custom_values/' + @value + '.rb'
-                    if File.exist? (module_file) then
-                        @custom_value = nil
-                        load module_file
-                        item[@value] = @custom_value
-                    else
-                        item[@value] = document[@value] if document.has_key? @value
-                    end
-                end
-                if $skipped_elements >= offset then
-                    output.push(item)
-                else
-                    $skipped_elements += 1
-                end unless not should_add(document) == true
+            modules.each do | value, file |
+                @value = value
+                @custom_value = nil
+                load file
+                document[@value] = @custom_value
             end
         end
+        output += doc
         sts["size"] = output.count()
-        output = output.take(limit) unless limit == 0
 
     else
         output = [ nil ]
