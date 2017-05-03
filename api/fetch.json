@@ -73,7 +73,7 @@ begin
         filters["F_INICIO_PUB"] = {'$lt': DateTime.now }
         filters["F_FIN_PUB"] = {'$gte': DateTime.now }
 
-        projection = {}
+        projection = {"_id"=> 1}
         values.each do |value|
             projection[value] = 1
         end
@@ -94,7 +94,7 @@ begin
         end
 
         doc.each do | document |
-            @doc = document
+            @doc = $collection.find({"_id": document["_id"]}).first
             modules.each do | value, file |
                 @value = value
                 @custom_value = nil
