@@ -16,7 +16,7 @@
                         <time ng-if="element().F_FIN != null" datetime="{{ element().F_FIN }}">{{ element().F_FIN | date: 'EEE dd, MMM yyyy'}}</time>
                         </p>
                         <p class="post-meta time price">
-                        <time datetime="{{ element().F_INICIO }}">{{ element().F_INICIO | date: 'HH:mm' : '+0000'}} h</time>
+                        <time ng-if="element().F_INICIO != null" datetime="{{ element().F_INICIO }}">{{ element().F_INICIO | date: 'HH:mm' : '+0000'}} h</time>
                         <span ng-if="element().F_FIN != null"> - </span>
                         <time ng-if="element().F_FIN != null" datetime="{{ element().F_FIN }}">{{ element().F_FIN | date: 'HH:mm' : '+0000'}} h</time>
                         <span ng-if="element().PRECIO != null" class="show-for-medium"> | </span>
