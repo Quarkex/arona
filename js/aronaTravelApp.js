@@ -1138,7 +1138,7 @@ app.controller("descriptivoCtrl", function($scope, $routeParams, descriptivo, co
     descriptivo.set_values({
         "collection": "descriptivos",
         "filters": {"CODCONTENIDO": { $in: [code, parseInt (section)]}},
-        "values": ["TITULO", "HREF", "CODCONTENIDO", "IMAGEN", "DESCRIPCION_COMUN", "TEXTO", "RECURSOS", "CONTENIDOS_RELACIONADOS", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+        "values": ["TITULO", "HREF", "CODCONTENIDO", "IMAGEN", "DESCRIPCION_COMUN", "TEXTO", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
         "offset": 0,
         "limit": 1
     });
