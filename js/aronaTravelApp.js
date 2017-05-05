@@ -1118,7 +1118,7 @@ app.controller("videoAccesibleCtrl", function($scope, videoAccesible) {
     videoAccesible.expose_interface($scope);
     videoAccesible.set_values({
         "collection": "descriptivos",
-        "filters": {"CODSUBTIPOCONT": 441, "CODAREAS": 16, "CODSUBARES": 277},
+        "filters": {"CODSUBTIPOCONT": 441, "CODAREAS": 16, "CODSUBAREAS": 277},
         "values": ["TITULO", "HREF", "CODCONTENIDO", "IMAGEN", "DESCRIPCION_COMUN"],
         "offset": 0,
         "limit": 10
