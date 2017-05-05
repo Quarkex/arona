@@ -466,7 +466,10 @@ function ResourcePaginator(language, $resource){
         if (p != undefined){
             var target = ( (p - 1) * self.page_size() );
             var max = ( Math.ceil(self.size() / self.page_size()) * self.page_size() );
-            if (target >= 0 && target <= max) self.set_values({offset: target});
+            if (target >= 0 && target <= max) {
+                window.scrollTo(0, 0);
+                self.set_values({offset: target});
+            }
         }
         return Math.ceil(self.values.offset / self.page_size()) + 1;
     };
@@ -484,14 +487,20 @@ function ResourcePaginator(language, $resource){
 
     this.previous_page = function(){
         var target =  self.values.offset - self.page_size();
-        if ( target >= 0 ) self.set_values({offset: target});
+        if ( target >= 0 ){
+            window.scrollTo(0, 0);
+            self.set_values({offset: target});
+        }
     };
     scope_interface.push("previous_page");
 
     this.next_page = function(){
         var max = ( ( Math.ceil(self.size() / self.page_size() ) - 1 ) * self.page_size() );
         var target = self.values.offset + self.page_size();
-        if ( target <= max ) self.set_values({offset: target});
+        if ( target <= max ){
+            window.scrollTo(0, 0);
+            self.set_values({offset: target});
+        }
     };
     scope_interface.push("next_page");
 
