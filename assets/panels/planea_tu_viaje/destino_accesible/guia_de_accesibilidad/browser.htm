@@ -4,7 +4,7 @@
         <ul class="video-list">
             <li ng-repeat="item in elements()">
                 <div layout="row" class="row">
-                    <a layout="row" flex ng-href="{{ item.HREF }}" layout-margin>
+                    <a layout="row" flex ng-href="{{ 'http://www.arona.org/portal/' + item.DOCUMENTO }}" layout-margin>
                         <div class="square" style="background-image: url(http://www.arona.org/portal/imagecache/ampliado/{{ item.IMAGEN }})"></div>
                         <div flex>
                             <h1 ng-bind="item.TITULO"></h1>
