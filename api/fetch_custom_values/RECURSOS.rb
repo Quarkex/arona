@@ -10,8 +10,9 @@ if @doc.has_key? 'COD' + @value then
     end
     doc_resources = [] if doc_resources == nil
     doc_resources.map! { |i|
-        resource = $resources.find({ "IDIOMA": "es", "CODRECURSO": i, "MULTIIDIOMA": 1, "F_INICIO": {"$lt": DateTime.now}, "F_FIN": {"$gte": DateTime.now} }).sort("RECURSO" => -1).first
-        resource = $resources.find({ "IDIOMA": @doc["IDIOMA"], "CODRECURSO": i, "F_INICIO": {"$lt": DateTime.now}, "F_FIN": {"$gte": DateTime.now} }).sort("RECURSO" => -1).first if resource == nil
+        resource = $resources.find({ "IDIOMA": "es", "CODRECURSO": i, "MULTIIDIOMA": 1, "F_INICIO": {"$lt": DateTime.now}, "F_FIN": {"$gte": DateTime.now} }).sort("RECURSO" => -1)
+        resource = $resources.find({ "IDIOMA": @doc["IDIOMA"], "CODRECURSO": i, "F_INICIO": {"$lt": DateTime.now}, "F_FIN": {"$gte": DateTime.now} }).sort("RECURSO" => -1) if resource == nil
+        resource = resource.projection({"TAMANO"=>1, "RECURSO"=>1, "TITULO"=>1, "DESCRIPCION"=>1}).first if resource != nil
         resource
     }
     doc_resources = nil if doc_resources.size == 0
