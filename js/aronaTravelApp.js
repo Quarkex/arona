@@ -1004,7 +1004,7 @@ app.controller("territorialesCtrl", function($scope, territoriales, constants) {
     territoriales.set_values({
         "collection": "territoriales",
         "filters": filters(),
-        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+        "values": ["HORARIO", "MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
         "limit": 6
     });
@@ -1023,7 +1023,7 @@ app.controller("accesibilidadCtrl", function($scope, $routeParams, accesibilidad
     accesibilidad.set_values({
         "collection": "territoriales",
         "filters": {"CODSUBTIPOCONT": codeSubtipo, "CODAREAS": codeArea, "CODSUBAREAS": codeSubarea, "VALORESINDICADORES": { $in:[37] } },
-        "values": ["MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
+        "values": ["HORARIO", "MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
         "limit": 6
     });
@@ -1191,7 +1191,7 @@ app.controller("territorialCtrl", function($scope, $routeParams, territorial, co
     territorial.set_values({
         "collection": "territoriales",
         "filters": {"CODCONTENIDO": { $in: [code, parseInt (section)]}},
-        "values": ["MAPA_IFRAME", "MAPA", "CODCONTENIDO", "TITULO", "ZONA", "TELEFONO", "FAX", "WEB_PROPIA", "DIRECCION", "EMAIL", "INDICADORES", "IMAGEN", "DESCRIPCION_COMUN", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+        "values": ["HORARIO", "MAPA_IFRAME", "MAPA", "CODCONTENIDO", "TITULO", "ZONA", "TELEFONO", "FAX", "WEB_PROPIA", "DIRECCION", "EMAIL", "INDICADORES", "IMAGEN", "DESCRIPCION_COMUN", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
         "offset": 0,
         "limit": 1
     });
@@ -1241,7 +1241,7 @@ app.controller("webcamCtrl", function($scope, webcam, constants) {
     webcam.set_values({
         "collection": "territoriales",
         "filters": {"CODCONTENIDO": code},
-        "values": ["DESCRIPCION_COMUN", "WEBCAM", "DATOS_INTERES", "FMODIFICACION", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
+        "values": ["HORARIO", "DESCRIPCION_COMUN", "WEBCAM", "DATOS_INTERES", "FMODIFICACION", "RECURSOS", "CONTENIDOS_RELACIONADOS"],
         "offset": 0,
         "limit": 1
     });

@@ -22,6 +22,8 @@
                         <div ng-if="element().FAX != null" class="row collapse">
                             <p>{{ translate("general.", 'fax') | capitalize }}: {{  element().FAX }}</p>
                         </div>
+                        <div ng-if="element().HORARIO != null" class="row collapse" ng-bind-html="element().HORARIO | trust"></div>
+                        <div ng-if="element().DESCRIPCION_COMUN != null" class="row collapse" ng-bind-html="element().DESCRIPCION_COMUN | trust"></div>
                     </md-card-content>
                     <md-card-footer>
                         <md-card-actions layout="row" layout-align="begining center">
