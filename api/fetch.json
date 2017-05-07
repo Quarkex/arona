@@ -61,6 +61,8 @@ begin
         $collection = client[$parameters['collection']]
         $collection.indexes.create_one( { :date => -1 }, unique: false )
         $resources = client['recursos']
+        $resources.indexes.create_one( { "CODRECURSO" => -1 }, unique: false )
+        $resources.indexes.create_one( { "RECURSO" => -1 }, unique: false )
 
         if $parameters.has_key? 'filters'  then filters = $parameters['filters']  else filters = {}    end
         if $parameters.has_key? 'language' then lang    = $parameters['language'] else lang    = "en"  end
