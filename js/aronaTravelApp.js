@@ -220,7 +220,7 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
         return $location.path().split('/')[1];
     }
     scope_interface.push("current_language");
-    self.variables.parameters["language"] = self.current_language();
+    self.variables.parameters["language"] = self.current_language;
 
     this.available_languages = function(a){
         if (a !== undefined) if (Array.isArray(a)) self.variables.available_languages = a;
