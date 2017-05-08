@@ -256,7 +256,7 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
 
     // hash as seen by the final cgi
     this.values = {
-        language: self.current_language
+        language: self.current_language()
     };
     this.resource = $resource( self.variables.url, self.variables.parameters, self.variables.actions, self.variables.settings );
 
@@ -323,7 +323,7 @@ function ResourcePaginator(language, $resource){
 
     // hash as seen by the final cgi
     this.values = {
-        language: language.current_language,
+        language: language.current_language(),
         offset: 0,
         limit: 0,
         filters: {},
