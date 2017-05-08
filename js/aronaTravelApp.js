@@ -914,7 +914,7 @@ var resourceControllers = {
             "filters": {"CODSUBTIPOCONT": 595, "CODAREAS": 16},
             "values": ["TITULO", "F_INICIO", "CODCONTENIDO", "IMAGEN"],
             "offset": 0,
-            "limit": 6
+            "limit": 100
         },
         "singleElement": false
     }
@@ -1006,7 +1006,7 @@ app.controller("territorialesCtrl", function($scope, territoriales, constants) {
         "filters": filters(),
         "values": ["HORARIO", "MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
-        "limit": 6
+        "limit": 100
     });
 });
 
@@ -1025,7 +1025,7 @@ app.controller("accesibilidadCtrl", function($scope, $routeParams, accesibilidad
         "filters": {"CODSUBTIPOCONT": codeSubtipo, "CODAREAS": codeArea, "CODSUBAREAS": codeSubarea, "VALORESINDICADORES": { $in:[37] } },
         "values": ["HORARIO", "MAPA", "ACCESOS", "CATEGORIA", "CIERRE", "CODCONTENIDO", "CODLOCALIDAD", "DATOS_INTERES", "DESCRIPCION", "DESCRIPCION_COMUN", "DOCUMENTO", "EMAIL", "FAX", "F_BAJA", "F_FIN_NOV", "F_FIN_PUB", "F_INICIO_NOV", "F_INICIO_PUB", "F_REVISION", "HORARIO", "IMAGEN", "TITULO", "NOMBRE_SOCIAL", "NOVEDAD", "PALABRAS_CLAVE", "PUBLICADO", "SERV_PRINCIPALES", "SUBTIPO_PRINCIPAL", "TELEFONO", "TITULO", "VACACIONES", "WEB_PROPIA", "ZONA", "DIRECCION"],
         "offset": 0,
-        "limit": 6
+        "limit": 100
     });
 });
 
@@ -1044,7 +1044,7 @@ app.controller("descriptivosCtrl", function($scope, $routeParams, descriptivos, 
         "filters": {"CODSUBTIPOCONT": codeSubtipo, "CODAREAS": 16, "CODSUBAREAS": codeSubarea },
         "values": ["TITULO", "HREF", "CODCONTENIDO", "IMAGEN", "DESCRIPCION_COMUN", "TEXTO"],
         "offset": 0,
-        "limit": 6
+        "limit": 100
     });
 });
 
@@ -1063,7 +1063,7 @@ app.controller("documentalesCtrl", function($scope, documentales, constants) {
         "filters": {"CODSUBTIPOCONT": codeSubtipo, "CODAREAS": codeArea, "CODSUBAREAS": codeSubarea },
         "values": ["CODCONTENIDO", "DESCRIPCION_COMUN", "DOCUMENTO", "IMAGEN", "PALABRAS_CLAVE", "TITULO"],
         "offset": 0,
-        "limit": 6
+        "limit": 100
     });
 });
 
@@ -1079,7 +1079,7 @@ app.controller("noticiasCtrl", function($scope, $routeParams, noticias, constant
         "filters": {"CODAREAS": 16 },
         "values": ["TITULO", "TITULO_CORTO", "F_PUB_ORIGINAL", "HREF", "CODCONTENIDO", "IMAGEN", "RESUMEN", "DESCRIPCION_COMUN", "TEXTO", "FMODIFICACION"],
         "offset": 0,
-        "limit": 6
+        "limit": 100
     });
 });
 
@@ -1226,7 +1226,7 @@ app.controller("webcamsCtrl", function($scope, webcams, constants) {
         "filters": {"CODSUBTIPOCONT": code},
         "values": ["TITULO"],
         "offset": 0,
-        "limit": 6
+        "limit": 100
     });
 });
 
