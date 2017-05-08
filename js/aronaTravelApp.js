@@ -176,6 +176,7 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
 
     this.variables = {
         'dictionary': {},
+        'dictionary_lang': null,
         //'available_languages': ['de', 'en', 'es', 'fi', 'fr', 'it', 'nl', 'ru', 'sv'],
         'available_languages': ['es', 'en'],
         // parameterized URL template with parameters prefixed by : as in /user/:username
@@ -219,7 +220,7 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
         return $location.path().split('/')[1];
     }
     scope_interface.push("current_language");
-    self.variables.parameters["language"] = self.current_language;
+    self.variables.parameters["language"] = self.current_language();
 
     this.available_languages = function(a){
         if (a !== undefined) if (Array.isArray(a)) self.variables.available_languages = a;
@@ -260,18 +261,21 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
     this.resource = $resource( self.variables.url, self.variables.parameters, self.variables.actions, self.variables.settings );
 
     this.get = function(){
-        self.language_status('loading');
-        self.resource.get( self.values, function(data){
-            if (data != null){
-                for (var k in data){
-                    if (data.hasOwnProperty(k)) {
-                        self.variables.dictionary[k] = data[k];
+        if(self.variables.dictionary_lang != self.current_language()) {
+            self.language_status('loading');
+            self.resource.get( self.values, function(data){
+                if (data != null){
+                    for (var k in data){
+                        if (data.hasOwnProperty(k)) {
+                            self.variables.dictionary[k] = data[k];
+                        }
                     }
+                    tmhDynamicLocale.set(self.current_language());
+                    self.language_status('ok');
+                    self.variables.dictionary_lang = self.current_language();
                 }
-                tmhDynamicLocale.set(self.current_language());
-                self.language_status('ok');
-            }
-        });
+            });
+        }
     };
 
     this.language_status = function(e){
@@ -319,7 +323,7 @@ function ResourcePaginator(language, $resource){
 
     // hash as seen by the final cgi
     this.values = {
-        language: language.current_language(),
+        language: language.current_language,
         offset: 0,
         limit: 0,
         filters: {},
