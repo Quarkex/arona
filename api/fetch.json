@@ -59,7 +59,8 @@ begin
     $parameters = JSON.parse(cgi.params.keys.first)
     if $parameters.has_key?("collection") then
         $collection = client[$parameters['collection']]
-        $collection.indexes.create_one( { :date => -1 }, unique: false )
+        $collection.indexes.create_one( { "F_INICIO_PUB" => -1 }, unique: false )
+        $collection.indexes.create_one( { "CODCONTENIDO" => -1 }, unique: false )
         $resources = client['recursos']
         $resources.indexes.create_one( { "CODRECURSO" => -1 }, unique: false )
         $resources.indexes.create_one( { "RECURSO" => -1 }, unique: false )
