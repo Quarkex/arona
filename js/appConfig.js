@@ -1,4 +1,7 @@
-app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, $mdThemingProvider) {
+app.config(function($locationProvider, $routeProvider, tmhDynamicLocaleProvider, $animateProvider, $mdThemingProvider) {
+
+    $locationProvider.hashPrefix('');
+
     var isValidLang = function($location, language){
         language.current_language($location.path().split('/')[1]);
     };
