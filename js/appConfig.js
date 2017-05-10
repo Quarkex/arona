@@ -29,7 +29,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     .when("/:language", {
         templateUrl : "assets/panels/main.htm",
         resolve:{ "check":isValidLang },
-        controller: "aronaTravelCtrl"
+        controller: "mainCtrl"
     })
     .when("/:language/galeria", {
         redirectTo: "/:language/galeria/arona_360"
@@ -85,7 +85,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     .when("/:language/404", {
         templateUrl : "assets/404.htm",
         resolve:{ "check":isValidLang },
-        controller: "aronaTravelCtrl"
+        controller: "mainCtrl"
     })
     .when("/:language/:section/:type", {
         templateUrl :function(urlattr){
@@ -108,7 +108,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
             return url;
         },
         resolve:{ "check":isValidLang },
-        controller: "aronaTravelCtrl"
+        controller: "mainCtrl"
     })
     .when("/:language/:section/:subsection/:type", {
         templateUrl :function(urlattr){
@@ -133,7 +133,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
             return url;
         },
         resolve:{ "check":isValidLang },
-        controller: "aronaTravelCtrl"
+        controller: "mainCtrl"
     })
     .when("/:language/:section/:subsection/:type/:id", {
         templateUrl :function(urlattr){
@@ -160,7 +160,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
             return url;
         },
         resolve:{ "check":isValidLang },
-        controller: "aronaTravelCtrl"
+        controller: "mainCtrl"
     })
     .when("/:language/vive_tu_estancia/:subsection", {
         templateUrl : '/assets/panels/vive_tu_estancia/browser.htm',
@@ -180,14 +180,14 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
     .when("/:language/eventos/:event", {
         templateUrl : '/assets/panels/eventos/view.htm',
         resolve:{ "check":isValidLang },
-        controller: "aronaTravelCtrl"
+        controller: "mainCtrl"
     })
     .when("/:language/:panel*", {
         templateUrl : function(urlattr){
             return '/assets/panels/' + urlattr.panel + '.htm';
         },
         resolve:{ "check":isValidLang },
-        controller: "aronaTravelCtrl"
+        controller: "mainCtrl"
     })
     .when("", {
         // FIXME: this is not triggering when it should
