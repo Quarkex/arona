@@ -1,4 +1,4 @@
-app.controller("aronaTravelCtrl", function($rootScope, $location, $routeParams, $resource, page, language, $mdDialog ) {
+app.controller("mainCtrl", function($rootScope, $location, $routeParams, $resource, page, language, $mdDialog ) {
 
     $rootScope.page = page;
 
