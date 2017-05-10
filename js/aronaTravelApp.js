@@ -58,8 +58,6 @@
  *   E.G: {{ breadcrumbs }} => [{"label":"home", "href":"#/"},{"label":"angular", "href":"#/angular"}]
  */
 
-var app = angular.module("aronaTravelApp", ["ngRoute","ngResource","mm.foundation", "tmh.dynamicLocale", "ngAnimate", "ngMaterial"]);
-
 app.value('page', {
     'title': "Arona.travel",
     'panels':{}

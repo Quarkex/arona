@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ lang() }}" ng-init="title='Arona.travel';" ng-app="aronaTravelApp" ng-controller="aronaTravelCtrl as mainCtrl">
+<html lang="{{ lang() }}" ng-init="title='Arona.travel';" ng-app="mainApp" ng-controller="aronaTravelCtrl as mainCtrl">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
@@ -11,6 +11,28 @@
 
         <link rel="stylesheet" href="/style.min.css">
         <title>Arona.travel</title>
+
+        <!-- Angular requires Angular.js Libraries -->
+        <script type="text/javascript" src="/js/angularjs/angular.min.js"></script>
+        <script type="text/javascript">window.appDependencies = [];</script>
+        <script type="text/javascript" src="/js/angularjs/angular-route.js"></script>
+        <script type="text/javascript">window.appDependencies.push("ngRoute");</script>
+        <script type="text/javascript" src="/js/angularjs/angular-resource.js"></script>
+        <script type="text/javascript">window.appDependencies.push("ngResource");</script>
+        <script type="text/javascript" src="/js/angularjs/angular-animate.min.js"></script>
+        <script type="text/javascript">window.appDependencies.push("ngAnimate");</script>
+        <script type="text/javascript" src="/js/angularjs/angular-aria.min.js"></script>
+        <script type="text/javascript">window.appDependencies.push("ngAria");</script>
+        <script type="text/javascript" src="/js/angularjs/angular-messages.min.js"></script>
+        <script type="text/javascript">window.appDependencies.push("ngMessages");</script>
+        <script type="text/javascript" src="/js/angular-material.min.js"></script>
+        <script type="text/javascript">window.appDependencies.push("ngMaterial");</script>
+        <script type="text/javascript" src="/js/angular-foundation.min.js"></script>
+        <script type="text/javascript">window.appDependencies.push("mm.foundation");</script>
+        <script type="text/javascript" src="/js/tmhDynamicLocale.js"></script>
+        <script type="text/javascript">window.appDependencies.push("tmh.dynamicLocale");</script>
+        <script type="text/javascript">window.app = angular.module("mainApp", appDependencies);</script>
+        <script type="text/javascript" src="/js/aronaTravelApp.js"></script>
     </head>
     <body class="ng-cloak">
 
@@ -39,18 +61,8 @@
             <div class="hide-for-large" style="height: 43px;"></div><!-- Add-this mobile pusher -->
         </div>
 
-        <script src="/js/angularjs/angular.min.js"></script>
-        <script src="/js/angularjs/angular-route.js"></script>
-        <script src="/js/angularjs/angular-resource.js"></script>
-        <script src="/js/angularjs/angular-animate.min.js"></script>
-        <script src="/js/angularjs/angular-aria.min.js"></script>
-        <script src="/js/angularjs/angular-messages.min.js"></script>
-        <script src="/js/angular-material.min.js"></script>
-        <script src="/js/angular-foundation.min.js"></script>
-        <script src="/js/tmhDynamicLocale.js"></script>
-        <script src="/js/aronaTravelApp.js"></script>
-
         <script src="/js/app.js"></script>
+
         <!-- Go to www.addthis.com/dashboard to customize your tools -->
         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58b003624f2df567"></script>
 
