@@ -4,3 +4,4 @@ _site
 _sass/_sass_imports.scss
 style.min.css
 config.json
+bower_components

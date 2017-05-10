@@ -13,23 +13,25 @@
         <title>Arona.travel</title>
 
         <!-- Angular requires Angular.js Libraries -->
-        <script type="text/javascript" src="/js/angularjs/angular.min.js"></script>
+        <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
         <script type="text/javascript">window.appDependencies = [];</script>
-        <script type="text/javascript" src="/js/angularjs/angular-route.js"></script>
+        <script type="text/javascript" src="/bower_components/angular-route/angular-route.min.js"></script>
         <script type="text/javascript">window.appDependencies.push("ngRoute");</script>
-        <script type="text/javascript" src="/js/angularjs/angular-resource.js"></script>
+        <script type="text/javascript" src="/bower_components/angular-resource/angular-resource.min.js"></script>
         <script type="text/javascript">window.appDependencies.push("ngResource");</script>
-        <script type="text/javascript" src="/js/angularjs/angular-animate.min.js"></script>
+        <script type="text/javascript" src="/bower_components/angular-animate/angular-animate.min.js"></script>
         <script type="text/javascript">window.appDependencies.push("ngAnimate");</script>
-        <script type="text/javascript" src="/js/angularjs/angular-aria.min.js"></script>
+        <script type="text/javascript" src="/bower_components/angular-aria/angular-aria.min.js"></script>
         <script type="text/javascript">window.appDependencies.push("ngAria");</script>
-        <script type="text/javascript" src="/js/angularjs/angular-messages.min.js"></script>
+        <script type="text/javascript" src="/bower_components/angular-messages/angular-messages.min.js"></script>
         <script type="text/javascript">window.appDependencies.push("ngMessages");</script>
-        <script type="text/javascript" src="/js/angular-material.min.js"></script>
+        <link   rel="stylesheet"      href="/bower_components/angular-material/angular-material.min.css">
+        <script type="text/javascript" src="/bower_components/angular-material/angular-material.min.js"></script>
         <script type="text/javascript">window.appDependencies.push("ngMaterial");</script>
+        <!-- FIXME Bower angular foundation  package presents some kind of problem. Using custom file -->
         <script type="text/javascript" src="/js/angular-foundation.min.js"></script>
         <script type="text/javascript">window.appDependencies.push("mm.foundation");</script>
-        <script type="text/javascript" src="/js/tmhDynamicLocale.js"></script>
+        <script type="text/javascript" src="/bower_components/angular-dynamic-locale/dist/tmhDynamicLocale.min.js"></script>
         <script type="text/javascript">window.appDependencies.push("tmh.dynamicLocale");</script>
         <script type="text/javascript">window.app = angular.module("mainApp", appDependencies);</script>
         <script type="text/javascript" src="/js/appValues.js"></script>

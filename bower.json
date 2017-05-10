@@ -1,0 +1,30 @@
+{
+  "name": "arona",
+  "homepage": "https://github.com/Quarkex/arona",
+  "authors": [
+    "Manlio García <quarkex@gmail.com>"
+  ],
+  "description": "arona.travel web app",
+  "main": "index.html",
+  "keywords": [
+    "webapp",
+    "institutional"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.6.4",
+    "angular-material": "^1.1.4",
+    "angular-foundation": "^0.8.0",
+    "angular-route": "^1.6.4",
+    "angular-resource": "^1.6.4",
+    "angular-dynamic-locale": "^0.1.32"
+  }
+}

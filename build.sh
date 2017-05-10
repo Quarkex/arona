@@ -1,5 +1,7 @@
 #!/bin/bash
 
+/usr/bin/env bower --allow-root install
+
 #ensure that our working dir is empty
 if [[ ! -d _site ]]; then
     mkdir _site;
