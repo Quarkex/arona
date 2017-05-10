@@ -28,6 +28,7 @@ app.value('constants', {
     },
     'CODSUBTIPOCONT':{
         "agencias_de_viaje":                      48,
+        "agencias_de_viaje_accesible":            48,
         "alojamiento_rural":                      15,
         "alquiler_de_ayudas_tecnicas":            669,
         "alquiler_de_vehiculos":                  47,
@@ -42,6 +43,7 @@ app.value('constants', {
         "centros_culturales":                     146,
         "ciclismo":                               454,
         "compras":                                157,
+        "compras_accesible":                      157,
         "costumbres_y_folclore":                  490,
         "deporte_y_aventura":                     454,
         "discotecas_y_pubs":                      249,
@@ -50,10 +52,10 @@ app.value('constants', {
         "espectaculos":                           330,
         "estadisticas":                           592,
         "gimnasia_y_juegos_deportivos":           253,
-        "golf":                                   310,
         "hipica":                                 454,
         "historia_de_arona":                      329,
         "hoteles":                                26,
+        "hoteles_accesible":                      26,
         "informacion_portuaria":                  524,
         "instalaciones_deportivas":               321,
         "lugares_de_interes":                     331,
@@ -69,6 +71,7 @@ app.value('constants', {
         "por_mar_y_aire":                         150,
         "publicaciones_y_revistas":               522,
         "restaurantes":                           30,
+        "restaurantes_accesible":                 30,
         "salud_y_belleza":                        159,
         "senderismo":                             327,
         "situacion_orografia_y_vegetacion":       506,
@@ -104,6 +107,13 @@ app.value('constants', {
         "otras_especialidades":                   15,
         "pastelerias":                            null,
         "tenis_y_especialidades_con_raqueta":     15
+    },
+    "VALORESINDICADORES": {
+        "agencias_de_viaje_accesible":		  37,                              	  
+        "compras_accesible": 			  37,                              	  
+        "golf": 				  40,                              	  
+        "hoteles_accesible": 			  37,                              	  
+	"restaurantes_accesible":		  37
     }
 });
 

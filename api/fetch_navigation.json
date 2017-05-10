@@ -44,9 +44,9 @@ doc = {
         "destino_accesible":                          {"href": "/planea_tu_viaje/destino_accesible", "content": {
             "playa_de_las_vistas":                    {"href": "/planea_tu_viaje/destino_accesible/playa_de_las_vistas_accesible"},
             "donde_alojarse":                         {"href": "/planea_tu_viaje/destino_accesible/donde_alojarse"},
-            "restaurantes":                           {"href": "/planea_tu_viaje/destino_accesible/restaurantes"},
-            "compras":                                {"href": "/planea_tu_viaje/destino_accesible/compras"},
-            "agencias_de_viaje":                      {"href": "/planea_tu_viaje/destino_accesible/agencias_de_viaje"},
+            "restaurantes":		              {"href": "/planea_tu_viaje/destino_accesible/restaurantes_accesible"},
+            "compras":                                {"href": "/planea_tu_viaje/destino_accesible/compras_accesible"},
+            "agencias_de_viaje":	              {"href": "/planea_tu_viaje/destino_accesible/agencias_de_viaje_accesible"},
             "guia_de_accesibilidad":                  {"href": "/planea_tu_viaje/destino_accesible/guia_de_accesibilidad"},
             "videos":                                 {"href": "/planea_tu_viaje/destino_accesible/videos"},
             "alquiler_de_ayudas_tecnicas":            {"href": "/planea_tu_viaje/destino_accesible/alquiler_de_ayudas_tecnicas"}

@@ -56,7 +56,7 @@ app.config(function($routeProvider, tmhDynamicLocaleProvider, $animateProvider, 
         redirectTo: "/:language/planea_tu_viaje/destino_accesible/playa_de_las_vistas_accesible"
     })
     .when("/:language/planea_tu_viaje/destino_accesible/donde_alojarse", {
-        redirectTo: "/:language/planea_tu_viaje/destino_accesible/hoteles"
+        redirectTo: "/:language/planea_tu_viaje/destino_accesible/hoteles_accesible"
     })
     .when("/:language/vive_tu_estancia/actividades_recomendadas", {
         redirectTo: "/:language/vive_tu_estancia/actividades_recomendadas/deporte_y_aventura/instalaciones_deportivas"

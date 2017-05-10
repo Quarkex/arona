@@ -172,7 +172,11 @@ app.controller("territorialesCtrl", function($scope, territoriales, constants) {
                         filter[variable] = value[j];
                         options.push(filter);
                     }
-                    return { "$or": options };
+                    if (variable == "VALORESINDICADORES") {
+			return { "$in": options };
+		    } else {   
+			return { "$or": options };
+		    }
                 } else {
                     var filter = {};
                     filter[variable] = value;
@@ -184,7 +188,7 @@ app.controller("territorialesCtrl", function($scope, territoriales, constants) {
             } else return null;
         };
 
-        var variables = ["SUBTIPO_PRINCIPAL", "CODSUBTIPOCONT", "CODAREAS", "CODSUBAREAS"];
+        var variables = ["SUBTIPO_PRINCIPAL", "CODSUBTIPOCONT", "CODAREAS", "CODSUBAREAS", "VALORESINDICADORES"];
         variables.forEach(function(element, index){
             var filter = process_variable(element);
             if (filter != null) output.$and.push(filter);
