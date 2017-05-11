@@ -2,7 +2,7 @@ app.directive('appGui', function () {
 
     var template = 
         '<app-titlebar class="hide-for-print"></app-titlebar>' +
-        '<div class="hide-for-print" ng-if=" path() != ( \'/\' + lang() )" ng-include="\'assets/breadcrumbs.htm\'"></div>' +
+        '<app-breadcrumbs class="hide-for-print" ng-if=" path() != ( \'/\' + lang() )"></app-breadcrumbs>' +
         '<div class="hide-for-print" ng-include="\'assets/header.htm\'"></div>' +
         '<div ng-transclude></div>'+
         '<div class="main-row hide-for-print" ng-include="\'assets/bottomnav.htm\'"></div>' +
