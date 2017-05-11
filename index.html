@@ -48,6 +48,7 @@
         <script type="text/javascript" src="/js/directives/titlebar.js"></script>
         <script type="text/javascript" src="/js/directives/footer.js"></script>
         <script type="text/javascript" src="/js/directives/off-canvas-nav.js"></script>
+        <script type="text/javascript" src="/js/directives/off-canvas.js"></script>
     </head>
     <body class="ng-cloak">
 
@@ -56,22 +57,14 @@
             <md-progress-circular md-mode="indeterminate"></md-progress-circular>
         </div>
         <div class="angular-animate" ng-show="language_status() == 'ok'" id="app">
-            <div class="content-wrapper">
-                <div class="off-canvas-wrapper">
-                    <div class="off-canvas-wrapper-inner">
-                        <app-off-canvas-nav></app-off-canvas-nav>
-
-                        <div class="off-canvas-content {{'page-level-' + level() }} panel">
-                            <app-titlebar class="hide-for-print"></app-titlebar>
-                            <div class="hide-for-print" ng-if=" path() != ( '/' + lang() )" ng-include="'assets/breadcrumbs.htm'"></div>
-                            <div class="hide-for-print" ng-include="'assets/header.htm'"></div>
-                            <div ng-view autoscroll="true"></div>
-                            <div class="main-row hide-for-print" ng-include="'assets/bottomnav.htm'"></div>
-                            <div class="main-row hide-for-print" ng-include="'assets/bottom-extra.htm'" style="background-color: #eeeeee;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <app-off-canvas class="content-wrapper">
+                <app-titlebar class="hide-for-print"></app-titlebar>
+                <div class="hide-for-print" ng-if=" path() != ( '/' + lang() )" ng-include="'assets/breadcrumbs.htm'"></div>
+                <div class="hide-for-print" ng-include="'assets/header.htm'"></div>
+                <div ng-view autoscroll="true"></div>
+                <div class="main-row hide-for-print" ng-include="'assets/bottomnav.htm'"></div>
+                <div class="main-row hide-for-print" ng-include="'assets/bottom-extra.htm'" style="background-color: #eeeeee;"></div>
+            </app-off-canvas>
             <app-footer></app-footer>
             <div class="hide-for-large" style="height: 43px;"></div><!-- Add-this mobile pusher -->
         </div>
