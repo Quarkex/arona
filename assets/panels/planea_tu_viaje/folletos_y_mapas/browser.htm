@@ -1,7 +1,7 @@
 <app-tab-bar></app-tab-bar>
 <div class="row" ng-controller="panfletsCtrl">
     <div class="large-10 large-offset-1 columns hide-for-print">
-        <div ng-include="'assets/elements-feedback-header.htm'" style="display: none;"></div>
+        <app-element-feedback style="display: none;"></app-element-feedback>
         <ng-include class="row" ng-cloak style="display: none;" src="'assets/atoms/' + sections()[sections().length - 2] + '/' + sections()[sections().length - 1] + '/filters.htm'"></ng-include>
         <div ng-if="element_status() == 'loading'" layout-align="space-around" layout="row" layout-margin>
             <md-progress-circular md-mode="indeterminate"></md-progress-circular>
