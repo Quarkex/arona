@@ -3,7 +3,7 @@ app.directive('appGui', function () {
     var template = 
         '<app-titlebar class="hide-for-print"></app-titlebar>' +
         '<app-breadcrumbs class="hide-for-print" ng-if=" path() != ( \'/\' + lang() )"></app-breadcrumbs>' +
-        '<div class="hide-for-print" ng-include="\'assets/header.htm\'"></div>' +
+        '<app-header class="hide-for-print"></app-header>' +
         '<div ng-transclude></div>'+
         '<app-bottom-nav></app-bottom-nav>' +
         '<br>' +
