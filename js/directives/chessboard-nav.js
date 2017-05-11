@@ -3,11 +3,11 @@ app.directive('appChessboardNav', function () {
     var template = '';
     var chessboard_image = '<div class="large-6 {{ $even? \'\' : \'large-push-6\' }} columns" style="background-image: url(\'/img/backgrounds/pagina.{{ label }}.png\'), linear-gradient(to bottom, grey, grey);"></div>';
 
-    var chessboard_list_first = '{{ translate(\'pagina.titulo_\', label) }}' +
+    var chessboard_list_first = '{{ translate(\'pagina.titulo_\', label) }}';
     chessboard_list_first = '<a href="{{ link.href.substr(0,1) == \'/\' ? \'#/\' + lang() : \'\' }}{{ link.href }}">' + chessboard_list_first + '</a>';
     chessboard_list_first = '<li>' + chessboard_list_first + '</li>';
 
-    var chessboard_list_last = '{{ translate(\'pagina.titulo_\', sublabel) }}' +
+    var chessboard_list_last = '{{ translate(\'pagina.titulo_\', sublabel) }}';
     chessboard_list_last = '<a href="{{ sublink.href.substr(0,1) == \'/\' ? \'#/\' + lang() : \'\' }}{{ sublink.href }}">' + chessboard_list_last + '</a>';
     chessboard_list_last = '<li ng-repeat="(sublabel, sublink) in link.content">' + chessboard_list_last + '</li>';
 
