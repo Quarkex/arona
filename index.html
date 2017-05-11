@@ -48,15 +48,13 @@
         <script type="text/javascript" src="/js/directives/titlebar.js"></script>
         <script type="text/javascript" src="/js/directives/footer.js"></script>
         <script type="text/javascript" src="/js/directives/language-selector.js"></script>
+        <script type="text/javascript" src="/js/directives/loading-overlay.js"></script>
         <script type="text/javascript" src="/js/directives/off-canvas-nav.js"></script>
         <script type="text/javascript" src="/js/directives/off-canvas.js"></script>
     </head>
     <body class="ng-cloak">
 
-        <div class="angular-animate" ng-show="language_status() == 'loading'" layout="column" layout-align="center center" style="position:fixed; top:0; left:0;background: #e6e6e6; width: 100%; height: 100%;" id="loading-overlay">
-            <div layout-margin><img src="img/logo.svg"></div>
-            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-        </div>
+        <app-loading-overlay show-if="language_status() == 'loading'"></app-loading-overlay>
         <div class="angular-animate" ng-show="language_status() == 'ok'" id="app">
             <app-off-canvas class="content-wrapper">
                 <app-titlebar class="hide-for-print"></app-titlebar>
