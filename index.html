@@ -45,6 +45,7 @@
         <script type="text/javascript" src="/js/appCtrl.main.js"></script>
         <script type="text/javascript" src="/js/appCtrl.extra.js"></script>
 
+        <script type="text/javascript" src="/js/directives/titlebar.js"></script>
         <script type="text/javascript" src="/js/directives/footer.js"></script>
     </head>
     <body class="ng-cloak">
@@ -60,7 +61,7 @@
                         <div ng-include="'assets/sidenav-left.htm'"></div>
 
                         <div class="off-canvas-content {{'page-level-' + level() }} panel">
-                            <div class="hide-for-print" ng-include="'assets/titlebar.htm'"></div>
+                            <app-titlebar class="hide-for-print"></app-titlebar>
                             <div class="hide-for-print" ng-if=" path() != ( '/' + lang() )" ng-include="'assets/breadcrumbs.htm'"></div>
                             <div class="hide-for-print" ng-include="'assets/header.htm'"></div>
                             <div ng-view autoscroll="true"></div>
