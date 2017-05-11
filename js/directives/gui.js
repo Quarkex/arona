@@ -5,7 +5,8 @@ app.directive('appGui', function () {
         '<app-breadcrumbs class="hide-for-print" ng-if=" path() != ( \'/\' + lang() )"></app-breadcrumbs>' +
         '<div class="hide-for-print" ng-include="\'assets/header.htm\'"></div>' +
         '<div ng-transclude></div>'+
-        '<div class="main-row hide-for-print" ng-include="\'assets/bottomnav.htm\'"></div>' +
+        '<app-bottom-nav></app-bottom-nav>' +
+        '<br>' +
         '<app-bottom-extra></app-bottom-extra>';
 
     template = '<app-off-canvas class="content-wrapper">' + template + '</app-off-canvas>';
