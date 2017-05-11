@@ -6,4 +6,12 @@
     border-bottom-style: solid;
     border-bottom-width: 0.5px;
     border-bottom-color: $edges-color;
+
+    .md-nav-bar {
+        border-style: none;
+    }
+    .md-button {
+        text-transform: none;
+        text-align: center;
+    }
 }
