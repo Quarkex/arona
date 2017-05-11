@@ -44,6 +44,8 @@
         <script type="text/javascript" src="/js/appConfig.js"></script>
         <script type="text/javascript" src="/js/appCtrl.main.js"></script>
         <script type="text/javascript" src="/js/appCtrl.extra.js"></script>
+
+        <script type="text/javascript" src="/js/directives/footer.js"></script>
     </head>
     <body class="ng-cloak">
 
@@ -68,7 +70,7 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-wrapper hide-for-print" ng-include="'assets/footer.htm'"></div>
+            <app-footer></app-footer>
             <div class="hide-for-large" style="height: 43px;"></div><!-- Add-this mobile pusher -->
         </div>
 
