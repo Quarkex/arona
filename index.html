@@ -51,20 +51,15 @@
         <script type="text/javascript" src="/js/directives/loading-overlay.js"></script>
         <script type="text/javascript" src="/js/directives/off-canvas-nav.js"></script>
         <script type="text/javascript" src="/js/directives/off-canvas.js"></script>
+        <script type="text/javascript" src="/js/directives/gui.js"></script>
     </head>
     <body class="ng-cloak">
 
         <app-loading-overlay show-if="language_status() == 'loading'"></app-loading-overlay>
         <div class="angular-animate" ng-show="language_status() == 'ok'" id="app">
-            <app-off-canvas class="content-wrapper">
-                <app-titlebar class="hide-for-print"></app-titlebar>
-                <div class="hide-for-print" ng-if=" path() != ( '/' + lang() )" ng-include="'assets/breadcrumbs.htm'"></div>
-                <div class="hide-for-print" ng-include="'assets/header.htm'"></div>
+            <app-gui>
                 <div ng-view autoscroll="true"></div>
-                <div class="main-row hide-for-print" ng-include="'assets/bottomnav.htm'"></div>
-                <div class="main-row hide-for-print" ng-include="'assets/bottom-extra.htm'" style="background-color: #eeeeee;"></div>
-            </app-off-canvas>
-            <app-footer></app-footer>
+            </app-gui>
             <div class="hide-for-large" style="height: 43px;"></div><!-- Add-this mobile pusher -->
         </div>
 
