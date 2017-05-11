@@ -6,7 +6,7 @@ app.directive('appGui', function () {
         '<div class="hide-for-print" ng-include="\'assets/header.htm\'"></div>' +
         '<div ng-transclude></div>'+
         '<div class="main-row hide-for-print" ng-include="\'assets/bottomnav.htm\'"></div>' +
-        '<div class="main-row hide-for-print" ng-include="\'assets/bottom-extra.htm\'" style="background-color: #eeeeee;"></div>';
+        '<app-bottom-extra></app-bottom-extra>';
 
     template = '<app-off-canvas class="content-wrapper">' + template + '</app-off-canvas>';
     template += '<app-footer></app-footer>';
