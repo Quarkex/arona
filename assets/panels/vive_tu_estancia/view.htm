@@ -39,8 +39,8 @@
     <div class="row">
         <div class="large-10 large-offset-1 columns">
             <div layout="column" layout-margin style="padding: 0 5em;">
-                <md-content ng-bind-html="element().DESCRIPCION_COMUN | trust" flex class="territorial-description" style="background: none;"></md-content>
-                <md-content ng-bind-html="element().MAPA_IFRAME | trust" flex class="territorial-map flex-video"></md-content>
+                <md-content bind-html-compile="element().DESCRIPCION_COMUN" flex class="territorial-description" style="background: none;"></md-content>
+                <md-content bind-html-compile="element().MAPA_IFRAME" flex class="territorial-map flex-video"></md-content>
             </div>
         </div>
     </div>

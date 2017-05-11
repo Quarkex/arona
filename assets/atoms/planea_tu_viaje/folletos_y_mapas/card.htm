@@ -7,9 +7,9 @@
         </div>
         <div class="small-8 columns">
             <a style="text-align: left;" ng-href="{{ 'http://www.arona.org/portal/' + card.DOCUMENTO }}">
-                <h1 ng-bind-html="card.TITULO | trust"></h1>
+                <h1 bind-html-compile="card.TITULO"></h1>
             </a>
-            <p ng-bind-html="card.DESCRIPCION_COMUN | trust"></p>
+            <p bind-html-compile="card.DESCRIPCION_COMUN"></p>
         </div>
     </div>
 </div>

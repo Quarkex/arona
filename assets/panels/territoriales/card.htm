@@ -8,7 +8,7 @@
         <div flex>
             <md-card-title-text>
                 <span class="md-headline" style="font-size: 18px;">
-                    <a style="text-align: left;" href="#/{{ lang() }}/{{ sections()[1] }}/{{ sections()[2] }}/{{ card.CODCONTENIDO }}" ng-bind-html="card.TITULO | trust"></a>
+                    <a style="text-align: left;" href="#/{{ lang() }}/{{ sections()[1] }}/{{ sections()[2] }}/{{ card.CODCONTENIDO }}" bind-html-compile="card.TITULO"></a>
                 </span>
                 <span class="md-subhead" style="padding-top: 0;">{{ card.DIRECCION }}</span>
             </md-card-title-text>

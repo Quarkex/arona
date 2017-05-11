@@ -10,7 +10,7 @@
             </md-card-title-media>
             <md-card-title-text layout="column" flex="40" flex-gt-md="50">
                 <md-truncate flex="100" class="md-headline md-primary">
-                    <p md-truncate class="md-primary" ng-bind-html=" card.TITULO | trust "></p>
+                    <p md-truncate class="md-primary" bind-html-compile=" card.TITULO"></p>
                 </md-truncate>
             </md-card-title-text>
         </md-card-title>

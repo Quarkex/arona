@@ -10,7 +10,7 @@
     <div class="row">
         <div class="large-10 large-offset-1 columns">
             <div layout-gt-xs="row" layout="column" class="territorial-info" layout-margin>
-                <md-content ng-bind-html="element().MAPA_IFRAME | trust" flex flex-gt-xs="66" class="territorial-map flex-video"></md-content>
+                <md-content bind-html-compile="element().MAPA_IFRAME" flex flex-gt-xs="66" class="territorial-map flex-video"></md-content>
                 <md-card flex flex-gt-xs="33" class="territorial-contact">
                     <md-card-content>
                         <div class="row collapse">

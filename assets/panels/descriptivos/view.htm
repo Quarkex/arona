@@ -9,10 +9,10 @@
                     </div>
             <div layout="column" class="row post-content">
                 <div class="activity-content" layout="column" ng-if="element()['DESCRIPCION_COMUN'] != null">
-                    <div ng-bind-html="element()['DESCRIPCION_COMUN'] | trust"></div>
+                    <div bind-html-compile="element()['DESCRIPCION_COMUN']"></div>
                 </div>
                 <div class="activity-content" layout="column" ng-if="element()['TEXTO'] != null">
-                    <div ng-bind-html="element()['TEXTO'] | trust"></div>
+                    <div bind-html-compile="element()['TEXTO']"></div>
                 </div>
             </div>
         </article>

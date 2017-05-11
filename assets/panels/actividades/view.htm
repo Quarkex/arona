@@ -22,7 +22,7 @@
                         <span ng-if="element().PRECIO != null" class="show-for-medium"> | </span>
                         <br class="hide-for-medium">
                         <!--span ng-if="element().PRECIO != null">{{ element().PRECIO | gsub: '&[#]?[0-9a-z]+;':'':true | gsub: '[^0-9.,]*':'':true | currency:"€" }}</span-->
-                        <span ng-if="element().PRECIO != null" ng-bind-html=" element().PRECIO | gsub: '<[^>]+>':' ':true | trust "></span>
+                        <span ng-if="element().PRECIO != null" bind-html-compile=" element().PRECIO | gsub: '<[^>]+>':' ':true"></span>
                         <!--span ng-if="element().PRECIO != null" ng-bind-html="{{ element().PRECIO }}"></span-->
                         </p>
                     </div>
@@ -31,22 +31,22 @@
             <div layout="column" class="row post-content">
                 <div class="activity-content" layout="column" ng-if="element()['TAQUILLA'] != null">
                     <h4 class="section-title">{{ translate('general.seccion_', 'taquilla') + ':' | gsub: '_':' ':true | capitalize }}</h4>
-                    <div ng-bind-html="element()['TAQUILLA'] | trust"></div>
+                    <div bind-html-compile="element()['TAQUILLA']"></div>
                 </div>
 
                 <div class="activity-content" layout="column" ng-if="element()['ORGANIZACION'] != null">
                     <h4 class="section-title">{{ translate('general.seccion_', 'organiza') + ':' | gsub: '_':' ':true | capitalize }}</h4>
-                    <div ng-bind-html="element()['ORGANIZACION'] | trust"></div>
+                    <div bind-html-compile="element()['ORGANIZACION']"></div>
                 </div>
 
                 <div class="activity-content" layout="column" ng-if="element()['TELEFONO'] != null">
                     <h4 class="section-title">{{ translate('general.seccion_', 'contacto') + ':' | gsub: '_':' ':true | capitalize }}</h4>
-                    <div ng-bind-html="element()['TELEFONO'] | trust"></div>
+                    <div bind-html-compile="element()['TELEFONO']"></div>
                 </div>
 
                 <div class="activity-content" layout="column" ng-if="element()['DESCRIPCION_COMUN'] != null">
                     <h4 class="section-title">{{ translate('general.seccion_', 'descripcion_del_evento') + ':' | gsub: '_':' ':true | capitalize }}</h4>
-                    <div ng-bind-html="element()['DESCRIPCION_COMUN'] | trust"></div>
+                    <div bind-html-compile="element()['DESCRIPCION_COMUN']"></div>
                 </div>
             </div>
         </article>

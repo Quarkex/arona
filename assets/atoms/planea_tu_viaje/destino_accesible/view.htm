@@ -17,7 +17,7 @@
                 <md-card flex class="territorial-contact" style="padding: 0 2.5em;">
                     <md-card-content>
                         <div layout="column" layout-margin>
-                            <md-content ng-bind-html="element().TEXTO | trust" flex class="territorial-description" style="background: none; text-align: justify;"></md-content>
+                            <md-content bind-html-compile="element().TEXTO" flex class="territorial-description" style="background: none; text-align: justify;"></md-content>
                         </div>
                     </md-card-content>
                 </md-card>

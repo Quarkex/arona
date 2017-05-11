@@ -10,7 +10,7 @@
     <div class="row">
         <div class="large-10 large-offset-1 columns">
             <div layout-gt-xs="row" layout="column" class="territorial-info" layout-margin>
-                <md-content ng-bind-html="element().MAPA_IFRAME | trust" flex flex-gt-xs="66" class="territorial-map flex-video"></md-content>
+                <md-content bind-html-compile="element().MAPA_IFRAME" flex flex-gt-xs="66" class="territorial-map flex-video"></md-content>
                 <md-card flex flex-gt-xs="33" class="territorial-contact">
                     <md-card-content>
                         <div class="row collapse">
@@ -22,8 +22,8 @@
                         <div ng-if="element().FAX != null" class="row collapse">
                             <p>{{ translate("general.", 'fax') | capitalize }}: {{  element().FAX }}</p>
                         </div>
-                        <div ng-if="element().HORARIO != null" class="row collapse" ng-bind-html="element().HORARIO | trust"></div>
-                        <div ng-if="element().DESCRIPCION_COMUN != null" class="row collapse" ng-bind-html="element().DESCRIPCION_COMUN | trust"></div>
+                        <div ng-if="element().HORARIO != null" class="row collapse" bind-html-compile="element().HORARIO"></div>
+                        <div ng-if="element().DESCRIPCION_COMUN != null" class="row collapse" bind-html-compile="element().DESCRIPCION_COMUN"></div>
                     </md-card-content>
                     <md-card-footer>
                         <md-card-actions layout="row" layout-align="begining center">
