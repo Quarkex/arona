@@ -11,7 +11,7 @@ app.directive('appBreadcrumbs', function () {
     var active_crumb = '<span ng-if="' + crumb_conditional_active + '"><span class="show-for-sr">{{ translate( "general.", "actual" ) }}: </span> ' + crumb_label + '</span>';
 
 
-    template = '<li ng-repeat="crumb in breadcrumbs track by crumb.href">' + crumb + '</li>';
+    template = '<li ng-repeat="crumb in breadcrumbs track by crumb.href">' + crumb + active_crumb + '</li>';
     template = '<ul class="breadcrumbs">' + template + '</ul>';
     template = '<div class="large-10 large-offset-1 columns">' + template + '</div>';
     template = '<nav class="row" aria-label="You are here:" role="navigation">' + template + '</nav>';
