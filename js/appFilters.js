@@ -1,8 +1,3 @@
-app.filter("trust", ['$sce', function($sce) {
-    return function(htmlCode){
-        return $sce.trustAsHtml(htmlCode);
-    }
-}]);
 app.filter("pad", [function() {
     return function(n, width, z){
         z = z || '0';
