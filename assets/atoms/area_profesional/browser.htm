@@ -6,7 +6,7 @@
     </div>
     <div class="row collapse">
         <div ng-if="element_status() == 'ok'" class="medium-6 columns" ng-class="{'end': $last}" ng-repeat="card in elements()">
-            <ng-include src="'assets/atoms/' + sections()[sections().length - 2] + '/' + sections()[sections().length - 1] + '/card.htm'"></ng-include>
+            <app-card-standard item="card" prefix="'#/' + lang() + '/' + sections()[1] + '/' + sections()[2] + '/' + sections()[3]"></app-card-standard>
         </div>
     </div>
     <app-paginator-controls></app-paginator-controls>
