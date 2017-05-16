@@ -149,6 +149,7 @@ app.controller("mainCtrl", function($rootScope, $location, $routeParams, $resour
                     node = null;
                     break;
                 }
+                node.parent = last_node;
                 last_node = node;
             } else {
                 console.warn("node has no child nodes: " + node);
