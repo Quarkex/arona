@@ -193,8 +193,12 @@ app.controller("mainCtrl", function($rootScope, $location, $routeParams, $resour
         var crumbs = [];
         for (var i = 0; i < $rootScope.history.length; i++){
             var crumb = {};
+            var href = [];
+            for ( var j = 0; j < crumbs.length; j++){
+                href.push(crumbs[j]["label"]);
+            }
             crumb["label"] = $rootScope.history[i]["id"];
-            crumb["href"] = crumbs.length == 0 ? crumb["label"] : crumbs.map(function(x){return x['label']}).join('/') + '/' + crumb["label"];
+            crumb["href"] = crumbs.length == 0 ? crumb["label"] : href.join('/') + '/' + crumb["label"];
             crumb["href"] = '#/' + lang() + '/' + crumb["href"];
             crumb["current"] = current_section() == crumb["label"];
             crumbs.push(crumb);
