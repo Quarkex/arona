@@ -22,15 +22,19 @@ if @doc.keys.include?('CODIGOSINDICADORES')\
         valoresindicadoreslista = doc["VALORESINDICADORESLISTA"]== nil ? '' : doc["VALORESINDICADORESLISTA"]
         valoresindicadores      = doc["VALORESINDICADORES"]     == nil ? '' : doc["VALORESINDICADORES"]
 
+        codigosindicadores      = codigosindicadores.to_s               if not codigosindicadores.kind_of?(String)
         codigosindicadores      = codigosindicadores.split('&')         if not codigosindicadores.kind_of?(Array)
         codigosindicadores      = codigosindicadores[0].split(';')      if codigosindicadores.size == 1
 
+        etiquetaindicadores     = etiquetaindicadores.to_s              if not etiquetaindicadores.kind_of?(String)
         etiquetaindicadores     = etiquetaindicadores.split('&')        if not etiquetaindicadores.kind_of?(Array)
         etiquetaindicadores     = etiquetaindicadores[0].split(';')     if etiquetaindicadores.size == 1
 
+        valoresindicadoreslista = valoresindicadoreslista.to_s          if not valoresindicadoreslista.kind_of?(String)
         valoresindicadoreslista = valoresindicadoreslista.split('&')    if not valoresindicadoreslista.kind_of?(Array)
         valoresindicadoreslista = valoresindicadoreslista[0].split(';') if valoresindicadoreslista.size == 1
 
+        valoresindicadores      = valoresindicadores.to_s               if not valoresindicadores.kind_of?(String)
         valoresindicadores      = valoresindicadores.split('&')         if not valoresindicadores.kind_of?(Array)
         valoresindicadores      = valoresindicadores[0].split(';')      if valoresindicadores.size == 1
 
