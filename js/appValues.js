@@ -264,6 +264,116 @@ app.value('resourceValues', {
     },
 
       /////////////////////////////////////////////////////////////////
+     // Vive tu estancia                                            //
+    /////////////////////////////////////////////////////////////////
+
+    /**********************************/
+    /* Actividades recomendadas       */
+    /**********************************/
+
+    /* Deporte y aventura */
+    "instalaciones_deportivas": {
+        "collection":"territoriales",
+        "filters":{"$and":[{"CODSUBTIPOCONT":321},{"CODAREAS":15}]},
+        "values":["HORARIO","MAPA","ACCESOS","CATEGORIA","CIERRE","CODCONTENIDO","CODLOCALIDAD","DATOS_INTERES","DESCRIPCION","DESCRIPCION_COMUN","DOCUMENTO","EMAIL","FAX","F_BAJA","F_FIN_NOV","F_FIN_PUB","F_INICIO_NOV","F_INICIO_PUB","F_REVISION","HORARIO","IMAGEN","TITULO","NOMBRE_SOCIAL","NOVEDAD","PALABRAS_CLAVE","PUBLICADO","SERV_PRINCIPALES","SUBTIPO_PRINCIPAL","TELEFONO","TITULO","VACACIONES","WEB_PROPIA","ZONA","DIRECCION"]
+    },
+    "ciclismo": {
+        "collection":"territoriales",
+        "filters":{"$and":[{"CODSUBTIPOCONT":454},{"CODAREAS":15},{"CODSUBAREAS":323}]},
+        "values":["HORARIO","MAPA","ACCESOS","CATEGORIA","CIERRE","CODCONTENIDO","CODLOCALIDAD","DATOS_INTERES","DESCRIPCION","DESCRIPCION_COMUN","DOCUMENTO","EMAIL","FAX","F_BAJA","F_FIN_NOV","F_FIN_PUB","F_INICIO_NOV","F_INICIO_PUB","F_REVISION","HORARIO","IMAGEN","TITULO","NOMBRE_SOCIAL","NOVEDAD","PALABRAS_CLAVE","PUBLICADO","SERV_PRINCIPALES","SUBTIPO_PRINCIPAL","TELEFONO","TITULO","VACACIONES","WEB_PROPIA","ZONA","DIRECCION"]
+    },
+    "especialidades_nauticas": {
+        "collection":"territoriales",
+        "filters":{"$and":[{"CODSUBTIPOCONT":454},{"CODAREAS":15},{"CODSUBAREAS":169}]},
+        "values":["HORARIO","MAPA","ACCESOS","CATEGORIA","CIERRE","CODCONTENIDO","CODLOCALIDAD","DATOS_INTERES","DESCRIPCION","DESCRIPCION_COMUN","DOCUMENTO","EMAIL","FAX","F_BAJA","F_FIN_NOV","F_FIN_PUB","F_INICIO_NOV","F_INICIO_PUB","F_REVISION","HORARIO","IMAGEN","TITULO","NOMBRE_SOCIAL","NOVEDAD","PALABRAS_CLAVE","PUBLICADO","SERV_PRINCIPALES","SUBTIPO_PRINCIPAL","TELEFONO","TITULO","VACACIONES","WEB_PROPIA","ZONA","DIRECCION"]
+    },
+    "ocio_y_playas": {
+        "collection":"territoriales",
+        "filters":{"$and":[{"CODSUBTIPOCONT":454},{"CODAREAS":16},{"CODSUBAREAS":156}]},
+        "values":["HORARIO","MAPA","ACCESOS","CATEGORIA","CIERRE","CODCONTENIDO","CODLOCALIDAD","DATOS_INTERES","DESCRIPCION","DESCRIPCION_COMUN","DOCUMENTO","EMAIL","FAX","F_BAJA","F_FIN_NOV","F_FIN_PUB","F_INICIO_NOV","F_INICIO_PUB","F_REVISION","HORARIO","IMAGEN","TITULO","NOMBRE_SOCIAL","NOVEDAD","PALABRAS_CLAVE","PUBLICADO","SERV_PRINCIPALES","SUBTIPO_PRINCIPAL","TELEFONO","TITULO","VACACIONES","WEB_PROPIA","ZONA","DIRECCION"]
+    },
+    "tenis_y_especialidades_con_raqueta": {
+        "collection":"territoriales",
+        "filters":{"$and":[{"CODSUBTIPOCONT":454},{"CODAREAS":15},{"CODSUBAREAS":175}]},
+        "values":["HORARIO","MAPA","ACCESOS","CATEGORIA","CIERRE","CODCONTENIDO","CODLOCALIDAD","DATOS_INTERES","DESCRIPCION","DESCRIPCION_COMUN","DOCUMENTO","EMAIL","FAX","F_BAJA","F_FIN_NOV","F_FIN_PUB","F_INICIO_NOV","F_INICIO_PUB","F_REVISION","HORARIO","IMAGEN","TITULO","NOMBRE_SOCIAL","NOVEDAD","PALABRAS_CLAVE","PUBLICADO","SERV_PRINCIPALES","SUBTIPO_PRINCIPAL","TELEFONO","TITULO","VACACIONES","WEB_PROPIA","ZONA","DIRECCION"]
+    },
+    "hipica": {
+        "collection":"territoriales",
+        "filters":{"$and":[{"CODSUBTIPOCONT":454},{"CODAREAS":15},{"CODSUBAREAS":379}]},
+        "values":["HORARIO","MAPA","ACCESOS","CATEGORIA","CIERRE","CODCONTENIDO","CODLOCALIDAD","DATOS_INTERES","DESCRIPCION","DESCRIPCION_COMUN","DOCUMENTO","EMAIL","FAX","F_BAJA","F_FIN_NOV","F_FIN_PUB","F_INICIO_NOV","F_INICIO_PUB","F_REVISION","HORARIO","IMAGEN","TITULO","NOMBRE_SOCIAL","NOVEDAD","PALABRAS_CLAVE","PUBLICADO","SERV_PRINCIPALES","SUBTIPO_PRINCIPAL","TELEFONO","TITULO","VACACIONES","WEB_PROPIA","ZONA","DIRECCION"]
+    },
+    "motor": {
+        "collection":"territoriales",
+        "filters":{"$and":[{"CODSUBTIPOCONT":454},{"CODAREAS":15},{"CODSUBAREAS":268}]},
+        "values":["HORARIO","MAPA","ACCESOS","CATEGORIA","CIERRE","CODCONTENIDO","CODLOCALIDAD","DATOS_INTERES","DESCRIPCION","DESCRIPCION_COMUN","DOCUMENTO","EMAIL","FAX","F_BAJA","F_FIN_NOV","F_FIN_PUB","F_INICIO_NOV","F_INICIO_PUB","F_REVISION","HORARIO","IMAGEN","TITULO","NOMBRE_SOCIAL","NOVEDAD","PALABRAS_CLAVE","PUBLICADO","SERV_PRINCIPALES","SUBTIPO_PRINCIPAL","TELEFONO","TITULO","VACACIONES","WEB_PROPIA","ZONA","DIRECCION"]
+    },
+    "otras_especialidades": {
+        "collection":"territoriales",
+        "filters":{"$and":[{"CODSUBTIPOCONT":454},{"CODAREAS":15},{"CODSUBAREAS":174}]},
+        "values":["HORARIO","MAPA","ACCESOS","CATEGORIA","CIERRE","CODCONTENIDO","CODLOCALIDAD","DATOS_INTERES","DESCRIPCION","DESCRIPCION_COMUN","DOCUMENTO","EMAIL","FAX","F_BAJA","F_FIN_NOV","F_FIN_PUB","F_INICIO_NOV","F_INICIO_PUB","F_REVISION","HORARIO","IMAGEN","TITULO","NOMBRE_SOCIAL","NOVEDAD","PALABRAS_CLAVE","PUBLICADO","SERV_PRINCIPALES","SUBTIPO_PRINCIPAL","TELEFONO","TITULO","VACACIONES","WEB_PROPIA","ZONA","DIRECCION"]
+    },
+    "espacios_naturales": {
+        "collection":"territoriales",
+        "filters":{"$and":[{"CODSUBTIPOCONT":327},{"CODAREAS":16}]},
+        "values":["HORARIO","MAPA","ACCESOS","CATEGORIA","CIERRE","CODCONTENIDO","CODLOCALIDAD","DATOS_INTERES","DESCRIPCION","DESCRIPCION_COMUN","DOCUMENTO","EMAIL","FAX","F_BAJA","F_FIN_NOV","F_FIN_PUB","F_INICIO_NOV","F_INICIO_PUB","F_REVISION","HORARIO","IMAGEN","TITULO","NOMBRE_SOCIAL","NOVEDAD","PALABRAS_CLAVE","PUBLICADO","SERV_PRINCIPALES","SUBTIPO_PRINCIPAL","TELEFONO","TITULO","VACACIONES","WEB_PROPIA","ZONA","DIRECCION"]
+    },
+    "gimnasia_y_juegos_deportivos": {
+        "collection":"territoriales",
+        "filters":{"$and":[{"CODSUBTIPOCONT":253},{"CODAREAS":16}]},
+        "values":["HORARIO","MAPA","ACCESOS","CATEGORIA","CIERRE","CODCONTENIDO","CODLOCALIDAD","DATOS_INTERES","DESCRIPCION","DESCRIPCION_COMUN","DOCUMENTO","EMAIL","FAX","F_BAJA","F_FIN_NOV","F_FIN_PUB","F_INICIO_NOV","F_INICIO_PUB","F_REVISION","HORARIO","IMAGEN","TITULO","NOMBRE_SOCIAL","NOVEDAD","PALABRAS_CLAVE","PUBLICADO","SERV_PRINCIPALES","SUBTIPO_PRINCIPAL","TELEFONO","TITULO","VACACIONES","WEB_PROPIA","ZONA","DIRECCION"]
+    },
+
+    /**********************************/
+    /* Salud y belleza                */
+    /**********************************/
+
+    "salud_y_belleza": {
+        "collection":"territoriales",
+        "filters":{"$and":[{"CODSUBTIPOCONT":159},{"CODAREAS":16}]},
+        "values":["HORARIO","MAPA","ACCESOS","CATEGORIA","CIERRE","CODCONTENIDO","CODLOCALIDAD","DATOS_INTERES","DESCRIPCION","DESCRIPCION_COMUN","DOCUMENTO","EMAIL","FAX","F_BAJA","F_FIN_NOV","F_FIN_PUB","F_INICIO_NOV","F_INICIO_PUB","F_REVISION","HORARIO","IMAGEN","TITULO","NOMBRE_SOCIAL","NOVEDAD","PALABRAS_CLAVE","PUBLICADO","SERV_PRINCIPALES","SUBTIPO_PRINCIPAL","TELEFONO","TITULO","VACACIONES","WEB_PROPIA","ZONA","DIRECCION"]
+    },
+
+    /**********************************/
+    /* Golf                           */
+    /**********************************/
+
+    "golf": {
+        "collection":"territoriales",
+        "filters":{"$and":[{"CODAREAS":16},{"VALORESINDICADORES":40}]},
+        "values":["HORARIO","MAPA","ACCESOS","CATEGORIA","CIERRE","CODCONTENIDO","CODLOCALIDAD","DATOS_INTERES","DESCRIPCION","DESCRIPCION_COMUN","DOCUMENTO","EMAIL","FAX","F_BAJA","F_FIN_NOV","F_FIN_PUB","F_INICIO_NOV","F_INICIO_PUB","F_REVISION","HORARIO","IMAGEN","TITULO","NOMBRE_SOCIAL","NOVEDAD","PALABRAS_CLAVE","PUBLICADO","SERV_PRINCIPALES","SUBTIPO_PRINCIPAL","TELEFONO","TITULO","VACACIONES","WEB_PROPIA","ZONA","DIRECCION"]
+    },
+
+    /**********************************/
+    /* Ocio diurno                    */
+    /**********************************/
+
+    "ocio_diurno": {
+        "collection":"territoriales",
+        "filters":{"$and":[{"CODSUBTIPOCONT":152},{"CODAREAS":16}]},
+        "values":["HORARIO","MAPA","ACCESOS","CATEGORIA","CIERRE","CODCONTENIDO","CODLOCALIDAD","DATOS_INTERES","DESCRIPCION","DESCRIPCION_COMUN","DOCUMENTO","EMAIL","FAX","F_BAJA","F_FIN_NOV","F_FIN_PUB","F_INICIO_NOV","F_INICIO_PUB","F_REVISION","HORARIO","IMAGEN","TITULO","NOMBRE_SOCIAL","NOVEDAD","PALABRAS_CLAVE","PUBLICADO","SERV_PRINCIPALES","SUBTIPO_PRINCIPAL","TELEFONO","TITULO","VACACIONES","WEB_PROPIA","ZONA","DIRECCION"]
+    },
+
+    /**********************************/
+    /* Compras                        */
+    /**********************************/
+
+    "compras": {
+        "collection":"territoriales",
+        "filters":{"$and":[{"CODSUBTIPOCONT":157},{"CODAREAS":16}]},
+        "values":["HORARIO","MAPA","ACCESOS","CATEGORIA","CIERRE","CODCONTENIDO","CODLOCALIDAD","DATOS_INTERES","DESCRIPCION","DESCRIPCION_COMUN","DOCUMENTO","EMAIL","FAX","F_BAJA","F_FIN_NOV","F_FIN_PUB","F_INICIO_NOV","F_INICIO_PUB","F_REVISION","HORARIO","IMAGEN","TITULO","NOMBRE_SOCIAL","NOVEDAD","PALABRAS_CLAVE","PUBLICADO","SERV_PRINCIPALES","SUBTIPO_PRINCIPAL","TELEFONO","TITULO","VACACIONES","WEB_PROPIA","ZONA","DIRECCION"]
+    },
+
+    /**********************************/
+    /* Aprende español                */
+    /**********************************/
+
+    "aprende_espanol": {
+        "collection":"territoriales",
+        "filters":{"CODCONTENIDO":{"$in":[null,6854]}},
+        "values":["HORARIO","MAPA_IFRAME","MAPA","CODCONTENIDO","TITULO","ZONA","TELEFONO","FAX","WEB_PROPIA","DIRECCION","EMAIL","INDICADORES","IMAGEN","DESCRIPCION_COMUN","RECURSOS","CONTENIDOS_RELACIONADOS"]
+    },
+
+      /////////////////////////////////////////////////////////////////
      // Actividades                                                 //
     /////////////////////////////////////////////////////////////////
     "actividades": {
