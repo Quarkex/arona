@@ -36,6 +36,9 @@
         <script type="text/javascript" src="/bower_components/angular-bind-html-compile/angular-bind-html-compile.min.js"></script>
         <script type="text/javascript">window.appDependencies.push("angular-bind-html-compile");</script>
         <script type="text/javascript">window.app = angular.module("mainApp", appDependencies);</script>
+
+        <script type="text/javascript" src="/tree.js"></script>
+
         <script type="text/javascript" src="/js/appValues.js"></script>
         <script type="text/javascript" src="/js/appFilters.js"></script>
         <script type="text/javascript" src="/js/appService.language.js"></script>
@@ -64,8 +67,14 @@
         <script type="text/javascript" src="/js/directives/elements-feedback.js"></script>
         <script type="text/javascript" src="/js/directives/related-content.js"></script>
         <script type="text/javascript" src="/js/directives/paginator-controls.js"></script>
+        <script type="text/javascript" src="/js/directives/paginator-browser.js"></script>
         <script type="text/javascript" src="/js/directives/card-standard.js"></script>
         <script type="text/javascript" src="/js/directives/card-simple.js"></script>
+        <script type="text/javascript" src="/js/directives/default-view.js"></script>
+        <script type="text/javascript" src="/js/directives/activity-view.js"></script>
+        <script type="text/javascript" src="/js/directives/hotel-view.js"></script>
+        <script type="text/javascript" src="/js/directives/descriptive-view.js"></script>
+        <script type="text/javascript" src="/js/directives/documental-view.js"></script>
         <script type="text/javascript" src="/js/directives/gui.js"></script>
     </head>
     <body class="ng-cloak">
@@ -73,7 +82,7 @@
         <app-loading-overlay show-if="language_status() == 'loading'"></app-loading-overlay>
         <div class="angular-animate" ng-show="language_status() == 'ok'" id="app">
             <app-gui>
-                <div ng-view autoscroll="true"></div>
+                <div bind-html-compile="node.content"></div>
             </app-gui>
             <div class="hide-for-large" style="height: 43px;"></div><!-- Add-this mobile pusher -->
         </div>

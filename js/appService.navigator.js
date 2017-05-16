@@ -20,6 +20,9 @@ function Navigator(language, $location, $timeout){
     scope_interface.push("current_section");
 
     this.navNavigate = function(p){
+        p = p.split('/');
+        p.shift();
+        p = p.join('/');
         $location.path(p);
     };
     scope_interface.push("navNavigate");

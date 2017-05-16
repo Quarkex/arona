@@ -1,4 +1,4 @@
-function ResourcePaginator(language, $resource){
+function ResourcePaginator(language, $resource, $rootScope){
 
     var self = this;
     var scope_interface = [];
@@ -39,37 +39,45 @@ function ResourcePaginator(language, $resource){
     this.resource = $resource( self.variables.url, self.variables.parameters, self.variables.actions, self.variables.settings );
 
     function get(){
-        self.elements([]);
-        self.element_status('loading');
-        self.resource.get( self.values, function(data){
-            if (self.values.collection != null) {
-                if (data[0] == null){
-                    console.warn("Got a null array. Probably no such collection: " + self.values.collection);
-                } else {
-                    if (true == self.values.stats){
-                        var stats = data.pop();
-                        self.size(stats.size);
-                        self.last_modified(stats.last_modified);
-                    }
-                    if (data.length > 0){
-                        var last_item = data[data.length - 1];
-                        while ( last_item.hasOwnProperty("error")){
-                            var error_object = data.pop();
-                            console.warn("API responded with the following error: " + error_object.error);
-                            console.warn("Backtrace:");
-                            console.warn(error_object.backtrace);
-                            console.warn("Offending parameters:");
-                            console.warn(error_object.parameters);
-                            if (data.length > 0) last_item = data[data.length - 1];
-                            else last_item = {};
-                            self.element_status('error');
+        if ( self.last_values == undefined ) self.last_values = {};
+        if (!(angular.equals(self.values, self.last_values) && !angular.equals(self.values.filters, self.last_values.filters))){
+
+            self.last_values = {};
+            angular.copy(self.values, self.last_values);
+
+            self.elements([]);
+            self.element_status('loading');
+
+            self.resource.get( self.values, function(data){
+                if (self.values.collection != null) {
+                    if (data[0] == null){
+                        console.warn("Got a null array. Probably no such collection: " + self.values.collection);
+                    } else {
+                        if (true == self.values.stats){
+                            var stats = data.pop();
+                            self.size(stats.size);
+                            self.last_modified(stats.last_modified);
                         }
+                        if (data.length > 0){
+                            var last_item = data[data.length - 1];
+                            while ( last_item.hasOwnProperty("error")){
+                                var error_object = data.pop();
+                                console.warn("API responded with the following error: " + error_object.error);
+                                console.warn("Backtrace:");
+                                console.warn(error_object.backtrace);
+                                console.warn("Offending parameters:");
+                                console.warn(error_object.parameters);
+                                if (data.length > 0) last_item = data[data.length - 1];
+                                else last_item = {};
+                                self.element_status('error');
+                            }
+                        }
+                        self.elements(data);
+                        self.element_status('ok');
                     }
-                    self.elements(data);
-                    self.element_status('ok');
                 }
-            }
-        });
+            });
+        }
     }
 
     this.element_status = function(e){
@@ -309,4 +317,67 @@ function ResourcePaginator(language, $resource){
     }
 
 }
-app.service('resourcePaginator', ["language", "$resource", ResourcePaginator]);
+app.service('resourcePaginator', ["language", "$resource", "$rootScope", ResourcePaginator]);
+app.controller("resourcePaginatorCtrl", function($scope, $location, $routeParams, resourcePaginator, resourceValues, constants) {
+
+    resourcePaginator.expose_interface($scope);
+
+    $scope.element = function(){return resourcePaginator.elements()[0]};
+
+    var section = $scope.path().split('/').pop();
+    var code = constants["CODCONTENIDO"].hasOwnProperty(section) ? constants["CODCONTENIDO"][section] : null;
+
+    var update = function(){
+        var params = $location.search();
+        var path = $location.path().substr(1).split('/');
+        path.shift();
+
+        var section = path.pop();
+
+        var id = null;
+        if (!isNaN(section)) id = parseInt(section);
+
+        while (resourceValues[section] == null || resourceValues[section] == undefined){
+            section = path.pop();
+            if(section == '' || section == undefined || section == null) section = 'index';
+        }
+
+        if ( resourceValues[section] != null ){
+
+            var values = {};
+            angular.copy( resourceValues[section], values );
+            for ( var value in resourcePaginator.values.filters) if (resourcePaginator.values.filters.hasOwnProperty(value)) {
+                delete resourcePaginator.values.filters[value];
+            }
+            Object.keys(resourcePaginator.values.filters).forEach(function(key) { delete resourcePaginator.values.filters[key]; });
+
+            if (values["language"]) values["language"] = function(){ return $scope.lang();}();
+            if (values["collection"] == null) values["collection"] = "territoriales";
+            if (values["filters"] == null) values["filters"] = {};
+            if (values["values"] == null) values["values"] = [];
+            if (values["limit"] == null) values["limit"] = 100;
+            if (values["offset"] == null) values["offset"] = 0;
+            var page = params["page"] == null ? 1 : parseInt(params["page"]);
+
+            var limit = params["limit"] == null ? parseInt(values["limit"]) : parseInt(params["limit"]);
+            var offset = params["page"] == null ? parseInt(values["offset"]) : ( page - 1) * limit;
+
+            if (id != null){
+                if (values["filters"]['$and'] == undefined) values["filters"]['$and'] = [];
+                var querylet = { $or: [] };
+                querylet["$or"].push({"CODCONTENIDO": id});
+                querylet["$or"].push({"CODRECURSO": id});
+                values["filters"]['$and'].push(querylet);
+            }
+
+            values["limit"] = limit;
+            values["offset"] = offset;
+
+            resourcePaginator.set_values(values);
+        }
+    };
+
+    $scope.$on('$locationChangeSuccess', function(event){ update(); });
+    update();
+
+});

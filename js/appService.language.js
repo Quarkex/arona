@@ -9,7 +9,7 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
         //'available_languages': ['de', 'en', 'es', 'fi', 'fr', 'it', 'nl', 'ru', 'sv'],
         'available_languages': ['es', 'en'],
         // parameterized URL template with parameters prefixed by : as in /user/:username
-        'url': '/locales/:language.json',
+        'url': function(){ return '/locales/' + self.current_language() + '.json'; },
         // default values for url parameters
         'parameters': {},
         // hash with declaration of custom actions
@@ -51,6 +51,12 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
     scope_interface.push("current_language");
     self.variables.parameters["language"] = self.current_language;
 
+    this.current_dictionary = function(a){
+        if (a !== undefined) self.variables.dictionary_lang = a;
+        return self.variables.dictionary_lang;
+    };
+    scope_interface.push("current_dictionary");
+
     this.available_languages = function(a){
         if (a !== undefined) if (Array.isArray(a)) self.variables.available_languages = a;
         return self.variables.available_languages;
@@ -85,13 +91,15 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
 
     // hash as seen by the final cgi
     this.values = {
-        language: self.current_language()
+        language: self.current_language
     };
-    this.resource = $resource( self.variables.url, self.variables.parameters, self.variables.actions, self.variables.settings );
+    this.resource = $resource( self.variables.url(), self.variables.parameters, self.variables.actions, self.variables.settings );
 
     this.get = function(){
-        if(self.variables.dictionary_lang != self.current_language()) {
+        if(self.variables.dictionary_lang != self.current_language() && self.language_status() != 'loading') {
+            self.current_dictionary(self.current_language());
             self.language_status('loading');
+            self.resource = $resource( self.variables.url(), self.variables.parameters, self.variables.actions, self.variables.settings );
             self.resource.get( self.values, function(data){
                 if (data != null){
                     for (var k in data){
@@ -101,7 +109,8 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
                     }
                     tmhDynamicLocale.set(self.current_language());
                     self.language_status('ok');
-                    self.variables.dictionary_lang = self.current_language();
+                } else {
+                    self.current_dictionary(self.default_language());
                 }
             });
         }

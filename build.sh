@@ -13,6 +13,9 @@ else
     rm -r _site/*;
 fi
 
+# compile the navigation tree
+/usr/bin/env ruby make.rb
+
 # grabs all releant files in _sass folder and builds a single, minified css
 echo "" > _sass/_sass_imports.scss;
 if [[ -f _sass/_variables.scss ]]; then echo "@import '_variables.scss';" > _sass/_sass_imports.scss; fi

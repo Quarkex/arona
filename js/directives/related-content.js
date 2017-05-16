@@ -7,12 +7,12 @@ app.directive('appRelatedContent', function () {
     content_a = '<md-card-title-media>' + content_a + '</md-card-title-media>';
     content_a = '<div style="flex-basis:125px;">' + content_a + '</div>';
 
-    var content_b1 = '{{ card.TITULO }}';
-    content_b1 = '<a style="text-align: left;" href="#/{{ lang() }}/{{ sections()[1] }}/{{ sections()[2] }}/{{ sections()[3] }}/{{ card.CODCONTENIDO }}">' + content_b1 + '</a>';
+    var content_b1 = 'card.TITULO';
+    content_b1 = '<a style="text-align: left;" href="{{ node.href }}/{{ card.CODCONTENIDO }}" bind-html-compile="' + content_b1 + '"></a>';
     content_b1 = '<span class="md-headline" style="font-size: 18px;">' + content_b1 + '</span>';
 
-    var content_b2 = '{{ card.DESCRIPCION_COMUN }}';
-    content_b2 = '<span class="md-subhead" style="padding-top: 0;">' + content_b2 + '</span>';
+    var content_b2 = 'card.DESCRIPCION_COMUN';
+    content_b2 = '<span class="md-subhead" style="padding-top: 0;" bind-html-compile="' + content_b2 + '"></span>';
 
     var content_b = content_b1 + content_b2;
     content_b = '<md-card-title-text>' + content_b + '</md-card-title-text>';

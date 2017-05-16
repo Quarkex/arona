@@ -9,7 +9,7 @@ app.directive('appCardSimple', function () {
 
     var template = image + text;
     template = '<a layout="row" flex ng-href="' + href + '" layout-margin>' + template + '</a>';
-    template = '<div layout="row" class="row">' + template + '</div>';
+    template = '<div layout="row" class="row video-list">' + template + '</div>';
 
     return {
         restrict: 'E',

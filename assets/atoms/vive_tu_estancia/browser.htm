@@ -7,7 +7,7 @@
     </div>
     <div class="row collapse">
         <div ng-if="element_status() == 'ok'" class="medium-12 columns" ng-class="{'end': $last}" ng-repeat="card in elements()">
-            <app-card-standard item="card" prefix="'#/' + lang() + '/' + sections()[1] + '/' + sections()[2] + '/' + sections()[3]"></app-card-standard>
+            <app-card-standard item="card" prefix="node.href"></app-card-standard>
         </div>
     </div>
     <app-paginator-controls></app-paginator-controls>

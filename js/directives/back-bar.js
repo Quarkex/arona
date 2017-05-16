@@ -14,7 +14,8 @@ app.directive('appBackBar', function () {
     right = '<div ng-if="last_modified() != \'\'" flex="50" layout="row" layout-align="end center">' + right + '</div>';
 
     var template = left + right;
-    template = '<div class="row hide-for-print" layout="row">' + template + '</div>';
+    template = '<br>' + template + '<br>';
+    template = '<div class="row collapse hide-for-print" layout="row">' + template + '</div>';
 
     return {
         restrict: 'E',

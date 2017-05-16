@@ -15,7 +15,7 @@ app.directive('appAccordion', function () {
     var template = lone_button + multiple_buttons;
     template = '<ul layout="column">' + template + '</ul>';
     template = header + template;
-    template = '<accordion-group is-open="::(params.type == label )" ng-repeat="(label, link) in sublinks(path().split(\'/\').slice(2, 4).join(\'/\'), true)">' + template + '</accordion-group>';
+    template = '<accordion-group is-open="::(params.type == label )" ng-repeat="(label, link) in sublinks">' + template + '</accordion-group>';
     template = '<accordion close-others="true" ng-controller="accordionCtrl">' + template + '</accordion>';
     template = '<div class="accordion-wrapper hide-for-print">' + section + template + '</div>';
 

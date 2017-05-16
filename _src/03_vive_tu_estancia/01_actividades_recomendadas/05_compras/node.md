@@ -1,0 +1,4 @@
+---
+id: compras
+title: compras
+---

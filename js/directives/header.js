@@ -62,15 +62,15 @@ app.directive('appHeader', function () {
     // Begin of secondary header //
    ///////////////////////////////
 
-    var secondary_header_title = '<h1>{{ translate(\'pagina.titulo_\', sections()[1] ) }}</h1>';
-    var secondary_header_subtitle = '{{ translate(\'pagina.subtitulo_\', sections()[1] ) }}';
-    secondary_header_subtitle = '<h2 ng-if="( translate(\'pagina.subtitulo_\', sections()[1] ) != \'\' ) && ( level() == 2 )">' + secondary_header_subtitle + '</h2>';
+    var secondary_header_title = '<h1>{{ translate(\'pagina.titulo_\', sections()[0] ) }}</h1>';
+    var secondary_header_subtitle = '{{ translate(\'pagina.subtitulo_\', sections()[0] ) }}';
+    secondary_header_subtitle = '<h2 ng-if="( translate(\'pagina.subtitulo_\', sections()[0] ) != \'\' ) && ( level() == 2 )">' + secondary_header_subtitle + '</h2>';
 
     var secondary_header = secondary_header_title + secondary_header_subtitle;
 
     secondary_header = '<div class="large-10 large-offset-1 columns">' + secondary_header + '</div>';
     secondary_header = '<div class="row">' + secondary_header + '</div>';
-    secondary_header = '<header ng-if="level() > 1" class="section-header" style="background-image: linear-gradient(to bottom, rgba(00, 00, 00, 0.4), rgba(00, 00, 00, 0.4)), url(/img/headers/pagina.{{ sections()[3] }}.png), url(/img/headers/pagina.{{ sections()[2] }}.png), url(/img/headers/pagina.{{ sections()[1] }}.png)">' + secondary_header + '</header>';
+    secondary_header = '<header ng-if="level() > 1" class="section-header" style="background-image: linear-gradient(to bottom, rgba(00, 00, 00, 0.4), rgba(00, 00, 00, 0.4)), url(/img/headers/pagina.{{ sections()[2] }}.png), url(/img/headers/pagina.{{ sections()[1] }}.png), url(/img/headers/pagina.{{ sections()[0] }}.png)">' + secondary_header + '</header>';
 
     template = main_header + secondary_header;
 
