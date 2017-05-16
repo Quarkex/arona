@@ -12,7 +12,7 @@ app.directive('appRelatedContent', function () {
     content_b1 = '<span class="md-headline" style="font-size: 18px;">' + content_b1 + '</span>';
 
     var content_b2 = 'card.DESCRIPCION_COMUN';
-    content_b2 = '<md-truncate flex class="md-subhead" style="padding-top: 0;" bind-html-compile="' + content_b2 + '"></md-truncate>';
+    content_b2 = '<md-truncate flex class="md-subhead" style="padding-top: 0; max-height: 150px;" bind-html-compile="' + content_b2 + '"></md-truncate>';
 
     var content_b = content_b1 + content_b2;
     content_b = '<md-card-title-text>' + content_b + '</md-card-title-text>';
