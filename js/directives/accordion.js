@@ -1,6 +1,6 @@
 app.directive('appAccordion', function () {
 
-    var section = '<h2 ng-bind="translate( \'pagina.titulo_\', params.subsection )"></h2>';
+    var section = '<h2 ng-bind="translate( \'pagina.titulo_\', node.parent.title )"></h2>';
 
     var header = '<accordion-heading>{{ translate(\'pagina.titulo_\', label) | gsub:\'_\':\' \' | capitalize }}</accordion-heading>';
 
