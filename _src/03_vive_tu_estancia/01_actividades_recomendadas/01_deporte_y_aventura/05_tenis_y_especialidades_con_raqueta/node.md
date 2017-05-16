@@ -1,7 +1,6 @@
 ---
-id: aprende_espanol
-title: aprende_español
-href: "#/es/vive_tu_estancia/actividades_recomendadas/aprende_espanol/6854"
+id: tenis_y_especialidades_con_raqueta
+title: tenis_y_especialidades_con_raqueta
 ---
 <div class="row">
     <div flex="100" layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">
