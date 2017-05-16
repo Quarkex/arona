@@ -131,9 +131,16 @@ app.controller("mainCtrl", function($rootScope, $location, $routeParams, $resour
                     }
                 }
 
-                if (target_node != null) node = target_node;
-                else if (!isNaN(target_id)) {
+                if (target_node != null){
+                    target_node.parent = last_node;
+                    if ( target_node.nodes == undefined || target_node.nodes == null ){
+                        target_node.sibling_nodes = true;
+                        target_node.nodes = target_node.parent.nodes;
+                    }
+                    node = target_node;
+                } else if (!isNaN(target_id)) {
                     node = {};
+                    node.parent = last_node;
                     angular.copy(last_node, node);
                     node.isView = true;
                     node['id'] = target_id;
@@ -149,7 +156,6 @@ app.controller("mainCtrl", function($rootScope, $location, $routeParams, $resour
                     node = null;
                     break;
                 }
-                node.parent = last_node;
                 last_node = node;
             } else {
                 console.warn("node has no child nodes: " + node);
