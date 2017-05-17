@@ -120,7 +120,7 @@ function ResourcePaginator(language, $resource, $rootScope){
             if (d != '' && d != null) self.variables.last_modified = d;
         }
         if (self.variables.last_modified == undefined) return '';
-        else return self.variables.stats.last_modified;
+        else return self.variables.last_modified;
     };
     scope_interface.push("last_modified");
 
