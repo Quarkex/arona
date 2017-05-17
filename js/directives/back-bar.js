@@ -8,7 +8,7 @@ app.directive('appBackBar', function () {
 
     var left = '<div flex layout="row" layout-align="begin center">' + left_a + left_b + '</div>';
 
-    var right = '{{ string_interpolate(translate(\'general.\', \'ultima_modificacion\'), last_modified()) }}';
+    var right = '{{ string_interpolate(translate(\'general.\', \'ultima_modificacion\'), last_modified() | date : translate(\'date.schema\') | capitalize ) }}';
     right = '<p class="panel last-modified">' + right + '</p>';
     right = '<md-content style="padding: 0.6em 0.6em 0em 0.6em;">' + right + '</md-content>';
     right = '<div ng-if="last_modified() != \'\'" flex="50" layout="row" layout-align="end center">' + right + '</div>';
