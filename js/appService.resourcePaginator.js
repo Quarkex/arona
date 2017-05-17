@@ -46,6 +46,7 @@ function ResourcePaginator(language, $resource, $rootScope){
             angular.copy(self.values, self.last_values);
 
             self.elements([]);
+            self.last_modified(null);
             self.element_status('loading');
 
             self.resource.get( self.values, function(data){
@@ -116,6 +117,7 @@ function ResourcePaginator(language, $resource, $rootScope){
     scope_interface.push("largest_size");
 
     this.last_modified = function(d){
+        if (d === null) delete self.variables.last_modified;
         if (d != undefined){
             if (d != '' && d != null) self.variables.last_modified = d;
         }
