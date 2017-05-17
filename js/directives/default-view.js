@@ -27,6 +27,8 @@ app.directive('appDefaultView', function () {
                             '<div ng-if="element().FAX != null" class="row collapse">' +
                                 '<p>{{ translate("general.", \'fax\') | capitalize }}: {{  element().FAX }}</p>' +
                             '</div>' +
+                            '<div ng-if="element().HORARIO != null" class="row collapse" bind-html-compile="element().HORARIO"></div>' +
+                            '<div ng-if="element().DESCRIPCION != null" class="row collapse" bind-html-compile="element().DESCRIPCION"></div>' +
                         '</md-card-content>' +
                         '<md-card-footer style="margin-left: -2em">' +
                             '<md-card-actions layout="row" layout-align="begining center">' +
@@ -42,6 +44,7 @@ app.directive('appDefaultView', function () {
             '<div class="large-10 large-offset-1 columns">' +
                 '<div layout="column" layout-margin style="padding: 0 5em;">' +
                     '<md-content ng-if="element().DESCRIPCION_COMUN != null" bind-html-compile="element().DESCRIPCION_COMUN" flex class="territorial-description" style="background: none;"></md-content>' +
+                    '<md-content ng-if="element().TEXTO != null" bind-html-compile="element().TEXTO" flex class="territorial-description" style="background: none;"></md-content>' +
                     '<md-content ng-if="element().MAPA_IFRAME != null" bind-html-compile="element().MAPA_IFRAME" flex class="territorial-map flex-video"></md-content>' +
                 '</div>' +
             '</div>' +
