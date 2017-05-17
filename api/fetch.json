@@ -61,6 +61,7 @@ begin
         $collection = client[$parameters['collection']]
         $collection.indexes.create_one( { "F_INICIO_PUB" => -1 }, unique: false )
         $collection.indexes.create_one( { "CODCONTENIDO" => -1 }, unique: false )
+        $collection.indexes.create_one( { "FMODIFICACION" => 1 }, unique: false )
         $resources = client['recursos']
         $resources.indexes.create_one( { "CODRECURSO" => -1 }, unique: false )
         $resources.indexes.create_one( { "RECURSO" => -1 }, unique: false )
@@ -76,9 +77,13 @@ begin
         filters["F_INICIO_PUB"] = {'$lt': DateTime.now }
         filters["F_FIN_PUB"] = {'$gte': DateTime.now }
 
-        projection = {"_id"=> 1}
-        values.each do |value|
-            projection[value] = 1
+        if values != [] then
+            projection = {"_id"=> 1, "FMODIFICACION"=> 1}
+            values.each do |value|
+                projection[value] = 1
+            end
+        else
+            projection = []
         end
 
         doc = $collection.find( filters )
@@ -88,6 +93,10 @@ begin
         doc = doc.skip(offset) if not offset == 0
         doc = doc.limit(limit) if not limit == 0
         doc = doc.projection(projection) if not projection.empty?
+
+        last_modified = doc.sort({"FMODIFICACION": 1}).first()
+        sts["last_modified"] = last_modified["FMODIFICACION"].iso8601 unless last_modified["FMODIFICACION"] == nil
+
         doc = doc.to_a
 
         modules = {}
