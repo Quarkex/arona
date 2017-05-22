@@ -1,6 +1,11 @@
 ---
 id: "playa_de_las_vistas"
 title: "playa_de_las_vistas"
+"collection": "territoriales"
+"filters": {"CODCONTENIDO": 22539}
+"values_view": ["WEBCAM","DATOS_INTERES"]
+"values_list": ["WEBCAM","DATOS_INTERES"]
+limit: 1
 ---
 <div class="row">
     <div layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">

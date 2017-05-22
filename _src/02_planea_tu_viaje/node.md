@@ -7,4 +7,5 @@ title: "planea_tu_viaje"
 "values_view": ["TITULO", "F_INICIO", "CODCONTENIDO", "IMAGEN"]
 "limit": 3
 ---
+<app-chessboard-nav></app-chessboard-nav>
 <!-- <div ng-include="'assets/atoms/main/actividades.htm'" class="main-row"></div> -->
