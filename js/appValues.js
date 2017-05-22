@@ -128,6 +128,7 @@ app.value('resourceValues', {
       /////////////////////////////////////////////////////////////////
      // Planea tu viaje                                             //
     /////////////////////////////////////////////////////////////////
+
     "planea_tu_viaje": {
         "language": true,
         "collection": "actividades",
