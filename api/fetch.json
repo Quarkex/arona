@@ -95,7 +95,9 @@ begin
         doc = doc.projection(projection) if not projection.empty?
 
         last_modified = doc.sort({"FMODIFICACION": 1}).first()
-        sts["last_modified"] = last_modified["FMODIFICACION"].iso8601 unless last_modified["FMODIFICACION"] == nil
+        if last_modified != nil then
+            sts["last_modified"] = last_modified["FMODIFICACION"].iso8601 unless last_modified["FMODIFICACION"] == nil
+        end
 
         doc = doc.to_a
 
