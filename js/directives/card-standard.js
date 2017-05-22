@@ -6,7 +6,8 @@ app.directive('appCardStandard', function () {
 
     var text = '<a style="text-align: left;" href="{{ prefix }}/{{ item.CODCONTENIDO }}" bind-html-compile="item.TITULO"></a>';
     text = '<span class="md-headline" style="font-size: 18px;">' + text + '</span>';
-    text += '<span class="md-subhead" style="padding-top: 0;">{{ item.DIRECCION }}</span>';
+    text += '<span class="md-subhead" style="padding-top: 0;" ng-if="item.DIRECCION != nil">{{ item.DIRECCION }}</span>';
+    text += '<span class="md-subhead" style="padding-top: 0;" ng-if="item.HORARIO != nil" bind-html-compile="item.HORARIO"></span>';
     text = '<md-card-title-text>' + text + '</md-card-title-text>';
     text = '<div flex>' + text + '</div>';
 
