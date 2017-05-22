@@ -1,3 +1,4 @@
+var test = null;
 function ResourcePaginator(language, $resource, $rootScope){
 
     var self = this;
@@ -49,6 +50,7 @@ function ResourcePaginator(language, $resource, $rootScope){
             self.last_modified(null);
             self.element_status('loading');
 
+            console.log(self.values);
             self.resource.get( self.values, function(data){
                 if (self.values.collection != null) {
                     if (data[0] == null){
@@ -320,7 +322,7 @@ function ResourcePaginator(language, $resource, $rootScope){
 
 }
 app.service('resourcePaginator', ["language", "$resource", "$rootScope", ResourcePaginator]);
-app.controller("resourcePaginatorCtrl", function($scope, $location, $routeParams, resourcePaginator, resourceValues, constants) {
+app.controller("resourcePaginatorCtrl", function($rootScope, $scope, $location, $routeParams, resourcePaginator, resourceValues, constants) {
 
     resourcePaginator.expose_interface($scope);
 
@@ -331,52 +333,67 @@ app.controller("resourcePaginatorCtrl", function($scope, $location, $routeParams
 
     var update = function(){
         var params = $location.search();
+        var page = params["page"] == null ? 1 : parseInt(params["page"]);
         var path = $location.path().substr(1).split('/');
         path.shift();
 
-        var section = path.pop();
-
-        var id = null;
+        var id = null, section = path.pop();
         if (!isNaN(section)) id = parseInt(section);
 
-        while (resourceValues[section] == null || resourceValues[section] == undefined){
-            section = path.pop();
-            if(section == '' || section == undefined || section == null) section = 'index';
+        var values = {}, object_elements = ["language", "collection", "filters", "values_list", "values_view", "limit", "offset"];
+        for ( var i = 0; i < object_elements.length; i++){
+            var element_label = object_elements[i];
+            var node = $rootScope.getNode();
+            while ( values[element_label] === undefined ){
+                if (node[element_label] !== undefined){
+                    if (element_label == "values_list" || element_label == "values_view"){
+                        values["values"] = (id === null) ? node["values_list"] : node["values_view"];
+                    }
+                    values[element_label] = node[element_label];
+                } else if (node.parent == null) {
+                    values[element_label] = null;
+                } else {
+                    angular.copy(node.parent, node);
+                }
+            }
         }
 
-        if ( resourceValues[section] != null ){
+        if (values["language"]) values["language"] = function(){ return $scope.lang();}();
+        else delete values["language"];
 
-            var values = {};
-            angular.copy( resourceValues[section], values );
-            for ( var value in resourcePaginator.values.filters) if (resourcePaginator.values.filters.hasOwnProperty(value)) {
-                delete resourcePaginator.values.filters[value];
-            }
-            Object.keys(resourcePaginator.values.filters).forEach(function(key) { delete resourcePaginator.values.filters[key]; });
+        if (values["collection"] == null) values["collection"] = "territoriales";
 
-            if (values["language"]) values["language"] = function(){ return $scope.lang();}();
-            if (values["collection"] == null) values["collection"] = "territoriales";
-            if (values["filters"] == null) values["filters"] = {};
-            if (values["values"] == null) values["values"] = [];
-            if (values["limit"] == null) values["limit"] = 100;
-            if (values["offset"] == null) values["offset"] = 0;
-            var page = params["page"] == null ? 1 : parseInt(params["page"]);
+        if (values["filters"] == null) values["filters"] = {};
 
-            var limit = params["limit"] == null ? parseInt(values["limit"]) : parseInt(params["limit"]);
-            var offset = params["page"] == null ? parseInt(values["offset"]) : ( page - 1) * limit;
+        if (values["values"] == null) values["values"] = [];
 
-            if (id != null){
-                if (values["filters"]['$and'] == undefined) values["filters"]['$and'] = [];
-                var querylet = { $or: [] };
-                querylet["$or"].push({"CODCONTENIDO": id});
-                querylet["$or"].push({"CODRECURSO": id});
-                values["filters"]['$and'].push(querylet);
-            }
+        if (values["limit"] == null) values["limit"] = 100;
 
-            values["limit"] = limit;
-            values["offset"] = offset;
+        if (values["offset"] == null) values["offset"] = 0;
 
-            resourcePaginator.set_values(values);
+        var limit = params["limit"] == null ? parseInt(values["limit"]) : parseInt(params["limit"]);
+        var offset = params["page"] == null ? parseInt(values["offset"]) : ( page - 1) * limit;
+
+        if (id != null){
+            if (values["filters"]['$and'] == undefined) values["filters"]['$and'] = [];
+            var querylet = { $or: [] };
+            querylet["$or"].push({"CODCONTENIDO": id});
+            querylet["$or"].push({"CODRECURSO": id});
+            values["filters"]['$and'].push(querylet);
         }
+
+        values["limit"] = limit;
+        values["offset"] = offset;
+
+        var old_filters = resourcePaginator.values.filters;
+        for (var variableKey in old_filters){
+            if (old_filters.hasOwnProperty(variableKey)){
+                delete old_filters[variableKey];
+            }
+        }
+
+        if ( ! angular.equals(values["filters"], {}) ) resourcePaginator.set_values(values);
+        test = $rootScope;
     };
 
     $scope.$on('$locationChangeSuccess', function(event){ update(); });

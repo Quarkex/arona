@@ -120,10 +120,11 @@ app.controller("mainCtrl", function($rootScope, $location, $routeParams, $resour
 
         var last_nodes = null;
         var last_node = null;
-        for (var i = 0; i < sections.length; i++){
+        var depth = 0;
+        for (depth = 0; depth < sections.length; depth++){
             if (node["nodes"] != undefined){
                 if (node["nodes"].length > 0) last_nodes = node["nodes"];
-                target_id = sections[i];
+                target_id = sections[depth];
                 target_node = null;
                 for (var j = 0; j < node["nodes"].length; j++){
                     if ( node["nodes"][j]["id"] == target_id ){
@@ -165,6 +166,8 @@ app.controller("mainCtrl", function($rootScope, $location, $routeParams, $resour
         }
         if (node == null) return null;
 
+        node["depth"] = depth;
+        if (depth == 1) node.parent = tree["nodes"][0];
         if (node["href"].substring(0,4) == 'http') node["href"] = '#/' + lang() + '/' + node["href"];
         if (node["nodes"] == undefined || node["nodes"].length <= 0 ){
             node["nodes"] = last_nodes;
@@ -180,6 +183,7 @@ app.controller("mainCtrl", function($rootScope, $location, $routeParams, $resour
 
         return node;
     }
+    $rootScope.getNode = getNode;
 
     $rootScope.history = [];
     for (var i = 0; i < sections().length; i++ ){
