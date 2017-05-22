@@ -102,9 +102,16 @@ begin
         doc = doc.to_a
 
         modules = {}
-        values.each do | value |
-            module_file = File.dirname(__FILE__) + '/fetch_custom_values/' + value + '.rb'
-            modules[value] = module_file if File.exist? (module_file)
+        if values != [] then
+            values.each do | value |
+                module_file = File.dirname(__FILE__) + '/fetch_custom_values/' + value + '.rb'
+                modules[value] = module_file if File.exist? (module_file)
+            end
+        else
+            Dir.glob(File.dirname(__FILE__) + '/fetch_custom_values/*.rb') do | module_file |
+                value = File.basename(module_file, File.extname(module_file))
+                modules[value] = module_file if File.exist? (module_file)
+            end
         end
 
         doc.each do | document |
