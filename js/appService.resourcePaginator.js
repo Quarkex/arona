@@ -1,4 +1,3 @@
-var test = null;
 function ResourcePaginator(language, $resource, $rootScope){
 
     var self = this;
@@ -393,7 +392,6 @@ app.controller("resourcePaginatorCtrl", function($rootScope, $scope, $location, 
         }
 
         if ( ! angular.equals(values["filters"], {}) ) resourcePaginator.set_values(values);
-        test = $rootScope;
     };
 
     $scope.$on('$locationChangeSuccess', function(event){ update(); });
