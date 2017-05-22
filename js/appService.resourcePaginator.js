@@ -390,7 +390,7 @@ app.controller("resourcePaginatorCtrl", function($rootScope, $scope, $location, 
             }
         }
 
-        if ( ! angular.equals(values["filters"], {}) ) resourcePaginator.set_values(values);
+        resourcePaginator.set_values(values);
     };
 
     $scope.$on('$locationChangeSuccess', function(event){ update(); });
