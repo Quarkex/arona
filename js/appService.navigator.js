@@ -5,8 +5,7 @@ function Navigator(language, $location, $timeout){
 
     // hash as seen by the final cgi
     this.values = {
-        language: language.current_language(),
-        current: ''
+        language: language.current_language()
     };
 
     this.sections = function (){ return $location.path().substring(1).split('/'); };
@@ -20,10 +19,7 @@ function Navigator(language, $location, $timeout){
     scope_interface.push("current_section");
 
     this.navNavigate = function(p){
-        p = p.split('/');
-        p.shift();
-        p = p.join('/');
-        $location.path(p);
+        $location.path(p.replace(new RegExp('^#/'), ''));
     };
     scope_interface.push("navNavigate");
 
@@ -62,3 +58,6 @@ function Navigator(language, $location, $timeout){
 
 }
 app.service('navigator', ["language", "$location", "$timeout", Navigator]);
+app.controller("navigatorCtrl", function($routeParams, $scope, navigator) {
+    navigator.expose_interface($scope);
+});
