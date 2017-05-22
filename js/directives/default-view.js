@@ -1,6 +1,6 @@
 app.directive('appDefaultView', function () {
 
-    var template = '<div class="territorial-view" ng-controller="resourcePaginatorCtrl">' +
+    var template = '<div class="territorial-view">' +
         '<div class="row">' +
             '<div class="large-10 large-offset-1 columns">' +
                 '<div layout="column" layout-margin>' +

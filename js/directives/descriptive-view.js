@@ -1,6 +1,6 @@
 app.directive('appDescriptiveView', function () {
 
-    var template = '<div class="row territorial-view" ng-controller="resourcePaginatorCtrl">' +
+    var template = '<div class="row territorial-view">' +
         '<div class="large-10 large-offset-1 columns">' +
             '<article class="small-12 columns activity-view">' +
                 '<header>' +
@@ -20,7 +20,7 @@ app.directive('appDescriptiveView', function () {
             '</article>' +
         '</div>' +
     '</div>' +
-    '<app-related-content ng-controller="resourcePaginatorCtrl"></app-related-content>' +
+    '<app-related-content></app-related-content>' +
     '<div class="row">' +
         '<div class="large-10 large-offset-1 columns">' +
             '<app-back-bar class="small-12 columns"></app-back-bar>' +

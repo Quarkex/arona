@@ -1,6 +1,6 @@
 app.directive('appHotelView', function () {
 
-    var template = '<div class="territorial-view" ng-controller="resourcePaginatorCtrl">' +
+    var template = '<div class="territorial-view">' +
         '<div class="territorial-header" style="background-image: url(\'http://www.arona.org/portal/imagecache/ampliado/{{ element().IMAGEN }}\');">' +
             '<div class="inner-wrapper">' +
                 '<h1>{{  element().TITULO }}</h1>' +
@@ -8,7 +8,7 @@ app.directive('appHotelView', function () {
             '</div>' +
         '</div>' +
     '</div>' +
-    '<div class="territorial-view" ng-controller="resourcePaginatorCtrl">' +
+    '<div class="territorial-view">' +
         '<div class="row">' +
             '<div class="large-10 large-offset-1 columns">' +
                 '<div layout-gt-xs="row" layout="column" class="territorial-info" layout-margin>' +

@@ -1,6 +1,6 @@
 app.directive('appDocumentalView', function () {
 
-    var template = '<div class="row territorial-view" ng-controller="resourcePaginatorCtrl">' +
+    var template = '<div class="row territorial-view">' +
         '<div class="row">' +
             '<div class="large-10 large-offset-1 columns">' +
                 '<div layout="column" layout-margin>' +

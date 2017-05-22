@@ -3,7 +3,7 @@ id: "arona_360"
 title: "arona_360"
 ---
 <app-tab-bar></app-tab-bar>
-<div class="row" ng-controller="resourcePaginatorCtrl">
+<div class="row" >
     <div class="large-10 large-offset-1 columns">
         <ul class="arona-tour">
             <li>
@@ -329,7 +329,7 @@ title: "arona_360"
         </ul>
     </div>
 </div>
-<div class="row" ng-controller="resourcePaginatorCtrl">
+<div class="row" >
     <div class="large-10 large-offset-1 columns">
         <app-paginator-controls></app-paginator-controls>
         <br>

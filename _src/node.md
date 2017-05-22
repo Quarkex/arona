@@ -23,7 +23,7 @@
 </div>
 <div id="playas_de_arona"    ng-include="'assets/atoms/main/playas_de_arona.htm'"    class="main-row"></div>
 <div id="conjunto_historico" ng-include="'assets/atoms/main/conjunto_historico.htm'" class="main-row show-for-large"></div>
-<div id="actividades"        ng-include="'assets/atoms/main/actividades.htm'"        class="main-row" ng-controller="resourcePaginatorCtrl"></div>
+<div id="actividades"        ng-include="'assets/atoms/main/actividades.htm'"        class="main-row"></div>
 <div class="row collapse">
     <div class="large-10 large-offset-1 columns">
         <div class="medium-3 small-6 columns text-center" style="margin-bottom: 2em;"> <a href="http://www.arona.org">

@@ -1,7 +1,7 @@
 app.directive('appActivityView', function () {
 
     var template = '<div class="row collapse">' +
-        '<article class="medium-10 medium-offset-1 columns activity-view" ng-controller="resourcePaginatorCtrl">' +
+        '<article class="medium-10 medium-offset-1 columns activity-view">' +
             '<header>' +
                 '<div class="row post-title"><h2 ng-bind="element().TITULO"></h2></div>' +
                 '<div class="row post-place"><h3 ng-if="element().DONDE != null" ng-bind="element().DONDE"></h3></div>' +

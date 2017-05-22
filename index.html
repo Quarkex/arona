@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ lang() }}" ng-init="title='Arona.travel';" ng-app="mainApp" ng-controller="mainCtrl">
+<html lang="{{ lang() }}" ng-init="title='Arona.travel';" ng-app="mainApp" ng-controller="mainCtrl as ctrl">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
@@ -83,7 +83,7 @@
 
         <app-loading-overlay show-if="language_status() == 'loading'"></app-loading-overlay>
         <div class="angular-animate" ng-show="language_status() == 'ok'" id="app">
-            <app-gui>
+            <app-gui ng-controller="resourcePaginatorCtrl">
                 <div bind-html-compile="node.content"></div>
             </app-gui>
             <div class="hide-for-large" style="height: 43px;"></div><!-- Add-this mobile pusher -->

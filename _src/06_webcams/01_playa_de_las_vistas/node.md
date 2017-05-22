@@ -5,7 +5,7 @@ title: "playa_de_las_vistas"
 <div class="row">
     <div layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">
         <app-side-nav flex flex-gt-md="25"></app-side-nav>
-        <div flex layout="column" class="webcam-wrapper" ng-controller="webcamCtrl">
+        <div flex layout="column" class="webcam-wrapper" >
             <!-- <h1 flex="100" class="element-title">{{ translate( 'pagina.titulo_', current_section() ) }}</h1> -->
             <div flex="100" class="webcam" bind-html-compile="element().WEBCAM"></div>
             <div flex="100" class="webcam-description" bind-html-compile="element().DATOS_INTERES"></div>
