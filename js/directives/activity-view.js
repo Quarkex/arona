@@ -4,7 +4,7 @@ app.directive('appActivityView', function () {
         '<article class="medium-10 medium-offset-1 columns activity-view">' +
             '<header>' +
                 '<div class="row post-title"><h2 ng-bind="element().TITULO"></h2></div>' +
-                '<div class="row post-place"><h3 ng-if="element().DONDE != null" ng-bind="element().DONDE"></h3></div>' +
+                '<div class="row post-place"><h3 ng-if="element().DONDE != null" bind-html-compile="element().DONDE"></h3></div>' +
                 '<div class="row post-header">' +
                     '<div class="medium-3 columns">' +
                         '<div class="square" style="background-image: url(http://www.arona.org/portal/imagecache/ampliado/{{ element().IMAGEN }});"></div>' +
