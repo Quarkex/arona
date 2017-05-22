@@ -193,7 +193,8 @@ app.controller("mainCtrl", function($rootScope, $location, $routeParams, $resour
     }
 
     var breadcrumbs = function(){
-        var output = [{ label: "inicio", href: '#/' + lang(), current: false }];
+        var output = [{ label: "inicio", href: '#/' + lang(), inactive: false }];
+        var current_section = $location.path().substr(1).split('/').pop();
         var crumbs = [];
         for (var i = 0; i < $rootScope.history.length; i++){
             var crumb = {};
@@ -204,7 +205,7 @@ app.controller("mainCtrl", function($rootScope, $location, $routeParams, $resour
             crumb["label"] = $rootScope.history[i]["id"];
             crumb["href"] = crumbs.length == 0 ? crumb["label"] : href.join('/') + '/' + crumb["label"];
             crumb["href"] = '#/' + lang() + '/' + crumb["href"];
-            crumb["current"] = current_section() == crumb["label"];
+            crumb["inactive"] = ( (current_section == crumb["label"]) || ($rootScope.history[i]['content'].trim() == '') );
             crumbs.push(crumb);
         }
         return output.concat(crumbs);

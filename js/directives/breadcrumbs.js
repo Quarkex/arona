@@ -4,8 +4,8 @@ app.directive('appBreadcrumbs', function () {
 
     var crumb_label = '{{ translate( "pagina.titulo_", crumb.label ) | gsub:\'_\':\' \' | capitalize }}';
     var crumb_href= '{{crumb.href}}';
-    var crumb_conditional= 'crumb.current == undefined || crumb.current == false';
-    var crumb_conditional_active= 'crumb.current == true';
+    var crumb_conditional= 'crumb.inactive == undefined || crumb.inactive == false';
+    var crumb_conditional_active= 'crumb.inactive == true';
 
     var crumb = '<a ng-if="' + crumb_conditional + '" href="' + crumb_href + '">' + crumb_label + '</a>';
     var active_crumb = '<span ng-if="' + crumb_conditional_active + '"><span class="show-for-sr">{{ translate( "general.", "actual" ) }}: </span> ' + crumb_label + '</span>';
