@@ -1,6 +1,7 @@
 ---
 id: espectaculos
 title: espectaculos
+"filters": {"$and":[{"CODSUBTIPOCONT":330},{"CODAREAS":16}]}
 ---
 <div class="row">
     <div flex="100" layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">

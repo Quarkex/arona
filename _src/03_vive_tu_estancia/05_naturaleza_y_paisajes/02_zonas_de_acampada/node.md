@@ -1,6 +1,7 @@
 ---
 id: zonas_de_acampada
 title: zonas_de_acampada
+"filters": {"$and":[{"CODSUBTIPOCONT":18},{"CODAREAS":16}]}
 ---
 <div class="row">
     <div flex="100" layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">

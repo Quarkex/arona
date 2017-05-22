@@ -1,6 +1,7 @@
 ---
 id: centros_culturales
 title: centros_culturales
+"filters": {"$and":[{"CODSUBTIPOCONT":146},{"CODAREAS":16}]}
 ---
 <div class="row">
     <div flex="100" layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">

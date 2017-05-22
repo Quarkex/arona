@@ -1,6 +1,8 @@
 ---
 id: agenda_mensual
 title: agenda_mensual
+collection: "actividades"
+"filters": {}
 ---
 <div class="row">
     <div flex="100" layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">
