@@ -352,7 +352,9 @@ app.controller("resourcePaginatorCtrl", function($rootScope, $scope, $location, 
                 }
             }
         }
-        values["values"] = (id === null) ? node["values_list"] : node["values_view"];
+        if (values["values_list"] == undefined || values["values_list"] == null) values["values_list"] = values["values_view"];
+        if (values["values_view"] == undefined || values["values_view"] == null) values["values_view"] = values["values_list"];
+        values["values"] = (id === null) ? values["values_list"] : values["values_view"];
 
         if (values["language"]) values["language"] = function(){ return $scope.lang();}();
         else delete values["language"];
