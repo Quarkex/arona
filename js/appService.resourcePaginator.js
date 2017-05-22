@@ -49,7 +49,6 @@ function ResourcePaginator(language, $resource, $rootScope){
             self.last_modified(null);
             self.element_status('loading');
 
-            console.log(self.values);
             self.resource.get( self.values, function(data){
                 if (self.values.collection != null) {
                     if (data[0] == null){
