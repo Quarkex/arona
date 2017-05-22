@@ -344,9 +344,6 @@ app.controller("resourcePaginatorCtrl", function($rootScope, $scope, $location, 
             var node = $rootScope.getNode();
             while ( values[element_label] === undefined ){
                 if (node[element_label] !== undefined){
-                    if (element_label == "values_list" || element_label == "values_view"){
-                        values["values"] = (id === null) ? node["values_list"] : node["values_view"];
-                    }
                     values[element_label] = node[element_label];
                 } else if (node.parent == null) {
                     values[element_label] = null;
@@ -355,6 +352,7 @@ app.controller("resourcePaginatorCtrl", function($rootScope, $scope, $location, 
                 }
             }
         }
+        values["values"] = (id === null) ? node["values_list"] : node["values_view"];
 
         if (values["language"]) values["language"] = function(){ return $scope.lang();}();
         else delete values["language"];
