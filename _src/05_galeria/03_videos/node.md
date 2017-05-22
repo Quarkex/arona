@@ -1,6 +1,9 @@
 ---
 id: "videos"
 title: "videos"
+"language": true
+"filters": {"CODSUBTIPOCONT": 441, "CODAREAS": 16}
+"limit": 10
 ---
 <app-tab-bar></app-tab-bar>
 <app-paginator-browser >

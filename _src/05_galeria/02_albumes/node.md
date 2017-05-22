@@ -1,6 +1,8 @@
 ---
 id: "albumes"
 title: "albumes"
+"filters": {"CODSUBTIPOCONT": 290, "CODAREAS": 16}
+"limit": 10
 ---
 <app-tab-bar></app-tab-bar>
 <app-paginator-browser >

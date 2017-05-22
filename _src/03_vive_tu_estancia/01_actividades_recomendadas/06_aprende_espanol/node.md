@@ -2,6 +2,9 @@
 id: aprende_espanol
 title: aprende_español
 href: "#/es/vive_tu_estancia/actividades_recomendadas/aprende_espanol/6854"
+"collection": "territoriales"
+"filters": {"CODCONTENIDO":{"$in":[null,6854]}}
+"values_view": ["HORARIO","MAPA_IFRAME","MAPA","CODCONTENIDO","TITULO","ZONA","TELEFONO","FAX","WEB_PROPIA","DIRECCION","EMAIL","INDICADORES","IMAGEN","DESCRIPCION_COMUN","RECURSOS","CONTENIDOS_RELACIONADOS"]
 ---
 <div class="row">
     <div flex="100" layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">

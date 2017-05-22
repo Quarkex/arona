@@ -2,6 +2,7 @@
 id: "apartamentos"
 title: "apartamentos"
 view: "hotel"
+"filters": {"SUBTIPO_PRINCIPAL": "Apartamentos"}
 ---
 <app-tab-bar></app-tab-bar>
 <app-paginator-browser >

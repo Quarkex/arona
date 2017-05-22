@@ -2,6 +2,7 @@
 id: "alojamiento_rural"
 title: "alojamiento_rural"
 view: "hotel"
+"filters": {"SUBTIPO_PRINCIPAL": "Alojamiento Rural"}
 ---
 <app-tab-bar></app-tab-bar>
 <app-paginator-browser >

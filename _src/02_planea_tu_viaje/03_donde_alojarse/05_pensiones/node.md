@@ -2,6 +2,7 @@
 id: "pensiones"
 title: "pensiones"
 view: "hotel"
+"filters": {"SUBTIPO_PRINCIPAL": "Pensiones"}
 ---
 <app-tab-bar></app-tab-bar>
 <app-paginator-browser >

@@ -1,5 +1,11 @@
 ---
 "title": "inicio"
+"values_list": ["TITULO", "F_INICIO", "CODCONTENIDO", "IMAGEN"]
+"values_view": ["DESCRIPCION", "DESCRIPCION_COMUN", "DIRECCION", "EMAIL", "FAX", "HORARIO", "IMAGEN", "MAPA_IFRAME", "TELEFONO", "TEXTO", "TITULO", "WEB_PROPIA" ]
+"filters": {"CODAREAS": 16, "CODSUBTIPOCONT": 595}
+"collection": "actividades"
+"limit": 3
+"language": true
 ---
 
 <div id="apparona"           ng-include="'assets/atoms/main/apparona.htm'"           class="main-row"></div>

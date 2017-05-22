@@ -1,6 +1,10 @@
 ---
 id: "arona_360"
 title: "arona_360"
+"collection": "recursos"
+"filters": {"TIPO": "Vista 360"}
+"values_view": ["TITULO", "HREF", "CODCONTENIDO", "IMAGEN"]
+"limit": 6
 ---
 <app-tab-bar></app-tab-bar>
 <div class="row" >
