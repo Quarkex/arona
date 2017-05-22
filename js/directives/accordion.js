@@ -10,7 +10,7 @@ app.directive('appAccordion', function () {
 
     var multiple_buttons = '{{ translate(\'pagina.titulo_\', sublink.title) | gsub:\'_\':\' \' | capitalize }}';
     multiple_buttons = '<li ng-class="{ \'active\': (current_section() == sublink.id) }">' + multiple_buttons + '</li>';
-    multiple_buttons = '<a ng-if="link.content" ng-href="{{ sublink.href }}" ng-repeat="sublink in link.nodes">' + multiple_buttons + '</a>';
+    multiple_buttons = '<a ng-if="link.content" ng-href="{{ (link.href.substring(0,4) == \'http\' ? \'\' : \'#/\' + lang() + \'/\') + ( sublink.href | gsub: \'#/\' + lang() + \'/\' : \'\' ) }}" ng-repeat="sublink in link.nodes">' + multiple_buttons + '</a>';
 
     var template = lone_button + multiple_buttons;
     template = '<ul layout="column">' + template + '</ul>';
