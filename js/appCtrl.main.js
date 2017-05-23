@@ -38,7 +38,7 @@ app.controller("mainCtrl", function($rootScope, $location, $routeParams, $resour
     };
     $rootScope.level = level;
 
-    $rootScope.weather = $resource('/api/fetch_weather.json').query();
+    $rootScope.weather = $resource('/api/weather.json').query();
 
     var sublinks = function(link){
         var node = link == null ? getNode() : getNode(link);
