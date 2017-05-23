@@ -78,6 +78,8 @@ The whole system has a few dependencies:
 - **_site**
 
    Generated folder via `build.sh` holding a “ready to serve” version of the web.
+   It will have a copy inside of every folder and file that doesn't begin with an
+   underscore (_) or a dot (.).
 
 - **_src**
 
