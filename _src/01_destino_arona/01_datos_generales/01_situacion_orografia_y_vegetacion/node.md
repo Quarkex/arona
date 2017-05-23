@@ -11,4 +11,3 @@ title: "situacion_orografia_y_vegetacion"
         <app-card-simple item="card" prefix="node.href"></app-card-simple>
     </div>
 </app-paginator-browser>
----
