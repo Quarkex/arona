@@ -1,10 +1,11 @@
 Arona web
 =========
 
-A responsive web system based in AngularJS, Foundation and MongoDB.
+A responsive web system based in [AngularJS](https://angularjs.org/), [Material design](https://material.angularjs.org),
+[Foundation](https://circlingthesun.github.io/angular-foundation-6/) and [MongoDB](www.mongodb.com).
 
 The web and it's content and structure are encapsulated from one another.
-The structure is bulilt from a `_src` folder using kramdown, and the CSS is built using `SASS`.
+The structure is bulilt from a `_src` folder using `kramdown`, and the CSS is built using `SASS`.
 
 Installation
 ------------
@@ -22,24 +23,28 @@ The whole system has a few dependencies:
 - **Git**
 - **Bower**
 
-   Bower and Git are needed to install dependencies and keep the web up-to-date.
+   [Bower](https://bower.io/) and [Git](https://git-scm.com/) are needed to install dependencies and keep the web up-to-date.
 
 - **Uglyfyjs**
 - **Sass**
 
-   Uglyfyjs and Sass are used to build `_site` folder with minified content, and to create `style.min.css` wich holds all css rules.
+   [Uglyfyjs](https://github.com/mishoo/UglifyJS) and [Sass](http://sass-lang.com/) are used to build `_site` folder 
+   with minified content, and to create `style.min.css` wich holds all css rules.
 
-- **Kramdown**
+- **kramdown**
 
-   Kramdown is necessary to process the Markdown files and their YAML headers inside `_src` folder.
+   [kramdown](https://kramdown.gettalong.org/) is necessary to process the 
+   [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) files and their 
+   [YAML](http://yaml.org/) headers inside `_src` folder.
 
 - **Ruby**
 
-   Ruby is also necessary for the previous step, and also to be executed as CGI scripts in `API` and `locales` folders.
+   [Ruby](www.ruby-lang.org) is also necessary for the previous step, and also to be executed as CGI scripts in `API` and 
+   `locales` folders.
 
 - **MongoDB**
 
-   Lastly, MongoDB is used to store and retrieve the content of the web, via ruby CGIs.
+   Lastly, [MongoDB](www.mongodb.com) is used to store and retrieve the content of the web, via ruby CGIs.
 
 ### Folder structure
 
