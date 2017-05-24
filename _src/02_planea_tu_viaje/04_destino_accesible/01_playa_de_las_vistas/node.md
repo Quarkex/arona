@@ -2,7 +2,7 @@
 id: "playa_de_las_vistas_accesible"
 title: "playa_de_las_vistas"
 href: "planea_tu_viaje/destino_accesible/playa_de_las_vistas_accesible/2106"
-view: "documental"
+view: "descriptive"
 "collection": "descriptivos"
 "filters": {"CODCONTENIDO": 2106}
 "values_view": ["TITULO","HREF","CODCONTENIDO","IMAGEN","DESCRIPCION_COMUN","TEXTO","RECURSOS","CONTENIDOS_RELACIONADOS"]
