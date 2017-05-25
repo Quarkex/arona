@@ -1,9 +1,9 @@
 app.directive('appBottomNav', function () {
 
-    var header = '<a href="{{ link.href.substr(0,1) != \'/\' ? \'#/\' + lang() + \'/\' : \'\' }}{{link.href}}">{{ translate("pagina.titulo_", label) }}</a>';
+    var header = '<a href="{{ link.href.substr(0,4) != \'http\' ? \'#/\' + lang() + \'/\' : \'\' }}{{link.href}}">{{ translate("pagina.titulo_", label) }}</a>';
     header = '<li>' + header + '</li>';
 
-    var link = '<a href="{{ sublink.href.substr(0,1) != \'/\' ? \'#/\' + lang() + \'/\' : \'\' }}{{sublink.href}}">{{ translate("pagina.titulo_", sublabel) }}</a>';
+    var link = '<a href="{{ sublink.href.substr(0,4) != \'http\' ? \'#/\' + lang() + \'/\' : \'\' }}{{sublink.href}}">{{ translate("pagina.titulo_", sublabel) }}</a>';
     link = '<li ng-repeat="(sublabel, sublink) in link.content">' + link + '</li>';
 
     var template = header + link;
