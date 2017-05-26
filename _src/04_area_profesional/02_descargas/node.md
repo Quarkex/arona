@@ -1,5 +1,5 @@
 ---
 id: "descargas"
 title: "descargas"
-href: "area_profesional/descargas/biosphere"
 ---
+<app-chessboard-nav></app-chessboard-nav>
