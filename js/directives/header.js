@@ -50,7 +50,7 @@ app.directive('appHeader', function () {
 
     var main_header = links + buttons + logo;
     main_header = '<div class="inner-wrapper">' + main_header + '</div>';
-    main_header = '<header ng-if="level() == 1" class="text-center index-header" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0)), url(/img/backgrounds/home/{{ ::randomInt(3) | pad: 2  }}.jpg);">' + main_header + '</header>';
+    main_header = '<header ng-if="level() == 1" class="text-center index-header" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0)), url(/img/backgrounds/home/{{ ::randomInt(5) | pad: 2  }}.jpg);">' + main_header + '</header>';
 
     var responsive_buttons = button_left + button_right;
     responsive_buttons = '<div flex></div>' + responsive_buttons + '<div flex></div>';
