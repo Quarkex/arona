@@ -95,5 +95,25 @@
         <!-- Go to www.addthis.com/dashboard to customize your tools -->
         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58b003624f2df567"></script>
 
+        <!-- Inicio Script Google Analytics
+             Modificado a partir del generado por Google Analytics para sites multidominio (para poder registrar accesos
+             a webcams.arona.org además de www.arona.travel). La modificación consiste en la línea:
+             pageTracker._setDomainName("none");
+             Además hay que añadir un filtro para que se muestre el dominio en las URL de las estadísticas (en caso
+             contrario no aparece el host y se confunden las rutas de uno y otro acceso).
+             Ver página http://www.google.com/support/googleanalytics/bin/answer.py?answer=55503
+       -->
+       <script type="text/javascript">
+           var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+           document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+       </script>
+       <script type="text/javascript">
+          try {
+              var pageTracker = _gat._getTracker("UA-6530794-2");
+              pageTracker._setDomainName("none");
+              pageTracker._trackPageview();
+          } catch(err) {}
+       </script>
+
     </body>
 </html>
