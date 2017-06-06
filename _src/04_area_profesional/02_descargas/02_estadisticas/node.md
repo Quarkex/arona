@@ -6,9 +6,13 @@ title: "estadisticas"
 "values_view": ["CODCONTENIDO", "DESCRIPCION_COMUN", "DOCUMENTO", "IMAGEN", "PALABRAS_CLAVE", "TITULO"]
 "limit": 8
 ---
-<app-tab-bar></app-tab-bar>
-<app-paginator-browser >
-    <div class="small-12 columns" ng-class="{'end': $last}" ng-repeat="card in elements()">
-        <app-card-document item="card" prefix="node.href"></app-card-document>
+<div class="row">
+    <div flex="100" layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">
+        <app-accordion flex flex-gt-md="25"></app-accordion>
+        <app-paginator-browser flex >
+            <div class="small-12 columns" ng-class="{'end': $last}" ng-repeat="card in elements()">
+                <app-card-standard item="card" prefix="node.href"></app-card-standard>
+            </div>
+        </app-paginator-browser>
     </div>
-</app-paginator-browser>
+</div>
