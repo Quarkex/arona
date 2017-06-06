@@ -1,5 +1,26 @@
 app.controller("mainCtrl", function($rootScope, $location, $routeParams, $resource, page, tree, language, $mdDialog, resourcePaginator ) {
 
+    // Opera 8.0+
+    $rootScope.isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+
+    // Firefox 1.0+
+    $rootScope.isFirefox = typeof InstallTrigger !== 'undefined';
+
+    // Safari 3.0+ "[object HTMLElementConstructor]" 
+    $rootScope.isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
+
+    // Internet Explorer 6-11
+    $rootScope.isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+    // Edge 20+
+    $rootScope.isEdge = !$rootScope.isIE && !!window.StyleMedia;
+
+    // Chrome 1+
+    $rootScope.isChrome = !!window.chrome && !!window.chrome.webstore;
+
+    // Blink engine detection
+    $rootScope.isBlink = ($rootScope.isChrome || $rootScope.isOpera) && !!window.CSS;
+
     $rootScope.page = page;
 
     language.expose_interface($rootScope);
