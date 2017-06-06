@@ -5,6 +5,7 @@ view: "descriptive"
 "collection": "descriptivos"
 "filters": {"CODCONTENIDO": 2106}
 "values_view": ["TITULO","HREF","CODCONTENIDO","IMAGEN","DESCRIPCION_COMUN","TEXTO","RECURSOS","CONTENIDOS_RELACIONADOS"]
+limit: 100
 ---
 <app-tab-bar></app-tab-bar>
 <app-paginator-browser >
