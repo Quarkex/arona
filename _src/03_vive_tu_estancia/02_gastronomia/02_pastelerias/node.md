@@ -1,6 +1,8 @@
 ---
 id: pastelerias
 title: pastelerias
+"collection": "territoriales"
+"filters": {"CODSUBTIPOCONT":582}
 ---
 <div class="row">
     <div flex="100" layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">
