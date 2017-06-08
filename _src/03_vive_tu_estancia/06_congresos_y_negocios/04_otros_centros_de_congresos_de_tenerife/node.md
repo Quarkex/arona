@@ -1,9 +1,8 @@
 ---
-id: agenda_mensual
-title: agenda_mensual
-"collection": "documentales"
-"filters": {"CODSUBTIPOCONT":586, "CODAREAS":{"$in":[null,16]}, "CODSUBAREAS":{"$in":[null,144]}}
-"values_view": ["CODCONTENIDO", "DESCRIPCION_COMUN", "DOCUMENTO", "IMAGEN", "PALABRAS_CLAVE", "TITULO"]
+id: otros_centros_de_congresos_de_tenerife 
+title: otros_centros_de_congresos_de_tenerife
+"collection": "externos"
+"filters": {"CODSUBTIPOCONT":398, "CODAREAS":{"$in":[null,16]}}
 "values_list": ["CODCONTENIDO", "DESCRIPCION_COMUN", "DOCUMENTO", "IMAGEN", "PALABRAS_CLAVE", "TITULO"]
 ---
 <div class="row">
@@ -11,7 +10,7 @@ title: agenda_mensual
         <app-accordion flex flex-gt-md="25"></app-accordion>
         <app-paginator-browser flex layout="column">
             <div flex ng-class="{'end': $last}" ng-repeat="card in elements()">
-                <app-card-document item="card" prefix="node.href"></app-card-document>
+                <app-card-externals item="card" prefix="node.href"></app-card-externals>
             </div>
         </app-paginator-browser>
     </div>

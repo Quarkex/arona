@@ -1,4 +1,0 @@
----
-id: estadisticas
-title: estadisticas
----

@@ -1,6 +1,10 @@
 ---
-id: noticias_del_sector
-title: noticias_del_sector
+id: piramide_de_arona
+title: piramide_de_arona
+href: "vive_tu_estancia/congresos_y_negocios/piramide_de_arona/15307"
+"collection": "territoriales"
+"filters": {"CODCONTENIDO":{"$in":[null,15307]}}
+"values_view": ["HORARIO","MAPA_IFRAME","MAPA","CODCONTENIDO","TITULO","ZONA","TELEFONO","FAX","WEB_PROPIA","DIRECCION","EMAIL","INDICADORES","IMAGEN","DESCRIPCION_COMUN","RECURSOS","CONTENIDOS_RELACIONADOS"]
 ---
 <div class="row">
     <div flex="100" layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">
@@ -12,3 +16,5 @@ title: noticias_del_sector
         </app-paginator-browser>
     </div>
 </div>
+~
+
