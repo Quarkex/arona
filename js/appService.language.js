@@ -95,24 +95,31 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
     };
     this.resource = $resource( self.variables.url(), self.variables.parameters, self.variables.actions, self.variables.settings );
 
+    this.set_dictionary_values = function(data){
+        if (data != null){
+            for (var k in data){
+                if (data.hasOwnProperty(k)) {
+                    self.variables.dictionary[k] = data[k];
+                }
+            }
+            tmhDynamicLocale.set(self.current_language());
+            self.language_status('ok');
+        } else {
+            self.current_dictionary(self.default_language());
+        }
+    };
+
+    this.retry_get_command = function(){
+        self.language_status('error');
+        self.current_language(self.current_language());
+    };
+
     this.get = function(){
         if(self.variables.dictionary_lang != self.current_language() && self.language_status() != 'loading') {
             self.current_dictionary(self.current_language());
             self.language_status('loading');
             self.resource = $resource( self.variables.url(), self.variables.parameters, self.variables.actions, self.variables.settings );
-            self.resource.get( self.values, function(data){
-                if (data != null){
-                    for (var k in data){
-                        if (data.hasOwnProperty(k)) {
-                            self.variables.dictionary[k] = data[k];
-                        }
-                    }
-                    tmhDynamicLocale.set(self.current_language());
-                    self.language_status('ok');
-                } else {
-                    self.current_dictionary(self.default_language());
-                }
-            });
+            self.resource.get( self.values, this.set_dictionary_values, this.retry_get_command);
         }
     };
 
