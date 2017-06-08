@@ -17,11 +17,11 @@
             <div layout="row">
                 <div flex flex-gt-xs="33" flex-offset-gt-xs="33">
                     <div class="text-center">
-                        <a class="button opaque full-width" href="#/{{ lang() }}/vive_tu_estancia"><span>{{ translate('pagina.titulo_disfruta_de_arona') }}</span></a>
+                        <a class="button opaque full-width" href="#!/{{ lang() }}/vive_tu_estancia"><span>{{ translate('pagina.titulo_disfruta_de_arona') }}</span></a>
                     </div>
                 </div>
                 <div flex flex-xs="15" flex-sm="15" class="text-left" style="margin-left: 0.2em;">
-                    <a class="button" href="#/{{ lang() }}/galeria" style="padding: 0.45rem;"><md-icon style="color:white;" class="material-icons">camera_alt</md-icon></a>
+                    <a class="button" href="#!/{{ lang() }}/galeria" style="padding: 0.45rem;"><md-icon style="color:white;" class="material-icons">camera_alt</md-icon></a>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                 <img src="img/logoC.png">
             </a>
         </div>
-        <div class="medium-3 small-6 columns text-center" style="margin-bottom: 2em;"> <a href="/#/es/vive_tu_estancia/actividades_recomendadas/compras/22215">
+        <div class="medium-3 small-6 columns text-center" style="margin-bottom: 2em;"> <a href="#!/es/vive_tu_estancia/actividades_recomendadas/compras/22215">
                 <img src="img/logoD.png">
             </a>
         </div>

@@ -30,13 +30,13 @@ app.directive('appBottomExtra', function () {
 
 
 
-    var c_1 = '<a class="button transparent expanded secondary" href="#/{{ lang() }}/actividades">{{ translate(\'pagina.titulo_actividades\') }}</a>';
+    var c_1 = '<a class="button transparent expanded secondary" href="#!/{{ lang() }}/actividades">{{ translate(\'pagina.titulo_actividades\') }}</a>';
     b_1 = '<md-grid-tile md-rowspan="1" md-colspan="1">' + c_1 + '</md-grid-tile>';
 
-    var c_2 = '<a class="button transparent expanded secondary" href="#/{{ lang() }}/webcams">{{ translate(\'pagina.titulo_webcams\') }}</a>';
+    var c_2 = '<a class="button transparent expanded secondary" href="#!/{{ lang() }}/webcams">{{ translate(\'pagina.titulo_webcams\') }}</a>';
     b_2 = '<md-grid-tile md-rowspan="1" md-colspan="1">' + c_2 + '</md-grid-tile>';
 
-    var c_3 = '<a class="button transparent expanded secondary" href="#/{{ lang() }}/galeria/arona_360">{{ translate(\'pagina.titulo_arona_360\') }}</a>';
+    var c_3 = '<a class="button transparent expanded secondary" href="#!/{{ lang() }}/galeria/arona_360">{{ translate(\'pagina.titulo_arona_360\') }}</a>';
     b_3 = '<md-grid-tile md-rowspan="1" md-colspan="1">' + c_3 + '</md-grid-tile>';
 
     var column_c = c_1 + c_2 + c_3;

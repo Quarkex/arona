@@ -9,13 +9,13 @@ app.directive('appOffCanvasNav', function () {
     var content_href = '';
 
     header_label = '{{ translate("pagina.titulo_", label) }}';
-    header_href = '{{ link.href.substring(0,4) == \'http\' ? link.href : \'#/\' + lang() + \'/\' + link.href }}';
+    header_href = '{{ link.href.substring(0,4) == \'http\' ? link.href : \'#!/\' + lang() + \'/\' + link.href }}';
 
     header = '<md-button class="md-primary" ng-href="' + header_href + '">' + header_label + '</md-button>';
     header = '<md-subheader class="md-no-sticky">' + header + '</md-subheader>';
 
     content_label = '{{ translate("pagina.titulo_", sublabel) }}';
-    content_href = '{{ sublink[\'href\'].substring(0,4) == \'http\' ? sublink[\'href\'] : \'#/\' + lang() + \'/\' + sublink[\'href\'] }}';
+    content_href = '{{ sublink[\'href\'].substring(0,4) == \'http\' ? sublink[\'href\'] : \'#!/\' + lang() + \'/\' + sublink[\'href\'] }}';
 
     content = '<md-button ng-href="' + content_href + '">' + content_label + '</md-button>';
     content = '<md-list-item class="md-1-line" ng-if="link.content != undefined" ng-repeat="(sublabel, sublink) in link.content">' + content + '</md-list-item>';

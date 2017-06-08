@@ -8,7 +8,7 @@ app.directive('appChessboardNav', function () {
     chessboard_list_first = '<li>' + chessboard_list_first + '</li>';
 
     var chessboard_list_last = '{{ translate(\'pagina.titulo_\', sublabel) }}';
-    chessboard_list_last = '<a href="{{ sublink[\'href\'].substring(0,4) == \'http\' ? sublink[\'href\'] : \'#/\' + lang() + \'/\' }}{{ sublink.href }}">' + chessboard_list_last + '</a>';
+    chessboard_list_last = '<a href="{{ sublink[\'href\'].substring(0,4) == \'http\' ? sublink[\'href\'] : \'#!/\' + lang() + \'/\' }}{{ sublink.href }}">' + chessboard_list_last + '</a>';
     chessboard_list_last = '<li ng-repeat="(sublabel, sublink) in link.content">' + chessboard_list_last + '</li>';
 
     var chessboard_list = '<ul class="link-list">' + chessboard_list_first + chessboard_list_last + '</ul>';

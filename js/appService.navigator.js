@@ -22,7 +22,7 @@ function Navigator(language, $location, $timeout){
         if (p.substring(0,4) == 'http'){
             window.location.href = p;
         } else {
-            $location.path(p.replace(new RegExp('^#/'), ''));
+            $location.path(p.replace(new RegExp('^#!/'), ''));
         }
     };
     scope_interface.push("navNavigate");
