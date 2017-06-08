@@ -14,7 +14,7 @@ app.directive('appShowcaser', function () {
     var tile_a = tile_a1 + tile_a2;
     tile_a = '<md-grid-list md-cols="2" md-cols-gt-md="1" md-row-height="3:1">' + tile_a + '</md-grid-list>';
     tile_a = '<md-content>' + tile_a + '</md-content>';
-    tile_a = '<a style="width: 100%; height:100%;" href="#/{{ lang }}/actividades/{{ article.CODCONTENIDO }}">' + tile_a + '</a>';
+    tile_a = '<a style="width: 100%; height:100%;" href="#!/{{ lang }}/actividades/{{ article.CODCONTENIDO }}">' + tile_a + '</a>';
     tile_a = '<md-grid-tile class="showcaser-card" md-rowspan="1" md-rowspan-gt-md="4" md-colspan="1" ng-repeat="article in elements">' + tile_a + '</md-grid-tile>';
 
     var tile_b = '<md-icon class="material-icons md-primary">today</md-icon>';

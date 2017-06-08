@@ -9,7 +9,7 @@ app.directive('appLanguageSelector', function () {
     button = '<md-button class="md-button" ng-click="$mdMenu.open($event)" style="min-width: unset;">' + button + '</md-button>';
 
     var item_label = '{{ translate(\'idioma.\', l ) }}';
-    var item_href = '#{{ path().replace( lang(), l ) }}';
+    var item_href = '#!{{ path().replace( lang(), l ) }}';
 
     var menu = '<md-button href="' + item_href + '">' + item_label + '</md-button>';
 

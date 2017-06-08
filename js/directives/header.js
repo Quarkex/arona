@@ -7,21 +7,21 @@ app.directive('appHeader', function () {
    //////////////////////////
 
     var links = 
-        '<a class="site-title" href="#/{{ lang() }}/">' +
+        '<a class="site-title" href="#!/{{ lang() }}/">' +
             '<h6>{{ translate(\'general.titulo\') }}</h6>' +
         '</a>' +
-        '<a href="#">' +
+        '<a href="#!">' +
             '<h1>Playa de las Americas</h1>' +
         '</a> <br>' +
-        '<a href="#">' +
+        '<a href="#!">' +
             '<h1>Costa del Silencio</h1>' +
         '</a> <br>' +
-        '<a href="#">' +
+        '<a href="#!">' +
             '<h1>Playa de los Cristianos</h1>' +
         '</a>';
 
     var button_left = '<span>{{ translate(\'pagina.titulo_conoce_arona\') }}</span>';
-    button_left = '<a class="button opaque full-width" href="#/{{ lang() }}/destino_arona">' + button_left + '</a>';
+    button_left = '<a class="button opaque full-width" href="#!/{{ lang() }}/destino_arona">' + button_left + '</a>';
     button_left = '<div flex="100" class="text-center">' + button_left + '</div>';
     button_left = '<div hide-xs flex="15"></div>' + button_left;
     button_left = '<div flex flex-gt-xs="33" layout="row">' + button_left + '</div>';
@@ -32,7 +32,7 @@ app.directive('appHeader', function () {
     button_right = '<div flex="100">' + button_right + '</div>';
 
     var cam_button = '<md-icon style="color:white;" class="material-icons">camera_alt</md-icon>';
-    cam_button = '<a class="button" href="#/{{ lang() }}/galeria" style="padding: 0.48rem;">' + cam_button + '</a>';
+    cam_button = '<a class="button" href="#!/{{ lang() }}/galeria" style="padding: 0.48rem;">' + cam_button + '</a>';
     cam_button = '<div flex flex-xs="15" flex-sm="15" class="text-left" style="margin-left: 0.2em;">' + cam_button + '</div>';
 
     button_right += cam_button;
@@ -45,7 +45,7 @@ app.directive('appHeader', function () {
     buttons = '<div class="row">' + buttons + '</div>';
 
     var logo = '<img src="img/logo.svg">';
-    logo = '<a href="#/{{ lang() }}/">' + logo + '</a>';
+    logo = '<a href="#!/{{ lang() }}/">' + logo + '</a>';
     logo = '<div class="row columns text-center">' + logo + '</div>';
 
     var main_header = links + buttons + logo;

@@ -133,7 +133,7 @@ app.controller("mainCtrl", function($rootScope, $location, $routeParams, $resour
         angular.copy(tree["nodes"][0], node);
 
         if (path == ''){
-            if (node["href"] == undefined) node["href"] = '#/' + $rootScope.lang();
+            if (node["href"] == undefined) node["href"] = '#!/' + $rootScope.lang();
             return node;
         }
 
@@ -189,14 +189,14 @@ app.controller("mainCtrl", function($rootScope, $location, $routeParams, $resour
 
         node["depth"] = depth;
         if (depth == 1) node.parent = tree["nodes"][0];
-        if (node["href"].substring(0,4) == 'http') node["href"] = '#/' + lang() + '/' + node["href"];
+        if (node["href"].substring(0,4) == 'http') node["href"] = '#!/' + lang() + '/' + node["href"];
         if (node["nodes"] == undefined || node["nodes"].length <= 0 ){
             node["nodes"] = last_nodes;
             node["sibling_nodes"] = true;
         }
         var mapped = node["nodes"].map(function(x) {
-            if (x["href"].substring(0,1) != '#' && x["href"].substring(0,4) != 'http'){
-                x["href"] = '#/' + lang() + '/' + x["href"];
+            if (x["href"].substring(0,1) != '#!' && x["href"].substring(0,4) != 'http'){
+                x["href"] = '#!/' + lang() + '/' + x["href"];
             }
             return x;
         });
@@ -214,7 +214,7 @@ app.controller("mainCtrl", function($rootScope, $location, $routeParams, $resour
     }
 
     var breadcrumbs = function(){
-        var output = [{ label: "inicio", href: '#/' + lang(), inactive: false }];
+        var output = [{ label: "inicio", href: '#!/' + lang(), inactive: false }];
         var current_section = $location.path().substr(1).split('/').pop();
         var crumbs = [];
         for (var i = 0; i < $rootScope.history.length; i++){
@@ -225,7 +225,7 @@ app.controller("mainCtrl", function($rootScope, $location, $routeParams, $resour
             }
             crumb["label"] = $rootScope.history[i]["id"];
             crumb["href"] = crumbs.length == 0 ? crumb["label"] : href.join('/') + '/' + crumb["label"];
-            crumb["href"] = '#/' + lang() + '/' + crumb["href"];
+            crumb["href"] = '#!/' + lang() + '/' + crumb["href"];
             crumb["inactive"] = ( (current_section == crumb["label"]) || ($rootScope.history[i]['content'].trim() == '') );
             crumbs.push(crumb);
         }

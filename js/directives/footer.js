@@ -9,9 +9,9 @@ app.directive('appFooter', function () {
 
     var head_left_links = [
         ['{{ translate(\'pie.ayuntamiento\') }}', 'http://www.arona.org'],
-        ['{{ translate(\'pie.avisolegal\') }}', '#'],
-        ['{{ translate(\'pie.protecciondedatos\') }}', '#'],
-        ['{{ translate(\'pie.indicedecontenidos\') }}', '#']
+        ['{{ translate(\'pie.avisolegal\') }}', '#!'],
+        ['{{ translate(\'pie.protecciondedatos\') }}', '#!'],
+        ['{{ translate(\'pie.indicedecontenidos\') }}', '#!']
     ];
 
     var head_right_links = [
