@@ -2,7 +2,7 @@
 id: "folletos_y_mapas"
 title: "folletos_y_mapas"
 "collection": "documentales"
-"filters": {"SUBTIPO": "Folletos / Trípticos"}
+"filters": {"CODAREAS":16, "SUBTIPO": "Folletos / Trípticos"}
 "values_view": ["CODCONTENIDO", "DESCRIPCION_COMUN", "DOCUMENTO", "IMAGEN", "PALABRAS_CLAVE", "TITULO"]
 "limit": 8
 ---

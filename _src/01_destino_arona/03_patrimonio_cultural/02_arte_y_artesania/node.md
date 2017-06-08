@@ -5,9 +5,13 @@ title: "arte_y_artesania"
 "filters": {"CODAREAS": 16,"CODSUBTIPOCONT": 473}
 "values_view": ["TITULO","HREF","CODCONTENIDO","IMAGEN","DESCRIPCION_COMUN","TEXTO","RECURSOS","CONTENIDOS_RELACIONADOS"]
 ---
-<app-tab-bar></app-tab-bar>
-<app-paginator-browser >
-    <div class="medium-6 columns" ng-class="{'end': $last}" ng-repeat="card in elements()">
-        <app-card-standard item="card" prefix="node.href"></app-card-standard>
+<div class="row">
+    <div flex="100" layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">
+        <app-accordion flex flex-gt-md="25"></app-accordion>
+        <app-paginator-browser flex layout="column">
+            <div flex ng-class="{'end': $last}" ng-repeat="card in elements()">
+                <app-card-standard item="card" prefix="node.href"></app-card-standard>
+            </div>
+        </app-paginator-browser>
     </div>
-</app-paginator-browser>
+</div>

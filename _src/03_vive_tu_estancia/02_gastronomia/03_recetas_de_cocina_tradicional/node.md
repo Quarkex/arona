@@ -1,6 +1,10 @@
 ---
 id: recetas_de_cocina_tradicional
 title: recetas_de_cocina_tradicional
+view: "descriptive"
+"collection": "descriptivos"
+"filters": {"CODAREAS":16, "CODSUBAREAS":75, "CODSUBTIPOCONT":497}
+"values_view": ["TITULO","HREF","CODCONTENIDO","IMAGEN","DESCRIPCION_COMUN","TEXTO","RECURSOS","CONTENIDOS_RELACIONADOS"]
 ---
 <div class="row">
     <div flex="100" layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">
