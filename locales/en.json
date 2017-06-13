@@ -73,9 +73,9 @@ doc = {
     "general.manyanaHora":                    "Morning",
     "general.mapaWeb":                        "Site Map",
     "general.menu":                           "Menu",
+    "general.noche":                          "Evening",
     "general.noEventos":                      "No events found match your search criteria",
     "general.noResultadosBusqueda":           "Sorry, no match found",
-    "general.noche":                          "Evening",
     "general.noticias":                       "News",
     "general.opcionesAvanzadas":              "Advanced search options",
     "general.otrosAlbumes":                   "Other albums",
@@ -84,10 +84,13 @@ doc = {
     "general.playas":                         "BEACHES",
     "general.reservasOnline":                 "E-booking",
     "general.resultadosBusqueda":             "Search results",
+    "general.servicios_del_establecimiento":  "Main&nbsp;services",
     "general.siguiente":                      "Next&nbsp;&gt;",
     "general.sonidos":                        "Sounds",
     "general.tarde":                          "Afternoon",
+    "general.telefono":                       "Telephone:",
     "general.titulo":                         "Destiny: Arona",
+    "general.ultima_modificacion":            "Last&nbsp;updated:",
     "general.verMasImagenes":                 "View more pictures",
     "general.video":                          "Video",
     "general.visitaPortal":                   "Visit our town council website",
@@ -100,8 +103,7 @@ doc = {
     "clima.ultimaactualizacion":              "Data last updated:",
     "clima.pronostico":                       "Weather forecast",
     "clima.temperatura":                      "Temperature",
-    "clima.temperatura":                      "Temp",
-
+    "clima.temp":                             "Temp",
     "clima.med":                              "avg",
     "clima.min":                              "min",
     "clima.max":                              "max",
@@ -133,8 +135,6 @@ doc = {
     "factividad.horaPrograma":                "Time ",
     "factividad.evento":                      "Activity ",
 
-
-
     "fdocumento.autor":                       "Author:",
     "fdocumento.entradaVigencia":             "***:",
     "fdocumento.masInformacion":              "More info:",
@@ -142,7 +142,6 @@ doc = {
     "fdocumento.normativaAnterior":           "Previous regulations:",
     "fdocumento.normativaPosterior":          "Later regulations:",
     "fdocumento.versionDocumento":            "Document version:",
-
 
     "flocalizativo.accesibilidad":            "Accessibility",
     "flocalizativo.cierre":                   "Closed:",
@@ -159,9 +158,7 @@ doc = {
     "flocalizativo.verMapa":                  "View&nbsp;on&nbsp;map",
     "flocalizativo.localizarGoogleMaps":      "Locate&nbsp;on&nbsp;Google&nbsp;Maps",
 
-
     "recursos.nueva_ventana":                 "This link will open in a new window",
-
 
     "webcams.activarVista24h":                "last 24 hours view",
     "webcams.activarVistaEnVivo":             "Live view",
@@ -172,7 +169,6 @@ doc = {
     "webcams.ubicacion":                      "Location",
     "webcams.noScript":                       "Javascript is not available. Webcam image does not refresh automatically. Please refresh manually site content by using your browser (refresh button).",
 
-
     "enviaramigo.enviar":                     "Send",
     "enviaramigo.enviarAmigo":                "Tell a friend",
     "enviaramigo.correoDestinatario":         "Addressee E-mail",
@@ -180,11 +176,9 @@ doc = {
     "enviaramigo.tuCorreo":                   "Sender E-mail",
     "enviaramigo.comentarios":                "Comments",
 
-
     "rss.titulo":                             "Patronato Municipal de Turismo del Ayuntamiento de Arona",
     "rss.descripcion":                        "News",
     "rss.suscribete":                         "Subscribe to the RSS feed",
-
 
     "buzonSugerencias.buzonSugerencias":      "Suggestions box ",
     "buzonSugerencias.nombreApellidos":       "Name and Surname",
@@ -194,12 +188,11 @@ doc = {
     "buzonSugerencias.sugerencias":           "Suggestions",
     "buzonSugerencias.enviar":                "Send",
 
-
     "pie.ayuntamiento":                       "Arona townhall: arona.org",
     "pie.avisolegal":                         "Legal warning",
     "pie.protecciondedatos":                  "Data protection",
     "pie.indicedecontenidos":                 "Content index",
-    "pie.siguenos":                           "Follow us: ",
+    "pie.siguenos":                           "Follow us:",
 
     "apparona.titulo":                        "I love Arona",
     "apparona.subtitulo":                     "Arona in your phone. Download now your app.",
@@ -209,43 +202,77 @@ doc = {
     "pagina.titulo_galeria":                  "Gallery",
     "pagina.titulo_albumes":                  "Albums",
     "pagina.titulo_videos":                   "Videos",
+
     "pagina.titulo_planea_tu_viaje":          "Plan your trip",
-    "pagina.subtitulo_planea_tu_viaje":       "Guide to find hotel, move, eat and enjoy in Arona",
+    "pagina.subtitulo_planea_tu_viaje":       "Guide: accommodation, getting around and enjoying Arona",
+
+    "pagina.titulo_como_llegar":              "Getting here",
+    "pagina.titulo_por_mar_y_aire":           "Travelling by sea and air",
+    "pagina.titulo_agencias_de_viaje":        "Travel information",
+    "pagina.titulo_touroperadores":           "Tour operator",
+    
+    "pagina.titulo_como_moverse":             "Getting around",
+    "pagina.titulo_transporte_publico":       "Public transport",
+    "pagina.titulo_alquiler_de_vehiculos":    "Car Hire",
+    "pagina.titulo_informacion_portuaria":    "Información portuaria",
+ 
+    "pagina.titulo_donde_alojarse":           "Where to stay",
     "pagina.titulo_hoteles":                  "Hotels",
     "pagina.titulo_apartahoteles":            "Aparthotels",
     "pagina.titulo_apartamentos":             "Apartments",
     "pagina.titulo_alojamiento_rural":        "Rural accommodations",
-    "pagina.titulo_pensiones":                "Boardinghouses",
-    "pagina.titulo_como_llegar":              "How to get there",
-    "pagina.titulo_donde_alojarse":           "Where to stay",
-    "pagina.titulo_como_moverse":             "How to move",
-    "pagina.titulo_destino_accesible":        "Accessible destination",
+    "pagina.titulo_pensiones":                "Inns",
+    
+    "pagina.titulo_destino_accesible":        "Disabled tourism",
     "pagina.subtitulo_destino_accesible":     "",
+    "pagina.titulo_compras":                  "Shopping",
+    "pagina.titulo_guia_de_accesibilidad":    "Barrier-free tourism guidebook",
+    "pagina.titulo_alquiler_de_ayudas_tecnicas":  "Appliances for hire",
+
     "pagina.titulo_folletos_y_mapas":         "Maps and Panflets",
+    "pagina.icono_folletos_y_mapas":          "Maps and Panflets",
     "pagina.titulo_oficinas_de_informacion":  "Information Offices",
+    "pagina.icono_oficinas_de_informacion":   "Information Offices",
     "pagina.titulo_disfruta_de_arona":        "Enjoy Arona",
+    "pagina.titulo_conoce_arona":             "Conoce Arona",
     "pagina.titulo_el_tiempo":                "The weather",
     "pagina.subtitulo_camaras_en_vivo":       "Enjoy live images from Arona",
+    
     "pagina.titulo_webcams":                  "Webcams",
+    "pagina.subtitulo_webcams":               "",
     "pagina.titulo_playas_de_arona":          "Beaches",
+    "pagina.titulo_playa_de_las_vistas":      "Playa de las Vistas",
+    "pagina.titulo_playa_de_las_galletas":    "Playa de las Galletas",
+
     "pagina.subtitulo_conjunto_historico":    "Historical Site",
     "pagina.boton_conjunto_historico":        "Discover it",
-    "pagina.titulo_actividades":              "Agenda",
+    "pagina.titulo_actividades":              "Events calendar",
     "pagina.subtitulo_actividades":           "Today not to miss anything",
     "pagina.icono_boton_actividades":         "today",
     "pagina.texto_boton_actividades":         "See all events",
 
     "pagina.titulo_destino_arona":            "Destiny: Arona",
-    "pagina.subtitulo_destino_arona":         "",
-    "pagina.titulo_datos_generales":          "General data",
-    "pagina.titulo_un_poco_de_historia":      "A bit of history",
-    "pagina.titulo_patrimonio_cultural":      "Cultural heritage",
-    "pagina.titulo_lugares_de_interes":       "Points of interest",
+    "pagina.subtitulo_destino_arona":         "Discover all the wealth of southern Tenerife",
+
+    "pagina.titulo_datos_generales":          "Overview",
+    "pagina.titulo_situacion_orografia_y_vegetacion":    "Location, orography and vegetation",
+    "pagina.titulo_un_poco_de_historia":      "Experience a bit of history",
+    "pagina.titulo_clima":                    "Climate: Arona weather forecast",
+    "pagina.titulo_compromiso_con_la_calidad":"Q for Quality Distinction",
+    "pagina.titulo_la_conquista_de_canarias": "Conquest of the Canary Islands",
+    "pagina.titulo_historia_de_arona":        "Our history",
+    "pagina.titulo_patrimonio_cultural":      "Get to know Arona!",
+    "pagina.titulo_arquitectura_tradicional": "Architecture",
+    "pagina.titulo_arte_y_artesania":         "Arts & Crafts",
+    "pagina.titulo_costumbres_y_folclore":    "Costums & Folklore",
+    "pagina.titulo_lugares_de_interes":       "Places of interest",
+
     "pagina.titulo_tour_virtual_360":         "Arona 360º",
+    "pagina.titulo_arona_360":                "Arona 360º",
     "pagina.titulo_arona_casco":              "Arona town",
 
-    "pagina.titulo_vive_tu_estancia":         "Live your staying",
-    "pagina.subtitulo_vive_tu_estancia":      "Proposals for leisure activities and not miss a minute",
+    "pagina.titulo_vive_tu_estancia":         "Make the most of your stay",
+    "pagina.subtitulo_vive_tu_estancia":      "Proposed activities and leisure pursuits to ensure that you make the most of each and every minute",
     "pagina.titulo_actividades_recomendadas": "Recommended activities",
     "pagina.titulo_sol_y_playa":              "Sun and beach",
     "pagina.titulo_gastronomia":              "Gastronomy",
