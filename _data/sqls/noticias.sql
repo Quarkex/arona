@@ -3,8 +3,8 @@ c.imagen, c.WEB_PROPIA, c.documento, c.zona codzona, zn.NOMBRE zona, c.f_inicio_
 c.novedad, c.f_inicio_nov, c.f_fin_nov, c.propietario codpropietario, prop.nombre, ci.titulo, ci.descripcion_comun, 
 ci.datos_interes, ci.palabras_clave, c.publicado, c.REF_VPORTAL, nt.tipo, nt.orden, nt.f_pub_original, 
 nti.titulo_corto, nti.resumen, nti.fuente,
-indic_territorial.CodigosIndicadores, indic_territorial.EtiquetaIndicadores, indic_territorial.ValoresIndicadoresLista,
-indic_territorial.ValoresIndicadores, areasubarea.codareas, areasubarea.areas, areasubarea.codsubareas, areasubarea.subareas,
+indic_noticia.CodigosIndicadores, indic_noticia.NombreIndicadores, indic_noticia.EtiquetaIndicadores, indic_noticia.ValoresIndicadoresLista,
+indic_noticia.ValoresIndicadores, areasubarea.codareas, areasubarea.areas, areasubarea.codsubareas, areasubarea.subareas,
 subtipos.subtipos, recursos_relacionados.codrecursos, contenidos_relacionados.codcontenidosrelacionados, 
 sectores_poblacion.codsectorespoblacion, sectores_poblacion.sectorespoblacion, FModif.FModificacion
 from contenido c 
@@ -50,6 +50,7 @@ WHERE HWFI.CODTAREA = 2 and HWF.CODWF > 0
 group by HWF.CODCONTENIDO, HWFI.CODIDIOMA) FModif on FModif.codcontenido = c.codcontenido + 1 and FModif.codidioma = ci.codidioma
 
 left join (select igc.codcontenido, igc.codidioma, Listagg (igc.CODINDICADOR, ';') within group (order by igc.codcontenido, igc.codindicador, igc.codidioma) CodigosIndicadores,
+Listagg (igi.NOMBRE, ';') within group (order by igc.codcontenido, igc.codindicador, igc.codidioma) NombreIndicadores,
 Listagg (igi.descripcion, ';') within group (order by igc.codcontenido, igc.codindicador, igc.codidioma) EtiquetaIndicadores,
 Listagg (igli.descripcion, ';') within group (order by igc.codcontenido, igc.codindicador, igc.codidioma) ValoresIndicadoresLista,
 Listagg (CASE ig.tipo_campo 
@@ -65,7 +66,7 @@ from IND_GESTION_CONTENIDO igc inner join ind_gestion ig on ig.CODINDICADOR = ig
 INNER JOIN IND_gESTION_IDIOMA igi on igc.codindicador = igi.codindicador and igc.codidioma = igi.codidioma
 inner join contenido on contenido.codcontenido = igc.codcontenido
 left join ind_gestion_lista_idioma igli on igli.codlista = igc.codlista and igc.codidioma = igli.codidioma
-group by igc.codcontenido, igc.codidioma) indic_territorial on indic_territorial.codcontenido = c.codcontenido 
-and ci.codidioma= indic_territorial.codidioma
+group by igc.codcontenido, igc.codidioma) indic_noticia on indic_noticia.codcontenido = c.codcontenido 
+and ci.codidioma= indic_noticia.codidioma
 
-where ci.codidioma = 1 and c.publicado = 2 and c.ref_vportal = -1 and to_char (sysdate, 'yyyymmddhh24miss') between f_inicio_pub and f_fin_pub
+where ci.codidioma = 1 and c.publicado = 2 and c.ref_vportal = -1

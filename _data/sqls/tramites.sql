@@ -6,7 +6,7 @@ tra.codestjer, estjer.nombre estjerarquica, tra.codefecpres, efpresi.descripcion
 tra.uid_tramite, tra.plazo_tramitacion, tra.f_inicio, tra.f_fin, tra.actuacion_tel, trai.horario, trai.doc_aportar, trai.lugar,
 trai.uso_comun, trai.solicitante, trai.requisitos, trai.datos_pago, trai.recursos, trai.normativa, trai.observaciones, medio_contacto, 
 c.publicado, c.REF_VPORTAL,
-indic_tramite.CodigosIndicadores, indic_tramite.EtiquetaIndicadores, indic_tramite.ValoresIndicadoresLista,
+indic_tramite.CodigosIndicadores, indic_tramite.NombreIndicadores, indic_tramite.EtiquetaIndicadores, indic_tramite.ValoresIndicadoresLista,
 indic_tramite.ValoresIndicadores, areasubarea.codareas, areasubarea.areas, areasubarea.codsubareas, areasubarea.subareas,
 subtipos.subtipos, recursos_relacionados.codrecursos, contenidos_relacionados.codcontenidosrelacionados, 
 sectores_poblacion.codsectorespoblacion, sectores_poblacion.sectorespoblacion, FModif.FModificacion
@@ -58,6 +58,7 @@ WHERE HWFI.CODTAREA = 2 and HWF.CODWF > 0
 group by HWF.CODCONTENIDO, HWFI.CODIDIOMA) FModif on FModif.codcontenido = c.codcontenido + 1 and FModif.codidioma = ci.codidioma
 
 left join (select igc.codcontenido, igc.codidioma, Listagg (igc.CODINDICADOR, ';') within group (order by igc.codcontenido, igc.codindicador, igc.codidioma) CodigosIndicadores,
+Listagg (igi.NOMBRE, ';') within group (order by igc.codcontenido, igc.codindicador, igc.codidioma) NombreIndicadores,
 Listagg (igi.descripcion, ';') within group (order by igc.codcontenido, igc.codindicador, igc.codidioma) EtiquetaIndicadores,
 Listagg (igli.descripcion, ';') within group (order by igc.codcontenido, igc.codindicador, igc.codidioma) ValoresIndicadoresLista,
 Listagg (CASE ig.tipo_campo 
@@ -76,4 +77,4 @@ left join ind_gestion_lista_idioma igli on igli.codlista = igc.codlista and igc.
 group by igc.codcontenido, igc.codidioma) indic_tramite on indic_tramite.codcontenido = c.codcontenido 
 and ci.codidioma= indic_tramite.codidioma
 
-where ci.codidioma = 1 and c.publicado = 2 and c.ref_vportal = -1 and to_char (sysdate, 'yyyymmddhh24miss') between f_inicio_pub and f_fin_pub
+where ci.codidioma = 1 and c.publicado = 2 and c.ref_vportal = -1 
