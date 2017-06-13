@@ -1,11 +1,19 @@
 ---
 "id": "sol_y_playa"
 "title": "sol_y_playa"
-"filters": {"CODSUBTIPOCONT": 154}
+"collection": "territoriales"
+"filters": {"CODSUBTIPOCONT": 154, "CODAREAS": 16, "CODSUBAREAS":156}
+"values_view": ["HORARIO", "MAPA_IFRAME", "MAPA", "CODCONTENIDO", "TITULO", "ZONA", "TELEFONO", "FAX", "WEB_PROPIA", "DIRECCION", "EMAIL", "INDICADORES", "IMAGEN", "DESCRIPCION_COMUN", "RECURSOS", "CONTENIDOS_RELACIONADOS"]
+"values_list": ["HORARIO","MAPA","CODCONTENIDO","EMAIL","FAX","HORARIO","IMAGEN","TITULO","TELEFONO","WEB_PROPIA","DIRECCION"]
 ---
-<app-tab-bar></app-tab-bar>
-<app-paginator-browser >
-    <div class="medium-6 columns" ng-class="{'end': $last}" ng-repeat="card in elements()">
-        <app-card-standard item="card" prefix="node.href"></app-card-standard>
+<div class="row">
+    <div flex="100" layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">
+        <app-accordion flex flex-gt-md="25"></app-accordion>
+        <app-paginator-browser flex >
+            <div class="small-12 columns" ng-class="{'end': $last}" ng-repeat="card in elements()">
+                <app-card-standard item="card" prefix="node.href"></app-card-standard>
+            </div>
+        </app-paginator-browser>
     </div>
-</app-paginator-browser>
+</div>
+

@@ -1,7 +1,8 @@
 ---
-id: turismo_responsable
-title: turismo_responsable
-href: "http://www.arona.travel/turismoresponsable"
+id: centros_culturales
+title: centros_culturales
+"collection": "territoriales"
+"filters": {"CODSUBTIPOCONT":146}
 ---
 <div class="row">
     <div flex="100" layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">

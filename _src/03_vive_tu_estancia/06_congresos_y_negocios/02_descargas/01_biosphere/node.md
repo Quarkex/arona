@@ -1,4 +1,0 @@
----
-id: biosphere
-title: biosphere
----

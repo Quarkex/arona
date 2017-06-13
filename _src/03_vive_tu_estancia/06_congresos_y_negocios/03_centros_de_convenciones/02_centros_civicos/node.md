@@ -1,6 +1,8 @@
 ---
-id: descargas
-title: descargas
+id: centros_civicos
+title: centros_civicos
+"collection": "territoriales"
+"filters": {"CODSUBTIPOCONT":466}
 ---
 <div class="row">
     <div flex="100" layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">
