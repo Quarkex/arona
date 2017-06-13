@@ -50,11 +50,9 @@ app.directive('appHotelView', function () {
                             '<h3>{{ translate( \'servicio.seccion_\', section ) | capitalize }}</h3>' +
                             '<ul>' +
                                 '<li ng-repeat="item in section_body.contents">' +
-                                    '<md-tooltip ng-if="\'categoria\' != section && \'zona_turistica\' != section" md-direction="top">' +
-                                        '{{ translate( \'servicio.\', item.label ) | gsub: \'_\' : \' \' : true | capitalize }}' +
-                                    '</md-tooltip>' +
-                                    '<img ng-if="\'categoria\' != section && \'zona_turistica\' != section" ng-src="/img/icons/logo-{{ section.replace(\'[^a-z A-Z 0-9]+\', \'-\') + \'-\' + item.label | gsub: \'[^a-z A-Z 0-9]+\' : \'-\' : true }}.svg" alt="{{ translate( \'servicio.\', item.label ) | gsub: \'_\' : \' \' : true | capitalize }}">' +
-                                    '<span ng-if="\'categoria\' == section || \'zona_turistica\' == section">{{ translate( \'servicio.\', item.label ) | gsub: \'_\' : \' \' : true | capitalize }}</span>' +
+                                    '<md-tooltip ng-if="\'categoria\' != section && \'zona_turistica\' != section" md-direction="top">{{ item.label }}</md-tooltip>' +
+                                    '<img ng-if="\'categoria\' != section && \'zona_turistica\' != section" ng-src="{{ item.image }}" alt="{{ item.label }}">' +
+                                    '<span ng-if="\'categoria\' == section || \'zona_turistica\' == section">{{ item.label }}</span>' +
                                 '</li>' +
                             '</ul>' +
                         '</div>' +

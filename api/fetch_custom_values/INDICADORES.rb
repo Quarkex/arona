@@ -1,4 +1,5 @@
 if @doc.keys.include?('CODIGOSINDICADORES')\
+    && @doc.keys.include?('NOMBRESINDICADORESLISTA')\
     && @doc.keys.include?('VALORESINDICADORESLISTA')\
     && @doc.keys.include?('ETIQUETAINDICADORES')\
     && @doc.keys.include?('VALORESINDICADORES')\
@@ -19,6 +20,7 @@ if @doc.keys.include?('CODIGOSINDICADORES')\
         indicadores = {}
         codigosindicadores      = doc["CODIGOSINDICADORES"]     == nil ? '' : doc["CODIGOSINDICADORES"]
         etiquetaindicadores     = doc["ETIQUETAINDICADORES"]    == nil ? '' : doc["ETIQUETAINDICADORES"]
+        nombresindicadoreslista = doc["NOMBRESINDICADORESLISTA"]== nil ? '' : doc["NOMBRESINDICADORESLISTA"]
         valoresindicadoreslista = doc["VALORESINDICADORESLISTA"]== nil ? '' : doc["VALORESINDICADORESLISTA"]
         valoresindicadores      = doc["VALORESINDICADORES"]     == nil ? '' : doc["VALORESINDICADORES"]
 
@@ -29,6 +31,10 @@ if @doc.keys.include?('CODIGOSINDICADORES')\
         etiquetaindicadores     = etiquetaindicadores.to_s              if not etiquetaindicadores.kind_of?(String) and not etiquetaindicadores.kind_of?(Array)
         etiquetaindicadores     = etiquetaindicadores.split('&')        if not etiquetaindicadores.kind_of?(Array)
         etiquetaindicadores     = etiquetaindicadores[0].split(';')     if etiquetaindicadores.size == 1
+
+        nombresindicadoreslista = nombresindicadoreslista.to_s          if not nombresindicadoreslista.kind_of?(String) and not nombresindicadoreslista.kind_of?(Array)
+        nombresindicadoreslista = nombresindicadoreslista.split('&')    if not nombresindicadoreslista.kind_of?(Array)
+        nombresindicadoreslista = nombresindicadoreslista[0].split(';') if nombresindicadoreslista.size == 1
 
         valoresindicadoreslista = valoresindicadoreslista.to_s          if not valoresindicadoreslista.kind_of?(String) and not valoresindicadoreslista.kind_of?(Array)
         valoresindicadoreslista = valoresindicadoreslista.split('&')    if not valoresindicadoreslista.kind_of?(Array)
@@ -45,8 +51,9 @@ if @doc.keys.include?('CODIGOSINDICADORES')\
             if valoresindicadores != nil and valoresindicadoreslista != nil then
                 valoresindicadores.each_with_index do | valor, j |
                     key = slugify etiquetaindicadores[j]
-                    label = slugify valoresindicadoreslista[j]
-                    indicador = {"code": valor[j].to_i, "label": label }
+                    label = valoresindicadoreslista[j]
+                    image = slugify nombresindicadoreslista[j]
+                    indicador = {"code": valor[j].to_i, "label": label, "image": '/img/icons/logo-' + key.gsub('_', '-') + '-' + image + '.svg' }
                     indicadores[key][:contents].push(indicador) if indicadores[key] != nil
                 end
             end
