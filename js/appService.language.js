@@ -6,7 +6,7 @@ function Languaje($location, $window, $resource, tmhDynamicLocale){
     this.variables = {
         'dictionary': {},
         'dictionary_lang': null,
-        'available_languages': ['de', 'en', 'es'],
+        'available_languages': ['de', 'en', 'es','sv'],
         //'available_languages': ['es', 'en'],
         // parameterized URL template with parameters prefixed by : as in /user/:username
         'url': function(){ return '/locales/' + self.current_language() + '.json'; },

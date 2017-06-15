@@ -68,7 +68,6 @@ doc = {
     "general.irPagina":                    "zur Seite (nº) gehen",
     "general.irPaginaAnterior":            "zur&uuml;ck",
     "general.irPaginaSiguiente":           "weiter",
-
     "general.manyanaDia":                  "Morgen",
     "general.manyanaHora":                 "Morgens",
     "general.mapaWeb":                     "Sitemap",
@@ -96,7 +95,6 @@ doc = {
     "general.visitaPortal":                "Besuchen Sie die Webseite das Rathaus",
     "general.volver":                      "Back",
     "general.web":                         "Web",
-
 
     "clima.caption":                       "Wettervorhesage im Arona f&uuml;r heute und Tage hintereinander.",
     "clima.suministradopor":               "Informaci&oacute;n suministrada por <a href='http://www.aemet.es/en/portada'>AEMET</a>.",
@@ -200,7 +198,7 @@ doc = {
 
     "pagina.titulo_inicio":                                 "Startseite",
     "pagina.titulo_galeria":                                "Fotogallerie",
-    "pagina.titulo_albumes":                                "Albumes",
+    "pagina.titulo_albumes":                                "Fotoalben",
     "pagina.titulo_videos":                                 "Videos",
 
     "pagina.titulo_planea_tu_viaje":                        "Reise organisieren",
