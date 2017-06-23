@@ -97,7 +97,6 @@ doc = {
     "general.volver":                         "Back",
     "general.web":                            "Web:",
 
-
     "clima.caption":                          "Weather forecast in Arona for current and next days.",
     "clima.suministradopor":                  "Information supplied by <a href='http://www.aemet.es/en/portada'>AEMET</a>.",
     "clima.ultimaactualizacion":              "Data last updated:",

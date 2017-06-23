@@ -245,7 +245,7 @@ doc = {
     "pagina.boton_conjunto_historico":                      "Discover it",
     "pagina.titulo_actividades":                            "Kalender",
     "pagina.subtitulo_actividades":                         "Today not to miss anything",
-    "pagina.icono_boton_actividades":                       "today",
+    "pagina.icono_boton_actividades":                       "Heute",
     "pagina.texto_boton_actividades":                       "See all events",
 
     "pagina.titulo_destino_arona":                          "Reiseziel: Arona",
