@@ -39,6 +39,15 @@ def slugify( string )
 end
 
 doc = {
+    "idioma.de":                              "Deutsch",
+    "idioma.en":                              "English",
+    "idioma.es":                              "Español",
+    "idioma.fi":                              "Suomi",
+    "idioma.fr":                              "Français",
+    "idioma.it":                              "Italiano",
+    "idioma.nl":                              "Nederlands",
+    "idioma.ru":                              "Pусский",
+    "idioma.sv":                              "Svenska",
     "general.actualizarnavegador":            "<p>Browser not supported</p>",
     "general.agenda":                         "Arona Calendar of Events",
     "general.albumesFotos":                   "Photo albums",
@@ -68,7 +77,6 @@ doc = {
     "general.irPagina":                       "Go to page",
     "general.irPaginaAnterior":               "Previous page",
     "general.irPaginaSiguiente":              "Next page",
-
     "general.manyanaDia":                     "Tomorrow",
     "general.manyanaHora":                    "Morning",
     "general.mapaWeb":                        "Site Map",
@@ -110,7 +118,6 @@ doc = {
     "clima.TemperaturaMin":                   "Minimum temperature",
     "clima.TemperaturaMax":                   "Maximum temperature",
     "clima.ampliarInfo":                      "More weather info",
-
 
     "factividad.direccion":                   "Address:",
     "factividad.duracion":                    "Date:",

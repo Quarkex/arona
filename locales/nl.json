@@ -39,6 +39,15 @@ def slugify( string )
 end
 
 doc = {
+    "idioma.de":                           "Deutsch",
+    "idioma.en":                           "English",
+    "idioma.es":                           "Español",
+    "idioma.fi":                           "Suomi",
+    "idioma.fr":                           "Français",
+    "idioma.it":                           "Italiano",
+    "idioma.nl":                           "Nederlands",
+    "idioma.ru":                           "Pусский",
+    "idioma.sv":                           "Svenska",
     "general.actualizarnavegador":         "<p>Browser niet ondersteund</p>",
     "general.agenda":                      "Agenda",
     "general.albumesFotos":                "Foto-albums",
@@ -83,7 +92,7 @@ doc = {
     "general.playas":                      "STRANDEN",
     "general.reservasOnline":              "Online reserveren",
     "general.resultadosBusqueda":          "Zoekresultaten",
-    "general.servicios_del_establecimiento":  "Main services",
+    "general.servicios_del_establecimiento":  "Belangrijkste diensten",
     "general.siguiente":                   "Volgende &gt;",
     "general.sonidos":                     "Geluiden ",
     "general.tarde":                       "Namiddag/avond",

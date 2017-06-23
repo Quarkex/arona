@@ -39,6 +39,15 @@ def slugify( string )
 end
 
 doc = {
+    "idioma.de":                           "Deutsch",
+    "idioma.en":                           "English",
+    "idioma.es":                           "Español",
+    "idioma.fi":                           "Suomi",
+    "idioma.fr":                           "Français",
+    "idioma.it":                           "Italiano",
+    "idioma.nl":                           "Nederlands",
+    "idioma.ru":                           "Pусский",
+    "idioma.sv":                           "Svenska",
     "general.actualizarnavegador":         "Browser nicht unterstützt",
     "general.agenda":                      "Veranstaltungkalender",
     "general.albumesFotos":                "Fotoalben",
