@@ -198,7 +198,7 @@ doc = {
     "pie.avisolegal":                         "Legal warning",
     "pie.protecciondedatos":                  "Data protection",
     "pie.indicedecontenidos":                 "Content index",
-    "pie.siguenos":                           "Follow us:",
+    "pie.siguenos":                           "Follow us: ",
 
     "apparona.titulo":                        "I love Arona",
     "apparona.subtitulo":                     "Arona in your phone. Download now your app.",
@@ -240,7 +240,7 @@ doc = {
     "pagina.icono_oficinas_de_informacion":   "Information Offices",
     "pagina.titulo_disfruta_de_arona":        "Enjoy Arona",
     "pagina.titulo_conoce_arona":             "Conoce Arona",
-    "pagina.titulo_el_tiempo":                "The weather",
+    "pagina.titulo_el_tiempo":                "Weather forecast",
     "pagina.subtitulo_camaras_en_vivo":       "Enjoy live images from Arona",
     
     "pagina.titulo_webcams":                  "Webcams",
