@@ -39,6 +39,15 @@ def slugify( string )
 end
 
 doc = {
+    "idioma.de":                              "Deutsch",
+    "idioma.en":                              "English",
+    "idioma.es":                              "Español",
+    "idioma.fi":                              "Suomi",
+    "idioma.fr":                              "Français",
+    "idioma.it":                              "Italiano",
+    "idioma.nl":                              "Nederlands",
+    "idioma.ru":                              "Pусский",
+    "idioma.sv":                              "Svenska",
     "general.actualizarnavegador":         "<p>Браузер не поддерживается</p>",
     "general.agenda":                      "Повестка дня",
     "general.albumesFotos":                "Фотоальбомы",
@@ -139,6 +148,7 @@ doc = {
     "fdocumento.normativaAnterior":        "Previous regulations:",
     "fdocumento.normativaPosterior":       "Later regulations:",
     "fdocumento.versionDocumento":         "Версия документа:",
+
     "flocalizativo.accesibilidad":         "Accessibility",
     "flocalizativo.cierre":                "Завершение:",
     "flocalizativo.comoLlegar":            "Как доехать",
