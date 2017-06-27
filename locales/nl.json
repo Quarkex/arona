@@ -58,7 +58,7 @@ doc = {
     "general.canalYouTube":                "Bezoek ons kanaal op {0}",
     "general.compartir":                   "Aandeel",
     "general.contenidos":                  " inhoud",
-    "general.contenidosRelacionados":      "Aanverwante inhoud",
+    "general.contenidos_relacionados":     "Aanverwante inhoud",
     "general.de":                          " van ",
     "general.descargaArchivos":            "Downloaden van documenten",
     "general.destacamosHoy":               "Hoogtepunten van vandaag",
