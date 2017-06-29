@@ -33,19 +33,19 @@
 <div flex="100" flex-gt-xs="80" layout-gt-xs="row" layout-align="center center" layout="row">
     <div flex="100" flex-gt-xs="80" layout-align="center center" layout="row" layout-wrap>
         <div layout="column" style="margin-bottom: 2em;" flex="100" flex-gt-xs="50" flex-gt-sm="25" layout-align="center center">
-            <a href="http://www.arona.org"><img src="img/logoA.png"></a>
+            <div layout="row" layout-padding><a href="http://www.arona.org"><img src="img/logoA.png"></a></div>
         </div>
         <div flex></div>
         <div layout="column" style="margin-bottom: 2em;" flex="100" flex-gt-xs="50" flex-gt-sm="25" layout-align="center center">
-            <a href="http://www.arona.org/auditorio"><img src="img/logoB.png"></a>
+            <div layout="row" layout-padding><a href="http://www.arona.org/auditorio"><img src="img/logoB.png"></a></div>
         </div>
         <div flex></div>
         <div layout="column" style="margin-bottom: 2em;" flex="100" flex-gt-xs="50" flex-gt-sm="25" layout-align="center center">
-            <a href="https://www.tripadvisor.es/Tourism-g230096-Arona_Tenerife_Canary_Islands-Vacations.html"><img src="img/logoC.png"></a>
+            <div layout="row" layout-padding><a href="https://www.tripadvisor.es/Tourism-g230096-Arona_Tenerife_Canary_Islands-Vacations.html"><img src="img/logoC.png"></a></div>
         </div>
         <div flex></div>
         <div layout="column" style="margin-bottom: 2em;" flex="100" flex-gt-xs="50" flex-gt-sm="25" layout-align="center center">
-            <a href="#!/es/vive_tu_estancia/actividades_recomendadas/compras/22215"><img src="img/logoD.png"></a>
+            <div layout="row" layout-padding><a href="#!/es/vive_tu_estancia/actividades_recomendadas/compras/22215"><img src="img/logoD.png"></a></div>
         </div>
     </div>
 </div>
