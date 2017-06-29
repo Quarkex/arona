@@ -1,58 +1,54 @@
-<div class="row">
-    <div class="large-10 large-offset-1 columns">
-        <md-content flex="100" style="background-color: transparent;">
-            <md-grid-list md-cols="1" md-cols-gt-xs="2" md-row-height="4:3" md-gutter="12px" md-gutter-gt-sm="24px">
-                <md-grid-tile md-rowspan="1" md-colspan="1">
-                    <div flex="75" layout="column" style="color: white;">
-                        <div>
-                            <h6 style="color: #f7d603; text-transform: uppercase;">{{ translate('pagina.titulo_el_tiempo') }}</h6>
-                        </div>
-                        <div flex="100" layout="row">
-                            <div flex="50" class="text-left" layout="column" style="font-size: 26px; font-weight: bold;">
-                                <span>{{ weather[0]['date'] | date: 'EEEE' | capitalize }}</span>
-                                <span>{{ weather[0]['date'] | date: 'd LLLL' }}</span>
-                            </div>
-                            <div flex="50" class="text-right" layout="column" style="font-size: 30px; font-weight: bold;">
-                                <span style="color: #f7d603;"><img src="img/icons/weather/{{ weather[0]['sky_status'] | gsub: '_':'-' }}.svg" alt="{{ translate('clima.', weather[0]['sky_status']) | gsub:'_':' '|capitalize }}">{{ weather[0]['max_temp'] }}°C</span>
-                                <span style="font-size: 20px;">{{ weather[0]['max_temp'] }}°C|{{ weather[0]['min_temp'] }}°C</span>
-                            </div>
-                        </div>
-                        <div layout="row" class="text-center" style="margin-top: 2em;">
-                            <div flex="33" flex-gt-xs="25">
-                                <div class="row">{{ weather[1]['date'] | date: 'EEE' | uppercase }}</div>
-                                <div class="row">{{ weather[1]['max_temp'] }}°C</div>
-                                <div class="row">{{ weather[1]['min_temp'] }}°C</div>
-                            </div>
-                            <div flex="33" flex-gt-xs="25">
-                                <div class="row">{{ weather[2]['date'] | date: 'EEE' | uppercase }}</div>
-                                <div class="row">{{ weather[2]['max_temp'] }}°C</div>
-                                <div class="row">{{ weather[2]['min_temp'] }}°C</div>
-                            </div>
-                            <div flex="33" flex-gt-xs="25">
-                                <div class="row">{{ weather[3]['date'] | date: 'EEE' | uppercase }}</div>
-                                <div class="row">{{ weather[3]['max_temp'] }}°C</div>
-                                <div class="row">{{ weather[3]['min_temp'] }}°C</div>
-                            </div>
-                            <div hide-xs flex-gt-xs="25">
-                                <div class="row">{{ weather[4]['date'] | date: 'EEE' | uppercase }}</div>
-                                <div class="row">{{ weather[4]['max_temp'] }}°C</div>
-                                <div class="row">{{ weather[4]['min_temp'] }}°C</div>
-                            </div>
-                        </div>
+<div flex layout="row" layout-align="center center" layout-wrap>
+    <div layout="row" layout-align="center strech" flex flex-gt-sm="80" layout-wrap layout-padding>
+        <md-content flex="100" flex-gt-sm="45" style="background-color: rgba(33, 78, 146, 0.6);" layout-align="center strech" layout="column" layout-padding layout-margin>
+            <div flex="75" layout="column" style="color: white;" layout-align="center strech" layout-padding layout-margin>
+                <div>
+                    <h6 style="color: #f7d603; text-transform: uppercase;">{{ translate('pagina.titulo_el_tiempo') }}</h6>
+                </div>
+                <div flex="100" layout="row">
+                    <div flex="50" layout="column" style="font-size: 26px; font-weight: bold; text-align: left;" layout-align="left">
+                        <span>{{ weather[0]['date'] | date: 'EEEE' | capitalize }}</span>
+                        <span>{{ weather[0]['date'] | date: 'd LLLL' }}</span>
                     </div>
-                </md-grid-tile>
-                <md-grid-tile md-rowspan="1" md-colspan="1" layout="column">
-                    <div flex="75" layout="column">
-                        <h2 class="text-center">{{ translate('pagina.subtitulo_camaras_en_vivo') }}</h2>
-                        <div class="text-center">
-                            <a class="button transparent-white" href="#!/{{ lang() }}/webcams">{{ translate('pagina.titulo_webcams') }}</a>
-                        </div>
+                    <div flex="50" layout="column" style="font-size: 30px; font-weight: bold; text-align: right;" layout-align="right">
+                        <span style="color: #f7d603;"><img src="img/icons/weather/{{ weather[0]['sky_status'] | gsub: '_':'-' }}.svg" alt="{{ translate('clima.', weather[0]['sky_status']) | gsub:'_':' '|capitalize }}">{{ weather[0]['max_temp'] }}°C</span>
+                        <span style="font-size: 20px;">{{ weather[0]['max_temp'] }}°C|{{ weather[0]['min_temp'] }}°C</span>
                     </div>
-                </md-grid-tile>
-            </md-grid-list>
+                </div>
+                <div layout="row" style="margin-top: 2em; text-align: center;">
+                    <div layout="column" flex="33" flex-gt-xs="25">
+                        <div flex="100">{{ weather[1]['date'] | date: 'EEE' | uppercase }}</div>
+                        <div flex="100">{{ weather[1]['max_temp'] }}°C</div>
+                        <div flex="100">{{ weather[1]['min_temp'] }}°C</div>
+                    </div>
+                    <div layout="column" flex="33" flex-gt-xs="25">
+                        <div flex="100">{{ weather[2]['date'] | date: 'EEE' | uppercase }}</div>
+                        <div flex="100">{{ weather[2]['max_temp'] }}°C</div>
+                        <div flex="100">{{ weather[2]['min_temp'] }}°C</div>
+                    </div>
+                    <div layout="column" flex="33" flex-gt-xs="25">
+                        <div flex="100">{{ weather[3]['date'] | date: 'EEE' | uppercase }}</div>
+                        <div flex="100">{{ weather[3]['max_temp'] }}°C</div>
+                        <div flex="100">{{ weather[3]['min_temp'] }}°C</div>
+                    </div>
+                    <div layout="column" hide-xs flex-gt-xs="25">
+                        <div flex="100">{{ weather[4]['date'] | date: 'EEE' | uppercase }}</div>
+                        <div flex="100">{{ weather[4]['max_temp'] }}°C</div>
+                        <div flex="100">{{ weather[4]['min_temp'] }}°C</div>
+                    </div>
+                </div>
+            </div>
+        </md-content>
+        <md-content flex="100" flex-gt-sm="45" style="background-color: rgba(33, 78, 146, 0.6);" layout-align="center strech" layout="column" layout-padding layout-margin>
+            <div flex="75" layout="column" layout-align="center strech" layout-padding layout-margin>
+                <h2 style="text-align: center;">{{ translate('pagina.subtitulo_camaras_en_vivo') }}</h2>
+                <div style="text-align: center;">
+                    <a class="button transparent-white" href="#!/{{ lang() }}/webcams">{{ translate('pagina.titulo_webcams') }}</a>
+                </div>
+            </div>
         </md-content>
         <div flex="100" layout-margin>
-            <div class="text-center">
+            <div style="text-align: center;">
                 <a class="button opaque" href="http://idrometeo.com/views/extranet/mostrardatos/microsite/index.php?u=41">{{ translate('pagina.titulo_playas_de_arona') }}</a>
             </div>
         </div>

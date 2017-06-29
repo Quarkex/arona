@@ -1,8 +1,5 @@
 #apparona {
     overflow: visible !important;
-    img[src="img/apparona.png"] {
-        margin-top: -6em;
-    }
     h1 {
         font-size: 180%;
         color: #d2251a;
@@ -10,5 +7,23 @@
     h2 {
         color: black;
         font-size: 150%;
+    }
+}
+
+/* layout-gte-md */
+@media screen and (min-width: 1280px) {
+    #apparona {
+        img[src="img/apparona.png"] {
+            margin-bottom: 6em;
+        }
+    }
+}
+
+/* layout-gte-xs */
+@media screen and (min-width: 600px) {
+    #apparona {
+        img[src="img/apparona.png"] {
+            margin-top: -6em;
+        }
     }
 }

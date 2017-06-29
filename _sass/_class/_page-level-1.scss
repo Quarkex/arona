@@ -7,8 +7,10 @@
     }
     .index-page-box {
         background-color: $edges_color;
-        margin-bottom: 1.25vw;
         text-align: center;
+        > * {
+            margin: 10em 0;
+        }
     }
     $index-box-elements: "apparona", "como_llegar", "como_moverse", "donde_alojarse", "destino_accesible", "conjunto_historico", "vive_tu_estancia", "playas_de_arona";
     $selector: '';

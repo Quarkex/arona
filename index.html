@@ -27,11 +27,15 @@
         <script type="text/javascript">window.appDependencies.push("ngAnimate");</script>
         <script type="text/javascript" src="/bower_components/angular-aria/angular-aria.min.js"></script>
         <script type="text/javascript">window.appDependencies.push("ngAria");</script>
+        <script type="text/javascript" src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+        <script type="text/javascript">window.appDependencies.push("ngSanitize");</script>
         <script type="text/javascript" src="/bower_components/angular-messages/angular-messages.min.js"></script>
         <script type="text/javascript">window.appDependencies.push("ngMessages");</script>
         <link   rel="stylesheet"      href="/bower_components/angular-material/angular-material.min.css">
         <script type="text/javascript" src="/bower_components/angular-material/angular-material.min.js"></script>
         <script type="text/javascript">window.appDependencies.push("ngMaterial");</script>
+        <script type="text/javascript" src="/bower_components/angular-square-image/angular-square-image.js"></script>
+        <script type="text/javascript">window.appDependencies.push("angular-square-image");</script>
         <!-- FIXME Bower angular foundation  package presents some kind of problem. Using custom file -->
         <script type="text/javascript" src="/js/angular-foundation.min.js"></script>
         <script type="text/javascript">window.appDependencies.push("mm.foundation");</script>
@@ -86,9 +90,9 @@
     <body class="ng-cloak">
 
         <app-loading-overlay show-if="language_status() == 'loading'"></app-loading-overlay>
-        <div class="angular-animate" ng-show="language_status() == 'ok'" id="app">
-            <app-gui ng-controller="resourcePaginatorCtrl">
-                <div bind-html-compile="node.content"></div>
+        <div class="angular-animate" ng-show="language_status() == 'ok'" id="app" layout="column" flex>
+            <app-gui ng-controller="resourcePaginatorCtrl" layout="column" flex>
+                <div bind-html-compile="node.content" layout="column" flex></div>
             </app-gui>
             <div class="hide-for-large" style="height: 43px;"></div><!-- Add-this mobile pusher -->
         </div>

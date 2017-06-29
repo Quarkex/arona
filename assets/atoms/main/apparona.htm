@@ -1,19 +1,19 @@
-<div class="row">
-    <div layout="column" layout-gt-sm="row" class="large-10 large-offset-1 columns">
+<div layout="column" flex="100" layout-align="center center">
+    <div layout="column" layout-gt-sm="row" flex="80">
         <div flex-gt-md="50" class="text-center large-text-right">
             <a href="#!"><img src="img/apparona.png"></a>
         </div>
-        <div flex-gt-md="50" layout="column">
-            <div flex="100">
+        <div flex-gt-md="50" layout="column" layout-padding>
+            <div layout="column" flex="100">
                 <h1>{{ translate('apparona.titulo') }}</h1>
                 <h2>{{ translate('apparona.subtitulo') }}</h2>
                 <p>{{ translate('apparona.texto') }}</p>
             </div>
-            <div flex="100" layout="row" layout-margin>
-                <div flex="50" class="text-right">
+            <div flex="100" layout="row" layout-padding layout-align="space-around end">
+                <div flex="50" layout="row" layout-align="end center">
                     <a href="https://itunes.apple.com/{{ lang () }}/app/ilovearona/id955221205?mt=8"><img src="img/bottom_extra/ButtonB.png"></a>
                 </div>
-                <div flex="50" class="text-left">
+                <div flex="50" layout="row" layout-align="begin center">
                     <a href="https://play.google.com/store/apps/details?id=com.ilove.iLoveArona"><img src="img/bottom_extra/ButtonC.png"></a>
                 </div>
             </div>
