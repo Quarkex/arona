@@ -22,8 +22,8 @@ app.directive('appHeader', function () {
 
     var button_left = '<span>{{ translate(\'pagina.titulo_conoce_arona\') }}</span>';
     button_left = '<a class="button opaque full-width" href="#!/{{ lang() }}/destino_arona" layout="column" layout-align="center strech">' + button_left + '</a>';
-    button_left = '<div flex layout="row" layout-align="center strech">' + button_left + '</div>';
-    button_left = '<div flex flex-gt-md="50" layout="row" layout-padding layout-align="center strech">' + button_left + '</div>';
+    button_left = '<div flex="100" layout="row" layout-align="center strech">' + button_left + '</div>';
+    button_left = '<div flex="100" flex-gt-sm="50" layout="row" layout-padding layout-align="center strech">' + button_left + '</div>';
 
     var button_right = '<span>{{ translate(\'pagina.titulo_tour_virtual_360\') }}</span>';
     button_right = '<a class="button opaque full-width" href="http://www.arona.org/portal/RecursosWeb/PAGINA/ilovetheword/arona.html" layout="column" layout-align="center strech">' + button_right + '</a>';
@@ -34,16 +34,16 @@ app.directive('appHeader', function () {
     cam_button = '<div layout="row" layout-align="center strech">' + cam_button + '</div>';
 
     button_right += cam_button;
-    button_right = '<div flex flex-gt-md="50" layout="row" layout-padding layout-align="center strech">' + button_right + '</div>';
+    button_right = '<div flex="100" flex-gt-sm="50" layout="row" layout-padding layout-align="center strech">' + button_right + '</div>';
 
     var buttons = button_left + button_right;
-    buttons = '<div flex flex-gt-xs="50" flex-offset-gt-xs="25" layout="column" layout-gt-md="row">' + buttons + '</div>';
+    buttons = '<div flex="100" flex-gt-xs="50" flex-offset-gt-xs="25" layout="row" layout-wrap>' + buttons + '</div>';
 
     var logo = '<img src="img/logo.svg">';
     logo = '<a href="#!/{{ lang() }}/">' + logo + '</a>';
     logo = '<div class="row columns text-center">' + logo + '</div>';
 
-    var main_header = links + '<div hide-xs>' + buttons + '</div>' + logo;
+    var main_header = links + '<div hide-xs layout="row" layout-wrap>' + buttons + '</div>' + logo;
     main_header = '<div class="inner-wrapper">' + main_header + '</div>';
     main_header = '<header ng-if="level() == 1" class="text-center index-header" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0)), url(/img/backgrounds/home/{{ ::randomInt(5) | pad: 2  }}.jpg);">' + main_header + '</header>';
 
