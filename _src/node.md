@@ -15,7 +15,7 @@
     <div flex layout="row" layout-align="center center">
         <div flex="80" layout="column" layout-padding>
             <div layout="row" layout-padding>
-                <div flex>
+                <div flex style="padding-right: 0;">
                     <div class="text-center">
                         <a class="button opaque" style="width: 100%; margin-bottom: 0;" href="#!/{{ lang() }}/vive_tu_estancia"><span>{{ translate('pagina.titulo_disfruta_de_arona') }}</span></a>
                     </div>
