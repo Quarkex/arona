@@ -8,4 +8,4 @@ title: "planea_tu_viaje"
 "limit": 3
 ---
 <app-chessboard-nav></app-chessboard-nav>
-<!-- <div ng-include="'assets/atoms/main/actividades.htm'" class="main-row"></div> -->
+<div flex="100" flex-gt-xs="80" layout="column" ng-include="'assets/atoms/main/actividades.htm'"></div>
