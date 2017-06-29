@@ -27,7 +27,7 @@ app.directive('appHeader', function () {
 
     var button_right = '<span>{{ translate(\'pagina.titulo_tour_virtual_360\') }}</span>';
     button_right = '<a class="button opaque full-width" href="http://www.arona.org/portal/RecursosWeb/PAGINA/ilovetheword/arona.html" layout="column" layout-align="center strech">' + button_right + '</a>';
-    button_right = '<div flex layout="row" layout-align="center strech">' + button_right + '</div>';
+    button_right = '<div flex layout="row" layout-align="center strech" style="padding-right: 0;">' + button_right + '</div>';
 
     var cam_button = '<md-icon style="color:white;" class="material-icons">camera_alt</md-icon>';
     cam_button = '<a class="button" href="#!/{{ lang() }}/galeria" style="padding: 0.48rem;" layout="row" layout-align="center strech">' + cam_button + '</a>';
