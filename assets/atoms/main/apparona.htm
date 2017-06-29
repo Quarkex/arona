@@ -1,13 +1,13 @@
 <div layout="column" flex="100" layout-align="center center">
-    <div layout="column" layout-gt-sm="row" flex="80">
-        <div flex-gt-md="50" class="text-center large-text-right">
+    <div layout="row" flex="80" layout-wrap>
+        <div flex="100" flex-gt-xs="50" class="text-center large-text-right">
             <a href="#!"><img src="img/apparona.png"></a>
         </div>
-        <div flex-gt-md="50" layout="column" layout-padding>
-            <div layout="column" flex="100">
-                <h1>{{ translate('apparona.titulo') }}</h1>
-                <h2>{{ translate('apparona.subtitulo') }}</h2>
-                <p>{{ translate('apparona.texto') }}</p>
+        <div flex="100" flex-gt-xs="50" layout="row" layout-padding layout-wrap>
+            <div layout="row" flex="100" layout-wrap>
+                <div flex="100" layout="row" layout-align="center center" layout-align-gt-sm="begin center"><h1>{{ translate('apparona.titulo') }}</h1></div>
+                <div flex="100" layout="row" layout-align="center center" layout-align-gt-sm="begin center"><h2>{{ translate('apparona.subtitulo') }}</h2></div>
+                <div flex="100" layout="row" layout-align="center center" layout-align-gt-sm="begin center"><p>{{ translate('apparona.texto') }}</p></div>
             </div>
             <div flex="100" layout="row" layout-padding layout-align="space-around end">
                 <div flex="50" layout="row" layout-align="end center">

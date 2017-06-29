@@ -15,7 +15,7 @@
     <div flex layout="row" layout-align="center center">
         <div flex="80" layout="column" layout-padding>
             <div layout="row" layout-padding>
-                <div flex>
+                <div flex style="padding-right: 0;">
                     <div class="text-center">
                         <a class="button opaque" style="width: 100%; margin-bottom: 0;" href="#!/{{ lang() }}/vive_tu_estancia"><span>{{ translate('pagina.titulo_disfruta_de_arona') }}</span></a>
                     </div>
@@ -33,19 +33,19 @@
 <div flex="100" flex-gt-xs="80" layout-gt-xs="row" layout-align="center center" layout="row">
     <div flex="100" flex-gt-xs="80" layout-align="center center" layout="row" layout-wrap>
         <div layout="column" style="margin-bottom: 2em;" flex="100" flex-gt-xs="50" flex-gt-sm="25" layout-align="center center">
-            <a href="http://www.arona.org"><img src="img/logoA.png"></a>
+            <div layout="row" layout-padding><a href="http://www.arona.org"><img src="img/logoA.png"></a></div>
         </div>
         <div flex></div>
         <div layout="column" style="margin-bottom: 2em;" flex="100" flex-gt-xs="50" flex-gt-sm="25" layout-align="center center">
-            <a href="http://www.arona.org/auditorio"><img src="img/logoB.png"></a>
+            <div layout="row" layout-padding><a href="http://www.arona.org/auditorio"><img src="img/logoB.png"></a></div>
         </div>
         <div flex></div>
         <div layout="column" style="margin-bottom: 2em;" flex="100" flex-gt-xs="50" flex-gt-sm="25" layout-align="center center">
-            <a href="https://www.tripadvisor.es/Tourism-g230096-Arona_Tenerife_Canary_Islands-Vacations.html"><img src="img/logoC.png"></a>
+            <div layout="row" layout-padding><a href="https://www.tripadvisor.es/Tourism-g230096-Arona_Tenerife_Canary_Islands-Vacations.html"><img src="img/logoC.png"></a></div>
         </div>
         <div flex></div>
         <div layout="column" style="margin-bottom: 2em;" flex="100" flex-gt-xs="50" flex-gt-sm="25" layout-align="center center">
-            <a href="#!/es/vive_tu_estancia/actividades_recomendadas/compras/22215"><img src="img/logoD.png"></a>
+            <div layout="row" layout-padding><a href="#!/es/vive_tu_estancia/actividades_recomendadas/compras/22215"><img src="img/logoD.png"></a></div>
         </div>
     </div>
 </div>

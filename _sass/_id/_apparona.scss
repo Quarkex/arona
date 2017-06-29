@@ -10,17 +10,8 @@
     }
 }
 
-/* layout-gte-md */
-@media screen and (min-width: 1280px) {
-    #apparona {
-        img[src="img/apparona.png"] {
-            margin-bottom: 6em;
-        }
-    }
-}
-
 /* layout-gte-xs */
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 960px) {
     #apparona {
         img[src="img/apparona.png"] {
             margin-top: -6em;
