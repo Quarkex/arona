@@ -1,10 +1,8 @@
 ---
-id: "costumbres_y_folclore"
-title: "costumbres_y_folclore"
-"collection": "descriptivos"
-"filters": {"CODAREAS": 16,"CODSUBAREAS":155,"CODSUBTIPOCONT":63}
+id: "juegos_y_juguetes_tradicionales"
+title: "juegos_y_juguetes_tradicionales"
+href: "destino_arona/patrimonio_cultural/costumbres_y_folclore/juegos_y_juguetes_tradicionales/22125"
 "values_view": ["TITULO","HREF","CODCONTENIDO","IMAGEN","DESCRIPCION_COMUN","TEXTO","RECURSOS","CONTENIDOS_RELACIONADOS"]
-limit: 15
 ---
 <app-tab-bar></app-tab-bar>
 <app-paginator-browser >

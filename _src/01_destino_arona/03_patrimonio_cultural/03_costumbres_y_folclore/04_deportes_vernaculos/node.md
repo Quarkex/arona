@@ -1,10 +1,9 @@
 ---
-id: "costumbres_y_folclore"
-title: "costumbres_y_folclore"
+id: "deportes_vernaculos"
+title: "deportes_vernaculos"
 "collection": "descriptivos"
-"filters": {"CODAREAS": 16,"CODSUBAREAS":155,"CODSUBTIPOCONT":63}
+"filters": {"CODAREAS": 16,"CODSUBAREAS":157,"CODSUBTIPOCONT":490}
 "values_view": ["TITULO","HREF","CODCONTENIDO","IMAGEN","DESCRIPCION_COMUN","TEXTO","RECURSOS","CONTENIDOS_RELACIONADOS"]
-limit: 15
 ---
 <app-tab-bar></app-tab-bar>
 <app-paginator-browser >

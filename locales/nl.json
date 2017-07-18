@@ -269,6 +269,10 @@ doc = {
     "pagina.titulo_arquitectura_tradicional": "Traditionele architectuur",
     "pagina.titulo_arte_y_artesania":         "Kunst en ambachtswerk",
     "pagina.titulo_costumbres_y_folclore":    "Gebruiken en Folklore",
+    "pagina.titulo_eventos_y_festividades":   "Evenementen en Feestelijkheden",
+    "pagina.titulo_musica_canaria":	      "Música canaria",
+    "pagina.titulo_juegos_y_juguetes_tradicionales":  "Juegos y juguetes tradicionales",
+    "pagina.titulo_deportes_vernaculos":      "Inheemse sporten",
     "pagina.titulo_lugares_de_interes":       "Bezienswaardigheden",
 
     "pagina.titulo_tour_virtual_360":         "Arona 360º",
