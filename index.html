@@ -106,25 +106,15 @@
         <!-- Go to www.addthis.com/dashboard to customize your tools -->
         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58b003624f2df567"></script>
 
-        <!-- Inicio Script Google Analytics
-             Modificado a partir del generado por Google Analytics para sites multidominio (para poder registrar accesos
-             a webcams.arona.org además de www.arona.travel). La modificación consiste en la línea:
-             pageTracker._setDomainName("none");
-             Además hay que añadir un filtro para que se muestre el dominio en las URL de las estadísticas (en caso
-             contrario no aparece el host y se confunden las rutas de uno y otro acceso).
-             Ver página http://www.google.com/support/googleanalytics/bin/answer.py?answer=55503
-       -->
-       <script type="text/javascript">
-           var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-           document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-       </script>
-       <script type="text/javascript">
-          try {
-              var pageTracker = _gat._getTracker("UA-6530794-2");
-              pageTracker._setDomainName("none");
-              pageTracker._trackPageview();
-          } catch(err) {}
-       </script>
+       <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+	  ga('create', 'UA-6530794-2', 'auto');
+	  ga('send', 'pageview');
+
+       </script>
     </body>
 </html>
