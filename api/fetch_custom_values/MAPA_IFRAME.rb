@@ -10,7 +10,11 @@ chunks.each do | chunk |
     end
 end
 
-api_key = "AIzaSyCZgh8qgEhKEsZNchyy3bBjIXoZxWHPlH0"
-map = "https://www.google.com/maps/embed/v1/place?key=" + api_key + "&q=" + address
+api_key = $parameters["maps-api-key"] == nil ? nil : $parameters["maps-api-key"]
+query = []
+query.push "key=" + api_key if api_key != nil
+query.push "p=" + address if address != nil
+query = query.join('&')
+map = "https://www.google.com/maps/embed/v1/place?" + query
 
 @custom_value = '<iframe width="600" height="450" frameborder="0" style="border:0" src="' + map + '" allowfullscreen></iframe>' if address != ""
