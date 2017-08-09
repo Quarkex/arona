@@ -342,6 +342,9 @@ app.controller("resourcePaginatorCtrl", function($rootScope, $scope, $location, 
         for ( var i = 0; i < object_elements.length; i++){
             var element_label = object_elements[i];
             var node = $rootScope.getNode();
+            if (id != null && element_label == "filters"){
+                delete node.filters.$text;
+            }
             while ( values[element_label] === undefined ){
                 if (node[element_label] !== undefined){
                     values[element_label] = node[element_label];
@@ -390,9 +393,20 @@ app.controller("resourcePaginatorCtrl", function($rootScope, $scope, $location, 
             }
         }
 
+        if ($scope != undefined)
+        if ($scope.node != undefined)
+        if ($scope.node.filters != undefined)
+        if ($scope.node.filters.$text != undefined)
+        if ($scope.node.filters.$text.$search != undefined)
+            values.filters.$text.$search = $scope.node.filters.$text.$search;
+
         resourcePaginator.set_values(values);
     };
 
+    $scope.update_resources = update;
+    $scope.$watch('node.filters.$text.$search', function(newvalue,oldvalue) {
+        if (newvalue.length > 3) update();
+    });
     $scope.$on('$locationChangeSuccess', function(event){ update(); });
     update();
 

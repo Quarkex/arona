@@ -204,6 +204,9 @@ doc = {
     "apparona.subtitulo":                                   "Arona en tu móvil. Descarga ya su app.",
     "apparona.texto":                                       "Disfruta de sus contenidos: Spot Promocional Arona 2015, Tour Virtual, Galería de fotografías, Tour 360º y Blog.",
 
+    "pagina.titulo_buscador":                               "Buscador",
+    "pagina.subtitulo_buscador":                            "",
+
     "pagina.titulo_inicio":                                 "Inicio",
     "pagina.titulo_galeria":                                "Galería",
     "pagina.titulo_albumes":                                "Albumes",

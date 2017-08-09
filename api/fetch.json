@@ -62,6 +62,18 @@ begin
         $collection.indexes.create_one( { "F_INICIO_PUB" => -1 }, unique: false )
         $collection.indexes.create_one( { "CODCONTENIDO" => -1 }, unique: false )
         $collection.indexes.create_one( { "FMODIFICACION" => 1 }, unique: false )
+        $collection.indexes.create_one( {
+            "DESCRIPCION" => 'text',
+            "DESCRIPCION_COMUN" => 'text',
+            "DONDE" => 'text',
+            "EMAIL" => 'text',
+            "NOMBRE" => 'text',
+            "NOMBRE_SOCIAL" => 'text',
+            "ORGANIZACION" => 'text',
+            "TITULO" => 'text',
+            "ZONA" => 'text'
+        }, unique: false, name: $parameters['collection']+'_text_index', language_override: 'IDIOMA' )
+
         $resources = client['recursos']
         $resources.indexes.create_one( { "CODRECURSO" => -1 }, unique: false )
         $resources.indexes.create_one( { "RECURSO" => -1 }, unique: false )
