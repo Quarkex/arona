@@ -1,3 +1,4 @@
+var test = null;
 function ResourcePaginator(language, $resource, $rootScope){
 
     var self = this;
@@ -48,6 +49,34 @@ function ResourcePaginator(language, $resource, $rootScope){
             self.elements([]);
             self.last_modified(null);
             self.element_status('loading');
+
+            var clear_empty = function recurse( object ){
+                var conditional_filters = ["$and", "$or", "$nor"];
+                for (var i = 0; i < conditional_filters.length; i++) if(object.hasOwnProperty(conditional_filters[i])){
+                    if(object[conditional_filters[i]].length == 0) delete object[conditional_filters[i]];
+                    else {
+                        for( var j = 0; j < self.values.filters[conditional_filters[i]].length; j++ ){
+                            switch( typeof object[conditional_filters[i]][j] ){
+                                case "object":
+                                    if (object[conditional_filters[i]][j] instanceof RegExp)
+                                        object[conditional_filters[i]][j] = 'regexp(' + object[conditional_filters[i]][j].toString() + ')';
+                                    else {
+                                        for(var key in object[conditional_filters[i]][j])
+                                        if (object[conditional_filters[i]][j].hasOwnProperty(key))
+                                        if (object[conditional_filters[i]][j][key] instanceof RegExp)
+                                        object[conditional_filters[i]][j][key] = 'regexp(' + object[conditional_filters[i]][j][key].toString() + ')';
+                                    }
+
+                                    recurse(object[conditional_filters[i]][j]);
+
+                                    break;
+                            }
+                        }
+                    }
+                }
+            };
+
+            clear_empty(self.values.filters);
 
             self.resource.get( self.values, function(data){
                 if (self.values.collection != null) {
@@ -247,11 +276,76 @@ function ResourcePaginator(language, $resource, $rootScope){
     };
     scope_interface.push("filters");
 
+    this.has_filter = function recursion(o){
+        var output = false;
+        if (o !== undefined){
+            for (var i = 0; i < self.values.filters.length; i++){
+                var match = true;
+                var f = self.values.filters[i];
+                for ( key in o ) if (o.hasOwnProperty(key)){
+                    if (! f.hasOwnProperty(key)) match = false;
+                    else {
+                        switch( true ){
+                            case (typeof f[key] == 'object'):
+                                match = recursion(f[key]);
+                            case (typeof f[key] == 'array'):
+                                var array_contains_filter = false;
+                                for (var j = 0; j > f[key].length; j++){
+                                    if ( recursion(f[key][j]) == true ) array_contains_filter = true;
+                                }
+                                if (! array_contains_filter == true) match = false;
+                                break;
+                            default:
+                                if ( f[key] != o[key] ) match = false;
+                        }
+                    }
+                }
+                if (match == true) output = true;
+            }
+        }
+        return output;
+    };
+    scope_interface.push("has_filter");
+
     this.toggle_filter = function(f, v){
         if (f === undefined) return null;
         if (v !== undefined){
             var o = {};
-            o[f] = (angular.equals(self.values.filters[f], v)) ? null : v;
+            switch (f){
+                case "$and":
+                case "$nor":
+                case "$or":
+                    if ( self.values.filters[f] === undefined || self.values.filters[f] === null ){
+                        self.values.filters[f] = [];
+                    }
+                    var included = false;
+                    for ( var i = 0; i < self.values.filters[f].length; i++){
+                        var is_equal = true;
+                        for (key in self.values.filters[f][i]){
+                            if ( self.values.filters[f][i].hasOwnProperty(key) ){
+                                if (self.values.filters[f][i][key] != v[key]){
+                                    is_equal = false;
+                                    break;
+                                }
+                            }
+                        }
+                        if (is_equal === true){
+                            included = i;
+                            break;
+                        }
+                    }
+                    if ( included === false ){
+                        self.values.filters[f].push(v);
+                    } else {
+                        self.values.filters[f].splice(included, 1);
+                        if (self.values.filters[f].length == 0) delete self.values.filters[f];
+                    }
+                    break;
+                default:
+                    var object = {};
+                    object[f] = v;
+                    o[f] = ( self.has_filter(object) ) ? null : v;
+            }
             self.set_values({"offset": 0, "filters": o});
         }
         if (self.values.filters[f] === undefined){

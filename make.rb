@@ -39,6 +39,10 @@ end
 
 $tree.push(build_node $root_folder, '/') if File.file?($root_folder + '/node.md')
 
+$tree = $tree.to_json
+
+$tree.gsub!(/"regex\(\\"(.*?)\\"\)"/, '\1')
+
 File.open(File.expand_path(File.dirname(File.dirname(__FILE__))) + '/tree.js', 'w') { |file|
-    file.write('app.value( "tree", { "nodes": ' + $tree.to_json + '});')
+    file.write('app.value( "tree", { "nodes": ' + $tree + '});')
 }

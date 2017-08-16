@@ -57,6 +57,27 @@ begin
     # CGI tries to parse the request body as form parameters so a
     # blob of JSON awkwardly ends up as the one and only parameter key.
     $parameters = JSON.parse(cgi.params.keys.first)
+
+    def fix_regex (object)
+        object.keys.each do | key |
+            case true
+            when (object[key].is_a? String)
+                if object[key].match /^regexp\(.*\)$/ then
+                    object[key].gsub!(/^regexp\(\/(.*)\/\)$/, '\1')
+                    object[key] = Regexp.new(object[key])
+                end
+            when (object[key].is_a? Hash)
+                fix_regex(object[key])
+            when (object[key].is_a? Array)
+                object[key].each do | item |
+                    fix_regex(item)
+                end
+            end
+        end if object.respond_to?(:keys)
+    end
+
+    fix_regex($parameters)
+
     if $parameters.has_key?("collection") then
         $collection = client[$parameters['collection']]
         $collection.indexes.create_one( { "F_INICIO_PUB" => -1 }, unique: false )
