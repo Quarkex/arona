@@ -10,10 +10,10 @@ chunks.each do | chunk |
     end
 end
 
-api_key = $parameters["maps-api-key"] == nil ? nil : $parameters["maps-api-key"]
+api_key = $config["google_maps_api"] == nil ? nil : $config["google_maps_api"]
 query = []
 query.push "key=" + api_key if api_key != nil
-query.push "p=" + address if address != nil
+query.push "q=" + address if address != nil
 query = query.join('&')
 map = "https://www.google.com/maps/embed/v1/place?" + query
 
