@@ -55,6 +55,7 @@ function ResourcePaginator(language, $resource, $rootScope){
                 for (var i = 0; i < conditional_filters.length; i++) if(object.hasOwnProperty(conditional_filters[i])){
                     if(object[conditional_filters[i]].length == 0) delete object[conditional_filters[i]];
                     else {
+                        if (self.values.filters[conditional_filters[i]] != undefined)
                         for( var j = 0; j < self.values.filters[conditional_filters[i]].length; j++ ){
                             switch( typeof object[conditional_filters[i]][j] ){
                                 case "object":
@@ -499,7 +500,7 @@ app.controller("resourcePaginatorCtrl", function($rootScope, $scope, $location, 
 
     $scope.update_resources = update;
     $scope.$watch('node.filters.$text.$search', function(newvalue,oldvalue) {
-        if (newvalue.length > 3) update();
+        if (newvalue != undefined) if (newvalue.length > 3) update();
     });
     $scope.$on('$locationChangeSuccess', function(event){ update(); });
     update();

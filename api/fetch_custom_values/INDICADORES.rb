@@ -53,6 +53,7 @@ if @doc.keys.include?('CODIGOSINDICADORES')\
                     key = slugify etiquetaindicadores[j]
                     label = valoresindicadoreslista[j]
                     image = slugify nombresindicadoreslista[j]
+                    valor = [valor] if not valor.kind_of? Array
                     indicador = {"code": valor[j].to_i, "label": label, "image": '/img/icons/logo-' + key.gsub('_', '-') + '-' + image + '.svg' }
                     indicadores[key][:contents].push(indicador) if indicadores[key] != nil
                 end
