@@ -19,7 +19,8 @@ app.directive('appFooter', function () {
         ['<md-icon class="fa fa-twitter"></md-icon>',           'http://twitter.com/TurismoArona'],
         ['<md-icon class="fa fa-youtube-play"></md-icon>',      'http://www.youtube.com/channel/UCWnPtYXRFfn84JUF_zDaQ6Q'],
         ['<md-icon class="fa fa-instagram"></md-icon>',         'http://instagram.com/turismoarona'],
-        ['<md-icon class="fa fa-tripadvisor"></md-icon>',       'https://www.tripadvisor.es/Tourism-g230096-Arona_Tenerife_Canary_Islands-Vacations.html']
+        ['<md-icon class="fa fa-tripadvisor"></md-icon>',       'https://www.tripadvisor.es/Tourism-g230096-Arona_Tenerife_Canary_Islands-Vacations.html'],
+        ['<md-icon class="fa fa-flickr"></md-icon>',            'https://www.flickr.com/photos/turismoaronatenerife/albums']
     ];
 
     var head = '';
