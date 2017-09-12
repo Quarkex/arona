@@ -25,7 +25,7 @@ selector_filters: [
             <md-button ng-click="$mdMenu.open($event)">{{ type }}</md-button>
             <md-menu-content width="4">
                 <md-menu-item ng-repeat="filter in filters">
-                    <md-button ng-click="toggle_filter('$and', filter.value)">{{ filter.name }}</md-button>
+                    <md-button ng-class="{'md-primary': filter.active}" ng-click="toggle_filter('$and', filter.value); filter.active = !filter.active" ng-init="filter.active = filter.active === undefined ? false : filter.active">{{ filter.name }}</md-button>
                 </md-menu-item>
             </md-menu-content>
         </md-menu>
