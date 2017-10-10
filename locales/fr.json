@@ -6,19 +6,13 @@ require 'mongo'
 
 cgi = CGI.new
 
-$config = {}
-
-# Default config values
-$config["mongo-ip"]   = "127.0.0.1"
-$config["mongo-port"] = 27017
-$config["mongo-db"]   = "arona"
-
-configFile = File.expand_path(File.dirname(__FILE__)) + '/../config.json'
-load configFile if File.file? configFile
+$pwd = File.expand_path(File.dirname(__FILE__))
+load $pwd + '/../config.rb'
+config($pwd + '/../config.json')
 
 Mongo::Logger.logger.level = ::Logger::FATAL
 
-client = Mongo::Client.new([ $config['mongo-ip'] + ':' + $config['mongo-port'].to_s ], :database => $config['mongo-db'])
+client = Mongo::Client.new([ $config['mongo_ip'] + ':' + $config['mongo_port'].to_s ], :database => $config['mongo_db'])
 db = client.database
 collection = client["menus"]
 collection.indexes.create_one( { :date => -1 }, unique: false )
