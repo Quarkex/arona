@@ -1,0 +1,53 @@
+.calendar {
+    li {
+        img {
+            height: 5vw;
+            min-height: 24px;
+            width: auto;
+        }
+    }
+    tr {
+        img {
+            width: 5vw;
+            min-width: 24px;
+            height: auto;
+        }
+        th, td {
+            font-family: 'Raleway', sans-serif;
+            text-align: center;
+            font-size: 1.5vw;
+        }
+        th {
+            font-weight: 500;
+        }
+        td {
+            padding-top:1em;
+            padding-bottom:1em;
+            &:nth-of-type(1)
+            &:nth-of-type(2){
+                font-weight: 300;
+            }
+            &:nth-of-type(3),
+            &:nth-of-type(7){
+                font-weight: 500;
+                font-size: 2.5vw;
+            }
+            &:nth-of-type(4),
+            &:nth-of-type(5),
+            &:nth-of-type(6){
+                padding:0;
+                margin:0;
+            }
+            &:nth-of-type(5){
+                font-weight: 500;
+                font-size: 1vw;
+            }
+            &:nth-of-type(3){
+                text-align: right;
+            }
+            &:nth-of-type(7){
+                text-align: left;
+            }
+        }
+    }
+}

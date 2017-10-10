@@ -1,0 +1,14 @@
+.news {
+    article {
+        padding: 0.5em;
+        background-color: $news_background_color;
+    }
+    figure {
+        margin: 1em 0;
+    }
+    .article-content {
+        display: block;
+        max-height: 22.5em !important;
+        overflow: hidden;
+    }
+}

@@ -1,0 +1,12 @@
+.footer-wrapper {
+    background-color: $main_color;
+    color: $main_color_contrast;
+    border-top: 2px solid $edges_color;
+    white-space: nowrap;
+    a {
+        color: $main_color_contrast;
+    }
+    > div {
+        font-size: 70%;
+    }
+}

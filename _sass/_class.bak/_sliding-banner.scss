@@ -1,0 +1,19 @@
+app-sliding-banner .sliding-banner {
+    span{
+        margin: 0 2em;
+    }
+    background-color: $main_color;
+    color: $white;
+    border-bottom: 2px solid $grey;
+    border-radius: 0.5em 0.5em 0 0;
+    padding: 0.5em;
+}
+app-patreon-slider .sliding-banner {
+    background-color: white;
+    -moz-box-shadow: 0 0 5px 2px white;
+    -webkit-box-shadow: 0 5px 2px white;
+    box-shadow: 0 0 5px 2px white;
+    > * {
+        margin-right: 3em;
+    }
+}

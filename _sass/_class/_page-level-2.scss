@@ -1,7 +1,21 @@
 .page-level-2 {
     background-color: $main_color_contrast;
-    color: black;
-    h2 {
+
+    & > *:not(app-titlebar) {
         color: $main_color;
+
+        h1 {
+            color: $black;
+            &.secondary-header-title {
+                color: $white;
+            }
+        }
+        h2 {
+            color: $main_color;
+            &.secondary-header-subtitle {
+                color: $white;
+            }
+        }
     }
+
 }

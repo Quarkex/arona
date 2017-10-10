@@ -1,0 +1,24 @@
+.content-wrapper *:not(menu-toolbar){
+    h1, h2, h3 {
+        font-family: 'Raleway', sans-serif;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+    h2, h3 {
+        border-bottom-color: $main_color;
+        border-bottom-style: solid;
+        border-bottom-width: 3px;
+        display: inline-block;
+    }
+    h2 {
+        font-size: 2em;
+    }
+    .news {
+        .article-content {
+            text-align: justify;
+        }
+    }
+    app-titlebar, app-titlebar + div[ng-transclude] {
+        background-color: $content_background_color;
+    }
+}

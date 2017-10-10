@@ -1,0 +1,209 @@
+<form ng-submit="submitForm({ 'filters': [(room == undefined ? null : {'id': room.id })], 'values': [ room ], 'collection': 'rooms' }, 'api/setter.json');">
+    <md-content class="md-padding" ng-init="room = (room == undefined) ? {'name': 'Nueva habitación', 'address': '', 'availible': true, 'published': false, 'slider': false} : room;">
+
+       <md-toolbar class="md-menu-toolbar">
+           <div layout="row">
+               <div flex="100" layout="row" layout-wrap>
+                   <h2 md-truncate flex="100" class="md-toolbar-tools" ng-click="toolbar.changeName(room, $event)">{{ room.name }}</h2>
+
+                   <md-menu-bar flex="100">
+
+                       <md-menu>
+                           <button ng-click="$mdMenu.open()">
+                               Habitación
+                           </button>
+                           <md-menu-content>
+
+                               <md-menu-item>
+                                   <md-button ng-click="toolbar.changeName(room, $event)">
+                                       Modificar título
+                                   </md-button>
+                               </md-menu-item>
+
+                               <md-menu-item>
+                                   <md-button ng-click="toolbar.changeAddress(room, $event)">
+                                       Modificar dirección
+                                   </md-button>
+                               </md-menu-item>
+
+                               <md-menu-item>
+                                   <md-button ng-click="toolbar.changeExcerpt(room, $event)">
+                                       Modificar resumen
+                                   </md-button>
+                               </md-menu-item>
+
+                           </md-menu-content>
+                       </md-menu>
+
+                       <md-menu>
+                           <button ng-click="$mdMenu.open()">
+                               Visibilidad
+                           </button>
+                           <md-menu-content width="3">
+
+                               <md-menu-item type="checkbox" ng-model="room.published">Publicado</md-menu-item>
+
+                               <md-menu-item type="checkbox" ng-model="room.slider">Slider</md-menu-item>
+
+                           </md-menu-content>
+                       </md-menu>
+
+                       <md-menu>
+                           <button ng-click="$mdMenu.open()">
+                               Archivos
+                           </button>
+                           <md-menu-content width="3">
+
+                               <md-menu-item>
+                                   <span style="white-space: nowrap;">Imagen: <ngf-select name="room_image" type="file" ng-model="room.image"></ngf-select></span>
+                               </md-menu-item>
+
+                           </md-menu-content>
+                       </md-menu>
+
+                   </md-menu-bar>
+
+               </div>
+
+           </div>
+       </md-toolbar>
+       <div flex="100" layout="row" layout-wrap ng-init="formFields = {
+           'Disponible':                 ['checkbox', 'availible',       false],
+           'Ascensor':                   ['checkbox', 'elevator',        false],
+           'Comunidad':                  ['checkbox', 'community',       false],
+           'Escaleras':                  ['checkbox', 'stairs',          false],
+           'Piscina':                    ['checkbox', 'pool',            false],
+           'Trastero':                   ['checkbox', 'storage',         false],
+           'Año de construcción':        ['number',   'year',            true],
+           'Baños':                      ['number',   'restroom',        true],
+           'Tipo de Piscina':            ['select',   'pool_type',       false, {
+               'Climatizada':  'climatized',
+               'Comunitaria':  'communitary',
+               'Privada':      'private'
+           }],
+           'Tipo de inmueble':           ['select',   'type',            true, {
+               'Alquiler':     'rent',
+               'Venta':        'sell',
+               'De temporada': 'seasonal_rent'
+           }],
+           'Tipo de edificio':     ['select',   'type_of_building',     true, {
+               'Apartamento': 'Apartamento',
+               'Chalet':      'Chalet',
+               'Dúplex':      'Dúplex',
+               'Estudio':     'Estudio',
+               'Local':       'Local',
+               'Pareado':     'Pareado',
+               'Villa':       'Villa',
+               'Otro':        ' '
+           }],
+           'Certificado energético':     ['select',   'energy_cert',     true, {
+               'A': 'a',
+               'B': 'b',
+               'C': 'c',
+               'D': 'd',
+               'E': 'e',
+               'F': 'f',
+               'G': 'g',
+               'Ninguno': ' '
+           }],
+           'Estado del inmueble':        ['text',     'building_status', true],
+           'M2 construidos':             ['float',    'm2_built',        true],
+           'M2 de terreno':              ['float',    'm2_terrain',      true],
+           'M2 terraza/balcón':          ['float',    'm2_balcony',      true],
+           'Precio de comunidad':        ['float',    'community_price', false],
+           'Nº de plantas del edificio': ['number',   'building_floors', true],
+           'Precio':                     ['float',    'price',           true],
+           'IBI':                        ['float',    'ibi',             false],
+           'Cocina':                     ['text',     'kitchen',         false],
+           'Dormitorios':                ['text',     'bedrooms',        false],
+           'Garage':                     ['text',     'parking',         false],
+           'Muebles':                    ['text',     'furniture',       false],
+           'Salón/comedor':              ['text',     'livingroom',      false],
+           'Teléfono':                   ['text',     'telephone',       false],
+           'Wifi':                       ['text',     'wifi',            false],
+           'Vistas':                     ['text',     'views',           false]
+       }">
+           <div layout="row" flex="100">
+               <h6>Descripción general</h6>
+           </div>
+           <div layout="row" flex="100">
+               <div style="min-height: 50vh; width: 100%; padding: 1em;" class="room-content md-whiteframe-1dp" ng-model="room.description" ckeditor="options" ready="onReady()" contenteditable="true"></div>
+               <input type="hidden" name="name"        value="{{ room.name }}">
+               <input type="hidden" name="address"     value="{{ room.address }}">
+               <input type="hidden" name="excerpt"     value="{{ room.excerpt }}">
+               <input type="hidden" name="published"   value="{{ room.published }}">
+               <input type="hidden" name="slider"      value="{{ room.slider }}">
+               <input type="hidden" name="description" value="{{ room.description }}">
+               <input type="hidden" name="IDIOMA"      value="{{ lang() }}"              required>
+               <input type="hidden" name="image_name"  value="{{ room.name | slugify }}" required>
+           </div>
+           <div layout="row" flex="100" layout-align="center" layout-wrap>
+               <div flex="100" flex-gt-sm="50" layout="row" layout-wrap ng-repeat="(label, data) in formFields">
+                   <md-input-container flex="100">
+
+                       <label ng-if="data[0] != 'checkbox'">{{ label }}</label>
+
+                       <md-checkbox
+                       flex="100"
+                       ng-if="data[0] == 'checkbox'"
+                       ng-init="room[data[1]] = (room[data[1]] === undefined || room[data[1]] === null) ? false : room[data[1]];"
+                       ng-model="room[data[1]]"
+                       ng-required="data[2]"
+                       >{{ label }}</md-checkbox>
+
+                       <input
+                       ng-if="data[0] == 'checkbox'"
+                       type="hidden"
+                       name="{{ data[1] }}"
+                       value="{{ room[data[1]] }}"
+                       ng-required="data[2]"
+                       />
+
+                       <input
+                       ng-if="data[0] != 'checkbox' && data[0] != 'select' && data[0] != 'float'"
+                       type="{{ data[0] }}"
+                       name="{{ data[1] }}"
+                       ng-model="room[data[1]]"
+                       ng-required="data[2]"
+                       flex="100"
+                       />
+
+                       <input
+                       ng-if="data[0] == 'float'"
+                       type="number"
+                       name="{{ data[1] }}"
+                       ng-model="room[data[1]]"
+                       ng-required="data[2]"
+                       flex="100"
+                       ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+                       step="0.01"
+                       />
+
+                       <md-select
+                       ng-if="data[0] == 'select'"
+                       ng-model="room[data[1]]"
+                       ng-required="data[2]"
+                       flex="100"
+                       >
+                           <md-option
+                           ng-value="value"
+                           ng-repeat="(name, value) in data[3]"
+                           >{{ name }}</md-option>
+                       </md-select>
+
+                   </md-input-container>
+               </div>
+           </div>
+           <div layout="row" flex="100">
+               <h6>Observaciones</h6>
+           </div>
+           <div layout="row" flex="100">
+               <div style="min-height: 50vh; width: 100%; padding: 1em;" class="room-content md-whiteframe-1dp" ng-model="room.observations" ckeditor="options" ready="onReady()" contenteditable="true"></div>
+           </div>
+           <div layout="row" flex="100" layout-align="end">
+               <input class="md-button" type="submit" value="Guardar">
+           </div>
+       </div>
+
+   </md-content>
+</form>

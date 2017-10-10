@@ -1,0 +1,67 @@
+@if $slides > 0 {
+    $speed: $time_for_slide * $slides;
+    $offset: 100 / $slides;
+
+    .fading-banner{
+        position: relative;
+        margin: 0;
+        min-height: 13.5em;
+        text-align: center;
+        > *{
+            margin: 0;
+            position: absolute;
+            top:0;
+            left:0;
+            /* .fading-banner needs a height and width, or nothing will show */
+            height: 100%;
+            width: 100%;
+        }
+        img{
+            /* We don't want images to deform but we do want them to fit in */
+            max-width: 100%;
+            max-height: 100%;
+        }
+        > * figcaption{
+            position: absolute;
+            top: 0;
+            color: #fff;
+            background: rgba(0,0,0, .3);
+            font-size: .8em;
+            padding: 8px 12px;
+            opacity: 0;
+            transition: opacity .5s;
+        }
+        &:hover > * figcaption{
+            transition: opacity .5s;
+            opacity: 1;
+        }
+        > *{
+            opacity:0;
+            @for $i from 1 through $slides {
+                &:nth-child(#{$i}) {
+                    animation: xfade $speed $speed - $time_for_slide * $i infinite;
+                }
+            }
+        }
+
+    }
+
+    @keyframes xfade{
+        0%{
+            opacity: 1;
+        }
+        #{ $offset - $offset / 6.25 }% {
+            opacity: 1;
+        }
+        #{ $offset }%{
+            opacity: 0;
+        }
+        #{ 100 - $offset / 6.25 }% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+}

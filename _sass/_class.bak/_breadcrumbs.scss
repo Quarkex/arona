@@ -1,0 +1,38 @@
+.breadcrumbs-wrapper {
+    background-color: #eeeeee;
+    width: 100%;
+    padding: 0;
+    overflow: auto;
+}
+.breadcrumbs {
+    background-color: #eeeeee;
+    padding: 0.5em 2em;
+    margin: 0;
+    white-space: nowrap !important;
+
+    * {
+        white-space: nowrap !important;
+        display: inline !important;
+    }
+
+    li {
+        float: none;
+        font-size: 14px;
+        text-transform: unset;
+        color: #4a4a4a;
+        a{ color: #015aa9; }
+        &:last-of-type{
+            margin-right: 3em;
+            a{ color: #4a4a4a; }
+        }
+        &:not(:last-child)::after {
+            content:'keyboard_arrow_right';
+            font-family: 'Material Icons';
+            -webkit-font-feature-settings: 'liga';
+            color: #015aa9;
+        }
+    }
+    a:hover {
+        text-decoration: none;
+    }
+}

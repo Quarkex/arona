@@ -1,0 +1,51 @@
+.card {
+    margin-bottom: 2em;
+    padding: 1em 2em;
+
+    background-color: $secondary_color_contrast;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 0.5px;
+    border-image-source: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.02) 95%, rgba(0, 0, 0, 0.04));
+    border-image-slice: 1;
+
+    font-size: 13px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+
+    strong {
+        font-size: 14px;
+        font-weight: normal !important;
+        line-height: 1.43;
+        color: black;
+    }
+
+    h1, h1>a {
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: normal !important;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.33;
+        color: $secondary_color;
+    }
+
+    a {
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        text-align: center;
+        color: $secondary_color;
+    }
+
+    img {
+        width: 130px;
+        height: 130px;
+    }
+}

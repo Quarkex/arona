@@ -1,0 +1,42 @@
+.title-bar {
+    padding: 0;
+    background-color: transparent !important;
+    color: $main_color;
+    width: 100%;
+
+    .md-button * {
+        color: $main_color;
+    }
+    *:not(.submenu) {
+        background-color: transparent;
+        color: $main_color;
+    }
+    *.submenu{
+        background-color: $main_color-transparent;
+        color: $main_color_contrast;
+    }
+    a {
+        color: $main_color_contrast;
+    }
+    > .title-bar-left {
+        text-transform: uppercase;
+        > div:first-child {
+            padding: 0.7em;
+        }
+    }
+    > .title-bar-right {
+        .icon-wrapper {
+            padding: 0.7em;
+        }
+    }
+}
+/*
+ * Enable this after fixing JS infinite recursion problems
+ */
+
+/*
+.title-bar:not(.sub-level) {
+    background-color: $main_color-transparent;
+    position: fixed;
+}
+*/

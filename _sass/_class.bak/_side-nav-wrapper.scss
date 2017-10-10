@@ -1,0 +1,8 @@
+/* Large and up */
+@media screen and (min-width: 64em) {
+    .side-nav-wrapper {
+        padding: 1em 1em 1em 0;
+        margin: 2em 2em 2em 0;
+        border-right: 1px solid $edges_color;
+    }
+}

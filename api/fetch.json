@@ -31,32 +31,30 @@
 
 require 'cgi'
 require 'json'
-require 'mongo'
 require 'date'
-
-$config = {}
-
-# Default config values
-$config["mongo-ip"]   = "127.0.0.1"
-$config["mongo-port"] = 27017
-$config["mongo-db"]   = "arona"
-
-configFile = File.expand_path(File.dirname(__FILE__)) + '/../config.json'
-load configFile if File.file? configFile
-
-Mongo::Logger.logger.level = ::Logger::FATAL
-
-client = Mongo::Client.new([ $config['mongo-ip'] + ':' + $config['mongo-port'].to_s ], :database => $config['mongo-db'])
-$db = client.database
 
 cgi = CGI.new
 output = []
-sts = { size: 0, last_modified: nil }
+$parameters = cgi.params.keys.first.to_s
+DEBUG_JSON_STRING = '{"language":"es","offset":0,"limit":10,"filters":{"published":true,"$and":[{"$or":[{"CODCONTENIDO":1},{"CODRECURSO":1},{"id":1},{"ID":1}]}]},"values":["name","address","published","slider","year","m2_built","m2_terrain","m2_balcony","building_floors","building_status","restroom","price","kitchen","bedrooms","parking","views","livingroom","tel_or_wifi","id","type","energy_cert","image","image_paths"],"collection":"rooms","stats":true,"values_list":["name","id","image_path","excerpt"],"values_view":["name","address","published","slider","year","m2_built","m2_terrain","m2_balcony","building_floors","building_status","restroom","price","kitchen","bedrooms","parking","views","livingroom","tel_or_wifi","id","type","energy_cert","image_path","image_paths"],"pub":false}'
+
 begin
+    require 'mongo'
+
+    $pwd = File.expand_path(File.dirname(__FILE__))
+    load $pwd + '/../config.rb'
+    config($pwd + '/../config.json')
+
+    Mongo::Logger.logger.level = ::Logger::FATAL
+
+    client = Mongo::Client.new([ $config['mongo_ip'] + ':' + $config['mongo_port'].to_s ], :database => $config['mongo_db'])
+    $db = client.database
+
+    sts = { size: 0, last_modified: nil }
 
     # CGI tries to parse the request body as form parameters so a
     # blob of JSON awkwardly ends up as the one and only parameter key.
-    $parameters = JSON.parse(cgi.params.keys.first)
+    $parameters = JSON.parse($parameters == '' ? DEBUG_JSON_STRING : $parameters)
 
     def fix_regex (object)
         object.keys.each do | key |
@@ -80,38 +78,35 @@ begin
 
     if $parameters.has_key?("collection") then
         $collection = client[$parameters['collection']]
-        $collection.indexes.create_one( { "F_INICIO_PUB" => -1 }, unique: false )
-        $collection.indexes.create_one( { "CODCONTENIDO" => -1 }, unique: false )
-        $collection.indexes.create_one( { "FMODIFICACION" => 1 }, unique: false )
-        $collection.indexes.create_one( {
-            "DESCRIPCION" => 'text',
-            "DESCRIPCION_COMUN" => 'text',
-            "DONDE" => 'text',
-            "EMAIL" => 'text',
-            "NOMBRE" => 'text',
-            "NOMBRE_SOCIAL" => 'text',
-            "ORGANIZACION" => 'text',
-            "TITULO" => 'text',
-            "ZONA" => 'text'
-        }, unique: false, name: $parameters['collection']+'_text_index', language_override: 'IDIOMA' )
+        $collection.indexes.create_one( { $config["date_field"]      => -1 }, unique: false )
+        $collection.indexes.create_one( { $config["id_field"]        => -1 }, unique: false )
+        $collection.indexes.create_one( { $config["timestamp_field"] =>  1 }, unique: false )
 
-        $resources = client['recursos']
-        $resources.indexes.create_one( { "CODRECURSO" => -1 }, unique: false )
-        $resources.indexes.create_one( { "RECURSO" => -1 }, unique: false )
+        text_filter_object = {}
+        $config["text_fields"].each do | field |
+            text_filter_object[field] = 'text'
+        end
 
-        if $parameters.has_key? 'filters'  then filters = $parameters['filters']  else filters = {}    end
-        if $parameters.has_key? 'language' then lang    = $parameters['language'] else lang    = "en"  end
-        if $parameters.has_key? 'values'   then values  = $parameters['values']   else values  = []    end
-        if $parameters.has_key? 'offset'   then offset  = $parameters['offset']   else offset  = 0     end
-        if $parameters.has_key? 'limit'    then limit   = $parameters['limit']    else limit   = 4     end
-        if $parameters.has_key? 'stats'    then stats   = $parameters['stats']    else stats   = false end
+        $collection.indexes.create_one( text_filter_object, unique: false, name: $parameters['collection']+'_text_index', language_override: $config["language_field"] )
 
-        filters["IDIOMA"] = lang
-        filters["F_INICIO_PUB"] = {'$lt': DateTime.now }
-        filters["F_FIN_PUB"] = {'$gte': DateTime.now }
+        $resources = client[$config["resource_collection"]]
+        $resources.indexes.create_one( { $config["resource_id_field"] => -1 }, unique: false )
+        $resources.indexes.create_one( { $config["resource_field"]    => -1 }, unique: false )
+
+        if $parameters.has_key? 'filters'  then filters = $parameters['filters']  else filters = {}                                end
+        if $parameters.has_key? 'language' then lang    = $parameters['language'] else lang    = $config["page_language"]          end
+        if $parameters.has_key? 'values'   then values  = $parameters['values']   else values  = []                                end
+        if $parameters.has_key? 'offset'   then offset  = $parameters['offset']   else offset  = 0                                 end
+        if $parameters.has_key? 'limit'    then limit   = $parameters['limit']    else limit   = $config["default_resource_limit"] end
+        if $parameters.has_key? 'stats'    then stats   = $parameters['stats']    else stats   = false                             end
+        if $parameters.has_key? 'pub'      then pub     = $parameters['pub']      else pub     = true                              end
+
+        filters[$config["language_field"]]   = lang if lang != ''
+        filters[$config["start_date_field"]] = {'$lt': DateTime.now } if pub
+        filters[$config["end_date_field"]]   = {'$gte': DateTime.now } if pub
 
         if values != [] then
-            projection = {"_id"=> 1, "FMODIFICACION"=> 1}
+            projection = {"_id"=> 1, $config["timestamp_field"] => 1}
             values.each do |value|
                 projection[value] = 1
             end
@@ -122,14 +117,14 @@ begin
         doc = $collection.find( filters )
         sts["size"] = doc.count()
 
-        doc = doc.sort({"F_INICIO_PUB": -1})
+        doc = doc.sort({$config['date_field'] => -1})
         doc = doc.skip(offset) if not offset == 0
         doc = doc.limit(limit) if not limit == 0
         doc = doc.projection(projection) if not projection.empty?
 
-        last_modified = doc.sort({"FMODIFICACION": 1}).first()
+        last_modified = doc.sort({$config["timestamp_field"] => 1}).first()
         if last_modified != nil then
-            sts["last_modified"] = last_modified["FMODIFICACION"].iso8601 unless last_modified["FMODIFICACION"] == nil
+            sts["last_modified"] = last_modified[$config["timestamp_field"]].iso8601 unless last_modified[$config["timestamp_field"]] == nil
         end
 
         doc = doc.to_a
@@ -149,6 +144,7 @@ begin
 
         doc.each do | document |
             @doc = $collection.find({"_id": document["_id"]}).first
+            document.delete("_id")
             modules.each do | value, file |
                 @value = value
                 @custom_value = nil

@@ -1,3 +1,54 @@
-$config["mongo-ip"]   = "127.0.0.1"
-$config["mongo-port"] = 27017
-$config["mongo-db"]   = "arona"
+$config["mongo_ip"]   = "127.0.0.1"
+$config["mongo_port"] = 27017
+$config["mongo_db"]   = "arona"
+
+$config["page_title"] = "Arona.travel"
+$config["page_charset"] = "utf-8"
+$config["page_language"] = "en"
+
+$config["app_directives"] = [
+        "sliding-banner",
+        "bottom-extra",
+        "bottom-nav",
+        "article-showcaser",
+        "back-bar",
+        "side-nav",
+        "tab-bar",
+        "accordion",
+        "chessboard-nav",
+        "elements-feedback",
+        "related-content",
+        "card-simple",
+        "card-document",
+        "card-external",
+        "card-article",
+        "activity-view",
+        "article-view",
+        "hotel-view",
+        "descriptive-view",
+        "documental-view",
+        "ads-banner",
+        "patreon-slider",
+        "poster",
+        "slideshow",
+        "social-media",
+        "floating-buttons"
+]
+
+$config["app_modules"] = [
+
+    { "js" => "https://use.fontawesome.com/5d9ccb4393.js"
+    },
+    # FIXME Bower angular foundation  package presents some kind of problem. Using custom files
+    { "ng-module" => "mm.foundation",
+        "js" => "/js/angular-foundation.min.js"
+    },
+    { "ng-module" => "pmkr.filters",
+        "js" => "/js/pmkr-filters.js"
+    },
+    { "js" => "/js/slick.js"
+    },
+    { "ng-module" => "slick",
+        "js" => "/js/angular-slick.js"
+    }
+]

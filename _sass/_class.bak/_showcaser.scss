@@ -1,0 +1,22 @@
+.showcaser {
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    md-content{
+        background-color: transparent;
+        overflow: hidden;
+        color: $main_color_contrast;
+    }
+    md-grid-tile{
+        overflow: hidden;
+    }
+    .showcaser-date{
+        color: #f7ab00;
+    }
+    .showcaser-card a{
+        background-color: $main_color;
+        color: $main_color_contrast;
+    }
+}

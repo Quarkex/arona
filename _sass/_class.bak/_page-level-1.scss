@@ -1,0 +1,36 @@
+.page-level-1 {
+    background-color: $main_color_contrast;
+    color: black;
+
+    h2 {
+        color: $main_color;
+    }
+    .index-page-box {
+        background-color: $edges_color;
+        margin-bottom: 1.25vw;
+        text-align: center;
+    }
+    $index-box-elements: "apparona", "como_llegar", "como_moverse", "donde_alojarse", "destino_accesible", "conjunto_historico", "vive_tu_estancia", "playas_de_arona";
+    $selector: '';
+    $is_first: 'true';
+    @each $item in $index-box-elements {
+        @if $is_first == 'true' {
+            $selector: unquote('##{$item}');
+            $is_first: 'false';
+        }
+        @else {
+            $selector: $selector, unquote('##{$item}');
+        }
+    }
+    #{$selector} {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        overflow-x: hidden;
+    }
+    @each $item in $index-box-elements {
+        ##{$item}{
+            background-image: url("../img/backgrounds/pagina.#{$item}.png");
+        }
+    }
+}

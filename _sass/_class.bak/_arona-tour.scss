@@ -1,0 +1,15 @@
+.arona-tour {
+    margin: 0;
+    li {
+        margin-top: 2.5em;
+        list-style-type: none;
+
+        a > * {
+            display: block;
+        }
+    }
+    img {
+        min-width: 100%;
+        height: auto;
+    }
+}

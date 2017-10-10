@@ -1,0 +1,12 @@
+.panel {
+    background-color: $body_background_color;
+    background-image: $body_background_image;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
+
+    > *:not(:nth-child(1)) {
+        background-color: $content_background_color;
+    }
+}

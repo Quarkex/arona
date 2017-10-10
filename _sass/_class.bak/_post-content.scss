@@ -1,0 +1,25 @@
+.post-content{
+    background-color: rgba(229, 236, 242, 0.6);
+    color: black;
+    margin: 1em;
+    margin-bottom: 3em;
+    padding: 1em;
+    border-radius: 6px;
+    .activity-content {
+        &:not(:first-child){
+            margin-top: 1em;
+        }
+    }
+    .section-title {
+        font-size: 16px;
+        color: $grey;
+        width: 100%;
+        border-bottom: 3px solid lightgrey;
+        list-style-type: square;
+        display:list-item;
+        list-style-position: inside;
+        &::marker {
+            color: $secondary_color;
+        }
+    }
+}

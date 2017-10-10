@@ -1,0 +1,17 @@
+.slick-next::before{
+    content: ">";
+}
+.slick-prev::before{
+    content: "<";
+}
+.slick-next, .slick-prev {
+    &, &:active, &:focus, &:hover {
+        border-radius: 100px;
+        border: 1px solid grey;
+        background: white;
+    }
+
+    &::before{
+        color: black;
+    }
+}

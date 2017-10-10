@@ -1,0 +1,20 @@
+*[data-equalizer]{
+    * {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+*[data-equalizer="\'news-titles\'"]{
+    * {
+        height: 4.5em;
+    }
+    height: 4.5em;
+}
+*[data-equalizer="\'news-excerpts\'"]{
+    * {
+        height: 25em;
+    }
+    height: 25em;
+}

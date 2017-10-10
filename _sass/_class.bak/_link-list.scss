@@ -1,0 +1,20 @@
+.link-list{
+    list-style-type: none;
+    margin:0;
+    li {
+        text-align: center;
+        margin-bottom: 1em;
+        width: 100%;
+        &:first-of-type{
+            text-transform: uppercase;
+            font-size: 20px;
+            border-bottom: 1px solid black;
+            padding-left: 1em;
+            padding-right: 1em;
+            white-space: nowrap;
+            a {
+                color: black;
+            }
+        }
+    }
+}
