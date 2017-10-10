@@ -60,8 +60,9 @@ class NilClass; def ensure_array; to_a end end
 def parseValue( value )
     if $parameters.has_key?("escaped_values") then
         if $parameters["escaped_values"] == true
-            value = value.encode!('UTF-16', 'UTF-8', :invalid => :replace, :replace => '')
+            value = value.encode!('UTF-16', 'UTF-8', :invalid => :replace, :undef=> :replace, :replace => '')
             value = value.encode!('UTF-8', 'UTF-16')
+            value.scrub!
             value = Base64.decode64(value)
             value = URI.unescape(value.force_encoding('UTF-8'))
         end
