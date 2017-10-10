@@ -45,6 +45,11 @@ app.directive('appActivityView', function () {
                     '<div bind-html-compile="element()[\'TELEFONO\']"></div>' +
                 '</div>' +
 
+                '<div class="activity-content" layout="column" ng-if="element()[\'WEB_PROPIA\'] != null">' +
+                    '<h4 class="section-title">{{ translate(\'general.\', \'web\') | gsub: \'_\':\' \':true | capitalize }}</h4>' +
+                    '<div><a href="{{ element().WEB_PROPIA }}">{{ element().WEB_PROPIA }}</a></div>' +
+                '</div>' +
+
                 '<div class="activity-content" layout="column" ng-if="element()[\'DESCRIPCION_COMUN\'] != null">' +
                     '<h4 class="section-title">{{ translate(\'general.seccion_\', \'descripcion_del_evento\') + \':\' | gsub: \'_\':\' \':true | capitalize }}</h4>' +
                     '<div bind-html-compile="element()[\'DESCRIPCION_COMUN\']"></div>' +
