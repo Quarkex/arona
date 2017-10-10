@@ -30,7 +30,7 @@ app.directive('appActivityView', function () {
                 '</div>' +
             '</header>' +
             '<div layout="column" class="row post-content">' +
-                '<div class="activity-content" layout="column" ng-if="element()[\'TAQUILLA\'] != null">' +
+                '<div class="activity-content" layout="column" ng-if="element()[\'TAQUILLA\'] != null && element()[\'TAQUILLA\'].trim() != \'\'">' +
                     '<h4 class="section-title">{{ translate(\'general.seccion_\', \'taquilla\') + \':\' | gsub: \'_\':\' \':true | capitalize }}</h4>' +
                     '<div bind-html-compile="element()[\'TAQUILLA\']"></div>' +
                 '</div>' +
