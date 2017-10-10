@@ -13,7 +13,7 @@ app.directive('appDefaultView', function () {
                 '<div layout-gt-xs="row" layout="column" class="territorial-info" layout-margin>' +
                     '<!-- Swap this commented line with the next one to hide image field if not found -->' +
                     '<!-- <md-content ng-if="element().IMAGEN != -1" flex flex-gt-xs="50" class="territorial-map flex-video"> -->' +
-                    '<md-content flex flex-gt-xs="50" class="territorial-map flex-video">' +
+                    '<md-content flex flex-gt-xs="50" class="territorial-map">' +
                         '<img style="min-width: 100%; min-height: 100%;" ng-if="element().IMAGEN != -1" class="md-media-md card-media" alt="{{ element().TITULO }}" src="http://www.arona.org/portal/imagecache/ficha/{{ element().IMAGEN }}">' +
                     '</md-content>' +
                     '<md-card flex class="territorial-contact" style="padding: 0 2.5em;">' +
