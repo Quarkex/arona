@@ -131,7 +131,7 @@ begin
             end if name == "Exportar Hoja de Trabajo"
         end
     else
-        $parameters = json.force_encoding('UTF-8')
+        $parameters = json.dup.force_encoding('UTF-8')
         $parameters.chomp("=")
         $parameters = JSON.parse(json)
     end
