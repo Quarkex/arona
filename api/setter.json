@@ -146,7 +146,7 @@ begin
 
         collection.indexes.create_one( { $target_id_name => -1 }, unique: false )
 
-        last_element = collection.find().sort({$target_id_name: -1}).first
+        last_element = collection.find().sort({$target_id_name => -1}).first
         $last_db_id = last_element == nil ? 0 : last_element[$target_id_name].to_i
 
         if $parameters.has_key? 'filters'  then filters = $parameters['filters']  else filters = []    end
