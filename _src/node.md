@@ -69,7 +69,7 @@ values_view:
     - "m2_balcony"
     - "m2_built"
     - "m2_terrain"
-    - "map_iframe"
+    - "map_image"
     - "name"
     - "observations"
     - "parking"
