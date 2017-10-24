@@ -3,6 +3,7 @@ tree.js
 _site
 .sass-cache
 _sass/_sass_imports.scss
+img/rooms
 style.min.css
 config.json
 bower_components

@@ -1,10 +1,10 @@
 app.directive('appHotelView', function () {
 
     var template = '<div class="territorial-view">' +
-        '<div class="territorial-header" style="background-image: url(\'http://www.arona.org/portal/imagecache/ampliado/{{ element().IMAGEN }}\');">' +
+        '<div class="territorial-header" style="background-image: url(\'{{ elements()[0].image }}\');">' +
             '<div class="inner-wrapper">' +
-                '<h1>{{  element().TITULO }}</h1>' +
-                '<h2>{{  element().ZONA }}</h2>' +
+                '<h1>{{  elements()[0].name }}</h1>' +
+                '<h2>{{  elements()[0].type }}</h2>' +
             '</div>' +
         '</div>' +
     '</div>' +
@@ -12,23 +12,20 @@ app.directive('appHotelView', function () {
         '<div class="row">' +
             '<div class="large-10 large-offset-1 columns">' +
                 '<div layout-gt-xs="row" layout="column" class="territorial-info" layout-margin>' +
-                    '<md-content bind-html-compile="element().MAPA_IFRAME" flex flex-gt-xs="66" class="territorial-map flex-video"></md-content>' +
+                    '<md-content bind-html-compile="elements()[0].map_iframe" flex flex-gt-xs="66" class="territorial-map flex-video"></md-content>' +
                     '<md-card flex flex-gt-xs="33" class="territorial-contact">' +
                         '<md-card-content>' +
                             '<div class="row collapse">' +
-                                '<p>{{  element().DIRECCION }}</p>' +
+                                '<p>{{  elements()[0].address }}</p>' +
                             '</div>' +
-                            '<div ng-if="element().TELEFONO != null" class="row collapse">' +
-                                '<p>{{ translate("general.", \'telefono\') | capitalize }}: {{  element().TELEFONO }}</p>' +
-                            '</div>' +
-                            '<div ng-if="element().FAX != null" class="row collapse">' +
-                                '<p>{{ translate("general.", \'fax\') | capitalize }}: {{  element().FAX }}</p>' +
+                            '<div ng-if="elements()[0].contact_phone != null" class="row collapse">' +
+                                '<p>{{ translate("general.", \'telefono\') | capitalize }}: {{  elements()[0].contact_phone }}</p>' +
                             '</div>' +
                         '</md-card-content>' +
                         '<md-card-footer>' +
                             '<md-card-actions layout="row" layout-align="begining center">' +
-                                '<md-button class="md-primary" ng-href="mailto:{{  element().EMAIL }}">{{ translate("general.", \'email\') }}</md-button>' +
-                                '<md-button class="md-primary" ng-href="{{  element().WEB_PROPIA }}">{{ translate("general.", \'website\') }}</md-button>' +
+                                '<md-button class="md-primary" ng-href="mailto:{{  elements()[0].email }}">{{ translate("general.", \'email\') }}</md-button>' +
+                                '<md-button class="md-primary" ng-href="{{  elements()[0].website }}">{{ translate("general.", \'website\') }}</md-button>' +
                             '</md-card-actions>' +
                         '</md-card-footer>' +
                     '</md-card>' +
@@ -46,7 +43,7 @@ app.directive('appHotelView', function () {
             '<div class="large-10 large-offset-1 columns">' +
                 '<div layout-margin>' +
                     '<div class="row small-up-2 large-up-3" style="margin-left: -0.45em; margin-right: -0.45em;">' +
-                        '<div class="services-list column" ng-repeat="(section, section_body) in element().INDICADORES">' +
+                        '<div class="services-list column" ng-repeat="(section, section_body) in elements()[0].characteristics">' +
                             '<h3>{{ translate( \'servicio.seccion_\', section ) | capitalize }}</h3>' +
                             '<ul>' +
                                 '<li ng-repeat="item in section_body.contents">' +
@@ -63,13 +60,6 @@ app.directive('appHotelView', function () {
         '<div class="row">' +
             '<div class="large-10 large-offset-1 columns">' +
                 '<app-related-content></app-related-content>' +
-            '</div>' +
-        '</div>' +
-        '<div class="row">' +
-            '<div class="large-10 large-offset-1 columns">' +
-                '<div layout-margin>' +
-                    '<app-back-bar layout-margin></app-back-bar>' +
-                '</div>' +
             '</div>' +
         '</div>' +
     '</div>';

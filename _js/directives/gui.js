@@ -1,22 +1,27 @@
 app.directive('appGui', function () {
 
     var template = 
-        '<div ng-init="showDiv = true;" ng-show="showDiv"  ng-if="isIE" bind-html-compile="translate(\'general.\', \'actualizarnavegador\')" ng-click="showDiv = !showDiv;" layout="column" layout-margin layout-padding></div>'+
-        '<app-titlebar class="hide-for-print"></app-titlebar>' +
-        '<app-breadcrumbs class="hide-for-print" ng-if=" path() != ( \'/\' + lang() )"></app-breadcrumbs>' +
         '<app-header class="hide-for-print"></app-header>' +
-        '<div ng-transclude></div>'+
-        '<app-bottom-nav></app-bottom-nav>' +
-        '<br>' +
-        '<app-bottom-extra></app-bottom-extra>';
+        '<app-titlebar class="hide-for-print"></app-titlebar>' +
+//        '<br />' +
+//        '<md-toolbar class="md-hue-2">' +
+//            '<div class="md-toolbar-tools">' +
+//                '<a ng-href="{{ \'#!\' + lang() + \'/\' }}" flex md-truncate><h2>Inicio</h2></a>' +
+//                '<span flex></span>' +
+//                '<h3>Contacto: 655 127 796</h2>' +
+//            '</div>' +
+//        '</md-toolbar>' +
+        '<div ng-transclude flex layout="column"></div>' +
+        '<md-toolbar class="md-hue-2" hide-gt-sm>' +
+            '<div class="md-toolbar-tools">' +
+                '<a ng-href="{{ \'#!\' + lang() + \'/\' }}" flex md-truncate><h2>Inicio</h2></a>' +
+                '<h3>Contacto: 655 127 796</h2>' +
+            '</div>' +
+        '</md-toolbar>';
+    template = '<div layout="column" flex flex-gt-xs="90">' + template + '</div>';
+    template = '<div layout="row" flex="100" layout-align="center start" style="min-height: 100vh;">' + template + '</div>';
 
-    // comment this line for sticky footer
-    template += '<app-footer></app-footer>';
-
-    template = '<app-off-canvas class="content-wrapper">' + template + '</app-off-canvas>';
-
-    // uncomment this line for sticky footer
-    //template += '<app-footer></app-footer>';
+    template = '<app-off-canvas class="content-wrapper" flex="100" layout="column">' + template + '</app-off-canvas>';
 
     return {
         restrict: 'E',

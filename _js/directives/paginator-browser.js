@@ -1,15 +1,17 @@
 app.directive('appPaginatorBrowser', function () {
 
-    var template = '<div flex="100" flex-gt-sm="70" flex-offset-gt-sm="15" layout="row" layout-wrap>' +
-        '<app-element-feedback flex="100" style="display: none;"></app-element-feedback>' +
-        '<div flex="100" ng-if="element_status() == \'loading\'" layout-align="space-around" layout="row" layout-padding>' +
+    var template = '<div flex layout="column">' +
+        '<app-element-feedback style="display: none;"></app-element-feedback>' +
+        '<div ng-if="element_status() == \'loading\'" layout-align="center center" layout="row" layout-margin>' +
             '<md-progress-circular md-mode="indeterminate"></md-progress-circular>' +
         '</div>' +
-        '<div layout="row" layout-wrap flex="100" layout-align="begin strech" ng-if="element_status() == \'ok\'" ng-transclude></div>' +
-        '<app-paginator-controls flex="100"></app-paginator-controls>' +
-        '<app-back-bar flex="100"></app-back-bar>' +
+        '<app-paginator-filters></app-paginator-filters>' +
+        '<div ng-if="element_status() == \'ok\'" flex layout="column">' +
+            '<ng-transclude flex layout="row" layout-wrap layout-align="space-around center"></ng-transclude>' +
+        '</div>' +
+        '<app-paginator-controls></app-paginator-controls>' +
     '</div>';
-    template = '<div flex="100">' + template + '</div>';
+    template = '<div flex>' + template + '</div>';
 
     return {
         restrict: 'E',

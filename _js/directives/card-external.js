@@ -1,4 +1,4 @@
-app.directive('appCardExternal', function () {
+app.directive('appCardSimple', function () {
 
     var href = '{{ item.RECURSOS[0].RECURSO.substring(0,4) == \'http\' ? item.RECURSOS[0].IMAGEN : \'http://www.arona.org/portal/\' + item.RECURSOS[0].IMAGEN }}';
 

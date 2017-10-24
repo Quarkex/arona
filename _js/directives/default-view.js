@@ -1,60 +1,77 @@
 app.directive('appDefaultView', function () {
 
-    var template = '<div class="territorial-view">' +
-        '<div class="row">' +
-            '<div class="large-10 large-offset-1 columns">' +
-                '<div layout="column" layout-margin>' +
-                    '<h2 style="margin-top: 1.5em; border-bottom: 3px solid #004481;">{{  element().TITULO }}</h2>' +
-                '</div>' +
-            '</div>' +
-        '</div>' +
-        '<div class="row">' +
-            '<div class="large-10 large-offset-1 columns">' +
-                '<div layout-gt-xs="row" layout="column" class="territorial-info" layout-margin>' +
-                    '<!-- Swap this commented line with the next one to hide image field if not found -->' +
-                    '<!-- <md-content ng-if="element().IMAGEN != -1" flex flex-gt-xs="50" class="territorial-map flex-video"> -->' +
-                    '<md-content flex flex-gt-xs="50" class="territorial-map">' +
-                        '<img style="min-width: 100%; min-height: 100%;" ng-if="element().IMAGEN != -1" class="md-media-md card-media" alt="{{ element().TITULO }}" src="http://www.arona.org/portal/imagecache/ficha/{{ element().IMAGEN }}">' +
-                    '</md-content>' +
-                    '<md-card flex class="territorial-contact" style="padding: 0 2.5em;">' +
-                        '<md-card-content>' +
-                            '<div ng-if="element().DIRECCION != null" class="row collapse">' +
-                                '<p>{{  element().DIRECCION }}</p>' +
-                            '</div>' +
-                            '<div ng-if="element().TELEFONO != null" class="row collapse">' +
-                                '<p>{{ translate("general.", \'telefono\') | capitalize }}: {{  element().TELEFONO }}</p>' +
-                            '</div>' +
-                            '<div ng-if="element().FAX != null" class="row collapse">' +
-                                '<p>{{ translate("general.", \'fax\') | capitalize }}: {{  element().FAX }}</p>' +
-                            '</div>' +
-                            '<div ng-if="element().HORARIO != null" class="row collapse" bind-html-compile="element().HORARIO"></div>' +
-                            '<div ng-if="element().DESCRIPCION != null" class="row collapse" bind-html-compile="element().DESCRIPCION"></div>' +
-                        '</md-card-content>' +
-                        '<md-card-footer style="margin-left: -2em">' +
-                            '<md-card-actions layout="row" layout-align="begining center">' +
-                                '<md-button ng-if="element().EMAIL != null" class="md-primary" ng-href="mailto:{{  element().EMAIL }}">{{ translate("general.", \'email\') }}</md-button>' +
-                                '<md-button ng-if="element().WEB_PROPIA != null" class="md-primary" ng-href="{{  element().WEB_PROPIA }}">{{ translate("general.", \'website\') }}</md-button>' +
-                            '</md-card-actions>' +
-                        '</md-card-footer>' +
-                    '</md-card>' +
-                '</div>' +
-            '</div>' +
-        '</div>' +
-        '<div class="row">' +
-            '<div class="large-10 large-offset-1 columns">' +
-                '<div layout="column" layout-margin style="padding: 0 5em;">' +
-                    '<md-content ng-if="element().DESCRIPCION_COMUN != null" bind-html-compile="element().DESCRIPCION_COMUN" flex class="territorial-description" style="background: none;"></md-content>' +
-                    '<md-content ng-if="element().TEXTO != null" bind-html-compile="element().TEXTO" flex class="territorial-description" style="background: none;"></md-content>' +
-                    '<md-content ng-if="element().MAPA_IFRAME != null" bind-html-compile="element().MAPA_IFRAME" flex class="territorial-map flex-video"></md-content>' +
-                '</div>' +
-            '</div>' +
-        '</div>' +
-        '<div class="row collapse">' +
-            '<div class="large-10 large-offset-1 columns">' +
-                '<app-back-bar></app-back-bar>' +
-            '</div>' +
-        '</div>' +
-    '</div>';
+    var template = [
+    '<md-card>',
+        '<md-card-header>',
+            '<md-card-header-text>',
+                '<span class="md-title">{{ elements()[0].name }}</span>',
+                '<span class="md-subhead">{{ item.type == \'rent\' ? \'Alquiler\' : \'Venta\' }}</span>',
+            '</md-card-header-text>',
+        '</md-card-header>',
+        '<img ng-src="{{ elements()[0].image_path }}" class="md-card-image">',
+        '<md-card-title>',
+            '<md-card-title-text>',
+                '<span class="md-headline" ng-if="elements()[0].contact_phone != null">{{ translate("general.", \'telefono\') | capitalize }}: {{ elements()[0].contact_phone }}</span>',
+                '<span class="md-subhead" ng-if="elements()[0].energy_cert != null">{{ translate("general.", \'energy_cert\') | capitalize }}: {{ elements()[0].energy_cert | capitalize }}</span>',
+                //'<span class="md-headline" ng-if="elements()[0].price != null">{{ elements()[0].price }} €</span>',
+                //'<span class="md-subhead" ng-if="elements()[0].address != null">{{ elements()[0].address }}</span>',
+            '</md-card-title-text>',
+        '</md-card-title>',
+        //'<md-card-actions layout="row" layout-wrap layout-align="start center">',
+        //        '<p class="md-subhead" flex="100" ng-if="elements()[0].contact_phone != null">{{ translate("general.", \'telefono\') | capitalize }}: {{ elements()[0].contact_phone }}</p>',
+        //        '<p class="md-subhead" flex="100" ng-if="elements()[0].energy_cert != null">{{ translate("general.", \'energy_cert\') | capitalize }}: {{ elements()[0].energy_cert | capitalize }}</p>',
+        //'</md-card-actions>',
+        '<md-card-content>',
+            '<div flex="100" ng-if="elements()[0].description != null">',
+               '<h2 class="md-headline">Descripción</h2>',
+                '<md-content bind-html-compile="elements()[0].description"></md-content>',
+            '</div>',
+            '<div flex="100" ng-if="elements()[0].observations != null">',
+               '<h2 class="md-headline">Observaciones</h2>',
+                '<md-content bind-html-compile="elements()[0].observations"></md-content>',
+            '</div>',
+            '<div flex="100" layout="row" layout-wrap>',
+               '<h2 flex="100" class="md-headline">Datos</h2>',
+               '<md-list-item ng-if="elements()[0][item] !== 0 && elements()[0][item] != null" class="md-2-line" flex-gt-md="50" flex="100" ng-repeat="item in [ \'m2_terrain\', \'building_status\', \'m2_built\', \'building_floors\', \'m2_balcony\', \'pool\', \'year\', \'stairs\', \'bedrooms\', \'elevator\', \'restroom\', \'storage\', \'kitchen\', \'parking\', \'livingroom\', \'furniture\', \'ibi\', \'views\', \'community\', \'telephone\', \'wifi\' ]" ng-click="null" ng-if="elements()[0][item] != null">',
+                   '<div ng-if="elements()[0][item] === true || elements()[0][item] === false" class="md-list-item-text" layout="column">',
+                       '<h3>{{ translate("general.", item) | capitalize }}</h3>',
+                       '<h4>{{ translate("general.", elements()[0][item] === true ? \'si\' : \'no\') | capitalize }}</h4>',
+                   '</div>',
+                   '<div ng-if="elements()[0][item] !== true && elements()[0][item] !== false" class="md-list-item-text" layout="column">',
+                       '<h3>{{ translate("general.", item) | capitalize }}</h3>',
+                       '<h4>{{ elements()[0][item] }}</h4>',
+                   '</div>',
+               '</md-list-item>',
+            '</div>',
+            '<div flex="100" ng-if="elements()[0].availible != true">',
+               '<md-list-item md-colors="::{background: \'default-warn-500\'}" flex="100" ng-click="null">',
+                   '<div class="md-list-item-text" layout="row" flex="100" layout-align="center center">',
+                       '<h1>{{ elements()[0].type == \'sell\' ? \'Vendido\' : \'Alquilado\' }}</h1>',
+                   '</div>',
+               '</md-list-item>',
+            '</div>',
+            '<div flex="100" ng-if="elements()[0].price != null">',
+               '<md-list-item md-colors="::{background: \'default-primary-500\'}" flex="100" ng-click="null">',
+                   '<div class="md-list-item-text" layout="row" flex="100" layout-align="center center">',
+                       '<h1>{{ elements()[0].price }} €</h1>',
+                   '</div>',
+               '</md-list-item>',
+            '</div>',
+            '<div flex="100" ng-if="elements()[0].map_iframe != null">',
+               '<h2 class="md-headline">Mapa</h2>',
+                '<md-content bind-html-compile="elements()[0].map_iframe" class="flex-video"></md-content>',
+            '</div>',
+            '<div flex="100" ng-if="elements()[0].image_paths != null">',
+               '<h2 class="md-headline">Galería de imágenes</h2>',
+               '<slick adaptiveHeight="true" infinite="true" dots="false" arrows="true" data="elements()[0].image_paths" init-onload="true" autoplay="true">',
+                   '<div layout="row" ng-repeat="image_path in elements()[0].image_paths">',
+                        '<a ng-href="{{ image_path }}" target="_blank" flex="100" layout="row"><div class="territorial-header" flex="100" style="background-image: url(\'{{ image_path }}\');"></div></a>',
+                   '</div>',
+               '</slick>',
+            '</div>',
+        '</md-card-content>',
+    '</md-card>'
+    ].join(' ');
 
     return {
         restrict: 'E',
@@ -62,4 +79,5 @@ app.directive('appDefaultView', function () {
         template: template
     };
 });
+
 

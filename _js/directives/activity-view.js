@@ -30,7 +30,7 @@ app.directive('appActivityView', function () {
                 '</div>' +
             '</header>' +
             '<div layout="column" class="row post-content">' +
-                '<div class="activity-content" layout="column" ng-if="element()[\'TAQUILLA\'] != null && element()[\'TAQUILLA\'].trim() != \'\'">' +
+                '<div class="activity-content" layout="column" ng-if="element()[\'TAQUILLA\'] != null">' +
                     '<h4 class="section-title">{{ translate(\'general.seccion_\', \'taquilla\') + \':\' | gsub: \'_\':\' \':true | capitalize }}</h4>' +
                     '<div bind-html-compile="element()[\'TAQUILLA\']"></div>' +
                 '</div>' +
@@ -43,11 +43,6 @@ app.directive('appActivityView', function () {
                 '<div class="activity-content" layout="column" ng-if="element()[\'TELEFONO\'] != null">' +
                     '<h4 class="section-title">{{ translate(\'general.seccion_\', \'contacto\') + \':\' | gsub: \'_\':\' \':true | capitalize }}</h4>' +
                     '<div bind-html-compile="element()[\'TELEFONO\']"></div>' +
-                '</div>' +
-
-                '<div class="activity-content" layout="column" ng-if="element()[\'WEB_PROPIA\'] != null">' +
-                    '<h4 class="section-title">{{ translate(\'general.\', \'web\') | gsub: \'_\':\' \':true | capitalize }}</h4>' +
-                    '<div><a href="{{ element().WEB_PROPIA }}">{{ element().WEB_PROPIA }}</a></div>' +
                 '</div>' +
 
                 '<div class="activity-content" layout="column" ng-if="element()[\'DESCRIPCION_COMUN\'] != null">' +
