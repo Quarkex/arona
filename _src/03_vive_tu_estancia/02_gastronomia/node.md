@@ -1,4 +1,0 @@
----
-"id": "gastronomia"
-"title": "gastronomia"
----

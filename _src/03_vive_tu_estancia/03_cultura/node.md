@@ -1,4 +1,0 @@
----
-"id": "cultura"
-"title": "cultura"
----
