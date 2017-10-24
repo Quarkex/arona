@@ -33,15 +33,6 @@ def slugify( string )
 end
 
 doc = {
-    "idioma.de":                           "Deutsch",
-    "idioma.en":                           "English",
-    "idioma.es":                           "Español",
-    "idioma.fi":                           "Suomi",
-    "idioma.fr":                           "Français",
-    "idioma.it":                           "Italiano",
-    "idioma.nl":                           "Nederlands",
-    "idioma.ru":                           "Pусский",
-    "idioma.sv":                           "Svenska",
     "general.actualizarnavegador":         "Browser nicht unterstützt",
     "general.agenda":                      "Veranstaltungkalender",
     "general.albumesFotos":                "Fotoalben",
@@ -71,6 +62,7 @@ doc = {
     "general.irPagina":                    "zur Seite (nº) gehen",
     "general.irPaginaAnterior":            "zur&uuml;ck",
     "general.irPaginaSiguiente":           "weiter",
+
     "general.manyanaDia":                  "Morgen",
     "general.manyanaHora":                 "Morgens",
     "general.mapaWeb":                     "Sitemap",
@@ -98,6 +90,7 @@ doc = {
     "general.visitaPortal":                "Besuchen Sie die Webseite das Rathaus",
     "general.volver":                      "Back",
     "general.web":                         "Web",
+
 
     "clima.caption":                       "Wettervorhesage im Arona f&uuml;r heute und Tage hintereinander.",
     "clima.suministradopor":               "Informaci&oacute;n suministrada por <a href='http://www.aemet.es/en/portada'>AEMET</a>.",
@@ -201,7 +194,7 @@ doc = {
 
     "pagina.titulo_inicio":                                 "Startseite",
     "pagina.titulo_galeria":                                "Fotogallerie",
-    "pagina.titulo_albumes":                                "Fotoalben",
+    "pagina.titulo_albumes":                                "Albumes",
     "pagina.titulo_videos":                                 "Videos",
 
     "pagina.titulo_planea_tu_viaje":                        "Reise organisieren",
@@ -226,6 +219,8 @@ doc = {
 
     "pagina.titulo_destino_accesible":                      "Barrierefreier-Tourismus",
     "pagina.subtitulo_destino_accesible":                   "",
+    "pagina.titulo_restaurantes":                           "Restaurants",
+    "pagina.titulo_compras":                                "Einkaufen",
     "pagina.titulo_guia_de_accesibilidad":                  "Reiseführer für Barrierenfreien Tourismus",
     "pagina.titulo_alquiler_de_ayudas_tecnicas":            "Hilfsmittelvermietung",
 
@@ -235,7 +230,7 @@ doc = {
     "pagina.icono_oficinas_de_informacion":                 "Touristeninformation",
     "pagina.titulo_disfruta_de_arona":                      "Disfruta Arona",
     "pagina.titulo_conoce_arona":                           "Conoce Arona",
-    "pagina.titulo_el_tiempo":                              "Arona Wettervorhersage",
+    "pagina.titulo_el_tiempo":                              "El tiempo",
     "pagina.subtitulo_camaras_en_vivo":                     "Disfruta de la imagen en vivo de Arona",
 
     "pagina.titulo_webcams":                                "Webcams",
@@ -248,7 +243,7 @@ doc = {
     "pagina.boton_conjunto_historico":                      "Discover it",
     "pagina.titulo_actividades":                            "Kalender",
     "pagina.subtitulo_actividades":                         "Today not to miss anything",
-    "pagina.icono_boton_actividades":                       "Heute",
+    "pagina.icono_boton_actividades":                       "today",
     "pagina.texto_boton_actividades":                       "See all events",
 
     "pagina.titulo_destino_arona":                          "Reiseziel: Arona",
@@ -264,10 +259,6 @@ doc = {
     "pagina.titulo_arquitectura_tradicional":      	    "Architektur",
     "pagina.titulo_arte_y_artesania":      		    "Kunst & Kunstgewerbe",
     "pagina.titulo_costumbres_y_folclore":      	    "Brauchtum & Folklore",
-    "pagina.titulo_eventos_y_festividades":                 "Veranstaltungen & Volksfeste",
-    "pagina.titulo_musica_canaria":	      		    "Música canaria",
-    "pagina.titulo_juegos_y_juguetes_tradicionales":        "Juegos y juguetes tradicionales",
-    "pagina.titulo_deportes_vernaculos":                    "Einheimische Sportarten",
     "pagina.titulo_lugares_de_interes":       		    "Interessante Orte",
 
     "pagina.titulo_tour_virtual_360":         		    "Arona 360º",
@@ -277,6 +268,12 @@ doc = {
     "pagina.titulo_vive_tu_estancia":                       "Geniesse deinen Aufenthalt",
     "pagina.subtitulo_vive_tu_estancia":                    "Vorschläge für Freizeitaktivitäten",
     "pagina.titulo_actividades_recomendadas": 		    "Recommended activities",
+    "pagina.titulo_sol_y_playa":              		    "Was zu tun",
+    "pagina.titulo_gastronomia":                            "Essen & Trinken",
+    "pagina.titulo_cultura":                                "Kultur",
+    "pagina.titulo_ocio_nocturno":            		    "Nachtleben in Arona",
+    "pagina.titulo_naturaleza_y_paisajes":                  "Natur und Landschaften",
+    "pagina.titulo_congresos_y_negocios":                   "Kongresse & Handel",
     "pagina.titulo_deporte_y_aventura":      		    "Sports & Abenteuer",
     "pagina.titulo_instalaciones_deportivas":		    "Sportmöglichkeiten",
     "pagina.titulo_ciclismo":				    "Fahrradtouren durch Arona",
@@ -291,28 +288,18 @@ doc = {
     "pagina.titulo_salud_y_belleza":      		    "Gesundheit & Schönheit",
     "pagina.titulo_golf":      		    		    "Golf",
     "pagina.titulo_ocio_diurno":      		    	    "Freizeitaktivitäten",
-    "pagina.titulo_compras":                                "Einkaufen",
     "pagina.titulo_aprende_español":      		    "Spanisch lernen!",
-    "pagina.titulo_sol_y_playa":              		    "Was zu tun",
-    "pagina.titulo_gastronomia":                            "Essen & Trinken",
-    "pagina.titulo_restaurantes":                           "Restaurants",
     "pagina.titulo_pastelerias":      		    	    "Pastelerías",
     "pagina.titulo_recetas_de_cocina_tradicional":          "Traditionelle Küche",
-    "pagina.titulo_cultura":                                "Kultur",
     "pagina.titulo_museos":      		    	    "Museen",
     "pagina.titulo_centros_culturales":      		    "Kulturzentren",
     "pagina.titulo_agenda_mensual":      		    "Monatliche Kulturagenda",
-    "pagina.titulo_ocio_nocturno":            		    "Nachtleben in Arona",
     "pagina.titulo_discotecas_y_pubs":      		    "Disco / Pubs",
     "pagina.titulo_espectaculos":      		    	    "Veranstaltungen (flamenco, ballet...)",
-    "pagina.titulo_naturaleza_y_paisajes":                  "Natur und Landschaften",
     "pagina.titulo_senderismo":      		    	    "Wandern",
     "pagina.titulo_zonas_de_acampada":      		    "Campingplätze",
-    "pagina.titulo_congresos_y_negocios":                   "Kongresse & Handel",
     "pagina.titulo_piramide_de_arona":      		    "Pirámide de Arona",
     "pagina.titulo_centros_de_convenciones":      	    "Kongresszentren",
-    "pagina.titulo_auditorios":                             "Auditorien",
-    "pagina.titulo_centros_civicos":                        "Begegnungsstätte",
     "pagina.titulo_otros_centros_de_cogresos_de_tenerife":  "Otros centros de congresos de Tenerife",
 
     "pagina.titulo_area_profesional":                       "Professioneller Bereich",
