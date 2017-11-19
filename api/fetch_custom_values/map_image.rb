@@ -71,6 +71,6 @@ end
 
 #DEBUG swap this assignation to send map image as API calls to Google instead of a base64 encoded string from DB
 #@map = @map[:image_url].to_s if @map != nil
-@map = ('data:' + @map[:mimetype].to_s + ';' + @map[:encoding].to_s + ',' + @map[:image] ) if @map != nil
+@map = ('data:' + @map[:mimetype].to_s + ';' + @map[:encoding].to_s + ',' + @map[:image].to_s ) if @map != nil
 
 @custom_value = (@map == nil) ? nil : @map
