@@ -3,7 +3,6 @@ def generate_map()
     if @doc['address'] != nil then
         require 'base64'
         require 'open-uri'
-
         api_key = $config["google_maps_api"]
 
         map = { 'address': @doc['address'] }
@@ -46,9 +45,15 @@ def generate_map()
 
         map[:coordinates] = coordinates if coordinates != nil
 
-        map[:mimetype] = 'image/png'
-        map[:encoding] = 'base64'
-        map[:image] =  Base64.encode64( open(map[:image_url], "rb").read ).to_s.chomp.gsub(/[\s]+/, ' ')
+        begin
+            map[:mimetype] = 'image/png'
+            map[:encoding] = 'base64'
+            map[:image]    = Base64.encode64( open(map[:image_url], "rb").read ).to_s.chomp.gsub(/[\s]+/, ' ')
+        rescue Exception => e
+            map[:mimetype] = nil
+            map[:encoding] = nil
+            map[:image]    = nil
+        end
 
         @doc['map'] = map
 
@@ -64,6 +69,9 @@ if @doc.has_key? 'map' then
         $db[$parameters['collection']].update_one({ "_id": @doc["_id"] }, {"$set": {"map": @map}})
     else
         @map = @doc['map']
+        if @map[:image] == nil then
+            @map = generate_map
+        end
     end
 else
     @map = generate_map unless @doc['address'] == nil
@@ -73,12 +81,14 @@ if (@map != nil) then
     if @map[:iframe_url] != nil && @map[:iframe_url] != "" then
         @custom_value = '<iframe width="600" height="450" frameborder="0" style="border:0" src="' + @map[:iframe_url].to_s + '" allowfullscreen></iframe>'
     else
+        params = ['q=' + CGI.escape(@doc['address'].to_s)]
+        params.push('key=' + $config["google_maps_api"].to_s) if $config["google_maps_api"] != nil
         @custom_value = '<iframe ' + [
             'width="600"',
             'height="450"',
             'frameborder="0"',
             'style="border:0"',
-            'src="https://www.google.com/maps/embed/v1/place?key=' + $config["google_maps_api"] + '&q=' + CGI.escape(@doc['address'].to_s) + '"',
+            'src="https://www.google.com/maps/embed/v1/place?' + params.join('&') + '"',
             'allowfullscreen'
             ].join(' ') + '></iframe>'
     end

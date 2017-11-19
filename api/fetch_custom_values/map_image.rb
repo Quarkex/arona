@@ -45,9 +45,15 @@ def generate_map()
 
         map[:coordinates] = coordinates if coordinates != nil
 
-        map[:mimetype] = 'image/png'
-        map[:encoding] = 'base64'
-        map[:image] =  Base64.encode64( open(map[:image_url], "rb").read ).to_s.chomp.gsub(/[\s]+/, ' ')
+        begin
+            map[:mimetype] = 'image/png'
+            map[:encoding] = 'base64'
+            map[:image]    = Base64.encode64( open(map[:image_url], "rb").read ).to_s.chomp.gsub(/[\s]+/, ' ')
+        rescue Exception => e
+            map[:mimetype] = nil
+            map[:encoding] = nil
+            map[:image]    = nil
+        end
 
         @doc['map'] = map
 
@@ -63,14 +69,21 @@ if @doc.has_key? 'map' then
         $db[$parameters['collection']].update_one({ "_id": @doc["_id"] }, {"$set": {"map": @map}})
     else
         @map = @doc['map']
+        if @map[:image] == nil then
+            @map = generate_map
+        end
     end
     #@map = generate_map # DEBUG
 else
     @map = generate_map unless @doc['address'] == nil
 end
 
-#DEBUG swap this assignation to send map image as API calls to Google instead of a base64 encoded string from DB
-#@map = @map[:image_url].to_s if @map != nil
-@map = ('data:' + @map[:mimetype].to_s + ';' + @map[:encoding].to_s + ',' + @map[:image].to_s ) if @map != nil
+if @map != nil then
+    if @map[:image] == nil then
+        @map = @map[:image_url].to_s
+    else
+        @map = ('data:' + @map[:mimetype].to_s + ';' + @map[:encoding].to_s + ',' + @map[:image] )
+    end
+end
 
 @custom_value = (@map == nil) ? nil : @map
