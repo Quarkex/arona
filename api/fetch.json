@@ -61,7 +61,7 @@ begin
             case true
             when (object[key].is_a? String)
                 if object[key].match /^regexp\(.*\)$/ then
-                    object[key].gsub!(/^regexp\(\/(.*)\/\)$/, '\1')
+                    object[key].gsub!(/^regexp\((.*)\)$/, '\1')
                     object[key] = Regexp.new(object[key])
                 end
             when (object[key].is_a? Hash)
