@@ -4,18 +4,18 @@ title: "apartamentos"
 view: "hotel"
 "filters": {"SUBTIPO_PRINCIPAL": "Apartamentos"}
 selector_filters: [
-    {"type": "Zona turística", "name": "Playa de los cristianos", "value":{"VALORESINDICADORESLISTA": regex("/.*Playa de Los Cristianos.*/")}            },
-    {"type": "Zona turística", "name": "Playa de las américas",   "value":{"VALORESINDICADORESLISTA": regex("/.*Playa de Las Américas.*/")}              },
-    {"type": "Zona turística", "name": "Costa del silencio",      "value":{"VALORESINDICADORESLISTA": regex("/.*Costa del Silencio.*/")}                 },
-    {"type": "Zona turística", "name": "Arona rural",             "value":{"VALORESINDICADORESLISTA": regex("/.*Arona Rural.*/")}                        },
-    {"type": "Categoría",      "name": "2 Estrellas",             "value":{"VALORESINDICADORESLISTA": regex("/.*2 estrellas.*/")}                        },
-    {"type": "Categoría",      "name": "3 Estrellas",             "value":{"VALORESINDICADORESLISTA": regex("/.*3 estrellas.*/")}                        },
-    {"type": "Categoría",      "name": "4 Estrellas",             "value":{"VALORESINDICADORESLISTA": regex("/.*4 estrellas.*/")}                        },
-    {"type": "Categoría",      "name": "5 Estrellas",             "value":{"VALORESINDICADORESLISTA": regex("/.*5 estrellas.*/")}                        },
-    {"type": "Accesibilidad",  "name": "Accesible",               "value":{"VALORESINDICADORESLISTA": regex("/.*Accesible.*/")}                          },
-    {"type": "Servicios",      "name": "Piscina",                 "value":{"VALORESINDICADORESLISTA": regex("/.*Piscina.*/")}                            },
-    {"type": "Servicios",      "name": "Tarjeta de crédito",      "value":{"VALORESINDICADORESLISTA": regex("/.*Admite pago por tarjeta de crédito.*/")} },
-    {"type": "Servicios",      "name": "Aire Acondicionado",      "value":{"VALORESINDICADORESLISTA": regex("/.*Aire Acondicionado.*/")}                 }
+    {"type": "Zona turística", "name": "Playa de los cristianos", "value":{"VALORESINDICADORESLISTA": regexp("/.*Playa de Los Cristianos.*/")}            },
+    {"type": "Zona turística", "name": "Playa de las américas",   "value":{"VALORESINDICADORESLISTA": regexp("/.*Playa de Las Américas.*/")}              },
+    {"type": "Zona turística", "name": "Costa del silencio",      "value":{"VALORESINDICADORESLISTA": regexp("/.*Costa del Silencio.*/")}                 },
+    {"type": "Zona turística", "name": "Arona rural",             "value":{"VALORESINDICADORESLISTA": regexp("/.*Arona Rural.*/")}                        },
+    {"type": "Categoría",      "name": "2 Estrellas",             "value":{"VALORESINDICADORESLISTA": regexp("/.*2 estrellas.*/")}                        },
+    {"type": "Categoría",      "name": "3 Estrellas",             "value":{"VALORESINDICADORESLISTA": regexp("/.*3 estrellas.*/")}                        },
+    {"type": "Categoría",      "name": "4 Estrellas",             "value":{"VALORESINDICADORESLISTA": regexp("/.*4 estrellas.*/")}                        },
+    {"type": "Categoría",      "name": "5 Estrellas",             "value":{"VALORESINDICADORESLISTA": regexp("/.*5 estrellas.*/")}                        },
+    {"type": "Accesibilidad",  "name": "Accesible",               "value":{"VALORESINDICADORESLISTA": regexp("/.*Accesible.*/")}                          },
+    {"type": "Servicios",      "name": "Piscina",                 "value":{"VALORESINDICADORESLISTA": regexp("/.*Piscina.*/")}                            },
+    {"type": "Servicios",      "name": "Tarjeta de crédito",      "value":{"VALORESINDICADORESLISTA": regexp("/.*Admite pago por tarjeta de crédito.*/")} },
+    {"type": "Servicios",      "name": "Aire Acondicionado",      "value":{"VALORESINDICADORESLISTA": regexp("/.*Aire Acondicionado.*/")}                 }
 ]
 ---
 <app-tab-bar></app-tab-bar>
