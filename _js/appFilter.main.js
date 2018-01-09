@@ -27,7 +27,7 @@ app.filter("gsub", [function() {
 }]);
 app.filter("guess_content_path", [function() {
     return function(content) {
-        var path = "/" + content["language"] + "/";
+        var path = "#!/" + content["language"] + "/";
         switch(content["COLLECTION"]){
             case "actividades":
                 path += content["COLLECTION"] + "/" + content["CODCONTENIDO"];
