@@ -25,3 +25,29 @@ app.filter("gsub", [function() {
         }
     }
 }]);
+app.filter("guess_content_path", [function() {
+    return function(content) {
+        var path = "/" + content["language"] + "/";
+        switch(content["COLLECTION"]){
+            case "actividades":
+                path += content["COLLECTION"] + "/" + content["CODCONTENIDO"];
+                break;
+            case "territoriales":
+                switch(content["SUBTIPO_PRINCIPAL"]){
+                    case "Hoteles":
+                    case "Aparthoteles":
+                    case "Apartamentos":
+                    case "Alojamiento Rural":
+                    case "Pensiones":
+                        path += "/planea_tu_viaje/donde_alojarse/" + content["SUBTIPO_PRINCIPAL"] + "/" + content["CODCONTENIDO"];
+                        break;
+                    default:
+                        path += "/vive_tu_estancia/" + content["CODCONTENIDO"];
+                }
+                break;
+            default:
+                path += content["COLLECTION"] + "/" + content["CODCONTENIDO"];
+        }
+        return path;
+    }
+}]);

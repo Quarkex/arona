@@ -8,7 +8,7 @@ app.directive('appRelatedContent', function () {
     content_a = '<div style="flex-basis:125px;">' + content_a + '</div>';
 
     var content_b1 = 'card.TITULO';
-    content_b1 = '<a style="text-align: left;" href="{{ node.href }}/{{ card.CODCONTENIDO }}" bind-html-compile="' + content_b1 + '"></a>';
+    content_b1 = '<a style="text-align: left;" href="{{ card | guess_content_path }}" bind-html-compile="' + content_b1 + '"></a>';
     content_b1 = '<span class="md-headline" style="font-size: 18px;">' + content_b1 + '</span>';
 
     var content_b2 = 'card.DESCRIPCION_COMUN';
