@@ -9,7 +9,7 @@ limit: 1
 ---
 <div class="row">
     <div layout="column" layout-gt-md="row" class="large-10 large-offset-1 columns">
-        <app-side-nav flex flex-gt-md="25"></app-side-nav>
+        <app-side-nav flex="100" flex-gt-sm="25"></app-side-nav>
         <div flex layout="column" class="webcam-wrapper" >
             <!-- <h1 flex="100" class="element-title">{{ translate( 'pagina.titulo_', current_section() ) }}</h1> -->
             <div flex="100" class="webcam" bind-html-compile="element().WEBCAM"></div>
