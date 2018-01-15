@@ -30,6 +30,7 @@
 <div flex="100" flex-gt-xs="80" layout-gt-xs="row" layout-align="center center" layout="row"    id="playas_de_arona"    ng-include="'assets/atoms/main/playas_de_arona.htm'"    ></div>
 <div flex="100" flex-gt-xs="80" layout-gt-xs="row" layout-align="center center" layout="row"    id="conjunto_historico" ng-include="'assets/atoms/main/conjunto_historico.htm'" class="show-for-large"></div>
 <div flex="100" flex-gt-xs="80"                                                 layout="column" id="actividades"        ng-include="'assets/atoms/main/actividades.htm'"        ></div>
+<br ng-if="elements().length <= 0">
 <div flex="100" flex-gt-xs="80" layout-gt-xs="row" layout-align="center center" layout="row">
     <div flex="100" flex-gt-xs="80" layout-align="center center" layout="row" layout-wrap>
         <div layout="column" style="margin-bottom: 2em;" flex="100" flex-gt-xs="50" flex-gt-sm="25" layout-align="center center">
